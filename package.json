@@ -1,0 +1,27 @@
+{
+  "name": "zotero-plugins",
+  "version": "1.0.0",
+  "description": "Zotero 插件合集",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northword/zotero-plugins.git"
+  },
+  "author": "northword",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/northword/zotero-plugins/issues"
+  },
+  "homepage": "https://github.com/northword/zotero-plugins#readme",
+  "devDependencies": {
+    "@types/node": "^20.5.9",
+    "franc-min": "^6.1.0",
+    "markdown-table-ts": "^1.0.3",
+    "octokit": "^3.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

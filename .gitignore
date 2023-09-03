@@ -1,0 +1,15 @@
+**/build
+node_modules
+package-lock.json
+dist
+
+
+# tmp
+**/*.bak
+**/*.new
+**/examples.ts
+# **/test.js
+**/*test*.*
+**/*bak.*
+# ts 编译的 js
+src/**/*.js
