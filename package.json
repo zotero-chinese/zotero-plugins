@@ -4,6 +4,7 @@
   "description": "Zotero 插件合集",
   "main": "index.js",
   "scripts": {
+    "build": "cd src && ts-node index.ts && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

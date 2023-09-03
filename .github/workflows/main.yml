@@ -1,0 +1,59 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Update
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: "25 1 * * *"
+  push:
+    branches: [main]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  TZ: Asia/Shanghai
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  use_api:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api /octocat
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          # github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: dist
+          commit_message: ${{ github.event.head_commit.message }}
+          # keep_files: false
+          force_orphan: true
