@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Update
+name: CI
 
 # Controls when the workflow will run
 on:
@@ -19,15 +19,6 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  use_api:
-    runs-on: ubuntu-latest
-    permissions: {}
-    steps:
-      - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api /octocat
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -45,6 +36,8 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install
           npm run build
