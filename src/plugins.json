@@ -218,6 +218,20 @@
     ]
   },
   {
+    "name": "Zotero Citation",
+    "repo": "MuiseDestiny/eaiser-citation",
+    "releases": [
+      {
+        "targetZoteroVersion": "7",
+        "tagName": "latest"
+      },
+      {
+        "targetZoteroVersion": "6",
+        "tagName": "0.3.1"
+      }
+    ]
+  },
+  {
     "name": "Zotero Citation Counts Manager",
     "repo": "eschnett/zotero-citationcounts",
     "releases": [
