@@ -1,11 +1,12 @@
 import { Octokit } from "octokit";
 import fs from "fs";
 import path from "path";
-// import { franc } from "franc-min";
+import { franc } from "franc-min";
 import { Align, getMarkdownTable } from "markdown-table-ts";
+import translate from "google-translate-api-x";
 
 const pluginsSourceFile = "./plugins.json";
-// const pluginsSourceFile = "../dist/plugins.json";
+// const pluginsSourceFile = "./plugins-test.json";
 const dist = "../dist";
 
 interface PluginInfo {
@@ -107,17 +108,25 @@ async function progressPlugins() {
         owner: owner,
         repo: repo,
       })
-      .then((resp) => {
+      .then(async (resp) => {
         let desc = "";
         if (resp.data.description) {
-          desc = resp.data.description;
-
-          // if (franc(resp.data.description) == "cmn") {
-          //   desc = resp.data.description;
-          // } else {
-          //   // 翻译
-          //   desc = resp.data.description;
-          // }
+          if (franc(resp.data.description) == "cmn") {
+            desc = resp.data.description;
+          } else {
+            desc = resp.data.description;
+            // 翻译
+            // console.log("需要翻译");
+            // await translate(resp.data.description, { to: "zh-CN" })
+            //   .then((res) => {
+            //     console.log(res.text);
+            //     desc = res.text;
+            //   })
+            //   .catch((e) => {
+            //     console.log(e);
+            //     desc = resp.data.description;
+            //   });
+          }
         } else {
           desc = "无简介";
         }
@@ -247,7 +256,7 @@ async function writeMarkdown() {
         !index ? `[${plugin.author?.name}](${plugin.author?.url})` : "",
         release.targetZoteroVersion,
         release.currentVersion,
-        new Date(release.releaseData ?? "").toLocaleString(),
+        new Date(release.releaseData ?? "").toLocaleString("zh-CN"),
         downloadUrl,
       ];
       body.push(row);
