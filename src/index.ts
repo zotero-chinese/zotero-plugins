@@ -240,8 +240,10 @@ async function writeMarkdown() {
       let name = `[${plugin.name}](https://github.com/${plugin.repo}) </br>`;
       name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
 
-      let releaseInfo = `[![zotero target version ${release.targetZoteroVersion}](https://img.shields.io/badge/Zotero-${release.targetZoteroVersion}-green?&logo=zotero&logoColor=CC2936)](https://www.zotero.org)`;
-      releaseInfo += `![Version ${release.currentVersion}](https://img.shields.io/badge/version-${release.targetZoteroVersion}-green)`;
+      let releaseInfo = `[![适配 Zotero ${release.targetZoteroVersion}](https://img.shields.io/badge/Zotero-${release.targetZoteroVersion}-green?&logo=zotero&logoColor=CC2936)](https://www.zotero.org)`;
+      releaseInfo += `![版本 ${release.currentVersion}](https://img.shields.io/badge/版本-${release.targetZoteroVersion}-green)`;
+      releaseInfo += `![发布日期 ${new Date(release.releaseData ?? "").toLocaleString("zh-CN")}](https://img.shields.io/badge/日期-${new Date(release.releaseData ?? "").toLocaleString("zh-CN")}-green)`;
+      releaseInfo += `![下载量 ${release.downloadCount}](https://img.shields.io/badge/下载量-${release.downloadCount}-green)`;
 
       const downloadUrlEncode = encodeURI(release.xpiDownloadUrl!);
       let downloadUrl = `<ul>`;
@@ -255,8 +257,9 @@ async function writeMarkdown() {
         !index ? plugin.description : "",
         !index ? `[${plugin.author?.name}](${plugin.author?.url})` : "",
         release.targetZoteroVersion,
-        release.currentVersion,
-        new Date(release.releaseData ?? "").toLocaleString("zh-CN"),
+        // release.currentVersion,
+        // new Date(release.releaseData ?? "").toLocaleString("zh-CN"),
+        releaseInfo,
         downloadUrl,
       ];
       body.push(row);
@@ -269,8 +272,9 @@ async function writeMarkdown() {
         "描述",
         "作者",
         "目标 Zotero 版本",
-        "插件版本",
-        "发布时间",
+        // "插件版本",
+        // "发布时间",
+        "版本信息",
         "下载链接",
       ],
       body: body,
