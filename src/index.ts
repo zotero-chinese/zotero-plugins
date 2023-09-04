@@ -285,9 +285,16 @@ async function main() {
   await progressPlugins();
   // console.log(JSON.stringify(plugins, null, 2));
   // writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
+
   console.log("处理 Markdown");
   writeMarkdown();
+
   console.log("完成");
+
+  let shields = {
+    lastUpdate: new Date().toLocaleString("zh-CN"),
+  };
+  writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
 }
 
 main().catch((err) => {
