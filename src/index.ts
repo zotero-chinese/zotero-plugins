@@ -240,9 +240,9 @@ async function writeMarkdown() {
       let name = `[${plugin.name}](https://github.com/${plugin.repo}) </br>`;
       name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
 
-      let releaseInfo = `[![适配 Zotero ${release.targetZoteroVersion}](https://img.shields.io/badge/Zotero-${release.targetZoteroVersion}-green?&logo=zotero&logoColor=CC2936)](https://www.zotero.org)`;
-      releaseInfo += `![版本 ${release.currentVersion}](https://img.shields.io/badge/版本-${release.targetZoteroVersion}-green)`;
-      releaseInfo += `![发布日期 ${new Date(release.releaseData ?? "").toLocaleString("zh-CN")}](https://img.shields.io/badge/日期-${new Date(release.releaseData ?? "").toLocaleString("zh-CN")}-green)`;
+      let releaseInfo = `[![适配 Zotero ${release.targetZoteroVersion}](https://img.shields.io/badge/Zotero-${release.targetZoteroVersion}-green?&logo=zotero&logoColor=CC2936)](https://www.zotero.org) </br>`;
+      releaseInfo += `![版本 ${release.currentVersion}](https://img.shields.io/badge/版本-${release.targetZoteroVersion}-green) </br>`;
+      releaseInfo += `![发布日期 ${new Date(release.releaseData ?? "").toLocaleString("zh-CN")}](https://img.shields.io/badge/日期-${encodeURI(new Date(release.releaseData ?? "").toLocaleString("zh-CN"))}-green) </br>`;
       releaseInfo += `![下载量 ${release.downloadCount}](https://img.shields.io/badge/下载量-${release.downloadCount}-green)`;
 
       const downloadUrlEncode = encodeURI(release.xpiDownloadUrl!);
