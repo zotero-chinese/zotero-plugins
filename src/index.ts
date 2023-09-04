@@ -277,14 +277,17 @@ async function writeMarkdown() {
     },
     // alignment: [Align.Left, Align.Center, Align.Right],
   });
-  writeFile(`${dist}/README.md`, table);
+  writeFile(`${dist}/plugins.md`, table);
 }
 
 async function main() {
+  console.log("开始处理");
   await progressPlugins();
   // console.log(JSON.stringify(plugins, null, 2));
   // writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
+  console.log("处理 Markdown");
   writeMarkdown();
+  console.log("完成");
 }
 
 main().catch((err) => {

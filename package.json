@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd src && ts-node index.ts && cd ..",
+    "website": "docsify serve dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@types/node": "^20.5.9",
     "@vitalets/google-translate-api": "^9.2.0",
+    "docsify-cli": "^4.4.4",
     "franc-min": "^6.1.0",
     "google-translate-api-x": "^10.6.7",
     "markdown-table-ts": "^1.0.3",
