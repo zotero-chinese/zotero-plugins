@@ -1,6 +1,5 @@
 import { Octokit } from "octokit";
 import fs from "fs";
-import path from "path";
 import { franc } from "franc-min";
 import { Align, getMarkdownTable } from "markdown-table-ts";
 import translate from "google-translate-api-x";
