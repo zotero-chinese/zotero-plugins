@@ -59,9 +59,9 @@ async function progressPlugins() {
       })
       .then((resp) => {
         plugin.author = {
-          name: resp.data.name ?? owner,
-          url: resp.data.blog ?? resp.data.html_url ?? "",
-          avatar: resp.data.avatar_url ?? "",
+          name: resp.data.name || owner,
+          url: resp.data.blog || resp.data.html_url,
+          avatar: resp.data.avatar_url,
         };
       })
       .catch((err) => {
