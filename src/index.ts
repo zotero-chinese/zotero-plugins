@@ -4,94 +4,10 @@ import path from "path";
 import { franc } from "franc-min";
 import { Align, getMarkdownTable } from "markdown-table-ts";
 import translate from "google-translate-api-x";
+import { plugins } from "./plugins";
+import { writeFile } from "./utils";
 
-const pluginsSourceFile = "./plugins.json";
-// const pluginsSourceFile = "./plugins-test.json";
-const dist = "../dist";
-
-interface PluginInfo {
-  name: string;
-  repo: string;
-  releases: PluginReleaseInfo[];
-
-  description?: string;
-  star?: number;
-  author?: {
-    name: string;
-    url: string;
-    avatar: string;
-  };
-}
-
-interface PluginReleaseInfo {
-  targetZoteroVersion: string;
-  tagName: "latest" | "pre" | "string";
-
-  currentVersion?: string;
-  xpiDownloadUrl?: string;
-  releaseData?: string;
-  downloadCount?: number;
-  id?: number;
-}
-
-// 读写
-function readFile(filePath: string) {
-  // 读取文件
-  const data = fs.readFileSync(filePath, { encoding: "utf8" });
-  return JSON.parse(data);
-}
-
-function writeFile(filePath: string, data: string | NodeJS.ArrayBufferView) {
-  // 获取目标目录路径
-  const dirPath = path.dirname(filePath);
-
-  // 检查目录是否存在，如果不存在则创建目录
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-
-  // 写入文件
-  fs.writeFileSync(filePath, data, "utf8");
-  console.log(`    ${filePath} 写入完成`);
-}
-
-function copyFileSync(source: string, target: string) {
-  var targetFile = target;
-
-  // If target is a directory, a new file with the same name will be created
-  if (fs.existsSync(target)) {
-    if (fs.lstatSync(target).isDirectory()) {
-      targetFile = path.join(target, path.basename(source));
-    }
-  }
-
-  fs.writeFileSync(targetFile, fs.readFileSync(source));
-}
-
-function copyFolderRecursiveSync(source: string, target: string) {
-  var files = Array();
-
-  // Check if folder needs to be created or integrated
-  var targetFolder = path.join(target);
-  if (!fs.existsSync(targetFolder)) {
-    fs.mkdirSync(targetFolder);
-  }
-
-  // Copy
-  if (fs.lstatSync(source).isDirectory()) {
-    files = fs.readdirSync(source);
-    files.forEach(function (file) {
-      var curSource = path.join(source, file);
-      if (fs.lstatSync(curSource).isDirectory()) {
-        copyFolderRecursiveSync(curSource, targetFolder);
-      } else {
-        copyFileSync(curSource, targetFolder);
-      }
-    });
-  }
-}
-
-const plugins = readFile(pluginsSourceFile) as PluginInfo[];
+const dist = "../docs/dist";
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
@@ -226,14 +142,10 @@ async function progressPlugins() {
         });
       // return release;
     }
-
-    writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
   }
 }
 
-async function writeMarkdown() {
-  copyFolderRecursiveSync("../docs/", dist);
-
+async function renderMarkdown() {
   let body = Array();
   plugins.forEach((plugin) => {
     plugin.releases.forEach((release, index) => {
@@ -249,7 +161,7 @@ async function writeMarkdown() {
       let downloadUrl = `<ul>`;
       downloadUrl += `<li>[官方下载](${release.xpiDownloadUrl}) </li>`;
       downloadUrl += `<li>[GitHub Proxy](https://ghproxy.com/?q=${downloadUrlEncode}) </li>`;
-      downloadUrl += `<li>[JsDeliver](https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/xpi/${release.id}.xpi) </li>`;
+      downloadUrl += `<li>[JsDeliver](https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/dist/xpi/${release.id}.xpi) </li>`;
       downloadUrl += `</ul>`;
 
       const row = [
@@ -290,20 +202,23 @@ async function writeMarkdown() {
       Align.Left,
     ],
   });
-  writeFile(`${dist}/plugins.md`, table);
+  return table;
 }
 
 async function main() {
   console.log("开始处理");
   await progressPlugins();
+  writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
 
   console.log("处理 Markdown");
-  writeMarkdown();
+  const markdownContent = await renderMarkdown();
+  writeFile(`${dist}/plugins.md`, markdownContent);
 
   let shields = {
     lastUpdate: new Date().toLocaleString("zh-CN"),
   };
   writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
+
   console.log("完成");
 }
 
