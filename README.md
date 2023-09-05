@@ -68,6 +68,7 @@ npm website
 
 - GitHub 代理：<https://github.com/hunshcn/gh-proxy>
 - JsDeliver：<https://www.jsdelivr.com/>
+- KGitHub: <https://help.kgithub.com/>
 
 本项目是对 [l0o0/ZoteroPlugins](https://github.com/l0o0/ZoteroPlugins) 的 Typescript 重新实现。
 

@@ -161,6 +161,10 @@ async function renderMarkdown() {
       downloadUrl += `<li>[官方下载](${release.xpiDownloadUrl}) </li>`;
       downloadUrl += `<li>[GitHub Proxy](https://ghproxy.com/?q=${downloadUrlEncode}) </li>`;
       downloadUrl += `<li>[JsDeliver](https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/dist/xpi/${release.id}.xpi) </li>`;
+      downloadUrl += `<li>[KGitHub](${release.xpiDownloadUrl?.replace(
+        "github.com",
+        "kgithub.com"
+      )}) </li>`;
       downloadUrl += `</ul>`;
 
       const row = [
