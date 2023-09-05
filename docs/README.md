@@ -7,7 +7,8 @@
 
 本页面其他备用地址：
 
-- 主地址：待部署
+- Zotero 中文社区主域名：待部署
+- Northword.dev: <https://plugins.zotero.northword.dev>
 - GitHub Pages: <https://northword.github.io/zotero-plugins/>
 - Netlify: <https://zotero-plugins.netlify.app/>
 - Vercel: 待部署
