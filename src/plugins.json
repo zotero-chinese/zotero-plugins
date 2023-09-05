@@ -194,7 +194,7 @@
     ]
   },
   {
-    "name": "zotcard",
+    "name": "Zotcard",
     "repo": "018/zotcard",
     "releases": [
       {
@@ -356,7 +356,7 @@
     ]
   },
   {
-    "name": "zotero-shortdoi",
+    "name": "Zotero ShortDOI",
     "repo": "bwiernik/zotero-shortdoi",
     "releases": [
       {
@@ -366,7 +366,7 @@
     ]
   },
   {
-    "name": "Zotero更新影响因子",
+    "name": "Zotero 更新影响因子",
     "repo": "redleafnew/zotero-updateifs",
     "releases": [
       {
@@ -386,7 +386,7 @@
     ]
   },
   {
-    "name": "zotfile汉化版",
+    "name": "ZotFile 汉化版",
     "repo": "lychichem/zotfile",
     "releases": [
       {

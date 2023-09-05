@@ -10,4 +10,4 @@ Zotero 中文交流群 913637964，617148016，893963769，666489129，145248977
 
 ?> 如果你对本页面有任何建议或反馈，请 [填写表格](https://www.kdocs.cn/wo/sl/v14cwJXX) 或前往 [GitHub 仓库提 issue](https://github.com/northword/zotero-plugins)。
 
-[filename](./plugins.md ':include')
+[plgins info](./plugins.md ':include')
