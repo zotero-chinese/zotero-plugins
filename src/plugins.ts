@@ -164,7 +164,11 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "pre",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "0.0.7",
       },
     ],
   },
