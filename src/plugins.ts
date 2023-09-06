@@ -406,7 +406,7 @@ export const plugins: PluginInfo[] = [
   },
   {
     name: "ZotFile",
-    repo: "lychichem/zotfile",
+    repo: "jlegewie/zotfile",
     releases: [
       {
         targetZoteroVersion: "6",
