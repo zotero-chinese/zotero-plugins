@@ -11,10 +11,10 @@
 
 ## 访问
 
-- Zotero 中文社区主域名：待部署
+- **Zotero 中文社区主域名：<https://plugins.zotero-chinese.com>**
+- Netlify: <https://zotero-plugins.netlify.app/>
 - Northword.dev: <https://plugins.zotero.northword.dev>
 - GitHub Pages: <https://northword.github.io/zotero-plugins/>
-- Netlify: <https://zotero-plugins.netlify.app/>
 - Vercel: 待部署
 - Gitee: 待部署
 

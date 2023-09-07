@@ -5,14 +5,18 @@
 ![GitHub 最后更新时间](https://img.shields.io/github/last-commit/northword/zotero-plugins/gh-pages)
 ![最后更新](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0)
 
-本页面其他备用地址：
+<details>
 
-- Zotero 中文社区主域名：待部署
+<summary>本页面主地址为：plugins.zotero-chinese.com，点击查看其他备用地址</summary>
+
+- **Zotero 中文社区主域名：<https://plugins.zotero-chinese.com>**
+- Netlify: <https://zotero-plugins.netlify.app/>
 - Northword.dev: <https://plugins.zotero.northword.dev>
 - GitHub Pages: <https://northword.github.io/zotero-plugins/>
-- Netlify: <https://zotero-plugins.netlify.app/>
 - Vercel: 待部署
 - Gitee: 待部署
+
+</details>
 
 本页面为每一个插件都提供了多个下载地址，请逐个尝试选择可用的地址。火狐浏览器用户请通过在链接上右击，选择“另存为”来下载 `XPI` 包。插件之间可能存在冲突，**建议按需安装**。
 
