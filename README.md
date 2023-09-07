@@ -13,10 +13,7 @@
 
 - **Zotero 中文社区主域名：<https://plugins.zotero-chinese.com>**
 - Netlify: <https://zotero-plugins.netlify.app/>
-- Northword.dev: <https://plugins.zotero.northword.dev>
-- GitHub Pages: <https://northword.github.io/zotero-plugins/>
-- Vercel: 待部署
-- Gitee: 待部署
+- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/>
 
 ## 贡献
 
