@@ -223,7 +223,7 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "Zotcard",
+    name: "ZotCard",
     repo: "018/zotcard",
     releases: [
       {
@@ -378,6 +378,10 @@ export const plugins: PluginInfo[] = [
     name: "Zotero Tag",
     repo: "windingwind/zotero-tag",
     releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
       {
         targetZoteroVersion: "6",
         tagName: "latest",
