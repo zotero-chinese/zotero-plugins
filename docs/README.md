@@ -4,6 +4,7 @@
 [![Netlify 部署状态](https://api.netlify.com/api/v1/badges/bae2ef92-2f0a-4076-ae7c-6619933cdf39/deploy-status)](https://app.netlify.com/sites/zotero-plugins/deploys)
 ![GitHub 最后更新时间](https://img.shields.io/github/last-commit/northword/zotero-plugins/gh-pages)
 ![最后更新](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0)
+[![Page Views Count](https://badges.toozhao.com/badges/01H9T10RA7708BEZZ78B6ZW9VV/green.svg)](https://badges.toozhao.com/stats/01H9T10RA7708BEZZ78B6ZW9VV "Get your own page views count badge on badges.toozhao.com")
 
 <details>
 
