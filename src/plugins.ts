@@ -308,6 +308,16 @@ export const plugins: PluginInfo[] = [
       },
     ],
   },
+    {
+    name: "Zotero Inspire",
+    repo: "fkguo/zotero-inspire",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
   {
     name: "Zotero OCR",
     repo: "UB-Mannheim/zotero-ocr",
