@@ -6,6 +6,9 @@ import translate from "google-translate-api-x";
 import { plugins } from "./plugins";
 import { writeFile } from "./utils";
 
+// 仅供测试使用
+// import { test as plugins } from "./plugins";
+
 const dist = "../docs/dist";
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
@@ -147,9 +150,13 @@ async function progressPlugins() {
 async function renderMarkdown() {
   let body = Array();
   plugins.forEach((plugin) => {
+    let name = `[${plugin.name}](https://github.com/${plugin.repo}) </br>`;
+    name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
     plugin.releases.forEach((release, index) => {
-      let name = `[${plugin.name}](https://github.com/${plugin.repo}) </br>`;
-      name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
+      if (release.id == undefined) {
+        console.log(`  ${plugin.name} ${release.currentVersion} 不存在`);
+        return;
+      }
 
       // let releaseInfo = `[![适配 Zotero ${release.targetZoteroVersion}](https://img.shields.io/badge/Zotero-${release.targetZoteroVersion}-green?&logo=zotero&logoColor=CC2936)](https://www.zotero.org) </br>`;
       // releaseInfo += `![版本 ${release.currentVersion}](https://img.shields.io/badge/版本-${release.targetZoteroVersion}-green) </br>`;
@@ -174,7 +181,7 @@ async function renderMarkdown() {
         release.targetZoteroVersion,
         release.currentVersion,
         new Date(release.releaseData ?? "").toLocaleString("zh-CN") +
-          `</br>![下载量 ${release.downloadCount}](https://img.shields.io/badge/下载量-${release.downloadCount}-green)`,
+          `</br>![下载量 ${release.downloadCount}](https://img.shields.io/github/downloads/${plugin.repo}/${release.currentVersion}/total?label=下载量)`,
         // releaseInfo,
         downloadUrl,
       ];

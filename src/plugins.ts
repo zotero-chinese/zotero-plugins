@@ -308,7 +308,7 @@ export const plugins: PluginInfo[] = [
       },
     ],
   },
-    {
+  {
     name: "Zotero Inspire",
     repo: "fkguo/zotero-inspire",
     releases: [
@@ -445,6 +445,24 @@ export const plugins: PluginInfo[] = [
       {
         targetZoteroVersion: "6",
         tagName: "latest",
+      },
+    ],
+  },
+];
+
+// 以下列表仅供开发测试使用
+export const test: PluginInfo[] = [
+  {
+    name: "Zotero Format Metadata",
+    repo: "northword/zotero-format-metadata",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "0.4.4",
       },
     ],
   },
