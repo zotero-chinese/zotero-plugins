@@ -23,19 +23,48 @@
 
 ```ts
 interface PluginInfo {
-  name: string;                   // 插件名称
-  repo: string;                   // 插件仓库：northword/zotero-format-metadata，前后均无 `/`
-  releases: PluginReleaseInfo[];  // 插件的发行版信息
-  description?: string;
+  /**
+   * 插件名称
+   */
+  name: string;
+  /**
+   * 插件仓库
+   *
+   * 例如：northword/zotero-format-metadata
+   *
+   * 注意前后均无 `/`
+   */
+  repo: string;
+  /**
+   * 插件的发布地址信息
+   */
+  releases: PluginReleaseInfo[];
 }
 
 interface PluginReleaseInfo {
-  targetZoteroVersion: string;             // 当前发行版针对的 Zotero 版本
-  tagName: "latest" | "pre" | "string";    // 当前发行版发布的类型——latest：最新正式发布，pre：最新预发布，string：发布对应的 git.tag_name 
+  /**
+   * 当前发布版对应的 Zotero 版本
+   */
+  targetZoteroVersion: string;
+  /**
+   * 当前发布版对应的下载通道
+   *
+   * `latest`：最新正式发布；
+   * `pre`：最新预发布；
+   * `string`：发布对应的 `git.tag_name`；
+   * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
+   */
+  tagName: "latest" | "pre" | string;
 }
 ```
 
 对于每一个插件，只有必填项需要填写在 [`src/plugins.ts`](./src/plugins.ts) 中，其余字段脚本运行时可以获取。
+
+> [!NOTE] 如何添加未收录的插件  
+>
+> 编辑 [`src/plugins.ts`](./src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容如上所示，已有的内容亦可作为参考。
+>
+> 编辑完成后提交，发起 Pull Request，仓库成员将尽快处理。
 
 ### 构建过程
 
