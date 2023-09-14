@@ -410,7 +410,7 @@ export const plugins: PluginInfo[] = [
   },
   {
     name: "Zotero Tag",
-    repo: "windingwind/zotero-tag",
+    repo: "windingwind/zotero-actions-tags",
     releases: [
       {
         targetZoteroVersion: "7",
