@@ -42,22 +42,29 @@
       function concatRow(hook, vm) {
         hook.doneEach(function () {
           let rows = document.querySelectorAll("table > tbody > tr");
-          console.log(rows.length);
-          for (let i = 0; i < rows.length - 1; i++) {
-            firstRow = rows[i];
-            secondRow = rows[i + 1];
-            ftds = firstRow.querySelectorAll("td");
-            stds = secondRow.querySelectorAll("td");
-            if (!stds[0].innerText) {
-              ftds[0].setAttribute("rowspan", "2");
-              ftds[0].style.backgroundColor = "white";
-              stds[0].setAttribute("hidden", "hidden");
-              ftds[1].setAttribute("rowspan", "2");
-              ftds[1].style.backgroundColor = "white";
-              stds[1].setAttribute("hidden", "hidden");
-              ftds[2].setAttribute("rowspan", "2");
-              ftds[2].style.backgroundColor = "white";
-              stds[2].setAttribute("hidden", "hidden");
+          let visibleRowCount = 0; // 用于追踪可见的行数
+
+          for (let i = 0; i < rows.length; i++) {
+            let currentRow = rows[i];
+            let cells = currentRow.querySelectorAll("td");
+
+            if (!cells[0].innerText) {
+              currentRow.style.backgroundColor =
+                rows[i - 1].style.backgroundColor;
+              for (let j = 0; j < cells.length; j++) {
+                if (!cells[j].innerText) {
+                  cells[j].setAttribute("hidden", "hidden");
+                  cells[j].style.backgroundColor =
+                    rows[i - 1].style.backgroundColor;
+                  rows[i - 1]
+                    .querySelectorAll("td")
+                    [j].setAttribute("rowspan", "2");
+                }
+              }
+            } else {
+              currentRow.style.backgroundColor =
+                visibleRowCount % 2 === 0 ? "white" : "#f8f8f8";
+              visibleRowCount++;
             }
           }
         });
