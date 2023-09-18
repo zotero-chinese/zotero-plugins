@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <title>Zotero 插件商店 - Zotero 中文社区</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Description" />
+    <meta
+      name="description"
+      content="本站点是由Zotero中文社区整理的Zotero插件下载汇总导航网站。网站后台定期收集GitHub上最新的Zotero插件信息并汇总，方便国内用户检索和下载"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
@@ -13,13 +16,19 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
     />
+    <style type="text/css">
+      table > thead > tr > th:nth-child(7) {
+        min-width: 140px;
+      }
+    </style>
   </head>
   <body>
     <nav>
       <a href="https://zotero-chinese.com">Zotero 中文小组首页</a>
       <a href="https://zotero-chinese.com/user-guide/">Zotero 百科全书</a>
       <a href="#/">Zotero 插件商店</a>
-      <a href="https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/"
+      <a
+        href="https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/"
         >中文 CSL 样式</a
       >
     </nav>
@@ -30,6 +39,33 @@
         name: "Zotero 中文",
         repo: "https://github.com/northword/zotero-plugins",
       };
+      // Plugin
+      function concatRow(hook, vm) {
+        hook.doneEach(function () {
+          let rows = document.querySelectorAll("table > tbody > tr");
+          console.log(rows.length);
+          for (let i = 0; i < rows.length - 1; i++) {
+            firstRow = rows[i];
+            secondRow = rows[i + 1];
+            ftds = firstRow.querySelectorAll("td");
+            stds = secondRow.querySelectorAll("td");
+            if (!stds[0].innerText) {
+              ftds[0].setAttribute("rowspan", "2");
+              ftds[0].style.backgroundColor = "white";
+              stds[0].setAttribute("hidden", "hidden");
+              ftds[1].setAttribute("rowspan", "2");
+              ftds[1].style.backgroundColor = "white";
+              stds[1].setAttribute("hidden", "hidden");
+              ftds[2].setAttribute("rowspan", "2");
+              ftds[2].style.backgroundColor = "white";
+              stds[2].setAttribute("hidden", "hidden");
+            }
+          }
+        });
+      }
+
+      // Add to plugin array
+      $docsify.plugins = [].concat(concatRow, $docsify.plugins);
     </script>
     <!-- Docsify v4 -->
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
