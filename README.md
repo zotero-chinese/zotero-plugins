@@ -60,7 +60,9 @@ interface PluginReleaseInfo {
 
 对于每一个插件，只有必填项需要填写在 [`src/plugins.ts`](./src/plugins.ts) 中，其余字段脚本运行时可以获取。
 
-> [!NOTE] 如何添加未收录的插件  
+> [!NOTE]
+>
+> 如何添加未收录的插件：
 >
 > 编辑 [`src/plugins.ts`](./src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容如上所示，已有的内容亦可作为参考。
 >
@@ -77,6 +79,8 @@ interface PluginReleaseInfo {
 GitHub Action Bot 定时运行 `src/index.ts` 脚本，执行上述步骤，并将 `docs/dist` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
 
 ### 开发
+
+根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
 
 ```bash
 # 克隆仓库
