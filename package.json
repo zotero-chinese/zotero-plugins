@@ -20,6 +20,8 @@
   "homepage": "https://github.com/northword/zotero-plugins#readme",
   "type": "module",
   "devDependencies": {
+    "highcharts": "^11.1.0",
+    "@highcharts/dashboards": "^1.1.0",
     "@types/node": "^20.5.9",
     "@vitalets/google-translate-api": "^9.2.0",
     "docsify-cli": "^4.4.4",

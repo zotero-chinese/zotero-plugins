@@ -5,13 +5,14 @@ import { Align, getMarkdownTable } from "markdown-table-ts";
 import translate from "google-translate-api-x";
 import { plugins } from "./plugins";
 import { writeFile } from "./utils";
+import getChartOptions from "./charts";
 
 // 仅供测试使用
 // import { test as plugins } from "./plugins";
 
 const dist = "../docs/dist";
 
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 async function progressPlugins() {
   for (const plugin of plugins) {
@@ -181,7 +182,7 @@ async function renderMarkdown() {
         release.targetZoteroVersion,
         release.currentVersion,
         new Date(release.releaseData ?? "").toLocaleString("zh-CN") +
-          `</br>![下载量 ${release.downloadCount}](https://img.shields.io/github/downloads/${plugin.repo}/${release.currentVersion}/total?label=下载量)`,
+        `</br>![下载量 ${release.downloadCount}](https://img.shields.io/github/downloads/${plugin.repo}/${release.currentVersion}/total?label=下载量)`,
         // releaseInfo,
         downloadUrl,
       ];
@@ -228,6 +229,10 @@ async function main() {
     lastUpdate: new Date().toLocaleString("zh-CN"),
   };
   writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
+
+  const chartOptions = await getChartOptions(),
+    chartFile = 'dashboardOptions=' + JSON.stringify(chartOptions);
+  writeFile(`${dist}/charts.js`, chartFile);
 
   console.log("完成");
 }
