@@ -10,11 +10,11 @@ import type {
     SeriesWordcloudOptions
 } from 'highcharts';
 
-// import { plugins } from './plugins';
+import { plugins } from './plugins';
 // 以下三行仅供测试时用
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+// const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
 
 const pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == 'development'
@@ -45,7 +45,6 @@ async function fetchInfo(plugin: PluginInfo) {
         author: plugin.author
     };
     pluginMap[plugin.name].starHistory = await getStarHistory(owner, repo);
-
 }
 
 async function getDownloadsCount(owner: string, repo: string) {
@@ -98,7 +97,9 @@ function drawTrendingBar(day: number) {
     const now = new Date(),
         startDate = new Date(now.setDate(now.getDate() - day));
     return Object.entries(pluginMap).map(([name, info]) => {
-        const begin = info.starHistory!.findIndex(date => date >= startDate);
+        let begin = info.starHistory!.findIndex(date => date >= startDate);
+        if (begin < 0)
+            begin = info.stars!;
         return {
             name,
             weight: info.stars! - begin,
@@ -142,7 +143,7 @@ function drawAuthorBar() {
                     background-size: cover;
                     width: 32px;
                     height: 32px;
-                '></span> <b>{point.y}</b> stars`
+                '></span> <b>{point.y}</b> ⭐`
             }
         },
         pluginSeries: SeriesPieOptions = {
@@ -150,6 +151,7 @@ function drawAuthorBar() {
             name: 'Plugin',
             size: '70%',
             innerSize: '50%',
+            tooltip: { valueSuffix: ' ⭐' },
             dataLabels: {
                 format: '<b>{point.name}:</b> <span style="opacity: 0.5">{y}</span>',
                 filter: {
@@ -231,18 +233,18 @@ export default async function getChartOptions() {
                     {
                         cells: [
                             {
-                                id: 'dashboard-col-0', 
+                                id: 'dashboard-col-0',
                                 responsive: {
                                     small: { width: '100%' },
-                                    medium: { width: '50%' },
+                                    medium: { width: '40%' },
                                     large: { width: '50%' },
                                 }
                             },
                             {
-                                id: 'dashboard-col-1', 
+                                id: 'dashboard-col-1',
                                 responsive: {
                                     small: { width: '100%' },
-                                    medium: { width: '50%' },
+                                    medium: { width: '60%' },
                                     large: { width: '50%' },
                                 }
                             }

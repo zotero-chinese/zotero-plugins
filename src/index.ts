@@ -220,17 +220,17 @@ async function renderMarkdown() {
 
 async function main() {
   console.log("开始处理");
-  // await progressPlugins();
-  // writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
+  await progressPlugins();
+  writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
 
-  // console.log("处理 Markdown");
-  // const markdownContent = await renderMarkdown();
-  // writeFile(`${dist}/plugins.md`, markdownContent);
+  console.log("处理 Markdown");
+  const markdownContent = await renderMarkdown();
+  writeFile(`${dist}/plugins.md`, markdownContent);
 
-  // let shields = {
-  //   lastUpdate: new Date().toLocaleString("zh-CN"),
-  // };
-  // writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
+  let shields = {
+    lastUpdate: new Date().toLocaleString("zh-CN"),
+  };
+  writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
 
   const chartOptions = await getChartOptions(),
     chartFile = 'dashboardOptions=' + JSON.stringify(chartOptions);
