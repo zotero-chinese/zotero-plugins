@@ -10,13 +10,16 @@ import type {
     SeriesWordcloudOptions
 } from 'highcharts';
 
-import { plugins } from './plugins';
+// import { plugins } from './plugins';
 // 以下三行仅供测试时用
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-// const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
-const pluginMap: { [name: string]: PluginMapInfo } = {};
-// require('../docs/dist/charts.json') as { [name: string]: PluginMapInfo };
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
+
+const pluginMap: { [name: string]: PluginMapInfo } =
+    process.env.NODE_ENV == 'development'
+        ? require('../docs/dist/charts.json')
+        : {};
 
 interface PluginMapInfo {
     owner?: string;
@@ -201,12 +204,14 @@ function drawAuthorBar() {
 }
 
 export default async function getChartOptions() {
-    await Promise.all(plugins.map(fetchInfo));
+    if (process.env.NODE_ENV != 'development')
+        await Promise.all(plugins.map(fetchInfo));
 
     // 仅供测试时用
     // writeFile('../docs/dist/charts.json', JSON.stringify(pluginMap, null, 2));
-    // for (const plugin in pluginMap)
-    //     pluginMap[plugin].starHistory = pluginMap[plugin].starHistory!.map(date => new Date(date));
+    if (process.env.NODE_ENV == 'development')
+        for (const plugin in pluginMap)
+            pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(date => new Date(date));
 
     const pointColor = 'var(--highcharts-color-{point.colorIndex})';
     return {
@@ -225,8 +230,22 @@ export default async function getChartOptions() {
                     },
                     {
                         cells: [
-                            { id: 'dashboard-col-0' },
-                            { id: 'dashboard-col-1' }
+                            {
+                                id: 'dashboard-col-0', 
+                                responsive: {
+                                    small: { width: '100%' },
+                                    medium: { width: '50%' },
+                                    large: { width: '50%' },
+                                }
+                            },
+                            {
+                                id: 'dashboard-col-1', 
+                                responsive: {
+                                    small: { width: '100%' },
+                                    medium: { width: '50%' },
+                                    large: { width: '50%' },
+                                }
+                            }
                         ]
                     },
                     {
@@ -269,10 +288,14 @@ export default async function getChartOptions() {
                 cell: 'dashboard-col-0',
                 type: 'Highcharts',
                 chartOptions: {
-                    chart: { type: 'bar' },
                     title: { text: '🚀 Trending' },
-                    subtitle: { text: 'This Month' },
                     xAxis: { visible: false },
+                    chart: {
+                        animation: {
+                            duration: 1200,
+                            easing: 'wordCloudEasing'
+                        }
+                    },
                     tooltip: {
                         useHTML: true,
                         format: `<div class="trending-tooltip">
@@ -282,42 +305,10 @@ export default async function getChartOptions() {
                                     <b><span style="color: ${pointColor};">•</span></b>
                                     <b>{point.name}</b>
                                 </div>
-                                <div>Stars in This Month: <b>{point.weight}</b></div>
+                                <div>Stars in {series.name}: <b>{point.weight}</b></div>
                                 <div>{point.custom.description}</div>
                             </span>
-                        </div>`,
-                        // headerFormat: `<table>
-                        //     <thead>
-                        //         <tr>
-                        //             <th 
-                        //                 colspan="2" 
-                        //                 style="color: var(--highcharts-color-{point.colorIndex})"
-                        //             >{point.key}</th>
-                        //         </tr>
-                        //     </thead>
-                        // <tbody>`,
-                        /*`<table><tr><th 
-                            colspan="2" 
-                            style="color: var(--highcharts-color-{point.colorIndex})"
-                        >{point.key}<span style="
-                            background-image: url(
-                                https://img.shields.io/github/stars/{point.custom.owner}/{point.custom.repo}
-                            );
-                            background-size: cover;
-                        "></span></th></tr>`,*/
-                        // pointFormat: `<tr>
-                        //     <td>
-                        //         <span style='
-                        //             display: inline-block;
-                        //             background-image: url({point.custom.avatar});
-                        //             background-size: cover;
-                        //             width: 32px;
-                        //             height: 32px;
-                        //         '></span>
-                        //     </td>
-                        //     <td><span>{point.custom.description}</span></td>
-                        // </tr>`,
-                        // footerFormat: '</tbody></table>'
+                        </div>`
                     },
                     series: [
                         {
@@ -333,7 +324,7 @@ export default async function getChartOptions() {
                             visible: false,
                             showInLegend: true,
                             rotation: { orientations: 1 },
-                            data: drawTrendingBar(180)
+                            data: drawTrendingBar(182)
                         } as SeriesWordcloudOptions
                     ]
                 } as Options

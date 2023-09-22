@@ -39,15 +39,18 @@
             height: 56px;
             width: 56px;
         }
+
         .trending-tooltip>:last-child {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
+
         .trending-tooltip>:last-child>:first-child {
             border-bottom: 1px solid;
             margin-bottom: 3px;
         }
+
         .trending-tooltip>:last-child>:last-child {
             display: flex;
             /* text-wrap: pretty; */
@@ -58,6 +61,15 @@
 <body>
     <div id="container"></div>
     <script>
+        Math.wordCloudEasing = function (pos) {
+            if (pos < 1 / 2.75)
+                return 7.5625 * pos * pos;
+            if (pos < 2 / 2.75)
+                return 7.5625 * (pos -= 1.5 / 2.75) * pos + 0.75;
+            if (pos < 2.5 / 2.75)
+                return 7.5625 * (pos -= 2.25 / 2.75) * pos + 0.9375;
+            return 7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375;
+        }
         console.debug(Dashboards.board("container", dashboardOptions));
     </script>
 </body>
