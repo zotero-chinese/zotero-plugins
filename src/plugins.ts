@@ -490,4 +490,18 @@ export const test: PluginInfo[] = [
       },
     ],
   },
+  {
+    name: "Chartero",
+    repo: "volatile-static/Chartero",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "7",
+        tagName: "2.0.0-beta",
+      },
+    ],
+  },
 ];
