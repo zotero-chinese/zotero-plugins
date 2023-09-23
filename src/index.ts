@@ -4,7 +4,7 @@ import { franc } from "franc-min";
 import { Align, getMarkdownTable } from "markdown-table-ts";
 import translate from "google-translate-api-x";
 import { plugins } from "./plugins";
-import { readFile, writeFile } from "./utils";
+import { writeFile } from "./utils";
 import getChartOptions from "./charts";
 
 // 仅供测试使用
@@ -12,8 +12,6 @@ import getChartOptions from "./charts";
 
 const dist = "../docs/dist";
 
-if (process.env.NODE_ENV == 'development') 
-  process.env.GITHUB_TOKEN = readFile('../token.json').token;
 export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 async function progressPlugins() {
