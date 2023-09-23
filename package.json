@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd src && ts-node index.ts && cd ..",
-    "debug": "cross-env NODE_ENV=development ts-node src/index.ts",
+    "debug": "cd src && cross-env NODE_ENV=development ts-node index.ts && cd ..",
     "website": "docsify serve docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
