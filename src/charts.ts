@@ -321,7 +321,8 @@ function getActivities() {
     }
     const activities: Array<string | number>[] = [
         ['Plugin', 'Contributors', 'Downloads', 'Size', 'Issues', 'Stars']
-    ];
+    ],
+        series: Highcharts.SeriesLineOptions[] = [];
     for (const [name, info] of Object.entries(pluginMap)) {
         const totalSize = info.releases!.reduce(
             (sum, release) => sum + release.size, 0
@@ -341,8 +342,25 @@ function getActivities() {
                 info.stars! / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
             )
         ]);
+        series.push({
+            type: 'line',
+            name,
+            data: [
+                info.contributors!.length,
+                info.totalDownloads!,
+                toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
+                toFixedNum(
+                    closedIssues.reduce(
+                        (sum, issue) => sum + getDays(issue.createdAt, issue.closedAt!), 0
+                    ) / closedIssues.length
+                ),
+                toFixedNum(
+                    info.stars! / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
+                )
+            ]
+        });
     }
-    return activities;
+    return series;
 }
 
 export default async function getChartOptions() {
@@ -358,16 +376,16 @@ export default async function getChartOptions() {
 
     const pointColor = 'var(--highcharts-color-{point.colorIndex})';
     return {
-        dataPool: {
-            connectors: [{
-                type: 'JSON',
-                id: 'activities',
-                options: {
-                    data: getActivities(),
-                    orientation: 'columns'
-                }
-            }]
-        },
+        // dataPool: {
+        //     connectors: [{
+        //         type: 'JSON',
+        //         id: 'activities',
+        //         options: {
+        //             data: getActivities(),
+        //             orientation: 'columns'
+        //         }
+        //     }]
+        // },
         editMode: {
             enabled: true,
             contextMenu: {
@@ -459,6 +477,7 @@ export default async function getChartOptions() {
                     },
                     tooltip: {
                         useHTML: true,
+                        outside: true,
                         format: `<div class="trending-tooltip">
                             <span style='background-image: url({point.custom.avatar});'></span>
                             <span>
@@ -558,20 +577,50 @@ export default async function getChartOptions() {
             {
                 cell: 'dashboard-col-3',
                 type: 'Highcharts',
-                connector: { id: 'activities' },
+                // connector: { id: 'activities' },
+                // columnAssignment: {
+                //     Plugin: 'name',
+                // },
                 chartOptions: {
                     title: { text: 'Activities' },
                     chart: {
+                        type: 'line',
                         polar: true,
+                        parallelCoordinates: true,
+                        parallelAxes: {
+                            gridLineWidth: 1,
+                            lineWidth: 2,
+                            showFirstLabel: false,
+                            showLastLabel: true
+                        }
+                    },
+                    tooltip: {
+                        pointFormat: `
+                            <span style="color: ${pointColor};">\u25CF</span>
+                            {series.name}: <b>{point.formattedValue}</b><br/>
+                        `
                     },
                     legend: {
                         enabled: true,
                         maxHeight: 160,
                     },
                     xAxis: {
-                        type: 'category'
+                        categories: [
+                            'Contributors Count',
+                            'Total Downloads',
+                            'Average Size',
+                            'Issues Duration',
+                            'Stars Per Day'
+                        ]
                     },
-
+                    yAxis: [
+                        { type: 'linear' },
+                        { type: 'linear' },
+                        { type: 'linear', tooltipValueFormat: '{value} MB' },
+                        { type: 'linear', tooltipValueFormat: '{value} Days' },
+                        { type: 'linear' }
+                    ],
+                    series: getActivities()
                 } as Options
             }
         ]
