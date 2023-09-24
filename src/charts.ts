@@ -13,9 +13,9 @@ import type {
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-// import { plugins } from './plugins';
+import { plugins } from './plugins';
 // 仅供测试时用
-const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
+// const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
 
 const pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == 'development'
@@ -347,7 +347,8 @@ function getActivities() {
 
 export default async function getChartOptions() {
     if (process.env.NODE_ENV != 'development')
-        await Promise.all(plugins.map(fetchInfo));
+        for (const plugin of plugins)
+            await fetchInfo(plugin);
 
     // 仅供测试时用
     // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
@@ -558,7 +559,6 @@ export default async function getChartOptions() {
                 cell: 'dashboard-col-3',
                 type: 'Highcharts',
                 connector: { id: 'activities' },
-                // columnAssignment: {Plugin: 'x', Contributors: 'y'},
                 chartOptions: {
                     title: { text: 'Activities' },
                     chart: {
@@ -566,6 +566,7 @@ export default async function getChartOptions() {
                     },
                     legend: {
                         enabled: true,
+                        maxHeight: 160,
                     },
                     xAxis: {
                         type: 'category'
