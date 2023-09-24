@@ -12,6 +12,8 @@ import getChartOptions from "./charts";
 
 const dist = "../docs/dist";
 
+if (!process.env.GITHUB_TOKEN)
+  throw new Error("GITHUB_TOKEN 未设置");
 export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 async function progressPlugins() {
@@ -230,9 +232,12 @@ async function main() {
   };
   writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
 
-  const chartOptions = await getChartOptions(),
-    chartFile = 'dashboardOptions=' + JSON.stringify(chartOptions);
-  writeFile(`${dist}/charts.js`, chartFile);
+  const chartOptions = await getChartOptions();
+  writeFile(`${dist}/charts.json`, JSON.stringify(
+    chartOptions,
+    null,
+    process.env.NODE_ENV == 'development' ? 2 : 0
+  ));
 
   console.log("完成");
 }

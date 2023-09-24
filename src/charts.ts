@@ -7,18 +7,19 @@ import type {
     SeriesPieOptions,
     PointOptionsObject,
     SeriesSplineOptions,
-    SeriesWordcloudOptions
+    SeriesWordcloudOptions,
+    SeriesBarOptions
 } from 'highcharts';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 import { plugins } from './plugins';
-// 以下三行仅供测试时用
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
+// 仅供测试时用
 // const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
 
 const pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == 'development'
-        ? require('../docs/dist/charts.json')
+        ? require('../docs/dist/charts-debug.json')
         : {};
 
 interface PluginMapInfo {
@@ -32,9 +33,27 @@ interface PluginMapInfo {
         url: string;
         avatar: string;
     };
+    releases?: Array<{
+        name: string;
+        tag_name: string;
+        published_at: string;
+        size: number;
+        downloadCount: number;
+    }>;
+    totalDownloads?: number;
+    contributors?: Array<{
+        name: string;
+        avatar: string;
+    }>;
+    issues?: Array<{
+        title: string;
+        createdAt: string;
+        closedAt: string | null;
+    }>;
 };
 
 async function fetchInfo(plugin: PluginInfo) {
+    console.log('开始获取图表数据: ' + plugin.name);
     const [owner, repo] = plugin.repo.split('/');
 
     pluginMap[plugin.name] = {
@@ -45,9 +64,75 @@ async function fetchInfo(plugin: PluginInfo) {
         author: plugin.author
     };
     pluginMap[plugin.name].starHistory = await getStarHistory(owner, repo);
+    pluginMap[plugin.name].contributors = await getContributors(owner, repo);
+    pluginMap[plugin.name].releases = await getDownloadsCount(owner, repo);
+    pluginMap[plugin.name].issues = await getIssues(owner, repo);
+
+    pluginMap[plugin.name].totalDownloads =
+        pluginMap[plugin.name].releases!.reduce(
+            (sum, release) => sum + release.downloadCount, 0
+        );
+}
+
+async function getIssues(owner: string, repo: string) {
+    const data = await octokit.paginate(
+        octokit.rest.issues.listForRepo,
+        {
+            owner,
+            repo,
+            per_page: 100,
+            state: 'all',
+            headers: { accept: 'application/vnd.github.v3+json' }
+        }
+    );
+    return data.map(issue => ({
+        title: issue.title,
+        createdAt: issue.created_at,
+        closedAt: issue.closed_at
+    }));
+}
+
+async function getContributors(owner: string, repo: string) {
+    const data = await octokit.paginate(
+        octokit.rest.repos.listContributors,
+        {
+            owner, repo, per_page: 100, anon: 'true', headers: {
+                accept: 'application/vnd.github+json'
+            }
+        }
+    );
+    return data.map(contributor => ({
+        name: contributor.login ?? '',
+        avatar: contributor.avatar_url ?? ''
+    }));
 }
 
 async function getDownloadsCount(owner: string, repo: string) {
+    const data = await octokit.paginate(
+        octokit.rest.repos.listReleases,
+        {
+            owner, repo, per_page: 100, headers: {
+                accept: 'application/vnd.github+json'
+            }
+        }
+    ), allReleases: PluginMapInfo['releases'] = [];
+    for (const release of data) {
+        // 优先选择 xpi 文件，其次是 zip 文件，否则选择第一个文件
+        const xpi = release.assets.find(
+            asset => asset.content_type == 'application/x-xpinstall'
+        ) || release.assets.find(
+            asset => /application\/(x-)?zip(-compressed)?/.test(asset.content_type)
+        ) || release.assets[0];
+
+        allReleases.push({
+            name: release.name ?? '',
+            tag_name: release.tag_name,
+            published_at: release.published_at || release.created_at,
+            size: xpi?.size ?? 0,
+            downloadCount: xpi?.download_count ?? 0
+        });
+    }
+    return allReleases;
 }
 
 async function getStarHistory(owner: string, repo: string) {
@@ -105,16 +190,13 @@ function drawTrendingBar(day: number) {
             weight: info.stars! - begin,
             custom: {
                 description: info.description,
-                owner: info.owner,
-                repo: info.repo,
-                avatar: info.author!.avatar,
-                author: info.author!.name
+                avatar: info.author!.avatar
             }
         } as PointOptionsObject;
     });
 }
 
-function drawAuthorBar() {
+function drawAuthorPie() {
     const authorMap: {
         [name: string]: {
             stars: number,
@@ -127,13 +209,13 @@ function drawAuthorBar() {
             size: '35%',
             data: [],
             dataLabels: {
-                useHTML: true,
                 distance: '-20%',
                 filter: {
                     property: 'y',
                     operator: '>',
                     value: 5000
                 },
+                zIndex: 3,
                 shadow: true,
             },
             tooltip: {
@@ -205,18 +287,87 @@ function drawAuthorBar() {
     return [authorSeries, pluginSeries];
 }
 
+function drawIssueBar() {
+    const categories = Object.keys(pluginMap).sort(
+        (a, b) => pluginMap[b].issues!.length - pluginMap[a].issues!.length
+    ),
+        closed: SeriesBarOptions = {
+            type: 'bar',
+            name: 'Closed',
+            colorIndex: 101,
+            data: categories.map(name => pluginMap[name].issues!.filter(
+                issue => issue.closedAt != null
+            ).length)
+        }, open: SeriesBarOptions = {
+            type: 'bar',
+            name: 'Open',
+            colorIndex: 102,
+            data: categories.map(name => pluginMap[name].issues!.filter(
+                issue => issue.closedAt == null
+            ).length)
+        };
+    return [open, closed];
+}
+
+function getActivities() {
+    function toFixedNum(num: number) {
+        return Number(num.toFixed(2));
+    }
+    function getDays(start: string | Date, end: string | Date) {
+        const startDate = new Date(start),
+            endDate = new Date(end),
+            duration = endDate.getTime() - startDate.getTime();
+        return duration / 1000 / 60 / 60 / 24;
+    }
+    const activities: Array<string | number>[] = [
+        ['Plugin', 'Contributors', 'Downloads', 'Size', 'Issues', 'Stars']
+    ];
+    for (const [name, info] of Object.entries(pluginMap)) {
+        const totalSize = info.releases!.reduce(
+            (sum, release) => sum + release.size, 0
+        ),
+            closedIssues = info.issues!.filter(issue => issue.closedAt != null);
+        activities.push([
+            name,
+            info.contributors!.length,
+            info.totalDownloads!,
+            toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
+            toFixedNum(
+                closedIssues.reduce(
+                    (sum, issue) => sum + getDays(issue.createdAt, issue.closedAt!), 0
+                ) / closedIssues.length
+            ),
+            toFixedNum(
+                info.stars! / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
+            )
+        ]);
+    }
+    return activities;
+}
+
 export default async function getChartOptions() {
     if (process.env.NODE_ENV != 'development')
-        await Promise.all(plugins.map(fetchInfo));
+        for (const plugin of plugins)
+            await fetchInfo(plugin);
 
     // 仅供测试时用
-    // writeFile('../docs/dist/charts.json', JSON.stringify(pluginMap, null, 2));
+    // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
     if (process.env.NODE_ENV == 'development')
         for (const plugin in pluginMap)
             pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(date => new Date(date));
 
     const pointColor = 'var(--highcharts-color-{point.colorIndex})';
     return {
+        dataPool: {
+            connectors: [{
+                type: 'JSON',
+                id: 'activities',
+                options: {
+                    data: getActivities(),
+                    orientation: 'columns'
+                }
+            }]
+        },
         editMode: {
             enabled: true,
             contextMenu: {
@@ -251,8 +402,12 @@ export default async function getChartOptions() {
                         ]
                     },
                     {
-                        cells: [{ id: 'star-history' }]
-                    }
+                        cells: [
+                            { id: 'dashboard-col-2', height: 600 },
+                            { id: 'dashboard-col-3', height: 600 }
+                        ]
+                    },
+                    { cells: [{ id: 'star-history' }] }
                 ]
             }]
         },
@@ -270,20 +425,24 @@ export default async function getChartOptions() {
             {
                 cell: 'star-history',
                 type: 'Highcharts',
+                chartConstructor: 'stockChart',
                 chartOptions: {
-                    chart: {
-                        type: 'spline',
-                        zooming: {
-                            mouseWheel: {
-                                type: 'x',
-                                enabled: true
-                            }
-                        }
-                    },
+                    chart: { type: 'spline', height: 600 },
                     series: await drawStarHistory(),
+                    legend: { enabled: true, maxHeight: 160 },
+                    tooltip: { valueDecimals: 0 },
+                    boost: {
+                        enabled: true,
+                        useGPUTranslations: true,
+                        usePreAllocated: true,
+                        seriesThreshold: 10
+                    },
                     xAxis: { type: 'datetime' },
-                    yAxis: { title: { text: 'Total Stars' } },
-                    title: { text: 'Star History' }
+                    yAxis: {
+                        title: { text: 'Total Stars' },
+                        opposite: false
+                    },
+                    title: { text: '📈 Star History' }
                 } as Options
             },
             {
@@ -336,8 +495,83 @@ export default async function getChartOptions() {
                 type: 'Highcharts',
                 chartOptions: {
                     title: { text: '🔭 Stargazers' },
-                    tooltip: { useHTML: true },
-                    series: drawAuthorBar()
+                    tooltip: {
+                        useHTML: true,
+                        headerFormat: `<span 
+                            style='color: ${pointColor};'
+                        >{point.key}</span><br/>`
+                    },
+                    series: drawAuthorPie()
+                } as Options
+            },
+            {
+                cell: 'dashboard-col-2',
+                type: 'Highcharts',
+                chartOptions: {
+                    chart: { type: 'bar' },
+                    title: { text: '⊙ Issues' },
+                    series: drawIssueBar(),
+                    xAxis: {
+                        categories: Object.keys(pluginMap).sort(
+                            (a, b) => pluginMap[b].issues!.length - pluginMap[a].issues!.length
+                        )
+                    },
+                    yAxis: { title: { text: null } },
+                    tooltip: {
+                        shared: true,
+                        useHTML: true,
+                        format: `
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th 
+                                            colspan='2' 
+                                            style='border-bottom: solid 1px;'
+                                        >{x}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {#each points}
+                                        <tr>
+                                            <td style='color: ${pointColor};'>{series.name}</td>
+                                            <td><b>{y}</b></td>
+                                        </tr>
+                                    {/each}
+                                    {#if (gt points.length 1)}
+                                        <tr>
+                                            <td>Ratio</td>
+                                            <td><b>{percentage:.2f}%</b></td>
+                                        </tr>
+                                    {/if}
+                                </tbody>
+                            </table>
+                        `
+                    },
+                    plotOptions: {
+                        series: {
+                            stacking: 'normal',
+                            dataLabels: { enabled: true }
+                        }
+                    }
+                } as Options
+            },
+            {
+                cell: 'dashboard-col-3',
+                type: 'Highcharts',
+                connector: { id: 'activities' },
+                chartOptions: {
+                    title: { text: 'Activities' },
+                    chart: {
+                        polar: true,
+                    },
+                    legend: {
+                        enabled: true,
+                        maxHeight: 160,
+                    },
+                    xAxis: {
+                        type: 'category'
+                    },
+
                 } as Options
             }
         ]
