@@ -219,6 +219,14 @@ async function renderMarkdown() {
 }
 
 async function main() {
+  const quota = (
+    await octokit.rest.rateLimit.get()
+  ).data.rate.remaining;
+  if (quota < 750) {
+    console.log("API 次数不足，退出");
+    process.exit(1);
+  }
+
   console.log("开始处理");
   await progressPlugins();
   writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
@@ -240,6 +248,10 @@ async function main() {
   ));
 
   console.log("完成");
+  const remaining = (
+    await octokit.rest.rateLimit.get()
+  ).data.rate.remaining;
+  console.log(`耗费API次数：${quota - remaining}`);
 }
 
 main().catch((err) => {

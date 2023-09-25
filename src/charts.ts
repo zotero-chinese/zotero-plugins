@@ -13,9 +13,9 @@ import type {
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-import { plugins } from './plugins';
+// import { plugins } from './plugins';
 // 仅供测试时用
-// const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
+const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
 
 const pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == 'development'
@@ -356,7 +356,7 @@ export default async function getChartOptions() {
     if (process.env.NODE_ENV == 'development')
         for (const plugin in pluginMap)
             pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(date => new Date(date));
-
+octokit.rest.rateLimit.get().then(console.log);
     const pointColor = 'var(--highcharts-color-{point.colorIndex})';
     return {
         editMode: {
@@ -563,7 +563,7 @@ export default async function getChartOptions() {
                         }
                     },
                     tooltip: {
-                        pointFormat: `{log}
+                        pointFormat: `
                             <span style="color: ${pointColor};">\u25CF</span>
                             {series.name}: <b>{point.formattedValue}</b><br/>
                         `
@@ -583,7 +583,13 @@ export default async function getChartOptions() {
                     },
                     yAxis: [
                         { type: 'linear' },
-                        { type: 'linear' },
+                        { type: 'linear', tooltipValueFormat: `
+                            {#if (gt value 1000000)}
+                                {(divide value 1000000):.1f} M
+                            {else}
+                                {(divide value 1000):.1f} K
+                            {/if}
+                        ` },
                         { type: 'linear', tooltipValueFormat: '{value} MB' },
                         { type: 'linear', tooltipValueFormat: '{value} Days' },
                         { type: 'linear' }
