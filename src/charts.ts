@@ -21,7 +21,7 @@ const pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == 'development'
         ? require('../docs/dist/charts-debug.json')
         : {};
-
+        
 interface PluginMapInfo {
     owner?: string;
     repo?: string;
@@ -319,29 +319,12 @@ function getActivities() {
             duration = endDate.getTime() - startDate.getTime();
         return duration / 1000 / 60 / 60 / 24;
     }
-    const activities: Array<string | number>[] = [
-        ['Plugin', 'Contributors', 'Downloads', 'Size', 'Issues', 'Stars']
-    ],
-        series: Highcharts.SeriesLineOptions[] = [];
+    const series: Highcharts.SeriesLineOptions[] = [];
     for (const [name, info] of Object.entries(pluginMap)) {
         const totalSize = info.releases!.reduce(
             (sum, release) => sum + release.size, 0
         ),
             closedIssues = info.issues!.filter(issue => issue.closedAt != null);
-        activities.push([
-            name,
-            info.contributors!.length,
-            info.totalDownloads!,
-            toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
-            toFixedNum(
-                closedIssues.reduce(
-                    (sum, issue) => sum + getDays(issue.createdAt, issue.closedAt!), 0
-                ) / closedIssues.length
-            ),
-            toFixedNum(
-                info.stars! / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
-            )
-        ]);
         series.push({
             type: 'line',
             name,
@@ -376,16 +359,6 @@ export default async function getChartOptions() {
 
     const pointColor = 'var(--highcharts-color-{point.colorIndex})';
     return {
-        // dataPool: {
-        //     connectors: [{
-        //         type: 'JSON',
-        //         id: 'activities',
-        //         options: {
-        //             data: getActivities(),
-        //             orientation: 'columns'
-        //         }
-        //     }]
-        // },
         editMode: {
             enabled: true,
             contextMenu: {
@@ -577,14 +550,9 @@ export default async function getChartOptions() {
             {
                 cell: 'dashboard-col-3',
                 type: 'Highcharts',
-                // connector: { id: 'activities' },
-                // columnAssignment: {
-                //     Plugin: 'name',
-                // },
                 chartOptions: {
                     title: { text: 'Activities' },
                     chart: {
-                        type: 'line',
                         polar: true,
                         parallelCoordinates: true,
                         parallelAxes: {
@@ -595,7 +563,7 @@ export default async function getChartOptions() {
                         }
                     },
                     tooltip: {
-                        pointFormat: `
+                        pointFormat: `{log}
                             <span style="color: ${pointColor};">\u25CF</span>
                             {series.name}: <b>{point.formattedValue}</b><br/>
                         `

@@ -3,18 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="https://code.highcharts.com/highcharts.src.js"></script>
-    <script src="https://code.highcharts.com/modules/boost.src.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.src.js"></script>
-    <script src="https://code.highcharts.com/modules/wordcloud.src.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.src.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/stock.src.js"></script>
-    <script src="https://code.highcharts.com/dashboards/dashboards.src.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.src.js"></script>
-    <script src="https://code.highcharts.com/modules/mouse-wheel-zoom.src.js"></script>
-    <script src="https://code.highcharts.com/modules/no-data-to-display.src.js"></script>
-    <script src="https://code.highcharts.com/modules/parallel-coordinates.src.js"></script>
-    <script src="https://code.highcharts.com/dashboards/modules/dashboards-plugin.src.js"></script>
+    <title>Awesome Zotero Plugins</title>
+    <link rel="icon" href="https://www.highcharts.com/demo/static/favicon.ico">
+    <script defer src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script defer src="https://code.highcharts.com/modules/boost.src.js"></script>
+    <script defer src="https://code.highcharts.com/highcharts-more.src.js"></script>
+    <script defer src="https://code.highcharts.com/modules/wordcloud.src.js"></script>
+    <script defer src="https://code.highcharts.com/modules/exporting.src.js"></script>
+    <script defer src="https://code.highcharts.com/stock/modules/stock.src.js"></script>
+    <script defer src="https://code.highcharts.com/dashboards/dashboards.src.js"></script>
+    <script defer src="https://code.highcharts.com/modules/accessibility.src.js"></script>
+    <script defer src="https://code.highcharts.com/modules/mouse-wheel-zoom.src.js"></script>
+    <script defer src="https://code.highcharts.com/modules/no-data-to-display.src.js"></script>
+    <script defer src="https://code.highcharts.com/modules/parallel-coordinates.src.js"></script>
+    <script defer src="https://code.highcharts.com/dashboards/modules/dashboards-plugin.src.js"></script>
     <style>
         @import url("https://code.highcharts.com/css/highcharts.css");
         @import url("https://code.highcharts.com/css/dashboards.css");
@@ -72,15 +74,134 @@
         .trending-tooltip>:last-child>:last-child {
             display: flex;
         }
+
+
+        .loading,
+        .loading>div {
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .loading {
+            display: block;
+            font-size: 0;
+            color: #000;
+        }
+
+        .loading.la-dark {
+            color: #333;
+        }
+
+        .loading>div {
+            display: inline-block;
+            float: none;
+            background-color: currentColor;
+            border: 0 solid currentColor;
+        }
+
+        .loading {
+            width: 42px;
+            height: 32px;
+        }
+
+        .loading>div:nth-child(1) {
+            position: absolute;
+            bottom: 32%;
+            left: 18%;
+            width: 14px;
+            height: 14px;
+            border-radius: 100%;
+            transform-origin: center bottom;
+            animation: ball-climbing-dot-jump 0.6s ease-in-out infinite;
+        }
+
+        .loading>div:not(:nth-child(1)) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 14px;
+            height: 2px;
+            border-radius: 0;
+            transform: translate(60%, 0);
+            animation: ball-climbing-dot-steps 1.8s linear infinite;
+        }
+
+        .loading>div:not(:nth-child(1)):nth-child(2) {
+            animation-delay: 0ms;
+        }
+
+        .loading>div:not(:nth-child(1)):nth-child(3) {
+            animation-delay: -600ms;
+        }
+
+        .loading>div:not(:nth-child(1)):nth-child(4) {
+            animation-delay: -1200ms;
+        }
+
+        @keyframes ball-climbing-dot-jump {
+            0% {
+                transform: scale(1, 0.7);
+            }
+
+            20% {
+                transform: scale(0.7, 1.2);
+            }
+
+            40% {
+                transform: scale(1, 1);
+            }
+
+            50% {
+                bottom: 125%;
+            }
+
+            46% {
+                transform: scale(1, 1);
+            }
+
+            80% {
+                transform: scale(0.7, 1.2);
+            }
+
+            90% {
+                transform: scale(0.7, 1.2);
+            }
+
+            100% {
+                transform: scale(1, 0.7);
+            }
+        }
+
+        @keyframes ball-climbing-dot-steps {
+            0% {
+                top: 0;
+                right: 0;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                right: 100%;
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="container"></div>
+    <div class="loading">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
     <script>
-        Highcharts.Templating.helpers.log = function () {
-            console.debug(arguments[0].ctx);
-        };
         Math.wordCloudEasing = function (pos) {
             if (pos < 1 / 2.75)
                 return 7.5625 * pos * pos;
@@ -90,10 +211,18 @@
                 return 7.5625 * (pos -= 2.25 / 2.75) * pos + 0.9375;
             return 7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375;
         };
-        Highcharts.getJSON(
-            './dist/charts.json',
-            data => console.debug(Dashboards.board("container", data))
-        );
+        addEventListener('DOMContentLoaded', function () {
+            Highcharts.getJSON(
+                './dist/charts.json',
+                data => {
+                    console.debug(Dashboards.board("container", data));
+                    document.getElementsByClassName('loading')[0].style.display = 'none';
+                }
+            );
+            Highcharts.Templating.helpers.log = function () {
+                console.debug(arguments[0].ctx);
+            };
+        });
     </script>
 </body>
 
