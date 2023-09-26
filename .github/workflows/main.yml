@@ -19,16 +19,7 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  plugins-info:
-    name: Plugins Info
-    uses: ./.github/workflows/plugins-info.yml
-
-  charts:
-    needs:
-      - plugins-info
-    uses: ./.github/workflows/charts.yml
-
-  deploy:
+  build:
     needs:
       - charts
     runs-on: ubuntu-latest
@@ -39,7 +30,10 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-
+      - name: Plugins Info
+        uses: ./.github/workflows/plugins-info.yml
+      - name: charts
+        uses: ./.github/workflows/charts.yml
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
