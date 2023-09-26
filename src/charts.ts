@@ -1,4 +1,4 @@
-import { octokit } from './index';
+import { octokit } from '.';
 import { writeFile } from './utils';
 import { PluginInfo } from './plugins';
 import type { Board } from '@highcharts/dashboards';
