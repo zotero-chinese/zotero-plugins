@@ -21,7 +21,7 @@ const pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == 'development'
         ? require('../docs/dist/charts-debug.json')
         : {};
-        
+
 interface PluginMapInfo {
     owner?: string;
     repo?: string;
@@ -133,6 +133,15 @@ async function getDownloadsCount(owner: string, repo: string) {
         });
     }
     return allReleases;
+}
+
+async function drawMilestones() {
+    const data = await octokit.rest.issues.getMilestone({
+        owner: 'zotero',
+        repo: 'zotero',
+        milestone_number: 9,
+    });
+    console.log(data);
 }
 
 async function getStarHistory(owner: string, repo: string) {
@@ -309,7 +318,7 @@ function drawIssueBar() {
     return [open, closed];
 }
 
-function getActivities() {
+function drawActivities() {
     function toFixedNum(num: number) {
         return Number(num.toFixed(2));
     }
@@ -356,7 +365,6 @@ export default async function getChartOptions() {
     if (process.env.NODE_ENV == 'development')
         for (const plugin in pluginMap)
             pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(date => new Date(date));
-octokit.rest.rateLimit.get().then(console.log);
     const pointColor = 'var(--highcharts-color-{point.colorIndex})';
     return {
         editMode: {
@@ -394,8 +402,30 @@ octokit.rest.rateLimit.get().then(console.log);
                     },
                     {
                         cells: [
-                            { id: 'dashboard-col-2', height: 600 },
-                            { id: 'dashboard-col-3', height: 600 }
+                            { id: 'z7' },
+                            { id: 'news' }
+                        ]
+                    },
+                    {
+                        cells: [
+                            {
+                                id: 'dashboard-col-3',
+                                height: 600,
+                                responsive: {
+                                    small: { width: '100%' },
+                                    medium: { width: '60%' },
+                                    large: { width: '50%' }
+                                }
+                            },
+                            {
+                                id: 'dashboard-col-2',
+                                height: 600,
+                                responsive: {
+                                    small: { width: '100%' },
+                                    medium: { width: '40%' },
+                                    large: { width: '50%' }
+                                }
+                            },
                         ]
                     },
                     { cells: [{ id: 'star-history' }] }
@@ -508,7 +538,10 @@ octokit.rest.rateLimit.get().then(console.log);
                             (a, b) => pluginMap[b].issues!.length - pluginMap[a].issues!.length
                         )
                     },
-                    yAxis: { title: { text: null } },
+                    yAxis: {
+                        title: { text: null },
+                        type: 'logarithmic'
+                    },
                     tooltip: {
                         shared: true,
                         useHTML: true,
@@ -551,7 +584,7 @@ octokit.rest.rateLimit.get().then(console.log);
                 cell: 'dashboard-col-3',
                 type: 'Highcharts',
                 chartOptions: {
-                    title: { text: 'Activities' },
+                    title: { text: '🕸️ Activities' },
                     chart: {
                         polar: true,
                         parallelCoordinates: true,
@@ -576,26 +609,36 @@ octokit.rest.rateLimit.get().then(console.log);
                         categories: [
                             'Contributors Count',
                             'Total Downloads',
-                            'Average Size',
+                            'Average Size of XPI',
                             'Issues Duration',
                             'Stars Per Day'
                         ]
                     },
                     yAxis: [
-                        { type: 'linear' },
-                        { type: 'linear', tooltipValueFormat: `
-                            {#if (gt value 1000000)}
-                                {(divide value 1000000):.1f} M
-                            {else}
-                                {(divide value 1000):.1f} K
-                            {/if}
-                        ` },
-                        { type: 'linear', tooltipValueFormat: '{value} MB' },
-                        { type: 'linear', tooltipValueFormat: '{value} Days' },
-                        { type: 'linear' }
+                        {},
+                        {
+                            tooltipValueFormat: `
+                                {#if (gt value 1000000)}
+                                    {(divide value 1000000):.1f} M
+                                {else}
+                                    {(divide value 1000):.1f} K
+                                {/if}
+                            `
+                        },
+                        { tooltipValueFormat: '{value} MB' },
+                        { tooltipValueFormat: '{value} Days' },
+                        {}
                     ],
-                    series: getActivities()
+                    series: drawActivities()
                 } as Options
+            },
+            {
+                cell: 'z7',
+                type: 'KPI'
+            },
+            {
+                cell: 'news',
+                type: 'KPI'
             }
         ]
     } as Board.default.Options;
