@@ -1,4 +1,4 @@
-import { octokit } from '.';
+import { octokit, args } from '.';
 import { writeFile } from './utils';
 import { PluginInfo } from './plugins';
 import type { Board } from '@highcharts/dashboards';
@@ -13,10 +13,9 @@ import type {
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-// import { plugins } from './plugins';
-// 仅供测试时用
-const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
-
+const plugins = args == 'charts'
+    ? require('../docs/dist/plugins.json') as PluginInfo[]
+    : [];
 const pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == 'development'
         ? require('../docs/dist/charts-debug.json')
