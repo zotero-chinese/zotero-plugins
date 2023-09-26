@@ -136,15 +136,6 @@ async function getDownloadsCount(owner: string, repo: string) {
     return allReleases;
 }
 
-async function drawMilestones() {
-    const data = await octokit.rest.issues.getMilestone({
-        owner: 'zotero',
-        repo: 'zotero',
-        milestone_number: 9,
-    });
-    console.log(data);
-}
-
 async function getStarHistory(owner: string, repo: string) {
     const iterator = octokit.paginate.iterator(
         octokit.rest.activity.listStargazersForRepo,
@@ -414,12 +405,6 @@ export default async function getChartOptions() {
                     },
                     {
                         cells: [
-                            { id: 'z7' },
-                            { id: 'news' }
-                        ]
-                    },
-                    {
-                        cells: [
                             {
                                 id: 'dashboard-col-3',
                                 height: 600,
@@ -645,14 +630,6 @@ export default async function getChartOptions() {
                     ],
                     series: drawActivities()
                 } as Options
-            },
-            {
-                cell: 'z7',
-                type: 'KPI'
-            },
-            {
-                cell: 'news',
-                type: 'KPI'
             }
         ]
     } as Board.default.Options;
