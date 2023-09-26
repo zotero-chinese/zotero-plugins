@@ -36,3 +36,8 @@ jobs:
         run: |
           npm install
           npm run get-info
+
+      - name: Upload Output
+        uses: actions/upload-artifact@v2
+        with:
+          path: docs/
