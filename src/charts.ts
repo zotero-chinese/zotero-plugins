@@ -1,6 +1,6 @@
-import { octokit, args } from '.';
+import { octokit } from '.';
 import { writeFile } from './utils';
-import { PluginInfo } from './plugins';
+import { PluginInfo, plugins } from './plugins';
 import type { Board } from '@highcharts/dashboards';
 import type {
     Options,
@@ -12,14 +12,11 @@ import type {
 } from 'highcharts';
 
 import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const plugins = args() == 'charts'
-    ? require('../docs/dist/plugins.json') as PluginInfo[]
-    : [];
-const pluginMap: { [name: string]: PluginMapInfo } =
-    process.env.NODE_ENV == 'development'
-        ? require('../docs/dist/charts-debug.json')
-        : {};
+const require = createRequire(import.meta.url),
+    pluginMap: { [name: string]: PluginMapInfo } =
+        process.env.NODE_ENV == 'development'
+            ? require('../docs/dist/charts-debug.json')
+            : {};
 
 interface PluginMapInfo {
     owner?: string;
@@ -53,20 +50,24 @@ interface PluginMapInfo {
 
 async function fetchInfo(plugin: PluginInfo) {
     console.log('开始获取图表数据: ' + plugin.name);
-    const [owner, repo] = plugin.repo.split('/');
+    const [owner, repo] = plugin.repo.split('/'),
+        info = await octokit.rest.repos.get({ owner, repo });
 
     pluginMap[plugin.name] = {
         owner,
         repo,
-        stars: plugin.star,
-        description: plugin.description,
-        author: plugin.author
+        stars: info.data.stargazers_count,
+        description: info.data.description ?? '',
+        author: {
+            name: info.data.owner.login,
+            url: info.data.owner.html_url,
+            avatar: info.data.owner.avatar_url
+        },
+        starHistory: await getStarHistory(owner, repo),
+        contributors: await getContributors(owner, repo),
+        releases: await getDownloadsCount(owner, repo),
+        issues: await getIssues(owner, repo)
     };
-    pluginMap[plugin.name].starHistory = await getStarHistory(owner, repo);
-    pluginMap[plugin.name].contributors = await getContributors(owner, repo);
-    pluginMap[plugin.name].releases = await getDownloadsCount(owner, repo);
-    pluginMap[plugin.name].issues = await getIssues(owner, repo);
-
     pluginMap[plugin.name].totalDownloads =
         pluginMap[plugin.name].releases!.reduce(
             (sum, release) => sum + release.downloadCount, 0
@@ -256,16 +257,16 @@ function drawAuthorPie() {
             allowPointSelect: true,
             data: []
         };
-    for (const plugin of plugins as Required<PluginInfo>[]) {
-        authorMap[plugin.author.name] ??= {
+    for (const [name, plugin] of Object.entries(pluginMap)) {
+        authorMap[plugin.author!.name] ??= {
             stars: 0,
             plugins: []
         };
-        authorMap[plugin.author.name].plugins.push({
-            name: plugin.name,
-            stars: plugin.star
+        authorMap[plugin.author!.name].plugins.push({
+            name,
+            stars: plugin.stars!
         });
-        authorMap[plugin.author.name].stars += plugin.star;
+        authorMap[plugin.author!.name].stars += plugin.stars!;
     }
     let colorIndex = 0;
     Object.entries(authorMap)
@@ -358,11 +359,10 @@ export default async function getChartOptions() {
     if (process.env.NODE_ENV != 'development')
         for (const plugin of plugins)
             await fetchInfo(plugin);
-    if (Object.values(pluginMap).some(info => !info.author?.avatar))
-        throw new Error('插件数据不完整！');
 
     // 仅供测试时用
     // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
+
     if (process.env.NODE_ENV == 'development')
         for (const plugin in pluginMap)
             pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(date => new Date(date));
