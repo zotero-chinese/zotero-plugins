@@ -10,8 +10,10 @@ import { progressPlugins, renderMarkdown } from "./get_plugins_info";
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 export const dist = "../docs/dist";
-export const args = process.argv.slice(2)[0];
 
+export function args() {
+  return <"releases" | "charts">process.argv.slice(2)[0];
+}
 
 async function main(mode: "releases" | "charts" | string) {
   const quota = (
@@ -61,7 +63,7 @@ async function main(mode: "releases" | "charts" | string) {
 }
 
 
-main(args).catch((err) => {
+main(args()).catch((err) => {
   console.log(err);
   process.exit(1);
 });

@@ -13,7 +13,7 @@ import type {
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const plugins = args == 'charts'
+const plugins = args() == 'charts'
     ? require('../docs/dist/plugins.json') as PluginInfo[]
     : [];
 const pluginMap: { [name: string]: PluginMapInfo } =
@@ -358,6 +358,8 @@ export default async function getChartOptions() {
     if (process.env.NODE_ENV != 'development')
         for (const plugin of plugins)
             await fetchInfo(plugin);
+    if (Object.values(pluginMap).some(info => !info.author?.avatar))
+        throw new Error('插件数据不完整！');
 
     // 仅供测试时用
     // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
