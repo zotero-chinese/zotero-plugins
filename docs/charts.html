@@ -78,8 +78,8 @@
 </head>
 
 <body>
-    <div id="container"></div>
-    Loading ...
+    <div id="container">Loading ...</div>
+
     <script>
         Math.wordCloudEasing = function (pos) {
             if (pos < 1 / 2.75)
@@ -93,7 +93,15 @@
         addEventListener('DOMContentLoaded', function () {
             Highcharts.getJSON(
                 './dist/charts.json',
-                data => console.debug(Dashboards.board("container", data))
+                data => {
+                    for (com of data.components)
+                        if (com.chartOptions?.exporting)
+                            com.chartOptions.exporting.menuItemDefinitions.invertSelection.onclick = function () {
+                                this.series.forEach(series => series.setVisible(undefined, false));
+                                this.redraw();
+                            };
+                    console.debug(Dashboards.board("container", data));
+                }
             );
             Highcharts.Templating.helpers.log = function () {
                 console.debug(arguments[0].ctx);

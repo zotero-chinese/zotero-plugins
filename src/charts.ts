@@ -8,7 +8,8 @@ import type {
     PointOptionsObject,
     SeriesSplineOptions,
     SeriesWordcloudOptions,
-    SeriesBarOptions
+    SeriesBarOptions,
+    ExportingOptions
 } from 'highcharts';
 
 import { createRequire } from 'module';
@@ -366,7 +367,17 @@ export default async function getChartOptions() {
     if (process.env.NODE_ENV == 'development')
         for (const plugin in pluginMap)
             pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(date => new Date(date));
-    const pointColor = 'var(--highcharts-color-{point.colorIndex})';
+    const pointColor = 'var(--highcharts-color-{point.colorIndex})',
+        exporting = {
+            menuItemDefinitions: { invertSelection: { text: 'Invert Selection' } },
+            buttons: {
+                contextButton: {
+                    menuItems: [
+                        'viewFullscreen', 'printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG', 'separator', 'invertSelection'
+                    ]
+                }
+            }
+        } as ExportingOptions;
     return {
         editMode: {
             enabled: true,
@@ -450,6 +461,7 @@ export default async function getChartOptions() {
                 chartConstructor: 'stockChart',
                 chartOptions: {
                     chart: { type: 'spline', height: 600 },
+                    exporting,
                     series: await drawStarHistory(),
                     legend: { enabled: true, maxHeight: 160 },
                     tooltip: { valueDecimals: 0 },
@@ -586,6 +598,7 @@ export default async function getChartOptions() {
                 type: 'Highcharts',
                 chartOptions: {
                     title: { text: '🕸️ Activities' },
+                    exporting,
                     chart: {
                         polar: true,
                         parallelCoordinates: true,
