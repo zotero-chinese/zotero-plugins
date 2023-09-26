@@ -16,7 +16,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -33,3 +33,9 @@ jobs:
         run: |
           npm install
           npm run get-chart
+
+      - name: Upload Output
+        uses: actions/upload-artifact@v2
+        with:
+          path: docs/
+          retention-days: 3
