@@ -1,6 +1,6 @@
-import { octokit } from './index';
+import { octokit } from '.';
 import { writeFile } from './utils';
-import { PluginInfo } from './plugins';
+import { PluginInfo, plugins } from './plugins';
 import type { Board } from '@highcharts/dashboards';
 import type {
     Options,
@@ -8,19 +8,16 @@ import type {
     PointOptionsObject,
     SeriesSplineOptions,
     SeriesWordcloudOptions,
-    SeriesBarOptions
+    SeriesBarOptions,
+    ExportingOptions
 } from 'highcharts';
 
 import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-import { plugins } from './plugins';
-// 仅供测试时用
-// const plugins = require('../docs/dist/plugins.json') as PluginInfo[];
-
-const pluginMap: { [name: string]: PluginMapInfo } =
-    process.env.NODE_ENV == 'development'
-        ? require('../docs/dist/charts-debug.json')
-        : {};
+const require = createRequire(import.meta.url),
+    pluginMap: { [name: string]: PluginMapInfo } =
+        process.env.NODE_ENV == 'development'
+            ? require('../docs/dist/charts-debug.json')
+            : {};
 
 interface PluginMapInfo {
     owner?: string;
@@ -54,20 +51,24 @@ interface PluginMapInfo {
 
 async function fetchInfo(plugin: PluginInfo) {
     console.log('开始获取图表数据: ' + plugin.name);
-    const [owner, repo] = plugin.repo.split('/');
+    const [owner, repo] = plugin.repo.split('/'),
+        info = await octokit.rest.repos.get({ owner, repo });
 
     pluginMap[plugin.name] = {
         owner,
         repo,
-        stars: plugin.star,
-        description: plugin.description,
-        author: plugin.author
+        stars: info.data.stargazers_count,
+        description: info.data.description ?? '',
+        author: {
+            name: info.data.owner.login,
+            url: info.data.owner.html_url,
+            avatar: info.data.owner.avatar_url
+        },
+        starHistory: await getStarHistory(owner, repo),
+        contributors: await getContributors(owner, repo),
+        releases: await getDownloadsCount(owner, repo),
+        issues: await getIssues(owner, repo)
     };
-    pluginMap[plugin.name].starHistory = await getStarHistory(owner, repo);
-    pluginMap[plugin.name].contributors = await getContributors(owner, repo);
-    pluginMap[plugin.name].releases = await getDownloadsCount(owner, repo);
-    pluginMap[plugin.name].issues = await getIssues(owner, repo);
-
     pluginMap[plugin.name].totalDownloads =
         pluginMap[plugin.name].releases!.reduce(
             (sum, release) => sum + release.downloadCount, 0
@@ -248,16 +249,16 @@ function drawAuthorPie() {
             allowPointSelect: true,
             data: []
         };
-    for (const plugin of plugins as Required<PluginInfo>[]) {
-        authorMap[plugin.author.name] ??= {
+    for (const [name, plugin] of Object.entries(pluginMap)) {
+        authorMap[plugin.author!.name] ??= {
             stars: 0,
             plugins: []
         };
-        authorMap[plugin.author.name].plugins.push({
-            name: plugin.name,
-            stars: plugin.star
+        authorMap[plugin.author!.name].plugins.push({
+            name,
+            stars: plugin.stars!
         });
-        authorMap[plugin.author.name].stars += plugin.star;
+        authorMap[plugin.author!.name].stars += plugin.stars!;
     }
     let colorIndex = 0;
     Object.entries(authorMap)
@@ -309,7 +310,7 @@ function drawIssueBar() {
     return [open, closed];
 }
 
-function getActivities() {
+function drawActivities() {
     function toFixedNum(num: number) {
         return Number(num.toFixed(2));
     }
@@ -319,29 +320,12 @@ function getActivities() {
             duration = endDate.getTime() - startDate.getTime();
         return duration / 1000 / 60 / 60 / 24;
     }
-    const activities: Array<string | number>[] = [
-        ['Plugin', 'Contributors', 'Downloads', 'Size', 'Issues', 'Stars']
-    ],
-        series: Highcharts.SeriesLineOptions[] = [];
+    const series: Highcharts.SeriesLineOptions[] = [];
     for (const [name, info] of Object.entries(pluginMap)) {
         const totalSize = info.releases!.reduce(
             (sum, release) => sum + release.size, 0
         ),
             closedIssues = info.issues!.filter(issue => issue.closedAt != null);
-        activities.push([
-            name,
-            info.contributors!.length,
-            info.totalDownloads!,
-            toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
-            toFixedNum(
-                closedIssues.reduce(
-                    (sum, issue) => sum + getDays(issue.createdAt, issue.closedAt!), 0
-                ) / closedIssues.length
-            ),
-            toFixedNum(
-                info.stars! / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
-            )
-        ]);
         series.push({
             type: 'line',
             name,
@@ -370,22 +354,22 @@ export default async function getChartOptions() {
 
     // 仅供测试时用
     // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
+
     if (process.env.NODE_ENV == 'development')
         for (const plugin in pluginMap)
             pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(date => new Date(date));
-
-    const pointColor = 'var(--highcharts-color-{point.colorIndex})';
+    const pointColor = 'var(--highcharts-color-{point.colorIndex})',
+        exporting = {
+            menuItemDefinitions: { invertSelection: { text: 'Invert Selection' } },
+            buttons: {
+                contextButton: {
+                    menuItems: [
+                        'viewFullscreen', 'printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG', 'separator', 'invertSelection'
+                    ]
+                }
+            }
+        } as ExportingOptions;
     return {
-        // dataPool: {
-        //     connectors: [{
-        //         type: 'JSON',
-        //         id: 'activities',
-        //         options: {
-        //             data: getActivities(),
-        //             orientation: 'columns'
-        //         }
-        //     }]
-        // },
         editMode: {
             enabled: true,
             contextMenu: {
@@ -421,8 +405,24 @@ export default async function getChartOptions() {
                     },
                     {
                         cells: [
-                            { id: 'dashboard-col-2', height: 600 },
-                            { id: 'dashboard-col-3', height: 600 }
+                            {
+                                id: 'dashboard-col-3',
+                                height: 600,
+                                responsive: {
+                                    small: { width: '100%' },
+                                    medium: { width: '60%' },
+                                    large: { width: '50%' }
+                                }
+                            },
+                            {
+                                id: 'dashboard-col-2',
+                                height: 600,
+                                responsive: {
+                                    small: { width: '100%' },
+                                    medium: { width: '40%' },
+                                    large: { width: '50%' }
+                                }
+                            },
                         ]
                     },
                     { cells: [{ id: 'star-history' }] }
@@ -446,6 +446,7 @@ export default async function getChartOptions() {
                 chartConstructor: 'stockChart',
                 chartOptions: {
                     chart: { type: 'spline', height: 600 },
+                    exporting,
                     series: await drawStarHistory(),
                     legend: { enabled: true, maxHeight: 160 },
                     tooltip: { valueDecimals: 0 },
@@ -535,7 +536,10 @@ export default async function getChartOptions() {
                             (a, b) => pluginMap[b].issues!.length - pluginMap[a].issues!.length
                         )
                     },
-                    yAxis: { title: { text: null } },
+                    yAxis: {
+                        title: { text: null },
+                        type: 'logarithmic'
+                    },
                     tooltip: {
                         shared: true,
                         useHTML: true,
@@ -577,14 +581,10 @@ export default async function getChartOptions() {
             {
                 cell: 'dashboard-col-3',
                 type: 'Highcharts',
-                // connector: { id: 'activities' },
-                // columnAssignment: {
-                //     Plugin: 'name',
-                // },
                 chartOptions: {
-                    title: { text: 'Activities' },
+                    title: { text: '🕸️ Activities' },
+                    exporting,
                     chart: {
-                        type: 'line',
                         polar: true,
                         parallelCoordinates: true,
                         parallelAxes: {
@@ -608,19 +608,27 @@ export default async function getChartOptions() {
                         categories: [
                             'Contributors Count',
                             'Total Downloads',
-                            'Average Size',
+                            'Average Size of XPI',
                             'Issues Duration',
                             'Stars Per Day'
                         ]
                     },
                     yAxis: [
-                        { type: 'linear' },
-                        { type: 'linear' },
-                        { type: 'linear', tooltipValueFormat: '{value} MB' },
-                        { type: 'linear', tooltipValueFormat: '{value} Days' },
-                        { type: 'linear' }
+                        {},
+                        {
+                            tooltipValueFormat: `
+                                {#if (gt value 1000000)}
+                                    {(divide value 1000000):.1f} M
+                                {else}
+                                    {(divide value 1000):.1f} K
+                                {/if}
+                            `
+                        },
+                        { tooltipValueFormat: '{value} MB' },
+                        { tooltipValueFormat: '{value} Days' },
+                        {}
                     ],
-                    series: getActivities()
+                    series: drawActivities()
                 } as Options
             }
         ]

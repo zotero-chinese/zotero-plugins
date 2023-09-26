@@ -7,12 +7,23 @@ import { progressPlugins, renderMarkdown } from "./get_plugins_info";
 // 仅供测试使用
 // import { test as plugins } from "./plugins";
 
-export const dist = "../docs/dist";
-
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+export const dist = "../docs/dist";
+
+export function args() {
+  return <"releases" | "charts">process.argv.slice(2)[0];
+}
 
 async function main(mode: "releases" | "charts" | string) {
+  const quota = (
+    await octokit.rest.rateLimit.get()
+  ).data.rate;
+  if (quota.remaining < 700) {
+    console.log(`API剩余次数不足, ${new Date(quota.reset).toLocaleTimeString()}后重试`);
+    process.exit(1);
+  }
+
   console.log("开始处理");
   switch (mode) {
     case "releases":
@@ -49,11 +60,14 @@ async function main(mode: "releases" | "charts" | string) {
   }
 
   console.log("完成");
+  const remaining = (
+    await octokit.rest.rateLimit.get()
+  ).data.rate.remaining;
+  console.log(`耗费API次数：${quota.remaining - remaining}`);
 }
 
-const args = process.argv.slice(2)[0];
 
-main(args).catch((err) => {
+main(args()).catch((err) => {
   console.log(err);
   process.exit(1);
 });

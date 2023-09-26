@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "get-info": "cd src && ts-node index.ts releases && cd ..",
-    "get-chart": "cd src && ts-node index.ts && cd ..",
-    "debug": "cd src && cross-env NODE_ENV=development ts-node index.ts charts && cd ..",
+    "get-chart": "cd src && ts-node index.ts charts && cd ..",
+    "debug": "cross-env NODE_ENV=development npm run get-chart",
     "website": "docsify serve docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
