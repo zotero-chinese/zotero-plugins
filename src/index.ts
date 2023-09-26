@@ -18,7 +18,11 @@ export function args() {
 async function main(mode: "releases" | "charts" | string) {
   const quota = (
     await octokit.rest.rateLimit.get()
-  ).data.rate.remaining;
+  ).data.rate;
+  if (quota.remaining < 700) {
+    console.log(`API剩余次数不足, ${new Date(quota.reset).toLocaleTimeString()}后重试`);
+    process.exit(1);
+  }
 
   console.log("开始处理");
   switch (mode) {
@@ -59,7 +63,7 @@ async function main(mode: "releases" | "charts" | string) {
   const remaining = (
     await octokit.rest.rateLimit.get()
   ).data.rate.remaining;
-  console.log(`耗费API次数：${quota - remaining}`);
+  console.log(`耗费API次数：${quota.remaining - remaining}`);
 }
 
 
