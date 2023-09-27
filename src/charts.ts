@@ -23,6 +23,7 @@ interface PluginMapInfo {
     owner?: string;
     repo?: string;
     stars?: number;
+    watchers?: number;
     description?: string;
     starHistory?: Date[];
     author?: {
@@ -58,6 +59,7 @@ async function fetchInfo(plugin: PluginInfo) {
         owner,
         repo,
         stars: info.data.stargazers_count,
+        watchers: info.data.subscribers_count,
         description: info.data.description ?? '',
         author: {
             name: info.data.owner.login,
@@ -331,6 +333,7 @@ function drawActivities() {
             name,
             data: [
                 info.contributors!.length,
+                info.watchers!,
                 info.totalDownloads!,
                 toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
                 toFixedNum(
@@ -607,6 +610,7 @@ export default async function getChartOptions() {
                     xAxis: {
                         categories: [
                             'Contributors Count',
+                            'Watchers Count',
                             'Total Downloads',
                             'Average Size of XPI',
                             'Issues Duration',
@@ -614,6 +618,7 @@ export default async function getChartOptions() {
                         ]
                     },
                     yAxis: [
+                        {},
                         {},
                         {
                             tooltipValueFormat: `
