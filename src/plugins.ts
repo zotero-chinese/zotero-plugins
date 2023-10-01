@@ -472,6 +472,30 @@ export const plugins: PluginInfo[] = [
       },
     ],
   },
+  {
+    name: "Zotero Better Authors",
+    repo: "github-young/zotero-better-authors",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest"
+      }
+    ]
+  },
+  {
+    name: "Open PDF",
+    repo: "retorquere/zotero-open-pdf",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest"
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest"
+      }
+    ]
+  }
 ];
 
 // 以下列表仅供开发测试使用
