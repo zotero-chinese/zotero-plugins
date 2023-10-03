@@ -157,7 +157,7 @@ export async function renderMarkdown() {
         "github.com",
         "kgithub.com"
       )}) </li>`;
-      downloadUrl += `<li>[Gitee](https://gitee.com/zotero-chinese/zotero-plugins/raw/gh-pages/dist/${release.id}.xpi)</li>`;
+      downloadUrl += `<li>[Gitee](https://gitee.com/zotero-chinese/zotero-plugins/raw/gh-pages/dist/xpi/${release.id}.xpi)</li>`;
       downloadUrl += `</ul>`;
 
       const row = [
