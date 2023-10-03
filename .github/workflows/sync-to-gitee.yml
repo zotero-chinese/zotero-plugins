@@ -1,0 +1,32 @@
+name: Sync repo to Gitee
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  git-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current repository name
+        id: info
+        uses: actions/github-script@v3.1
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          result-encoding: string
+          script: |
+            return context.repo.repo;
+
+      - name: Mirror the GitHub repos to Gitee
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/zotero-chinese
+          dst: gitee/zotero-chinese
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          static_list: "${{ steps.info.outputs.result }}"
+          account_type: org
+          force_update: true
