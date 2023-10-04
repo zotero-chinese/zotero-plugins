@@ -16,11 +16,13 @@ export function args() {
 }
 
 async function main(mode: "releases" | "charts" | string) {
-  const quota = (
-    await octokit.rest.rateLimit.get()
-  ).data.rate;
-  if (quota.remaining < 700) {
-    console.log(`API剩余次数不足, ${new Date(quota.reset).toLocaleTimeString()}后重试`);
+  const quotaStart = (await octokit.rest.rateLimit.get()).data.rate;
+  console.log(quotaStart);
+
+  if (quotaStart.remaining < 700) {
+    console.log(
+      `TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`
+    );
     process.exit(1);
   }
 
@@ -28,11 +30,14 @@ async function main(mode: "releases" | "charts" | string) {
   switch (mode) {
     case "releases":
       {
-        await progressPlugins();
-        writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
+        let pluginsInfoDist = await progressPlugins(plugins);
+        writeFile(
+          `${dist}/plugins.json`,
+          JSON.stringify(pluginsInfoDist, null, 2)
+        );
 
         console.log("处理 Markdown");
-        const markdownContent = await renderMarkdown();
+        const markdownContent = await renderMarkdown(pluginsInfoDist);
         writeFile(`${dist}/plugins.md`, markdownContent);
 
         let shields = {
@@ -60,12 +65,10 @@ async function main(mode: "releases" | "charts" | string) {
   }
 
   console.log("完成");
-  const remaining = (
-    await octokit.rest.rateLimit.get()
-  ).data.rate.remaining;
-  console.log(`耗费API次数：${quota.remaining - remaining}`);
+  const quotaEnd = (await octokit.rest.rateLimit.get()).data.rate;
+  console.log(quotaEnd);
+  console.log(`共计请求 ${quotaStart.remaining - quotaEnd.remaining} 次`);
 }
-
 
 main(args()).catch((err) => {
   console.log(err);

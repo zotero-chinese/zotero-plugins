@@ -2,12 +2,12 @@ import fs from "fs";
 import { franc } from "franc-min";
 import { Align, getMarkdownTable } from "markdown-table-ts";
 import translate from "google-translate-api-x";
-import { plugins } from "./plugins";
+import { PluginInfo } from "./plugins";
 import { writeFile } from "./utils";
 import { octokit } from ".";
 import { dist } from ".";
 
-export async function progressPlugins() {
+export async function progressPlugins(plugins: PluginInfo[]) {
   for (const plugin of plugins) {
     console.log(`开始处理 ${plugin.name}`);
     const repoParts = plugin.repo.split("/"),
