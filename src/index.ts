@@ -48,7 +48,7 @@ async function main(mode: "releases" | "charts" | string) {
       break;
     case "charts":
       {
-        const chartOptions = await getChartOptions();
+        const chartOptions = await getChartOptions(plugins);
         writeFile(
           `${dist}/charts.json`,
           JSON.stringify(

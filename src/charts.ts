@@ -1,6 +1,6 @@
 import { octokit } from ".";
 import { writeFile } from "./utils";
-import { PluginInfo, plugins } from "./plugins";
+import { PluginInfo } from "./plugins";
 import type { Board } from "@highcharts/dashboards";
 import type {
   Options,
@@ -359,7 +359,7 @@ function drawActivities() {
   return series;
 }
 
-export default async function getChartOptions() {
+export default async function getChartOptions(plugins: PluginInfo[]) {
   if (process.env.NODE_ENV != "development")
     for (const plugin of plugins) await fetchInfo(plugin);
 
