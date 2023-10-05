@@ -38,23 +38,21 @@ interface PluginInfo {
   /**
    * 插件的发布地址信息
    */
-  releases: PluginReleaseInfo[];
-}
-
-interface PluginReleaseInfo {
-  /**
-   * 当前发布版对应的 Zotero 版本
-   */
-  targetZoteroVersion: string;
-  /**
-   * 当前发布版对应的下载通道
-   *
-   * `latest`：最新正式发布；
-   * `pre`：最新预发布；
-   * `string`：发布对应的 `git.tag_name`；
-   * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
-   */
-  tagName: "latest" | "pre" | string;
+  releases: Array<{
+    /**
+     * 当前发布版对应的 Zotero 版本
+     */
+    targetZoteroVersion: string;
+    /**
+     * 当前发布版对应的下载通道
+     *
+     * `latest`：最新正式发布；
+     * `pre`：最新预发布；
+     * `string`：发布对应的 `git.tag_name`；
+     * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
+     */
+    tagName: "latest" | "pre" | string;
+  }>;
 }
 ```
 
@@ -62,7 +60,7 @@ interface PluginReleaseInfo {
 
 > [!NOTE]
 >
-> 如何添加未收录的插件：
+> 如何添加未收录的插件？
 >
 > 编辑 [`src/plugins.ts`](./src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容如上所示，已有的内容亦可作为参考。
 >
@@ -78,6 +76,12 @@ interface PluginReleaseInfo {
 
 GitHub Action Bot 定时运行 `src/index.ts` 脚本，执行上述步骤，并将 `docs/dist` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
 
+> [!NOTE]
+>
+> 如何将本项目作为依赖项进行二次开发？
+>
+> 开发者可以使用 [`gh-pages` 分支中 `dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json) 等构建文件。
+
 ### 开发
 
 根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
@@ -91,13 +95,18 @@ cd zotero-plugins
 npm install
 
 # 运行构建脚本
-npm run build
+npm run get-info
 
 # 启动网页服务器
 npm run website
+
+# 插件排行榜图表页面
+npm run get-chart
 ```
 
 ## 致谢
+
+感谢 Zotero 社区及开发者们的付出！
 
 本项目使用了如下代理或公共 CDN 服务完成 XPI 分发：
 
@@ -111,6 +120,14 @@ npm run website
 
 [![netlify](https://www.netlify.com/v3/img/components/netlify-color-bg.svg)](https://www.netlify.com)
 
+## 贡献者
+
+[![本项目贡献者](https://contrib.rocks/image?repo=zotero-chinese/zotero-plugins)](https://github.com/zotero-chinese/zotero-plugins/graphs/contributors)
+
 ## 协议
 
 MIT License
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=zotero-chinese/zotero-plugins&type=Date)](https://star-history.com/#zotero-chinese/zotero-plugins&Date)

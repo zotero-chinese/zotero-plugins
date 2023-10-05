@@ -14,7 +14,33 @@ export interface PluginInfo {
   /**
    * 插件的发布地址信息
    */
-  releases: PluginReleaseInfo[];
+  releases: Array<{
+    /**
+     * 当前发布版对应的 Zotero 版本
+     */
+    targetZoteroVersion: string;
+    /**
+     * 当前发布版对应的下载通道
+     *
+     * `latest`：最新正式发布；
+     * `pre`：最新预发布；
+     * `string`：发布对应的 `git.tag_name`；
+     * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
+     */
+    tagName: "latest" | "pre" | string;
+
+    currentVersion?: string;
+    xpiDownloadUrl?: {
+      github: string;
+      gitee: string;
+      ghProxy: string;
+      jsdeliver: string;
+      kgithub: string;
+    };
+    releaseData?: string;
+    downloadCount?: number;
+    assetId?: number;
+  }>;
 
   description?: string;
   star?: number;
@@ -23,28 +49,6 @@ export interface PluginInfo {
     url: string;
     avatar: string;
   };
-}
-
-export interface PluginReleaseInfo {
-  /**
-   * 当前发布版对应的 Zotero 版本
-   */
-  targetZoteroVersion: string;
-  /**
-   * 当前发布版对应的下载通道
-   *
-   * `latest`：最新正式发布；
-   * `pre`：最新预发布；
-   * `string`：发布对应的 `git.tag_name`；
-   * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
-   */
-  tagName: "latest" | "pre" | string;
-
-  currentVersion?: string;
-  xpiDownloadUrl?: string;
-  releaseData?: string;
-  downloadCount?: number;
-  id?: number;
 }
 
 export const plugins: PluginInfo[] = [
@@ -188,13 +192,13 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
+        tagName: "latest",
       },
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "PDF Figure",
@@ -276,9 +280,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotero Better Notes",
@@ -495,7 +499,7 @@ export const plugins: PluginInfo[] = [
         tagName: "latest",
       },
     ],
-  }
+  },
 ];
 
 // 以下列表仅供开发测试使用
@@ -521,10 +525,6 @@ export const test: PluginInfo[] = [
       {
         targetZoteroVersion: "6",
         tagName: "latest",
-      },
-      {
-        targetZoteroVersion: "7",
-        tagName: "2.0.0-beta",
       },
     ],
   },
