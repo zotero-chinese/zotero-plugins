@@ -2,12 +2,12 @@ import fs from "fs";
 import { franc } from "franc-min";
 import { Align, getMarkdownTable } from "markdown-table-ts";
 import translate from "google-translate-api-x";
-import { plugins } from "./plugins";
+import { PluginInfo } from "./plugins";
 import { writeFile } from "./utils";
 import { octokit } from ".";
 import { dist } from ".";
 
-export async function progressPlugins() {
+export async function progressPlugins(plugins: PluginInfo[]) {
   for (const plugin of plugins) {
     console.log(`开始处理 ${plugin.name}`);
     const repoParts = plugin.repo.split("/"),
@@ -121,24 +121,36 @@ export async function progressPlugins() {
 
           writeFile(`${dist}/xpi/${asset.id}.xpi`, Buffer.from(xpiFlie));
         }
-        release.id = asset.id;
+        release.assetId = asset.id;
         release.releaseData = asset.updated_at;
         release.downloadCount = asset.download_count;
-        release.xpiDownloadUrl = asset.browser_download_url;
+        release.xpiDownloadUrl = {
+          github: asset.browser_download_url,
+          gitee: `https://gitee.com/zotero-chinese/zotero-plugins/raw/gh-pages/dist/xpi/${release.id}.xpi`,
+          ghProxy: `https://ghproxy.com/?q=${encodeURI(
+            asset.browser_download_url
+          )}`,
+          jsdeliver: `https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/dist/xpi/${release.assetId}.xpi`,
+          kgithub: asset.browser_download_url.replace(
+            "github.com",
+            "kgithub.com"
+          ),
+        };
       });
 
       // return release;
     }
   }
+  return plugins;
 }
 
-export async function renderMarkdown() {
+export async function renderMarkdown(plugins: PluginInfo[]) {
   let body = Array();
   plugins.forEach((plugin) => {
     let name = `[${plugin.name}](https://github.com/${plugin.repo}) </br>`;
     name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
     plugin.releases.forEach((release, index) => {
-      if (release.id == undefined) {
+      if (release.assetId == undefined) {
         console.log(`  ${plugin.name} ${release.currentVersion} 不存在`);
         return;
       }
@@ -148,16 +160,12 @@ export async function renderMarkdown() {
       // releaseInfo += `![发布日期 ${new Date(release.releaseData ?? "").toLocaleString("zh-CN")}](https://img.shields.io/badge/日期-${encodeURI(new Date(release.releaseData ?? "").toLocaleString("zh-CN"))}-green) </br>`;
       // releaseInfo += `![下载量 ${release.downloadCount}](https://img.shields.io/badge/下载量-${release.downloadCount}-green)`;
 
-      const downloadUrlEncode = encodeURI(release.xpiDownloadUrl!);
       let downloadUrl = `<ul>`;
-      downloadUrl += `<li>[官方下载](${release.xpiDownloadUrl}) </li>`;
-      downloadUrl += `<li>[GitHub Proxy](https://ghproxy.com/?q=${downloadUrlEncode}) </li>`;
-      downloadUrl += `<li>[JsDeliver](https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/dist/xpi/${release.id}.xpi) </li>`;
-      downloadUrl += `<li>[KGitHub](${release.xpiDownloadUrl?.replace(
-        "github.com",
-        "kgithub.com"
-      )}) </li>`;
-      downloadUrl += `<li>[Gitee](https://gitee.com/zotero-chinese/zotero-plugins/raw/gh-pages/dist/xpi/${release.id}.xpi)</li>`;
+      downloadUrl += `<li>[GitHub](${release.xpiDownloadUrl?.github}) </li>`;
+      downloadUrl += `<li>[Gitee](${release.xpiDownloadUrl?.gitee})</li>`;
+      downloadUrl += `<li>[GitHub Proxy](${release.xpiDownloadUrl?.ghProxy}) </li>`;
+      downloadUrl += `<li>[JsDeliver](${release.xpiDownloadUrl?.jsdeliver}) </li>`;
+      downloadUrl += `<li>[KGitHub](${release.xpiDownloadUrl?.kgithub}) </li>`;
       downloadUrl += `</ul>`;
 
       const row = [
