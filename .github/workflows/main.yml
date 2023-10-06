@@ -53,8 +53,9 @@ jobs:
           folder: docs
           single-commit: true
 
-  git-mirror:
+  sync-gitee:
+    name: Sync to Gitee
     needs:
       - deploy
-    name: Sync to Gitee
     uses: ./.github/workflows/sync-to-gitee.yml
+    secrets: inherit

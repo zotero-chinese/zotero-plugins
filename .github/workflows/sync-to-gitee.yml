@@ -8,7 +8,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  git-mirror:
+  sync-gitee:
     runs-on: ubuntu-latest
     steps:
       - name: Get current repository name
