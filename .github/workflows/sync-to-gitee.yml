@@ -24,9 +24,10 @@ jobs:
         uses: Yikun/hub-mirror-action@master
         with:
           src: github/zotero-chinese
-          dst: gitee/zotero-chinese
+          src_account_type: org
+          dst: gitee/northword
+          dst_account_type: user
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: "${{ steps.info.outputs.result }}"
-          account_type: org
           force_update: true
