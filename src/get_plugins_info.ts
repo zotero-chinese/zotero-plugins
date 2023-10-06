@@ -126,7 +126,7 @@ export async function progressPlugins(plugins: PluginInfo[]) {
         release.downloadCount = asset.download_count;
         release.xpiDownloadUrl = {
           github: asset.browser_download_url,
-          gitee: `https://gitee.com/northword/zotero-plugins/raw/gh-pages/dist/xpi/${release.id}.xpi`,
+          gitee: `https://gitee.com/northword/zotero-plugins/raw/gh-pages/dist/xpi/${release.assetId}.xpi`,
           ghProxy: `https://ghproxy.com/?q=${encodeURI(
             asset.browser_download_url
           )}`,
