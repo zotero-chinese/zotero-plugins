@@ -52,3 +52,9 @@ jobs:
           branch: gh-pages
           folder: docs
           single-commit: true
+
+  git-mirror:
+    needs:
+      - deploy
+    name: Sync to Gitee
+    uses: ./.github/workflows/sync-to-gitee.yml

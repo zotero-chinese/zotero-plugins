@@ -126,7 +126,7 @@ export async function progressPlugins(plugins: PluginInfo[]) {
         release.downloadCount = asset.download_count;
         release.xpiDownloadUrl = {
           github: asset.browser_download_url,
-          gitee: "",
+          gitee: `https://gitee.com/northword/zotero-plugins/raw/gh-pages/dist/xpi/${release.assetId}.xpi`,
           ghProxy: `https://ghproxy.com/?q=${encodeURI(
             asset.browser_download_url
           )}`,
@@ -161,7 +161,8 @@ export async function renderMarkdown(plugins: PluginInfo[]) {
       // releaseInfo += `![下载量 ${release.downloadCount}](https://img.shields.io/badge/下载量-${release.downloadCount}-green)`;
 
       let downloadUrl = `<ul>`;
-      downloadUrl += `<li>[官方下载](${release.xpiDownloadUrl?.github}) </li>`;
+      downloadUrl += `<li>[GitHub](${release.xpiDownloadUrl?.github}) </li>`;
+      downloadUrl += `<li>[Gitee](${release.xpiDownloadUrl?.gitee})</li>`;
       downloadUrl += `<li>[GitHub Proxy](${release.xpiDownloadUrl?.ghProxy}) </li>`;
       downloadUrl += `<li>[JsDeliver](${release.xpiDownloadUrl?.jsdeliver}) </li>`;
       downloadUrl += `<li>[KGitHub](${release.xpiDownloadUrl?.kgithub}) </li>`;
