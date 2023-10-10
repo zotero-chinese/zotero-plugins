@@ -20,6 +20,8 @@
 
 Zotero 中文交流群 913637964，617148016，893963769，666489129，145248977，317995116，962963257（加一个群即可）。独学而无友，则孤陋而寡闻。
 
+?> Zotero 7 用户也可以下载非官方 Zotero 插件商店（插件）： [syt2/zotero-addons](https://github.com/syt2/zotero-addons) （在下方表格第一个），以实现在 Zotero 中查看和安装其他插件！
+
 ?> 如果你对本页面有任何建议或反馈，请 [填写表格](https://www.kdocs.cn/wo/sl/v14cwJXX) 或前往 [GitHub 仓库提 issue](https://github.com/zotero-chinese/zotero-plugins)。
 
 [plgins info](./dist/plugins.md ':include')

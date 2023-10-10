@@ -51,7 +51,18 @@ export interface PluginInfo {
   };
 }
 
+// 贡献者贡献插件时，请按照 `name` 字母顺序排序，第一个“插件商店”插件始终置顶以方便查找。
 export const plugins: PluginInfo[] = [
+  {
+    name: "Zotero 插件合集",
+    repo: "syt2/zotero-addons",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
   {
     name: "Better BibTex for Zotero",
     repo: "retorquere/zotero-better-bibtex",
