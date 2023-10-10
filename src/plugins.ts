@@ -58,7 +58,7 @@ export const plugins: PluginInfo[] = [
     repo: "syt2/zotero-addons",
     releases: [
       {
-        targetZoteroVersion: "6",
+        targetZoteroVersion: "7",
         tagName: "latest",
       },
     ],
