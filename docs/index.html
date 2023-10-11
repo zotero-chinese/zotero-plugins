@@ -18,10 +18,14 @@
       table > thead > tr > th:nth-child(7) {
         min-width: 140px;
       }
-      #myInput {
+      #searchInput {
         min-width: 400px;
         height: 30px;
         margin-bottom: 10px;
+      }
+      .highlight {
+        background-color: yellow;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -76,38 +80,72 @@
         });
       }
 
-      function myFunction() {
-        // Declare variables
-        let input = document.getElementById("myInput");
-        let filter = input.value.toUpperCase();
+      // Add to plugin array
+      $docsify.plugins = [].concat(concatRow, $docsify.plugins);
+
+      function searchPlugins() {
+        let input = document.getElementById("searchInput").value.trim();
+        const pattern = new RegExp(input, "gi");
+
         let table = document.getElementsByTagName("table")[0];
         let trs = table.querySelectorAll(" tbody > tr");
 
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < trs.length; i++) {
-          td = trs[i].getElementsByTagName("td")[0];  // plugin name
-          desc = trs[i].getElementsByTagName("td")[1];  // plugin description
-          author = trs[i].getElementsByTagName("td")[2];  // plugin author
-          let className = trs[i].className;
-          if (td.innerText) {
-            txtValue = td.textContent + " " + desc.textContent + " " + author.textContent;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              console.log(className + "Yes");
-              for (let ele of document.getElementsByClassName(className)) {
-                  ele.style.display = "";
-                };
+        trs.forEach((tr, index) => {
+          let [name, desc, author] = Array.from(
+            tr.getElementsByTagName("td")
+          ).slice(0, 3);
+          let txtValue = [name, desc, author]
+            .map((node) => node.textContent)
+            .join(" ");
+
+          // 这个插件的所有行：适配7和6的有两行
+          let allRows4ThisPlugin = [
+            ...document.getElementsByClassName(tr.className),
+          ];
+
+          if (name.textContent) {
+            // 匹配到关键词：显示、高亮
+            if (input === "" || txtValue.match(pattern)) {
+              allRows4ThisPlugin.forEach((row) => (row.style.display = ""));
+
+              // 只针对前三列处理高亮
+              [name, desc, author].forEach((td) => {
+                // 存储一份原始 Node，方便每一次加高亮都是在原始的文本上加，排除 <span class="highlight"> 的影响
+                if (!td.originNode) {
+                  td.originNode = td.cloneNode(true);
+                }
+                td.originNode.originNode = td.originNode.cloneNode(true);
+
+                // 递归高亮
+                let newNode = highlightText(td.originNode);
+                td.parentNode.replaceChild(newNode, td);
+              });
             } else {
-              console.log(className + "No");
-              for (let ele of document.getElementsByClassName(className)) {
-                  ele.style.display = "none";
-                };
+              // 未匹配到关键词：隐藏
+              allRows4ThisPlugin.forEach((row) => (row.style.display = "none"));
             }
           }
+        });
+
+        function highlightText(node) {
+          for (let childNode of node.childNodes) {
+            // 如果是文本节点，则执行替换
+            if (childNode.nodeType === Node.TEXT_NODE) {
+              const cellText = childNode.textContent;
+              const highlightedText = cellText.replace(
+                pattern,
+                (match) => `<span class="highlight">${match}</span>`
+              );
+              const span = document.createElement("span");
+              span.innerHTML = highlightedText;
+              childNode.replaceWith(span);
+            } else if (childNode.childNodes.length !== 0) {
+              highlightText(childNode);
+            }
+          }
+          return node;
         }
       }
-
-      // Add to plugin array
-      $docsify.plugins = [].concat(concatRow, $docsify.plugins);
     </script>
     <!-- Docsify v4 -->
     <script src="//unpkg.com/docsify@4"></script>

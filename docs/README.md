@@ -22,6 +22,6 @@ Zotero 中文交流群 913637964，617148016，893963769，666489129，145248977
 
 ?> 如果你对本页面有任何建议或反馈，请 [填写表格](https://www.kdocs.cn/wo/sl/v14cwJXX) 或前往 [GitHub 仓库提 issue](https://github.com/zotero-chinese/zotero-plugins)。
 
-<p><strong>搜索插件</strong> <input type="text" id="myInput" onkeyup="myFunction()" placeholder="在此输入搜索插件[Search plugin here]"></p>
+<p><strong>搜索插件</strong> <input type="text" id="searchInput" onkeyup="searchPlugins()" placeholder="在此输入以搜索插件 [Search plugin here]"></p>
 
 [plgins info](./dist/plugins.md ':include')
