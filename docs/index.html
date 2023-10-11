@@ -14,10 +14,14 @@
     />
     <link rel="icon" href="https://avatars.githubusercontent.com/u/110372206" />
     <link rel="stylesheet" href="//unpkg.com/docsify@4/lib/themes/vue.css" />
-
     <style type="text/css">
       table > thead > tr > th:nth-child(7) {
         min-width: 140px;
+      }
+      #myInput {
+        min-width: 400px;
+        height: 30px;
+        margin-bottom: 10px;
       }
     </style>
   </head>
@@ -61,13 +65,45 @@
                     [j].setAttribute("rowspan", "2");
                 }
               }
+              currentRow.className = "r" + (visibleRowCount - 1);
             } else {
+              currentRow.className = "r" + visibleRowCount;
               currentRow.style.backgroundColor =
                 visibleRowCount % 2 === 0 ? "white" : "#f8f8f8";
               visibleRowCount++;
             }
           }
         });
+      }
+
+      function myFunction() {
+        // Declare variables
+        let input = document.getElementById("myInput");
+        let filter = input.value.toUpperCase();
+        let table = document.getElementsByTagName("table")[0];
+        let trs = table.querySelectorAll(" tbody > tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < trs.length; i++) {
+          td = trs[i].getElementsByTagName("td")[0];  // plugin name
+          desc = trs[i].getElementsByTagName("td")[1];  // plugin description
+          author = trs[i].getElementsByTagName("td")[2];  // plugin author
+          let className = trs[i].className;
+          if (td.innerText) {
+            txtValue = td.textContent + " " + desc.textContent + " " + author.textContent;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              console.log(className + "Yes");
+              for (let ele of document.getElementsByClassName(className)) {
+                  ele.style.display = "";
+                };
+            } else {
+              console.log(className + "No");
+              for (let ele of document.getElementsByClassName(className)) {
+                  ele.style.display = "none";
+                };
+            }
+          }
+        }
       }
 
       // Add to plugin array
