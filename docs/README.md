@@ -24,4 +24,6 @@ Zotero 中文交流群 913637964，617148016，893963769，666489129，145248977
 
 ?> 如果你对本页面有任何建议或反馈，请 [填写表格](https://www.kdocs.cn/wo/sl/v14cwJXX) 或前往 [GitHub 仓库提 issue](https://github.com/zotero-chinese/zotero-plugins)。
 
+**搜索插件：** <input type="text" id="searchInput" onkeyup="searchPlugins()" placeholder="在此输入一个关键词以搜索 [Type one keyword here to search]">
+
 [plgins info](./dist/plugins.md ':include')
