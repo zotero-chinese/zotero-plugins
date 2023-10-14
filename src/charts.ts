@@ -342,7 +342,12 @@ function drawActivities() {
       data: [
         info.contributors!.length,
         info.watchers!,
-        info.totalDownloads!,
+        toFixedNum(
+          info.totalDownloads! / getDays(
+            info.releases!.at(-1)!.published_at,
+            new Date()
+          )
+        ),
         toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
         toFixedNum(
           closedIssues.reduce(
@@ -351,7 +356,7 @@ function drawActivities() {
           ) / closedIssues.length
         ),
         toFixedNum(
-          info.stars! / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
+          info.stars! * 7 / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
         ),
       ],
     });
@@ -632,10 +637,10 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
             categories: [
               "Contributors Count",
               "Watchers Count",
-              "Total Downloads",
+              "Downloads Per Day",
               "Average Size of XPI",
               "Issues Duration",
-              "Stars Per Day",
+              "Stars Per Week",
             ],
           },
           yAxis: [
@@ -643,10 +648,10 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
             {},
             {
               tooltipValueFormat: `
-                                {#if (gt value 1000000)}
-                                    {(divide value 1000000):.1f} M
-                                {else}
+                                {#if (gt value 1000)}
                                     {(divide value 1000):.1f} K
+                                {else}
+                                    {value}
                                 {/if}
                             `,
             },
