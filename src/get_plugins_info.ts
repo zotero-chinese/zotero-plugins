@@ -105,11 +105,12 @@ export async function progressPlugins(plugins: PluginInfo[]) {
             return dateB.getTime() - dateA.getTime();
           })[0];
 
-        if (asset == undefined) {
+        if (!asset) {
           console.log(`  ${plugin.name} ${release.currentVersion} 不存在 XPI`);
-          throw new Error(
-            `${plugin.name} ${release.currentVersion} 不存在 XPI`
-          );
+          // throw new Error(
+          //   `${plugin.name} ${release.currentVersion} 不存在 XPI`
+          // );
+          return;
         }
 
         if (!fs.existsSync(`${dist}/xpi/${asset.id}.xpi`)) {
