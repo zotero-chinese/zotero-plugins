@@ -2,7 +2,8 @@ import { Octokit } from "octokit";
 import { plugins } from "./plugins";
 import { writeFile } from "./utils";
 import getChartOptions from "./charts";
-import { progressPlugins, renderMarkdown } from "./get_plugins_info";
+import { progressPlugins } from "./get_plugins_info";
+import { renderMarkdown } from "./renderMarkdown";
 
 // 仅供测试使用
 // import { test as plugins } from "./plugins";
