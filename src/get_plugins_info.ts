@@ -105,6 +105,14 @@ export async function progressPlugins(plugins: PluginInfo[]) {
             // 使用时间戳进行比较
             return dateB.getTime() - dateA.getTime();
           })[0];
+
+        if (asset == undefined) {
+          console.log(`  ${plugin.name} ${release.currentVersion} 不存在 XPI`);
+          throw new Error(
+            `${plugin.name} ${release.currentVersion} 不存在 XPI`
+          );
+        }
+
         if (!fs.existsSync(`${dist}/xpi/${asset.id}.xpi`)) {
           const xpiFlie = await octokit.rest.repos
             .getReleaseAsset({
