@@ -103,10 +103,8 @@ export async function progressPlugins(plugins: PluginInfo[]) {
             const dateB = new Date(b.updated_at);
             // 使用时间戳进行比较
             return dateB.getTime() - dateA.getTime();
-          })[0] || resp.assets
-          .filter((asset) => {
-            /application\/(x-)?zip(-compressed)?/.test(asset.content_type)
-          })[0] || resp.assets[0];
+          })[0];
+
         if (!asset) {
           console.log(`  ${plugin.name} ${release.currentVersion} 不存在 XPI`);
           // throw new Error(
