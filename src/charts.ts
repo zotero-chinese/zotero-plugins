@@ -196,6 +196,7 @@ function drawTrendingBar(day: number) {
       custom: {
         description: info.description,
         avatar: info.author!.avatar,
+        repo: `${info.owner}/${info.repo}`,
       },
     } as PointOptionsObject;
   });
@@ -519,6 +520,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
                             </span>
                         </div>`,
           },
+          plotOptions: { series: { point: { events: {} } } },
           series: [
             {
               type: "wordcloud",
