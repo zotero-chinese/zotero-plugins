@@ -100,6 +100,9 @@
                                 this.series.forEach(series => series.setVisible(undefined, false));
                                 this.redraw();
                             };
+                    data.components[2].chartOptions.plotOptions.series.point.events.click = function () {
+                        location.href = 'https://github.com/' + this.custom.repo;
+                    };
                     console.debug(Dashboards.board("container", data));
                 }
             );
