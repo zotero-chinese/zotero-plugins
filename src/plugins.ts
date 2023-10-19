@@ -380,6 +380,10 @@ export const plugins: PluginInfo[] = [
     repo: "fkguo/zotero-inspire",
     releases: [
       {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+      {
         targetZoteroVersion: "6",
         tagName: "latest",
       },
