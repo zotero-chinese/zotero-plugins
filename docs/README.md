@@ -26,4 +26,7 @@ Zotero 中文交流群 913637964，617148016，893963769，666489129，145248977
 
 **搜索插件：** <input type="text" id="searchInput" onkeyup="searchPlugins()" placeholder="在此输入一个关键词以搜索 [Type one keyword here to search]">
 
-[plgins info](./dist/plugins.md ':include')
+[plugins info](./dist/plugins.md ':include')
+
+
+部分插件已停止维护，详情请查阅：[停止维护的插件列表](./deprecated.md)。
