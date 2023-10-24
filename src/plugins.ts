@@ -342,16 +342,6 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "Zotero File",
-    repo: "MuiseDestiny/zotero-file",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
     name: "Zotero Format Metadata",
     repo: "northword/zotero-format-metadata",
     releases: [
