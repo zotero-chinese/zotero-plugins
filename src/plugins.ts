@@ -61,6 +61,10 @@ export const plugins: PluginInfo[] = [
         targetZoteroVersion: "7",
         tagName: "latest",
       },
+      {
+        targetZoteroVersion: "6",
+        tagName: "0.6.0-3",
+      },
     ],
   },
   {
@@ -338,16 +342,6 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "Zotero File",
-    repo: "MuiseDestiny/zotero-file",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
     name: "Zotero Format Metadata",
     repo: "northword/zotero-format-metadata",
     releases: [
@@ -379,6 +373,10 @@ export const plugins: PluginInfo[] = [
     name: "Zotero Inspire",
     repo: "fkguo/zotero-inspire",
     releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
       {
         targetZoteroVersion: "6",
         tagName: "latest",
