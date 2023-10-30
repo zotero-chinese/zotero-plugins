@@ -85,8 +85,8 @@
 
       function searchPlugins() {
         let input = document.getElementById("searchInput").value.trim();
-        const pattern = new RegExp(input, "gi");
-        // const pattern = new RegExp(input.replaceAll(" ", "|"), "gi");
+        // const pattern = new RegExp(input, "gi");
+        const pattern = new RegExp(input.replaceAll(" ", "|"), "gi");
 
         let table = document.getElementsByTagName("table")[0];
         let trs = table.querySelectorAll(" tbody > tr");
