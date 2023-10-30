@@ -141,7 +141,7 @@ export async function progressPlugins(plugins: PluginInfo[]) {
           jsdeliver: `https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/dist/xpi/${release.assetId}.xpi`,
           kgithub: asset.browser_download_url.replace(
             "github.com",
-            "kgithub.com"
+            "kkgithub.com"
           ),
         };
       });
