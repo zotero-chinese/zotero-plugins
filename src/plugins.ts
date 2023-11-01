@@ -68,12 +68,54 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Actions and Tags for Zotero",
+    repo: "windingwind/zotero-actions-tags",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Awesome GPT",
+    repo: "MuiseDestiny/zotero-gpt",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Better BibTex for Zotero",
     repo: "retorquere/zotero-better-bibtex",
     releases: [
       {
         targetZoteroVersion: "7",
         tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Better Notes for Zotero",
+    repo: "windingwind/zotero-better-notes",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
       },
       {
         targetZoteroVersion: "6",
@@ -96,7 +138,21 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "Delitemwithatt",
+    name: "Crush Reference",
+    repo: "MuiseDestiny/zotero-reference",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "DelItemWithAtt",
     repo: "redleafnew/delitemwithatt",
     releases: [
       {
@@ -106,6 +162,34 @@ export const plugins: PluginInfo[] = [
       {
         targetZoteroVersion: "6",
         tagName: "0.1.06",
+      },
+    ],
+  },
+  {
+    name: "Eaiser Citation",
+    repo: "MuiseDestiny/eaiser-citation",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "0.3.1",
+      },
+    ],
+  },
+  {
+    name: "Ethereal Style",
+    repo: "MuiseDestiny/ZoteroStyle",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
       },
     ],
   },
@@ -144,6 +228,20 @@ export const plugins: PluginInfo[] = [
       {
         targetZoteroVersion: "6",
         tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Linter for Zotero",
+    repo: "northword/zotero-format-metadata",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "0.4.4",
       },
     ],
   },
@@ -234,6 +332,20 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Preview for Zotero",
+    repo: "windingwind/zotero-pdf-preview",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+    ],
+  },
+  {
     name: "Reading List for Zotero",
     repo: "Dominic-DallOsto/zotero-reading-list",
     releases: [
@@ -284,6 +396,20 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Translate for Zotero",
+    repo: "windingwind/zotero-pdf-translate",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "ZotCard",
     repo: "018/zotcard",
     releases: [
@@ -304,65 +430,9 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "Zotero Better Notes",
-    repo: "windingwind/zotero-better-notes",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
-    name: "Zotero Citation",
-    repo: "MuiseDestiny/eaiser-citation",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "latest",
-      },
-      {
-        targetZoteroVersion: "6",
-        tagName: "0.3.1",
-      },
-    ],
-  },
-  {
     name: "Zotero Citation Counts Manager",
     repo: "eschnett/zotero-citationcounts",
     releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
-    name: "Zotero Format Metadata",
-    repo: "northword/zotero-format-metadata",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "latest",
-      },
-      {
-        targetZoteroVersion: "6",
-        tagName: "0.4.4",
-      },
-    ],
-  },
-  {
-    name: "Zotero GPT",
-    repo: "MuiseDestiny/zotero-gpt",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
       {
         targetZoteroVersion: "6",
         tagName: "latest",
@@ -387,76 +457,6 @@ export const plugins: PluginInfo[] = [
     name: "Zotero OCR",
     repo: "UB-Mannheim/zotero-ocr",
     releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
-    name: "Zotero PDF Preview",
-    repo: "windingwind/zotero-pdf-preview",
-    releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
-    ],
-  },
-  {
-    name: "Zotero PDF Translate",
-    repo: "windingwind/zotero-pdf-translate",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
-    name: "Zotero Reference",
-    repo: "MuiseDestiny/zotero-reference",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
-    name: "Zotero Style",
-    repo: "MuiseDestiny/ZoteroStyle",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
-    name: "Zotero Tag",
-    repo: "windingwind/zotero-actions-tags",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
       {
         targetZoteroVersion: "6",
         tagName: "latest",
