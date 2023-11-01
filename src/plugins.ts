@@ -234,6 +234,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "PMCID fetcher for Zotero",
+    repo: "retorquere/zotero-pmcid-fetcher",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Reading List for Zotero",
     repo: "Dominic-DallOsto/zotero-reading-list",
     releases: [
@@ -450,6 +460,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Zotero Storage Scanner",
+    repo: "retorquere/zotero-storage-scanner",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Zotero Tag",
     repo: "windingwind/zotero-actions-tags",
     releases: [
@@ -469,6 +489,16 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero TL;DR",
+    repo: "syt2/Zotero-TLDR",
+    releases: [
+      {
+        targetZoteroVersion: "7",
         tagName: "latest",
       },
     ],
