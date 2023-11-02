@@ -52,6 +52,8 @@ jobs:
           branch: gh-pages
           folder: docs
           single-commit: true
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
 
   sync-gitee:
     name: Sync to Gitee
