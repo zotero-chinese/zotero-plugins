@@ -208,6 +208,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "PMCID fetcher for Zotero",
+    repo: "retorquere/zotero-pmcid-fetcher",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Jasminum",
     repo: "l0o0/jasminum",
     releases: [
@@ -440,6 +450,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Zotero Storage Scanner",
+    repo: "retorquere/zotero-storage-scanner",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Zotero Inspire",
     repo: "fkguo/zotero-inspire",
     releases: [
@@ -469,6 +489,16 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero TL;DR",
+    repo: "syt2/Zotero-TLDR",
+    releases: [
+      {
+        targetZoteroVersion: "7",
         tagName: "latest",
       },
     ],
