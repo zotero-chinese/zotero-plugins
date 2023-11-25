@@ -92,16 +92,17 @@ git clone https://github.com/northword/zotero-plugins.git zotero-plugins
 cd zotero-plugins
 
 # 安装依赖
-npm install
+npm install -g pnpm
+pnpm install
 
-# 运行构建脚本
-npm run get-info
+# 构建插件信息表格
+pnpm run get-info
 
-# 启动网页服务器
-npm run website
+# 启动网页预览服务器
+pnpm run website
 
-# 插件排行榜图表页面
-npm run get-chart
+# 构建插件排行榜图表页面
+pnpm run get-chart
 ```
 
 ## 致谢
