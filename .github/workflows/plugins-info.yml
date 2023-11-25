@@ -24,18 +24,24 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install
 
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm install
-          npm run get-info
+          pnpm run get-info
 
       - name: Upload Output
         uses: actions/upload-artifact@v3
