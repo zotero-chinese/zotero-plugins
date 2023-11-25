@@ -40,7 +40,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm run get-chart
+          pnpm run get-chart
 
       - name: Upload Output
         uses: actions/upload-artifact@v3
