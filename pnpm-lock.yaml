@@ -8,6 +8,9 @@ devDependencies:
   '@highcharts/dashboards':
     specifier: ^1.1.2
     version: 1.1.2(highcharts@11.2.0)
+  '@types/node':
+    specifier: ^20.10.0
+    version: 20.10.0
   '@vitalets/google-translate-api':
     specifier: ^9.2.0
     version: 9.2.0
