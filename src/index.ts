@@ -20,7 +20,7 @@ async function main(mode: "releases" | "charts" | string) {
   const quotaStart = (await octokit.rest.rateLimit.get()).data.rate;
   console.log(quotaStart);
 
-  if (quotaStart.remaining < 700) {
+  if (quotaStart.remaining < 900) {
     console.log(
       `TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`
     );
