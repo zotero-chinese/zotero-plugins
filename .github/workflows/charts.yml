@@ -29,7 +29,7 @@ jobs:
 
       - name: Build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }}
         run: |
           npm install
           npm run get-chart
