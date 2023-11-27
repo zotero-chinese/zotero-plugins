@@ -1,14 +1,10 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
   schedule:
     - cron: "25 1 * * *"
   push:
     branches: [main]
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
@@ -17,7 +13,6 @@ permissions:
 env:
   TZ: Asia/Shanghai
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   plugins-info:
     name: Plugins Info
@@ -35,7 +30,6 @@ jobs:
       - charts
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 🛎️
         uses: actions/checkout@v4
         with:
