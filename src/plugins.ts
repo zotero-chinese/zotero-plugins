@@ -377,6 +377,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Sci-PDF",
+    repo: "syt2/zotero-scipdf",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "scite Plugin for Zotero",
     repo: "scitedotai/scite-zotero-plugin",
     releases: [
