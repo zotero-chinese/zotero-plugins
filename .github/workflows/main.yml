@@ -22,10 +22,14 @@ jobs:
   plugins-info:
     name: Plugins Info
     uses: ./.github/workflows/plugins-info.yml
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }} # 使用个人账户 PAT 以提高速率限制
 
   charts:
     name: Charts Info
     uses: ./.github/workflows/charts.yml
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }} # 使用个人账户 PAT 以提高速率限制
 
   deploy:
     needs:
@@ -60,4 +64,7 @@ jobs:
     needs:
       - deploy
     uses: ./.github/workflows/sync-to-gitee.yml
-    secrets: inherit
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 使用自动的 PAT 以获得本仓库权限
+      GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+      GITEE_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}

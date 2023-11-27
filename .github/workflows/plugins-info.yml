@@ -5,6 +5,9 @@ name: Get Plugins Info
 # Controls when the workflow will run
 on:
   workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required: true
 
 permissions:
   contents: write

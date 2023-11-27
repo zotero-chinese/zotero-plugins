@@ -2,6 +2,13 @@ name: Sync repo to Gitee
 
 on:
   workflow_call:
+    secrets:
+      GITEE_PRIVATE_KEY:
+        required: true
+      GITEE_TOKEN:
+        required: true
+      GITHUB_TOKEN:
+        required: true
   workflow_dispatch:
 
 env:
