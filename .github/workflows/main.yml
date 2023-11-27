@@ -22,10 +22,12 @@ jobs:
   plugins-info:
     name: Plugins Info
     uses: ./.github/workflows/plugins-info.yml
+    secrets: inherit
 
   charts:
     name: Charts Info
     uses: ./.github/workflows/charts.yml
+    secrets: inherit
 
   deploy:
     needs:
