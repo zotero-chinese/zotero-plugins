@@ -5,9 +5,6 @@ name: Get Charts Info
 # Controls when the workflow will run
 on:
   workflow_call:
-    secrets:
-      GITHUB_TOKEN:
-        required: true
 
 env:
   TZ: Asia/Shanghai
@@ -32,7 +29,7 @@ jobs:
 
       - name: Build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }}
         run: |
           npm install
           npm run get-chart
