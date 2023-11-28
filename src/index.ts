@@ -1,12 +1,14 @@
 import { Octokit } from "octokit";
-import { plugins } from "./plugins";
+// import { plugins } from "./plugins";
+import { plugins as pluginsProd } from "./plugins";
+import { test as pluginsDev } from "./plugins";
 import { writeFile } from "./utils";
 import getChartOptions from "./charts";
 import { progressPlugins } from "./get_plugins_info";
 import { renderMarkdown } from "./renderMarkdown";
 
-// 仅供测试使用
-// import { test as plugins } from "./plugins";
+const plugins =
+  process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
@@ -36,6 +38,7 @@ async function main(mode: "releases" | "charts" | string) {
           `${dist}/plugins.json`,
           JSON.stringify(pluginsInfoDist, null, 2)
         );
+        writeFile(`${dist}/plugins.min.json`, JSON.stringify(pluginsInfoDist));
 
         console.log("处理 Markdown");
         const markdownContent = await renderMarkdown(pluginsInfoDist);

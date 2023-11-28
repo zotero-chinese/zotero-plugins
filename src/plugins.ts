@@ -42,8 +42,10 @@ export interface PluginInfo {
     assetId?: number;
   }>;
 
+  id?: string;
   description?: string;
   star?: number;
+  watchers?: number;
   author?: {
     name: string;
     url: string;

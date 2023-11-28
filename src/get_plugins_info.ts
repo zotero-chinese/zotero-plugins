@@ -1,6 +1,8 @@
 import fs from "fs";
 import { franc } from "franc-min";
-import translate from "google-translate-api-x";
+// import translate from "google-translate-api-x";
+import AdmZip from "adm-zip";
+import { parseString } from "xml2js";
 import { PluginInfo } from "./plugins";
 import { writeFile } from "./utils";
 import { octokit } from ".";
@@ -38,11 +40,11 @@ export async function progressPlugins(plugins: PluginInfo[]) {
             //     desc = resp.data.description;
             //   });
           }
-        } else {
-          desc = "无简介";
         }
+
         plugin.description = desc;
         plugin.star = resp.data.stargazers_count;
+        plugin.watchers = resp.data.watchers_count;
       });
 
     // 作者信息
@@ -107,9 +109,9 @@ export async function progressPlugins(plugins: PluginInfo[]) {
 
         if (!asset) {
           console.log(`  ${plugin.name} ${release.currentVersion} 不存在 XPI`);
-          // throw new Error(
-          //   `${plugin.name} ${release.currentVersion} 不存在 XPI`
-          // );
+          throw new Error(
+            `${plugin.name} ${release.currentVersion} 不存在 XPI`
+          );
           return;
         }
 
@@ -146,7 +148,40 @@ export async function progressPlugins(plugins: PluginInfo[]) {
         };
       });
 
-      // return release;
+      if (plugin.releases.length > 1 && release.targetZoteroVersion == "6")
+        continue;
+
+      // 拆 XPI 包
+      const zip = new AdmZip(`${dist}/xpi/${release.assetId}.xpi`);
+      const zipEntries = zip.getEntries();
+      const zipEntryNames = zipEntries.map((zipEntrie) => zipEntrie.entryName);
+
+      if (zipEntryNames.includes("manifest.json")) {
+        const fileData = zip
+          .getEntry("manifest.json")!
+          .getData()
+          .toString("utf8");
+        const manifestData = JSON.parse(fileData);
+        plugin.id = manifestData.applications.zotero.id;
+        plugin.description =
+          plugin.description || manifestData.description || "";
+      } else if (zipEntryNames.includes("install.rdf")) {
+        const fileData = zip
+          .getEntry("install.rdf")!
+          .getData()
+          .toString("utf8");
+        parseString(fileData, (err, result) => {
+          const manifestData = result; //JSON.parse(result);
+          plugin.id =
+            manifestData["RDF:RDF"]["RDF:Description"][0]["$"]["em:id"];
+          plugin.description =
+            plugin.description ||
+            manifestData["RDF:RDF"]["RDF:Description"][0]["$"][
+              "em:description"
+            ] ||
+            "";
+        });
+      }
     }
   }
   return plugins;
