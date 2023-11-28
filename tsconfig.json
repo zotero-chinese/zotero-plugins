@@ -5,6 +5,7 @@
     "target": "ESNext",
     "moduleResolution": "Node",
     "outDir": "dist",
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": false,
@@ -14,6 +15,9 @@
     "resolveJsonModule": true,
     "inlineSourceMap": true
   },
+  "include": ["src"],
+  // "include": ["src", "typings", "../zotero-types"],
+  "exclude": ["build", "dist", "**/temp**", "node_modules"],
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"

@@ -4,9 +4,10 @@
   "description": "Zotero 插件合集",
   "main": "index.js",
   "scripts": {
-    "get-info": "cd src && ts-node index.ts releases && cd ..",
-    "get-chart": "cd src && ts-node index.ts charts && cd ..",
-    "debug": "cross-env NODE_ENV=development npm run get-chart",
+    "get-info": "cd src && tsx index.ts releases && cd ..",
+    "get-chart": "cd src && tsx index.ts charts && cd ..",
+    "debug:info": "cross-env NODE_ENV=development npm run get-info",
+    "debug:chart": "cross-env NODE_ENV=development npm run get-chart",
     "website": "docsify serve docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,8 +24,11 @@
   "type": "module",
   "devDependencies": {
     "@highcharts/dashboards": "^1.1.2",
+    "@types/adm-zip": "^0.5.5",
     "@types/node": "^20.10.0",
+    "@types/xml2js": "^0.4.14",
     "@vitalets/google-translate-api": "^9.2.0",
+    "adm-zip": "^0.5.10",
     "cross-env": "^7.0.3",
     "docsify-cli": "^4.4.4",
     "franc-min": "^6.1.0",
@@ -32,7 +36,10 @@
     "highcharts": "^11.2.0",
     "markdown-table-ts": "^1.0.3",
     "octokit": "^3.1.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.2",
+    "xml2js": "^0.6.2"
+  },
+  "dependencies": {
+    "tsx": "^4.6.0"
   }
 }
