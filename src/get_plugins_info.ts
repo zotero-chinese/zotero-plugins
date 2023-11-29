@@ -12,7 +12,12 @@ export async function fetchPlugins(plugins: PluginInfo[]) {
   for (let plugin of plugins) {
     console.log(`开始处理 ${plugin.name}`);
     await fetchPlugin(plugin);
-    writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
+    process.env.CI
+      ? writeFile(
+          `${dist}/plugins-debug.json`,
+          JSON.stringify(plugins, null, 2)
+        )
+      : "";
   }
   return plugins;
 }
