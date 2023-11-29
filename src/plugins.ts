@@ -505,6 +505,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Zotero PDF Metadata",
+    repo: "franzbischoff/zotero-pdf-metadata",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Zotero ShortDOI",
     repo: "bwiernik/zotero-shortdoi",
     releases: [
