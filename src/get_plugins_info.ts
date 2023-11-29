@@ -2,7 +2,7 @@ import fs from "fs";
 import { franc } from "franc-min";
 // import translate from "google-translate-api-x";
 import AdmZip from "adm-zip";
-import { parseString } from "xml2js";
+import * as xml2js from "xml2js";
 import { PluginInfo } from "./plugins";
 import { writeFile } from "./utils";
 import { octokit } from ".";
@@ -155,7 +155,6 @@ export async function progressPlugins(plugins: PluginInfo[]) {
       const zip = new AdmZip(`${dist}/xpi/${release.assetId}.xpi`);
       const zipEntries = zip.getEntries();
       const zipEntryNames = zipEntries.map((zipEntrie) => zipEntrie.entryName);
-
       if (zipEntryNames.includes("manifest.json")) {
         const fileData = zip
           .getEntry("manifest.json")!
@@ -170,17 +169,15 @@ export async function progressPlugins(plugins: PluginInfo[]) {
           .getEntry("install.rdf")!
           .getData()
           .toString("utf8");
-        parseString(fileData, (err, result) => {
-          const manifestData = result; //JSON.parse(result);
-          plugin.id =
-            manifestData["RDF:RDF"]["RDF:Description"][0]["$"]["em:id"];
-          plugin.description =
-            plugin.description ||
-            manifestData["RDF:RDF"]["RDF:Description"][0]["$"][
-              "em:description"
-            ] ||
-            "";
-        });
+        const id = (fileData.match(/em:id="(.*?)"/) ??
+          fileData.match(/<em:id>(.*?)<\/em:id>/) ?? ["", "NOT FOUND"])[1];
+        const desc = (fileData.match(/em:description="(.*?)"/) ??
+          fileData.match(/<em:description>(.*?)<\/em:description>/) ?? [
+            "",
+            "NOT FOUND",
+          ])[1];
+        plugin.id = plugin.id ?? id;
+        plugin.description = plugin.description ?? desc;
       }
     }
   }

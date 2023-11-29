@@ -17,7 +17,7 @@
   },
   "include": ["src"],
   // "include": ["src", "typings", "../zotero-types"],
-  "exclude": ["build", "dist", "**/temp**", "node_modules"],
+  "exclude": ["build", "dist", "node_modules"],
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"
