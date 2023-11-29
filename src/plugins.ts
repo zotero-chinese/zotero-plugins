@@ -29,10 +29,7 @@ export interface PluginInfo {
      */
     tagName: "latest" | "pre" | string;
 
-    /**
-     * 插件 ID，自 XPI 中提取
-     */
-    id?: string;
+    // id?: string;
 
     currentVersion?: string;
     xpiDownloadUrl?: {
@@ -46,7 +43,10 @@ export interface PluginInfo {
     downloadCount?: number;
     assetId?: number;
   }>;
-
+  /**
+   * 插件 ID，自 XPI 中提取
+   */
+  id?: string;
   description?: string;
   star?: number;
   watchers?: number;

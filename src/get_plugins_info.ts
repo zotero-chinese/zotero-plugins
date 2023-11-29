@@ -12,12 +12,7 @@ export async function fetchPlugins(plugins: PluginInfo[]) {
   for (let plugin of plugins) {
     console.log(`开始处理 ${plugin.name}`);
     await fetchPlugin(plugin);
-    process.env.NODE_ENV == "development"
-      ? writeFile(
-          `${dist}/plugins-debug.json`,
-          JSON.stringify(plugins, null, 2)
-        )
-      : "";
+    writeFile(`${dist}/plugins.json`, JSON.stringify(plugins, null, 2));
   }
   return plugins;
 }
@@ -174,7 +169,8 @@ async function fetchPlugin(plugin: PluginInfo) {
         .getData()
         .toString("utf8");
       const manifestData = JSON.parse(fileData);
-      release.id = manifestData.applications.zotero.id;
+      // plugin.id = release.id = manifestData.applications.zotero.id;
+      plugin.id = manifestData.applications.zotero.id;
       plugin.description = plugin.description || manifestData.description || "";
       // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
     } else if (zipEntryNames.includes("install.rdf")) {
@@ -194,7 +190,7 @@ async function fetchPlugin(plugin: PluginInfo) {
         (err, result) => {
           const manifestData = result; //JSON.parse(result);
           // console.log(util.inspect(result, false, null));
-          release.id = manifestData["RDF"]["Description"]
+          plugin.id = manifestData["RDF"]["Description"]
             .map((Description: any) => {
               // console.log(Description);
               if (Description["about"] == "urn:mozilla:install-manifest") {
@@ -204,7 +200,7 @@ async function fetchPlugin(plugin: PluginInfo) {
             .filter((id: string | undefined) => id !== undefined)[0];
         }
       );
-
+      // plugin.id = plugin.id ?? release.id;
       // 从 install.rdf 中获取 description
       plugin.description =
         plugin.description ??
@@ -215,5 +211,4 @@ async function fetchPlugin(plugin: PluginInfo) {
           ])[1];
     }
   }
-  return plugin;
 }

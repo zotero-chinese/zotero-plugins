@@ -34,7 +34,7 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
     case "fetchPlugins":
       {
         let pluginsInfoDist = await fetchPlugins(plugins);
-        writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist));
+        writeFile(`${dist}/plugins.min.json`, JSON.stringify(pluginsInfoDist));
 
         console.log("处理 Markdown");
         const markdownContent = await renderMarkdown(pluginsInfoDist);
