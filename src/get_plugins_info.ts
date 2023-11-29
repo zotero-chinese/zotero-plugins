@@ -56,7 +56,7 @@ async function fetchPlugin(plugin: PluginInfo) {
 
       plugin.description = desc;
       plugin.star = resp.data.stargazers_count;
-      plugin.watchers = resp.data.watchers_count;
+      plugin.watchers = resp.data.subscribers_count;
     });
 
   // 作者信息
