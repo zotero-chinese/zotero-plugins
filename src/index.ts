@@ -1,22 +1,24 @@
 import { Octokit } from "octokit";
-import { plugins } from "./plugins";
+// import { plugins } from "./plugins";
+import { plugins as pluginsProd } from "./plugins";
+import { test as pluginsDev } from "./plugins";
 import { writeFile } from "./utils";
 import getChartOptions from "./charts";
-import { progressPlugins } from "./get_plugins_info";
+import { fetchPlugins } from "./get_plugins_info";
 import { renderMarkdown } from "./renderMarkdown";
 
-// 仅供测试使用
-// import { test as plugins } from "./plugins";
+const plugins =
+  process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 export const dist = "../docs/dist";
 
 export function args() {
-  return <"releases" | "charts">process.argv.slice(2)[0];
+  return <"fetchPlugins" | "charts">process.argv.slice(2)[0];
 }
 
-async function main(mode: "releases" | "charts" | string) {
+async function main(mode: "fetchPlugins" | "charts" | string) {
   const quotaStart = (await octokit.rest.rateLimit.get()).data.rate;
   console.log(quotaStart);
 
@@ -29,13 +31,10 @@ async function main(mode: "releases" | "charts" | string) {
 
   console.log("开始处理");
   switch (mode) {
-    case "releases":
+    case "fetchPlugins":
       {
-        let pluginsInfoDist = await progressPlugins(plugins);
-        writeFile(
-          `${dist}/plugins.json`,
-          JSON.stringify(pluginsInfoDist, null, 2)
-        );
+        let pluginsInfoDist = await fetchPlugins(plugins);
+        writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist));
 
         console.log("处理 Markdown");
         const markdownContent = await renderMarkdown(pluginsInfoDist);

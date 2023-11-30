@@ -8,6 +8,7 @@ package-lock.json
 dist
 
 # tmp
+**/*temp**.ts
 **/*.bak
 **/*.new
 **/examples.ts
