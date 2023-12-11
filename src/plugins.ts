@@ -280,6 +280,10 @@ export const plugins: PluginInfo[] = [
         targetZoteroVersion: "6",
         tagName: "latest",
       },
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
     ],
   },
   {
