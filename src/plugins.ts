@@ -497,16 +497,6 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "Zotero Storage Scanner",
-    repo: "retorquere/zotero-storage-scanner",
-    releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
     name: "Zotero Inspire",
     repo: "fkguo/zotero-inspire",
     releases: [
