@@ -82,7 +82,7 @@ export const plugins: PluginInfo[] = [
       },
       {
         targetZoteroVersion: "6",
-        tagName: "0.6.0-3",
+        tagName: "0.6.0-6",
       },
     ],
   },
