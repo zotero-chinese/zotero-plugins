@@ -28,8 +28,10 @@ export interface PluginInfo {
      * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
      */
     tagName: "latest" | "pre" | string;
-
-    // id?: string;
+    /**
+     * 插件 ID，自 XPI 中提取
+     */
+    id?: string;
 
     currentVersion?: string;
     xpiDownloadUrl?: {
@@ -43,9 +45,7 @@ export interface PluginInfo {
     downloadCount?: number;
     assetId?: number;
   }>;
-  /**
-   * 插件 ID，自 XPI 中提取
-   */
+
   id?: string;
   description?: string;
   star?: number;
