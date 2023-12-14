@@ -107,7 +107,7 @@ async function fetchPlugin(plugin: PluginInfo) {
     }
 
     await getRelease().then(async (resp) => {
-      release.currentVersion = resp.tag_name;
+      release.currentVersion = release.tagName = resp.tag_name;
 
       const asset = resp.assets
         .filter((asset) => {
@@ -176,6 +176,7 @@ async function fetchPlugin(plugin: PluginInfo) {
       const manifestData = JSON.parse(fileData);
       plugin.id = release.id = manifestData.applications.zotero.id;
       // release.id = manifestData.applications.zotero.id;
+      release.xpiVersion = manifestData.version || "";
       plugin.description = plugin.description || manifestData.description || "";
       // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
     } else if (zipEntryNames.includes("install.rdf")) {
@@ -214,6 +215,12 @@ async function fetchPlugin(plugin: PluginInfo) {
             "",
             "NO desc",
           ])[1];
+      
+      release.xpiVersion = (fileData.match(/em:version="(.*?)"/) ?? 
+        fileData.match(/<em:version>(.*?)<\/em:version>/) ?? [
+          "", 
+          "",
+        ])[1];
     }
   }
 }

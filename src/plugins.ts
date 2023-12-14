@@ -26,6 +26,7 @@ export interface PluginInfo {
      * `pre`：最新预发布；
      * `string`：发布对应的 `git.tag_name`；
      * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
+     * 程序执行后，`tagName` 将替换为实际的 `git.tag_name`
      */
     tagName: "latest" | "pre" | string;
     /**
@@ -33,6 +34,14 @@ export interface PluginInfo {
      */
     id?: string;
 
+    /**
+     * 插件版本，自 XPI 中提取
+     */
+    xpiVersion?: string;
+
+    /**
+     * @deprecated This property is deprecated and will be removed in the future. Use the tagName instead.
+     */
     currentVersion?: string;
     xpiDownloadUrl?: {
       github: string;
@@ -46,6 +55,9 @@ export interface PluginInfo {
     assetId?: number;
   }>;
 
+  /**
+   * @deprecated This property is deprecated and will be removed in the future. Use the id in releases instead.
+   */
   id?: string;
   description?: string;
   star?: number;
