@@ -174,8 +174,8 @@ async function fetchPlugin(plugin: PluginInfo) {
         .getData()
         .toString("utf8");
       const manifestData = JSON.parse(fileData);
-      // plugin.id = release.id = manifestData.applications.zotero.id;
-      release.id = manifestData.applications.zotero.id;
+      plugin.id = release.id = manifestData.applications.zotero.id;
+      // release.id = manifestData.applications.zotero.id;
       plugin.description = plugin.description || manifestData.description || "";
       // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
     } else if (zipEntryNames.includes("install.rdf")) {
@@ -195,7 +195,7 @@ async function fetchPlugin(plugin: PluginInfo) {
         (err, result) => {
           const manifestData = result; //JSON.parse(result);
           // console.log(util.inspect(result, false, null));
-          release.id = manifestData["RDF"]["Description"]
+          plugin.id = release.id = manifestData["RDF"]["Description"]
             .map((Description: any) => {
               // console.log(Description);
               if (Description["about"] == "urn:mozilla:install-manifest") {
