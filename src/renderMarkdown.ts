@@ -8,12 +8,12 @@ export async function renderMarkdown(plugins: PluginInfo[]) {
     name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
     plugin.releases.forEach((release, index) => {
       if (release.assetId == undefined) {
-        console.log(`  ${plugin.name} ${release.currentVersion} 不存在`);
+        console.log(`  ${plugin.name} ${release.tagName} 不存在`);
         return;
       }
 
       // let releaseInfo = `[![适配 Zotero ${release.targetZoteroVersion}](https://img.shields.io/badge/Zotero-${release.targetZoteroVersion}-green?&logo=zotero&logoColor=CC2936)](https://www.zotero.org) </br>`;
-      // releaseInfo += `![版本 ${release.currentVersion}](https://img.shields.io/badge/版本-${release.targetZoteroVersion}-green) </br>`;
+      // releaseInfo += `![版本 ${release.tagName}](https://img.shields.io/badge/版本-${release.targetZoteroVersion}-green) </br>`;
       // releaseInfo += `![发布日期 ${new Date(release.releaseData ?? "").toLocaleString("zh-CN")}](https://img.shields.io/badge/日期-${encodeURI(new Date(release.releaseData ?? "").toLocaleString("zh-CN"))}-green) </br>`;
       // releaseInfo += `![下载量 ${release.downloadCount}](https://img.shields.io/badge/下载量-${release.downloadCount}-green)`;
       let downloadUrl = `<ul>`;
@@ -29,9 +29,9 @@ export async function renderMarkdown(plugins: PluginInfo[]) {
         !index ? plugin.description : "",
         !index ? `[${plugin.author?.name}](${plugin.author?.url})` : "",
         release.targetZoteroVersion,
-        release.currentVersion,
+        release.tagName,
         new Date(release.releaseData ?? "").toLocaleString("zh-CN") +
-          `</br>![下载量 ${release.downloadCount}](https://img.shields.io/github/downloads/${plugin.repo}/${release.currentVersion}/total?label=下载量)`,
+          `</br>![下载量 ${release.downloadCount}](https://img.shields.io/github/downloads/${plugin.repo}/${release.tagName}/total?label=下载量)`,
         // releaseInfo,
         downloadUrl,
       ];
