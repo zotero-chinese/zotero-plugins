@@ -121,8 +121,8 @@ async function fetchPlugin(plugin: PluginInfo) {
         })[0];
 
       if (!asset) {
-        console.log(`  ${plugin.name} ${release.currentVersion} 不存在 XPI`);
-        throw new Error(`${plugin.name} ${release.currentVersion} 不存在 XPI`);
+        console.log(`  ${plugin.name} ${release.tagName} 不存在 XPI`);
+        throw new Error(`${plugin.name} ${release.tagName} 不存在 XPI`);
         return;
       }
 
@@ -145,7 +145,7 @@ async function fetchPlugin(plugin: PluginInfo) {
       }
 
       release.assetId = asset.id;
-      release.releaseData = asset.updated_at;
+      release.releaseDate = release.releaseData = asset.updated_at;
       release.downloadCount = asset.download_count;
       release.xpiDownloadUrl = {
         github: asset.browser_download_url,
@@ -215,12 +215,9 @@ async function fetchPlugin(plugin: PluginInfo) {
             "",
             "NO desc",
           ])[1];
-      
-      release.xpiVersion = (fileData.match(/em:version="(.*?)"/) ?? 
-        fileData.match(/<em:version>(.*?)<\/em:version>/) ?? [
-          "", 
-          "",
-        ])[1];
+
+      release.xpiVersion = (fileData.match(/em:version="(.*?)"/) ??
+        fileData.match(/<em:version>(.*?)<\/em:version>/) ?? ["", ""])[1];
     }
   }
 }

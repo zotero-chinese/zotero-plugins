@@ -50,6 +50,10 @@ export interface PluginInfo {
       jsdeliver: string;
       kgithub: string;
     };
+    releaseDate?: string;
+    /**
+     * @deprecated This property is deprecated and will be removed in the future. Use the `releaseDate` instead.
+     */
     releaseData?: string;
     downloadCount?: number;
     assetId?: number;
