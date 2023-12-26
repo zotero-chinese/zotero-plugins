@@ -1,10 +1,14 @@
 import { Align, getMarkdownTable } from "markdown-table-ts";
 import { PluginInfo } from "./plugins";
 
+function safeStringInMarkdownTable(string?: string) {
+  return string?.replace("|", "&vert;");
+}
+
 export async function renderMarkdown(plugins: PluginInfo[]) {
   let body = Array();
   plugins.forEach((plugin) => {
-    let name = `[${plugin.name}](https://github.com/${plugin.repo}) </br>`;
+    let name = `[${safeStringInMarkdownTable(plugin.name)}](https://github.com/${plugin.repo}) </br>`;
     name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
     plugin.releases.forEach((release, index) => {
       if (release.assetId == undefined) {
@@ -26,11 +30,11 @@ export async function renderMarkdown(plugins: PluginInfo[]) {
 
       const row = [
         !index ? name : "",
-        !index ? plugin.description : "",
-        !index ? `[${plugin.author?.name}](${plugin.author?.url})` : "",
+        !index ? safeStringInMarkdownTable(plugin.description) : "",
+        !index ? `[${safeStringInMarkdownTable(plugin.author?.name)}](${plugin.author?.url})` : "",
         release.targetZoteroVersion,
         release.xpiVersion,
-        new Date(release.releaseData ?? "").toLocaleString("zh-CN") +
+        new Date(release.releaseDate ?? "").toLocaleString("zh-CN") +
           `</br>![下载量 ${release.downloadCount}](https://img.shields.io/github/downloads/${plugin.repo}/${release.tagName}/total?label=下载量)`,
         // releaseInfo,
         downloadUrl,
