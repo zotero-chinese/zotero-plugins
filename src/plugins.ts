@@ -594,6 +594,16 @@ export const plugins: PluginInfo[] = [
       },
     ],
   },
+  {
+    name: "Attanger for Zotero",
+    repo: "MuiseDestiny/zotero-attanger",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
 ];
 
 // 以下列表仅供开发测试使用
