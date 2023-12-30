@@ -105,6 +105,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Attanger for Zotero",
+    repo: "MuiseDestiny/zotero-attanger",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Awesome GPT",
     repo: "MuiseDestiny/zotero-gpt",
     releases: [
