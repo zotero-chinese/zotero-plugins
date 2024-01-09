@@ -107,7 +107,7 @@ async function fetchPlugin(plugin: PluginInfo) {
     }
 
     await getRelease().then(async (resp) => {
-      release.currentVersion = release.tagName = resp.tag_name;
+      release.tagName = resp.tag_name;
 
       const asset = resp.assets
         .filter((asset) => {
@@ -145,7 +145,7 @@ async function fetchPlugin(plugin: PluginInfo) {
       }
 
       release.assetId = asset.id;
-      release.releaseDate = release.releaseData = asset.updated_at;
+      release.releaseDate = asset.updated_at;
       release.downloadCount = asset.download_count;
       release.xpiDownloadUrl = {
         github: asset.browser_download_url,
@@ -174,7 +174,7 @@ async function fetchPlugin(plugin: PluginInfo) {
         .getData()
         .toString("utf8");
       const manifestData = JSON.parse(fileData);
-      plugin.id = release.id = manifestData.applications.zotero.id;
+      release.id = manifestData.applications.zotero.id;
       // release.id = manifestData.applications.zotero.id;
       release.xpiVersion = manifestData.version || "";
       plugin.description = plugin.description || manifestData.description || "";
@@ -196,7 +196,7 @@ async function fetchPlugin(plugin: PluginInfo) {
         (err, result) => {
           const manifestData = result; //JSON.parse(result);
           // console.log(util.inspect(result, false, null));
-          plugin.id = release.id = manifestData["RDF"]["Description"]
+          release.id = manifestData["RDF"]["Description"]
             .map((Description: any) => {
               // console.log(Description);
               if (Description["about"] == "urn:mozilla:install-manifest") {
@@ -206,7 +206,6 @@ async function fetchPlugin(plugin: PluginInfo) {
             .filter((id: string | undefined) => id !== undefined)[0];
         }
       );
-      // plugin.id = plugin.id ?? release.id;
       // 从 install.rdf 中获取 description
       plugin.description =
         plugin.description ??
