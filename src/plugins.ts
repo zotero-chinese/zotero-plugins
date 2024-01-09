@@ -489,8 +489,12 @@ export const plugins: PluginInfo[] = [
     repo: "018/zotcard",
     releases: [
       {
-        targetZoteroVersion: "6",
+        targetZoteroVersion: "7",
         tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "v2.8",
       },
     ],
   },
