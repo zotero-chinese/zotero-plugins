@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zotero 插件商店 - Zotero 中文社区</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="description"
+      content="本站点是由 Zotero 中文社区整理的 Zotero 插件下载汇总导航网站。网站后台定期收集 GitHub 上最新的 Zotero 插件信息并汇总，方便国内用户检索和下载。"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <!-- <link rel="stylesheet" href="//unpkg.com/docsify@4/lib/themes/vue.css" /> -->
+    <link rel="stylesheet" href="./assets/vue.css" />
+    <style type="text/css">
+      table > thead > tr > th:nth-child(7) {
+        min-width: 140px;
+      }
+      #searchInput {
+        min-width: 400px;
+        height: 30px;
+        margin-bottom: 10px;
+      }
+      .highlight {
+        background-color: yellow;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="https://zotero-chinese.com">Zotero 中文小组首页</a>
+      <a href="https://zotero-chinese.com/user-guide/">Zotero 百科全书</a>
+      <a href="#/">Zotero 插件商店</a>
+      <a href="charts.html">插件排行榜</a>
+      <a href="https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/"
+        >中文 CSL 样式</a
+      >
+    </nav>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        hideSidebar: true,
+        name: "Zotero 中文",
+        repo: "https://github.com/northword/zotero-plugins",
+      };
+      // Plugin
+      function concatRow(hook, vm) {
+        hook.doneEach(function () {
+          let rows = document.querySelectorAll("table > tbody > tr");
+          let visibleRowCount = 0; // 用于追踪可见的行数
+
+          for (let i = 0; i < rows.length; i++) {
+            let currentRow = rows[i];
+            let cells = currentRow.querySelectorAll("td");
+
+            if (!cells[0].innerText) {
+              currentRow.style.backgroundColor =
+                rows[i - 1].style.backgroundColor;
+              for (let j = 0; j < cells.length; j++) {
+                if (!cells[j].innerText) {
+                  cells[j].setAttribute("hidden", "hidden");
+                  cells[j].style.backgroundColor =
+                    rows[i - 1].style.backgroundColor;
+                  rows[i - 1]
+                    .querySelectorAll("td")
+                    [j].setAttribute("rowspan", "2");
+                }
+              }
+              currentRow.className = "r" + (visibleRowCount - 1);
+            } else {
+              currentRow.className = "r" + visibleRowCount;
+              currentRow.style.backgroundColor =
+                visibleRowCount % 2 === 0 ? "white" : "#f8f8f8";
+              visibleRowCount++;
+            }
+          }
+        });
+      }
+
+      // Add to plugin array
+      $docsify.plugins = [].concat(concatRow, $docsify.plugins);
+
+      function searchPlugins() {
+        let input = document.getElementById("searchInput").value.trim();
+        // const pattern = new RegExp(input, "gi");
+        const pattern = new RegExp(input.replaceAll(" ", "|"), "gi");
+
+        let table = document.getElementsByTagName("table")[0];
+        let trs = table.querySelectorAll(" tbody > tr");
+
+        trs.forEach((tr, index) => {
+          let [name, desc, author] = Array.from(
+            tr.getElementsByTagName("td")
+          ).slice(0, 3);
+          let txtValue = [name, desc, author]
+            .map((node) => node.textContent)
+            .join(" ");
+
+          // 这个插件的所有行：适配7和6的有两行
+          let allRows4ThisPlugin = [
+            ...document.getElementsByClassName(tr.className),
+          ];
+
+          if (name.textContent) {
+            // 匹配到关键词：显示、高亮
+            if (input === "" || txtValue.match(pattern)) {
+              allRows4ThisPlugin.forEach((row) => (row.style.display = ""));
+
+              // 只针对前三列处理高亮
+              [name, desc, author].forEach((td) => {
+                // 存储一份原始 Node，方便每一次加高亮都是在原始的文本上加，排除 <span class="highlight"> 的影响
+                if (!td.originNode) {
+                  td.originNode = td.cloneNode(true);
+                }
+                td.originNode.originNode = td.originNode.cloneNode(true);
+
+                // 递归高亮
+                let newNode = highlightText(td.originNode);
+                td.parentNode.replaceChild(newNode, td);
+              });
+            } else {
+              // 未匹配到关键词：隐藏
+              allRows4ThisPlugin.forEach((row) => (row.style.display = "none"));
+            }
+          }
+        });
+
+        function highlightText(node) {
+          for (let childNode of node.childNodes) {
+            // 如果是文本节点，则执行替换
+            if (childNode.nodeType === Node.TEXT_NODE) {
+              const cellText = childNode.textContent;
+              const highlightedText = cellText.replace(
+                pattern,
+                (match) => `<span class="highlight">${match}</span>`
+              );
+              const span = document.createElement("span");
+              span.innerHTML = highlightedText;
+              childNode.replaceWith(span);
+            } else if (childNode.childNodes.length !== 0) {
+              highlightText(childNode);
+            }
+          }
+          return node;
+        }
+      }
+    </script>
+    <!-- Docsify v4 -->
+    <!-- <script src="//unpkg.com/docsify@4"></script> -->
+    <script src="./assets/docsify.min.js"></script>
+  </body>
+</html>
