@@ -33,16 +33,10 @@ export interface PluginInfo {
      * 插件 ID，自 XPI 中提取
      */
     id?: string;
-
     /**
      * 插件版本，自 XPI 中提取
      */
     xpiVersion?: string;
-
-    /**
-     * @deprecated This property is deprecated and will be removed in the future. Use the tagName instead.
-     */
-    currentVersion?: string;
     xpiDownloadUrl?: {
       github: string;
       gitee: string;
@@ -51,18 +45,10 @@ export interface PluginInfo {
       kgithub: string;
     };
     releaseDate?: string;
-    /**
-     * @deprecated This property is deprecated and will be removed in the future. Use the `releaseDate` instead.
-     */
-    releaseData?: string;
     downloadCount?: number;
     assetId?: number;
   }>;
 
-  /**
-   * @deprecated This property is deprecated and will be removed in the future. Use the id in releases instead.
-   */
-  id?: string;
   description?: string;
   star?: number;
   watchers?: number;
