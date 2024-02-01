@@ -505,6 +505,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Zotero Citation Counts Manager Enhaned",
+    repo: "FrLars21/ZoteroCitationCountsManager",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "pre",
+      },
+    ],
+  },
+  {
     name: "Zotero Inspire",
     repo: "fkguo/zotero-inspire",
     releases: [
