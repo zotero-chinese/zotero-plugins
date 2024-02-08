@@ -457,6 +457,20 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Ze-Notes",
+    repo: "frianasoa/Ze-Notes",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ]
+  },
+  {
     name: "Zoplicate",
     repo: "ChenglongMa/zoplicate",
     releases: [
@@ -597,6 +611,16 @@ export const plugins: PluginInfo[] = [
         tagName: "latest",
       },
     ],
+  },
+  {
+    name: "ZoToDo",
+    repo: "wbthomason/zotodo",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest"
+      }
+    ]
   },
   {
     name: "Zutilo Utility for Zotero",
