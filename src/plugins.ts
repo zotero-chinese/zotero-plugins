@@ -529,6 +529,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Zotero Excalidraw",
+    repo: "018/zotero-excalidraw",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Zotero Inspire",
     repo: "fkguo/zotero-inspire",
     releases: [
