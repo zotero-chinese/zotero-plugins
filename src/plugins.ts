@@ -613,16 +613,6 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "ZotFile 汉化版",
-    repo: "lychichem/zotfile",
-    releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
     name: "ZoToDo",
     repo: "wbthomason/zotodo",
     releases: [
