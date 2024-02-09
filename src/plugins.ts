@@ -439,7 +439,7 @@ export const plugins: PluginInfo[] = [
       {
         targetZoteroVersion: "7",
         tagName: "pre",
-      }
+      },
     ],
   },
   {
@@ -468,7 +468,7 @@ export const plugins: PluginInfo[] = [
         targetZoteroVersion: "6",
         tagName: "latest",
       },
-    ]
+    ],
   },
   {
     name: "Zoplicate",
@@ -603,24 +603,14 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "ZotFile 汉化版",
-    repo: "lychichem/zotfile",
+    name: "ZoToDo",
+    repo: "wbthomason/zotodo",
     releases: [
       {
         targetZoteroVersion: "6",
         tagName: "latest",
       },
     ],
-  },
-  {
-    name: "ZoToDo",
-    repo: "wbthomason/zotodo",
-    releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
   },
   {
     name: "Zutilo Utility for Zotero",
