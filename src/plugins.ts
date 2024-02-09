@@ -439,7 +439,7 @@ export const plugins: PluginInfo[] = [
       {
         targetZoteroVersion: "7",
         tagName: "pre",
-      }
+      },
     ],
   },
   {
@@ -468,7 +468,7 @@ export const plugins: PluginInfo[] = [
         targetZoteroVersion: "6",
         tagName: "latest",
       },
-    ]
+    ],
   },
   {
     name: "Zoplicate",
@@ -525,6 +525,16 @@ export const plugins: PluginInfo[] = [
       {
         targetZoteroVersion: "7",
         tagName: "pre",
+      },
+    ],
+  },
+  {
+    name: "Zotero Excalidraw",
+    repo: "018/zotero-excalidraw",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
       },
     ],
   },
@@ -618,9 +628,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zutilo Utility for Zotero",
