@@ -7,18 +7,26 @@ import { PluginInfo } from "./plugins";
 import { writeFile } from "./utils";
 import { client } from ".";
 import { dist } from ".";
+import pLimit from "p-limit";
+
+const limit = pLimit(2);
 
 export async function fetchPlugins(plugins: PluginInfo[]) {
-  for (let plugin of plugins) {
-    console.log(`开始处理 ${plugin.name}`);
-    await fetchPlugin(plugin);
-    !process.env.CI
-      ? writeFile(
-          `${dist}/plugins-debug.json`,
-          JSON.stringify(plugins, null, 2)
-        )
-      : "";
-  }
+  await Promise.all(
+    plugins.map(async (plugin) => {
+      await limit(async () => {
+        console.log(`开始处理 ${plugin.name}`);
+        await fetchPlugin(plugin);
+        !process.env.CI
+          ? writeFile(
+              `${dist}/plugins-debug.json`,
+              JSON.stringify(plugins, null, 2)
+            )
+          : "";
+      });
+    })
+  );
+
   return plugins;
 }
 

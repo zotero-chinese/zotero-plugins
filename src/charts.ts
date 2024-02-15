@@ -13,7 +13,10 @@ import type {
 } from "highcharts";
 
 import { createRequire } from "module";
+import pLimit from "p-limit";
+
 const require = createRequire(import.meta.url),
+  limit = pLimit(5),
   pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == "development"
       ? require("../docs/dist/charts-debug.json")
@@ -365,9 +368,16 @@ function drawActivities() {
 }
 
 export default async function getChartOptions(plugins: PluginInfo[]) {
-  if (process.env.NODE_ENV != "development")
-    // await Promise.all(plugins.map(async (plugin) => await fetchInfo(plugin)));
-    for (const plugin of plugins) await fetchInfo(plugin);
+  if (process.env.NODE_ENV != "development") {
+    // for (const plugin of plugins) await fetchInfo(plugin);
+    await Promise.all(
+      plugins.map(async (plugin) => {
+        await limit(async () => {
+          await fetchInfo(plugin);
+        });
+      })
+    );
+  }
 
   // 仅供测试时用
   // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
