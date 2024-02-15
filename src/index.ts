@@ -1,17 +1,17 @@
-import { Octokit } from "octokit";
+import { Octokit } from "@octokit/rest";
 // import { plugins } from "./plugins";
 import { plugins as pluginsProd } from "./plugins";
 import { test as pluginsDev } from "./plugins";
 import { writeFile } from "./utils";
 import getChartOptions from "./charts";
-import { fetchPlugins } from "./get_plugins_info";
-import { renderMarkdown } from "./renderMarkdown";
+import { fetchPlugins } from "./get-plugins-info";
+import { renderMarkdown } from "./render-markdown";
 
 const plugins =
   process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
-export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+export const client = new Octokit({ auth: process.env.GITHUB_TOKEN });
 export const dist = "../docs/dist";
 
 export function args() {
@@ -19,7 +19,7 @@ export function args() {
 }
 
 async function main(mode: "fetchPlugins" | "charts" | string) {
-  const quotaStart = (await octokit.rest.rateLimit.get()).data.rate;
+  const quotaStart = (await client.rateLimit.get()).data.rate;
   console.log(quotaStart);
 
   if (quotaStart.remaining < 900) {
@@ -65,7 +65,7 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
   }
 
   console.log("完成");
-  const quotaEnd = (await octokit.rest.rateLimit.get()).data.rate;
+  const quotaEnd = (await client.rateLimit.get()).data.rate;
   console.log(quotaEnd);
   console.log(`共计请求 ${quotaStart.remaining - quotaEnd.remaining} 次`);
 }

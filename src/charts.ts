@@ -1,4 +1,4 @@
-import { octokit } from ".";
+import { client } from ".";
 import { writeFile } from "./utils";
 import { PluginInfo } from "./plugins";
 import type { Board } from "@highcharts/dashboards";
@@ -53,7 +53,7 @@ interface PluginMapInfo {
 async function fetchInfo(plugin: PluginInfo) {
   console.log("开始获取图表数据: " + plugin.name);
   const [owner, repo] = plugin.repo.split("/"),
-    info = await octokit.rest.repos.get({ owner, repo });
+    info = await client.repos.get({ owner, repo });
 
   pluginMap[plugin.name] = {
     owner,
@@ -77,7 +77,7 @@ async function fetchInfo(plugin: PluginInfo) {
 }
 
 async function getIssues(owner: string, repo: string) {
-  const data = await octokit.paginate(octokit.rest.issues.listForRepo, {
+  const data = await client.paginate(client.issues.listForRepo, {
     owner,
     repo,
     per_page: 100,
@@ -92,7 +92,7 @@ async function getIssues(owner: string, repo: string) {
 }
 
 async function getContributors(owner: string, repo: string) {
-  const data = await octokit.paginate(octokit.rest.repos.listContributors, {
+  const data = await client.paginate(client.repos.listContributors, {
     owner,
     repo,
     per_page: 100,
@@ -108,7 +108,7 @@ async function getContributors(owner: string, repo: string) {
 }
 
 async function getDownloadsCount(owner: string, repo: string) {
-  const data = await octokit.paginate(octokit.rest.repos.listReleases, {
+  const data = await client.paginate(client.repos.listReleases, {
       owner,
       repo,
       per_page: 100,
@@ -140,8 +140,8 @@ async function getDownloadsCount(owner: string, repo: string) {
 }
 
 async function getStarHistory(owner: string, repo: string) {
-  const iterator = octokit.paginate.iterator(
-      octokit.rest.activity.listStargazersForRepo,
+  const iterator = client.paginate.iterator(
+      client.activity.listStargazersForRepo,
       {
         owner,
         repo,
@@ -366,6 +366,7 @@ function drawActivities() {
 
 export default async function getChartOptions(plugins: PluginInfo[]) {
   if (process.env.NODE_ENV != "development")
+    // await Promise.all(plugins.map(async (plugin) => await fetchInfo(plugin)));
     for (const plugin of plugins) await fetchInfo(plugin);
 
   // 仅供测试时用
