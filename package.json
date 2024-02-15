@@ -35,9 +35,11 @@
     "google-translate-api-x": "^10.6.8",
     "highcharts": "^11.3.0",
     "markdown-table-ts": "^1.0.3",
-    "octokit": "^3.1.2",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3",
     "xml2js": "^0.6.2"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.2"
   }
 }
