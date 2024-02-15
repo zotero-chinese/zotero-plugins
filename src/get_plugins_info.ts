@@ -28,80 +28,57 @@ async function fetchPlugin(plugin: PluginInfo) {
     repo = repoParts[1];
 
   // 仓库信息：插件简介
-  await octokit
-    .request("GET /repos/{owner}/{repo}", {
-      owner: owner,
-      repo: repo,
-    })
-    .then(async (resp) => {
-      let desc = "";
-      if (resp.data.description) {
-        if (franc(resp.data.description) == "cmn") {
-          desc = resp.data.description;
-        } else {
-          desc = resp.data.description;
-          // 翻译
-          // console.log("需要翻译");
-          // await translate(resp.data.description, { to: "zh-CN" })
-          //   .then((res) => {
-          //     console.log(res.text);
-          //     desc = res.text;
-          //   })
-          //   .catch((e) => {
-          //     console.log(e);
-          //     desc = resp.data.description;
-          //   });
-        }
+  await octokit.rest.repos.get({ owner, repo }).then((resp) => {
+    let desc = "";
+    if (resp.data.description) {
+      if (franc(resp.data.description) == "cmn") {
+        desc = resp.data.description;
+      } else {
+        desc = resp.data.description;
+        // 翻译
+        // console.log("需要翻译");
+        // await translate(resp.data.description, { to: "zh-CN" })
+        //   .then((res) => {
+        //     console.log(res.text);
+        //     desc = res.text;
+        //   })
+        //   .catch((e) => {
+        //     console.log(e);
+        //     desc = resp.data.description;
+        //   });
       }
+    }
 
-      plugin.description = desc;
-      plugin.star = resp.data.stargazers_count;
-      plugin.watchers = resp.data.subscribers_count;
-    });
+    plugin.description = desc;
+    plugin.star = resp.data.stargazers_count;
+    plugin.watchers = resp.data.subscribers_count;
+  });
 
   // 作者信息
-  await octokit
-    .request("GET /users/{username}", {
-      username: owner,
-    })
-    .then((resp) => {
-      plugin.author = {
+  await octokit.rest.users.getByUsername({ username: owner }).then(
+    (resp) =>
+      (plugin.author = {
         name: resp.data.name || owner,
         url: resp.data.blog || resp.data.html_url,
         avatar: resp.data.avatar_url,
-      };
-    });
+      })
+  );
 
   // 发行版
   for (const release of plugin.releases) {
     async function getRelease() {
       if (release.tagName == "latest") {
-        const resp = await octokit.request(
-          "GET /repos/{owner}/{repo}/releases/latest",
-          {
-            owner: owner,
-            repo: repo,
-          }
-        );
+        const resp = await octokit.rest.repos.getLatestRelease({ owner, repo });
         return resp.data;
       } else if (release.tagName == "pre") {
-        const resp = await octokit.request(
-          "GET /repos/{owner}/{repo}/releases",
-          {
-            owner: owner,
-            repo: repo,
-          }
-        );
-        return resp.data.filter((item) => item.prerelease === true)[0];
+        const resp = await octokit.rest.repos.listReleases({ owner, repo });
+        return resp.data.filter((item) => item.prerelease)[0];
       } else {
-        const resp = await octokit.request(
-          "GET /repos/{owner}/{repo}/releases/tags/{tag}",
-          {
-            owner: owner,
-            repo: repo,
-            tag: release.tagName,
-          }
-        );
+        const resp = await octokit.rest.repos.getReleaseByTag({
+          owner,
+          repo,
+          tag: release.tagName,
+        });
         return resp.data;
       }
     }
@@ -110,9 +87,7 @@ async function fetchPlugin(plugin: PluginInfo) {
       release.tagName = resp.tag_name;
 
       const asset = resp.assets
-        .filter((asset) => {
-          return asset.content_type === "application/x-xpinstall";
-        })
+        .filter((asset) => asset.content_type === "application/x-xpinstall")
         .sort((a, b) => {
           const dateA = new Date(a.updated_at);
           const dateB = new Date(b.updated_at);
@@ -122,7 +97,7 @@ async function fetchPlugin(plugin: PluginInfo) {
 
       if (!asset) {
         console.log(`  ${plugin.name} ${release.tagName} 不存在 XPI`);
-        throw new Error(`${plugin.name} ${release.tagName} 不存在 XPI`);
+        // throw new Error(`${plugin.name} ${release.tagName} 不存在 XPI`);
         return;
       }
 
