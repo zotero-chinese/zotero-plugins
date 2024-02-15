@@ -371,14 +371,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
   if (process.env.NODE_ENV != "development") {
     // for (const plugin of plugins) await fetchInfo(plugin);
     await Promise.all(
-      plugins.map(async (plugin) => {
-        await limit(async () => {
-          await fetchInfo(plugin).catch((e) => {
-            console.log(plugin, e);
-            throw new Error(e);
-          });
-        });
-      })
+      plugins.map(p => limit(() => fetchInfo(p)))
     );
   }
 
