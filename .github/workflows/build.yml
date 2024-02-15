@@ -1,4 +1,4 @@
-name: Get Plugins Info
+name: Build
 
 on:
   workflow_call:
@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         with:
           version: 8
 
@@ -39,6 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }}
         run: |
           pnpm run get-info
+          pnpm run get-chart
 
       - name: Upload Output
         uses: actions/upload-artifact@v3
