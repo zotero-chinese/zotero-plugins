@@ -344,10 +344,8 @@ function drawActivities() {
         info.contributors!.length,
         info.watchers!,
         toFixedNum(
-          info.totalDownloads! / getDays(
-            info.releases!.at(-1)!.published_at,
-            new Date()
-          )
+          info.totalDownloads! /
+            getDays(info.releases!.at(-1)!.published_at, new Date())
         ),
         toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
         toFixedNum(
@@ -357,7 +355,8 @@ function drawActivities() {
           ) / closedIssues.length
         ),
         toFixedNum(
-          info.stars! * 7 / getDays(info.starHistory![0], info.starHistory!.at(-1)!)
+          (info.stars! * 7) /
+            getDays(info.starHistory![0], info.starHistory!.at(-1)!)
         ),
       ],
     });
@@ -665,5 +664,5 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
         } as Options,
       },
     ],
-  } as Board.default.Options;
+  } as Board.Options;
 }
