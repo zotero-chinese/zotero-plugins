@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/rest";
+import { throttling } from "@octokit/plugin-throttling";
 // import { plugins } from "./plugins";
 import { plugins as pluginsProd } from "./plugins";
 import { test as pluginsDev } from "./plugins";
@@ -8,11 +9,41 @@ import { fetchPlugins } from "./get-plugins-info";
 import { renderMarkdown } from "./render-markdown";
 
 const plugins =
-  process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
+    process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd,
+  OctokitClient = Octokit.plugin(throttling);
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
-export const client = new Octokit({ auth: process.env.GITHUB_TOKEN });
-export const dist = "../docs/dist";
+
+export const dist = "../docs/dist",
+  client = new OctokitClient({
+    auth: process.env.GITHUB_TOKEN,
+    throttle: {
+      enabled: true,
+      onRateLimit(retryAfter, options) {
+        console.warn(
+          `Request quota exhausted for request ${options.method} ${options.url}`
+        );
+        if (!options.request.retryCount) {
+          // only retries once
+          console.log(`Retrying after ${retryAfter} seconds!`);
+          return true;
+        }
+      },
+      onSecondaryRateLimit(retryAfter, options, octokit, retryCount) {
+        console.warn(
+          `Secondary request quota exhausted for request ${options.method} ${options.url}`,
+          `Retrying after ${retryAfter} seconds!`,
+          `Retry count: ${retryCount}`
+        );
+      },
+    },
+  });
+client.hook.error("request", (error, options) => {
+  if ("status" in error && error.status === 500) {
+    return client.request(options);
+  }
+  throw error;
+});
 
 export function args() {
   return <"fetchPlugins" | "charts">process.argv.slice(2)[0];
@@ -33,7 +64,13 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
   switch (mode) {
     case "fetchPlugins":
       {
-        let pluginsInfoDist = await fetchPlugins(plugins);
+        const pluginsInfoDist = await fetchPlugins(plugins);
+        !process.env.CI
+          ? writeFile(
+              `${dist}/plugins-debug.json`,
+              JSON.stringify(plugins, null, 2)
+            )
+          : "";
         writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist));
 
         console.log("处理 Markdown");

@@ -51,7 +51,6 @@ interface PluginMapInfo {
 }
 
 async function fetchInfo(plugin: PluginInfo) {
-  console.log("开始获取图表数据: " + plugin.name);
   const [owner, repo] = plugin.repo.split("/"),
     info = await client.repos.get({ owner, repo });
 
@@ -74,6 +73,7 @@ async function fetchInfo(plugin: PluginInfo) {
   pluginMap[plugin.name].totalDownloads = pluginMap[
     plugin.name
   ].releases!.reduce((sum, release) => sum + release.downloadCount, 0);
+  console.info(plugin.name, "done");
 }
 
 async function getIssues(owner: string, repo: string) {
@@ -366,8 +366,8 @@ function drawActivities() {
 
 export default async function getChartOptions(plugins: PluginInfo[]) {
   if (process.env.NODE_ENV != "development")
-    // await Promise.all(plugins.map(async (plugin) => await fetchInfo(plugin)));
-    for (const plugin of plugins) await fetchInfo(plugin);
+    await Promise.all(plugins.map(fetchInfo));
+  // for (const plugin of plugins) await fetchInfo(plugin);
 
   // 仅供测试时用
   // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
