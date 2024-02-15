@@ -16,13 +16,19 @@ export async function fetchPlugins(plugins: PluginInfo[]) {
     plugins.map(async (plugin) => {
       await limit(async () => {
         console.log(`开始处理 ${plugin.name}`);
-        await fetchPlugin(plugin);
-        !process.env.CI
-          ? writeFile(
-              `${dist}/plugins-debug.json`,
-              JSON.stringify(plugins, null, 2)
-            )
-          : "";
+        await fetchPlugin(plugin)
+          .then(() => {
+            !process.env.CI
+              ? writeFile(
+                  `${dist}/plugins-debug.json`,
+                  JSON.stringify(plugins, null, 2)
+                )
+              : "";
+          })
+          .catch((e) => {
+            console.log(plugin, e);
+            throw new Error(e);
+          });
       });
     })
   );

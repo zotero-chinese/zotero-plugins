@@ -373,7 +373,10 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
     await Promise.all(
       plugins.map(async (plugin) => {
         await limit(async () => {
-          await fetchInfo(plugin);
+          await fetchInfo(plugin).catch((e) => {
+            console.log(plugin, e);
+            throw new Error(e);
+          });
         });
       })
     );
