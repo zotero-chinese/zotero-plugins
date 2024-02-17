@@ -1,5 +1,4 @@
-import { Octokit } from "@octokit/rest";
-import { throttling } from "@octokit/plugin-throttling";
+import { Octokit } from "octokit";
 // import { plugins } from "./plugins";
 import { plugins as pluginsProd } from "./plugins";
 import { test as pluginsDev } from "./plugins";
@@ -9,48 +8,21 @@ import { fetchPlugins } from "./get-plugins-info";
 import { renderMarkdown } from "./render-markdown";
 
 const plugins =
-    process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd,
-  OctokitClient = Octokit.plugin(throttling);
+  process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 
 export const dist = "../docs/dist",
-  client = new OctokitClient({
+  octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
-    throttle: {
-      enabled: true,
-      onRateLimit(retryAfter, options) {
-        console.warn(
-          `Request quota exhausted for request ${options.method} ${options.url}`
-        );
-        if (!options.request.retryCount) {
-          // only retries once
-          console.log(`Retrying after ${retryAfter} seconds!`);
-          return true;
-        }
-      },
-      onSecondaryRateLimit(retryAfter, options, octokit, retryCount) {
-        console.warn(
-          `Secondary request quota exhausted for request ${options.method} ${options.url}`,
-          `Retrying after ${retryAfter} seconds!`,
-          `Retry count: ${retryCount}`
-        );
-      },
-    },
   });
-client.hook.error("request", (error, options) => {
-  if ("status" in error && error.status === 500) {
-    return client.request(options);
-  }
-  throw error;
-});
 
 export function args() {
   return <"fetchPlugins" | "charts">process.argv.slice(2)[0];
 }
 
 async function main(mode: "fetchPlugins" | "charts" | string) {
-  const quotaStart = (await client.rateLimit.get()).data.rate;
+  const quotaStart = (await octokit.rest.rateLimit.get()).data.rate;
   console.log(quotaStart);
 
   if (quotaStart.remaining < 900) {
@@ -102,7 +74,7 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
   }
 
   console.log("完成");
-  const quotaEnd = (await client.rateLimit.get()).data.rate;
+  const quotaEnd = (await octokit.rest.rateLimit.get()).data.rate;
   console.log(quotaEnd);
   console.log(`共计请求 ${quotaStart.remaining - quotaEnd.remaining} 次`);
 }
