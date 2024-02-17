@@ -5,7 +5,7 @@ import AdmZip from "adm-zip";
 import * as xml2js from "xml2js";
 import { PluginInfo } from "./plugins";
 import { writeFile } from "./utils";
-import { client } from ".";
+import { octokit } from ".";
 import { dist } from ".";
 
 export function fetchPlugins(plugins: PluginInfo[]) {
@@ -18,7 +18,7 @@ async function fetchPlugin(plugin: PluginInfo) {
     repo = repoParts[1];
 
   // 仓库信息：插件简介
-  await client.repos.get({ owner, repo }).then((resp) => {
+  await octokit.rest.repos.get({ owner, repo }).then((resp) => {
     let desc = "";
     if (resp.data.description) {
       if (franc(resp.data.description) == "cmn") {
@@ -45,7 +45,7 @@ async function fetchPlugin(plugin: PluginInfo) {
   });
 
   // 作者信息
-  await client.users.getByUsername({ username: owner }).then(
+  await octokit.rest.users.getByUsername({ username: owner }).then(
     (resp) =>
       (plugin.author = {
         name: resp.data.name || owner,
@@ -58,13 +58,13 @@ async function fetchPlugin(plugin: PluginInfo) {
   for (const release of plugin.releases) {
     async function getRelease() {
       if (release.tagName == "latest") {
-        const resp = await client.repos.getLatestRelease({ owner, repo });
+        const resp = await octokit.rest.repos.getLatestRelease({ owner, repo });
         return resp.data;
       } else if (release.tagName == "pre") {
-        const resp = await client.repos.listReleases({ owner, repo });
+        const resp = await octokit.rest.repos.listReleases({ owner, repo });
         return resp.data.filter((item) => item.prerelease)[0];
       } else {
-        const resp = await client.repos.getReleaseByTag({
+        const resp = await octokit.rest.repos.getReleaseByTag({
           owner,
           repo,
           tag: release.tagName,
@@ -92,7 +92,7 @@ async function fetchPlugin(plugin: PluginInfo) {
       }
 
       if (!fs.existsSync(`${dist}/xpi/${asset.id}.xpi`)) {
-        const xpiFlie = await client.repos
+        const xpiFlie = await octokit.rest.repos
           .getReleaseAsset({
             owner: owner,
             repo: repo,

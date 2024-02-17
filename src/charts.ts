@@ -1,4 +1,4 @@
-import { client } from ".";
+import { octokit } from ".";
 import { writeFile } from "./utils";
 import { PluginInfo } from "./plugins";
 import type { Board } from "@highcharts/dashboards";
@@ -52,7 +52,7 @@ interface PluginMapInfo {
 
 async function fetchInfo(plugin: PluginInfo) {
   const [owner, repo] = plugin.repo.split("/"),
-    info = await client.repos.get({ owner, repo });
+    info = await octokit.rest.repos.get({ owner, repo });
 
   pluginMap[plugin.name] = {
     owner,
@@ -77,7 +77,7 @@ async function fetchInfo(plugin: PluginInfo) {
 }
 
 async function getIssues(owner: string, repo: string) {
-  const data = await client.paginate(client.issues.listForRepo, {
+  const data = await octokit.paginate(octokit.rest.issues.listForRepo, {
     owner,
     repo,
     per_page: 100,
@@ -92,7 +92,7 @@ async function getIssues(owner: string, repo: string) {
 }
 
 async function getContributors(owner: string, repo: string) {
-  const data = await client.paginate(client.repos.listContributors, {
+  const data = await octokit.paginate(octokit.rest.repos.listContributors, {
     owner,
     repo,
     per_page: 100,
@@ -108,7 +108,7 @@ async function getContributors(owner: string, repo: string) {
 }
 
 async function getDownloadsCount(owner: string, repo: string) {
-  const data = await client.paginate(client.repos.listReleases, {
+  const data = await octokit.paginate(octokit.rest.repos.listReleases, {
       owner,
       repo,
       per_page: 100,
@@ -140,8 +140,8 @@ async function getDownloadsCount(owner: string, repo: string) {
 }
 
 async function getStarHistory(owner: string, repo: string) {
-  const iterator = client.paginate.iterator(
-      client.activity.listStargazersForRepo,
+  const iterator = octokit.paginate.iterator(
+      octokit.rest.activity.listStargazersForRepo,
       {
         owner,
         repo,
