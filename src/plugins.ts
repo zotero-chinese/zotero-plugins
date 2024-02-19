@@ -683,16 +683,6 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
-    name: "ZotIF",
-    repo: "peumartino/ZotIF",
-    releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-  },
-  {
     name: "Zotero Duplicates Merger",
     repo: "frangoud/ZoteroDuplicatesMerger",
     releases: [
@@ -862,7 +852,7 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest",
+        tagName: "pre",
       },
     ],
   },

@@ -7,6 +7,7 @@ import { PluginInfo } from "./plugins";
 import { writeFile } from "./utils";
 import { octokit } from ".";
 import { dist } from ".";
+import { jsonc } from "jsonc";
 
 export function fetchPlugins(plugins: PluginInfo[]) {
   return Promise.all(plugins.map(fetchPlugin));
@@ -138,7 +139,7 @@ async function fetchPlugin(plugin: PluginInfo) {
         .getEntry("manifest.json")!
         .getData()
         .toString("utf8");
-      const manifestData = JSON.parse(fileData);
+      const manifestData = jsonc.parse(fileData);
       release.id = manifestData.applications.zotero.id;
       // release.id = manifestData.applications.zotero.id;
       release.xpiVersion = manifestData.version || "";
