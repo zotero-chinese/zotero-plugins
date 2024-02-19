@@ -648,9 +648,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "ZoteroTheme",
@@ -658,9 +658,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Backup Plugin for Zotero",
@@ -668,9 +668,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotero Save with Tag",
@@ -678,9 +678,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "ZotIF",
@@ -688,9 +688,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotero Duplicates Merger",
@@ -698,19 +698,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
-  },
-  {
-    name: "zotero-plugins",
-    repo: "dcartertod/zotero-plugins",
-    releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Inciteful Plugin for Zotero",
@@ -718,9 +708,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Pubpeer",
@@ -728,9 +718,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Google Scholar Citation Count for Zotero",
@@ -738,9 +728,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotitle",
@@ -748,9 +738,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotero Trilium",
@@ -758,9 +748,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotero Add Collection Tag",
@@ -768,9 +758,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "ZoteroSpecialTagsColumn",
@@ -778,13 +768,13 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
+        tagName: "latest",
       },
       {
         targetZoteroVersion: "5",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "PolarRec (Zotero Plugin)",
@@ -792,9 +782,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "pre",
+      },
+    ],
   },
   {
     name: "Zotero-Literature-Manager",
@@ -802,9 +792,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "zbatch",
@@ -812,9 +802,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Download DigiVatLib pdf",
@@ -822,9 +812,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "RIOPACAddChapter",
@@ -832,9 +822,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotero Action Cmd Plugin",
@@ -842,19 +832,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
-  },
-  {
-    name: "ChatGPT Plugin for Zotero",
-    repo: "kazgu/zotero-chatgpt",
-    releases: [
-      {
-        targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "Zotero PDF Rename",
@@ -862,19 +842,19 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "zotxt: a Zotero extension for text",
     repo: "egh/zotxt",
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "ZotMoov",
@@ -882,9 +862,9 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
+        tagName: "latest",
+      },
+    ],
   },
   {
     name: "ZotMeta: Metadata update tool",
@@ -892,10 +872,10 @@ export const plugins: PluginInfo[] = [
     releases: [
       {
         targetZoteroVersion: "7",
-        tagName: "latest"
-      }
-    ]
-  }
+        tagName: "latest",
+      },
+    ],
+  },
 ];
 
 // 以下列表仅供开发测试使用
