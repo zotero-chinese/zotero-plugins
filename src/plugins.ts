@@ -632,6 +632,250 @@ export const plugins: PluginInfo[] = [
       },
     ],
   },
+  {
+    name: "Semantic Zotero Plugin",
+    repo: "AgiNetz/semantic-zotero",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "ZoteroFields-Plugin-for-Zotero",
+    repo: "iShareStuff/ZoteroFields-Plugin-for-Zotero",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "ZoteroTheme",
+    repo: "iShareStuff/ZoteroTheme",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Backup Plugin for Zotero",
+    repo: "iShareStuff/Backup-Plugin-for-Zotero",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero Save with Tag",
+    repo: "NicoleMayer/zotero-save-with-tag",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "ZotIF",
+    repo: "peumartino/ZotIF",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero Duplicates Merger",
+    repo: "frangoud/ZoteroDuplicatesMerger",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Inciteful Plugin for Zotero",
+    repo: "inciteful-xyz/inciteful-zotero-plugin",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Pubpeer",
+    repo: "PubPeerFoundation/pubpeer_zotero_plugin",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Google Scholar Citation Count for Zotero",
+    repo: "justinribeiro/zotero-google-scholar-citation-count",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotitle",
+    repo: "ManuelaRunge/Zotitle",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero Trilium",
+    repo: "paulusm/zotero-trilium",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero Add Collection Tag",
+    repo: "Zar-rok/Zotero-Add-Collection-Tag",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "ZoteroSpecialTagsColumn",
+    repo: "whacked/zotero-special-tags-column",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+      {
+        targetZoteroVersion: "5",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "PolarRec (Zotero Plugin)",
+    repo: "jyjulianwong/PolarRec-Zotero-Plugin",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "pre",
+      },
+    ],
+  },
+  {
+    name: "Zotero-Literature-Manager",
+    repo: "AlbertShenC/Zotero-Literature-Manager",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "zbatch",
+    repo: "mpatelh/zbatch",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Download DigiVatLib pdf",
+    repo: "theRatramnus/Zotero-download-DigiVatLib-pdf",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "RIOPACAddChapter",
+    repo: "theRatramnus/RIOPACAddChapter",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero Action Cmd Plugin",
+    repo: "Bowen-0x00/zotero-action-cmd",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "Zotero PDF Rename",
+    repo: "Theigrams/zotero-pdf-custom-rename",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "zotxt: a Zotero extension for text",
+    repo: "egh/zotxt",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "ZotMoov",
+    repo: "wileyyugioh/zotmoov",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
+    name: "ZotMeta: Metadata update tool",
+    repo: "RoadToDream/ZotMeta",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
 ];
 
 // 以下列表仅供开发测试使用
