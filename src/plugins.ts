@@ -683,6 +683,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Zotero Scholar Rank",
+    repo: "SiriusXT/Zotero-Scholar-Rank",
+    releases: [
+      {
+        targetZoteroVersion: "6",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Zotero Duplicates Merger",
     repo: "frangoud/ZoteroDuplicatesMerger",
     releases: [
