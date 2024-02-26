@@ -837,6 +837,16 @@ export const plugins: PluginInfo[] = [
     ],
   },
   {
+    name: "Zotero Annotation Manage",
+    repo: "zzlb0224/zotero-annotation-manage",
+    releases: [
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
+    ],
+  },
+  {
     name: "Zotero PDF Rename",
     repo: "Theigrams/zotero-pdf-custom-rename",
     releases: [
