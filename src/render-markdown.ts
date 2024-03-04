@@ -2,7 +2,7 @@ import { Align, getMarkdownTable } from "markdown-table-ts";
 import { PluginInfo } from "./plugins";
 
 function safeStringInMarkdownTable(string?: string) {
-  return string?.replace("|", "&vert;");
+  return string?.replaceAll("|", "&vert;");
 }
 
 export async function renderMarkdown(plugins: PluginInfo[]) {
