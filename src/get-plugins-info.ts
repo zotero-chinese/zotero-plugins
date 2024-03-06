@@ -211,14 +211,3 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
   console.info(`${plugin.name} 处理完成`);
   return plugin;
 }
-
-async function getAuthorInfo(username: string) {
-  // 作者信息
-  await octokit.rest.users
-    .getByUsername({ username: username })
-    .then((resp) => ({
-      name: resp.data.name || username,
-      url: resp.data.blog || resp.data.html_url,
-      avatar: resp.data.avatar_url,
-    }));
-}
