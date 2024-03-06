@@ -57,7 +57,7 @@ async function fetchInfo(plugin: PluginInfo) {
   pluginMap[plugin.name] = {
     owner,
     repo,
-    stars: plugin.star,
+    stars: plugin.stars,
     watchers: plugin.watchers,
     description: plugin.description,
     author: {

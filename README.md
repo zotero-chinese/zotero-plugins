@@ -25,10 +25,6 @@
 ```ts
 interface PluginInfo {
   /**
-   * 插件名称
-   */
-  name: string;
-  /**
    * 插件仓库
    *
    * 例如：northword/zotero-format-metadata
@@ -41,7 +37,7 @@ interface PluginInfo {
    */
   releases: Array<{
     /**
-     * 当前发布版对应的 Zotero 版本
+     * 当前发布版对应的 Zotero 版本，"7" 或 "6"
      */
     targetZoteroVersion: string;
     /**
@@ -57,13 +53,13 @@ interface PluginInfo {
 }
 ```
 
-对于每一个插件，只有必填项需要填写在 [`src/plugins.ts`](./src/plugins.ts) 中，其余字段脚本运行时可以获取。
-
 > [!NOTE]
 >
 > 如何添加未收录的插件？
 >
 > 编辑 [`src/plugins.ts`](./src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容如上所示，已有的内容亦可作为参考。
+>
+> 添加时请按 `repo` 排序。
 >
 > 编辑完成后提交，发起 Pull Request，仓库成员将尽快处理。
 
@@ -96,7 +92,7 @@ cd zotero-plugins
 npm install -g pnpm
 pnpm install
 
-# 构建插件信息表格
+# 运行获取插件信息的脚本
 pnpm run get-info
 
 # 启动网页预览服务器
