@@ -313,10 +313,6 @@ export const plugins: PluginInfo[] = [
     repo: "tefkah/zotero-night",
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
-      },
-      {
         targetZoteroVersion: "6",
         tagName: "latest",
       },
@@ -371,10 +367,6 @@ export const plugins: PluginInfo[] = [
       {
         targetZoteroVersion: "6",
         tagName: "latest",
-      },
-      {
-        targetZoteroVersion: "7",
-        tagName: "pre",
       },
     ],
   },
