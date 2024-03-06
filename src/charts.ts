@@ -1,6 +1,6 @@
 import { octokit } from ".";
 import { writeFile } from "./utils";
-import { PluginInfo } from "./plugins";
+import { PluginInfo } from "./types";
 import type { Board } from "@highcharts/dashboards";
 import type {
   Options,
@@ -51,19 +51,19 @@ interface PluginMapInfo {
 }
 
 async function fetchInfo(plugin: PluginInfo) {
-  const [owner, repo] = plugin.repo.split("/"),
-    info = await octokit.rest.repos.get({ owner, repo });
+  const [owner, repo] = plugin.repo.split("/");
+  // info = await octokit.rest.repos.get({ owner, repo });
 
   pluginMap[plugin.name] = {
     owner,
     repo,
-    stars: info.data.stargazers_count,
-    watchers: info.data.subscribers_count,
-    description: info.data.description ?? "",
+    stars: plugin.stars,
+    watchers: plugin.watchers,
+    description: plugin.description,
     author: {
-      name: info.data.owner.login,
-      url: info.data.owner.html_url,
-      avatar: info.data.owner.avatar_url,
+      name: plugin.author.name,
+      url: plugin.author.url,
+      avatar: plugin.author.avatar,
     },
     starHistory: await getStarHistory(owner, repo),
     contributors: await getContributors(owner, repo),

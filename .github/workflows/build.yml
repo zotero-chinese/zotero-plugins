@@ -39,6 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }}
         run: |
           pnpm run get-info
+          pnpm run write-md
           pnpm run get-chart
 
       - name: Upload Output

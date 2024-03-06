@@ -3,18 +3,19 @@ import { franc } from "franc-min";
 // import translate from "google-translate-api-x";
 import AdmZip from "adm-zip";
 import * as xml2js from "xml2js";
-import { PluginInfo } from "./plugins";
+import { PluginInfo, PluginInfoBase } from "./types";
 import { writeFile } from "./utils";
 import { octokit } from ".";
 import { dist } from ".";
 import { jsonc } from "jsonc";
 
-export function fetchPlugins(plugins: PluginInfo[]) {
+export function fetchPlugins(plugins: PluginInfoBase[]) {
   return Promise.all(plugins.map(fetchPlugin));
 }
 
-async function fetchPlugin(plugin: PluginInfo) {
-  const repoParts = plugin.repo.split("/"),
+async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
+  const plugin = pluginBase as PluginInfo;
+  const repoParts = pluginBase.repo.split("/"),
     owner = repoParts[0],
     repo = repoParts[1];
 
@@ -42,6 +43,7 @@ async function fetchPlugin(plugin: PluginInfo) {
 
     plugin.description = desc;
     plugin.star = resp.data.stargazers_count;
+    plugin.stars = resp.data.stargazers_count;
     plugin.watchers = resp.data.subscribers_count;
   });
 
@@ -140,8 +142,24 @@ async function fetchPlugin(plugin: PluginInfo) {
         .getData()
         .toString("utf8");
       const manifestData = jsonc.parse(fileData);
+
+      plugin.name =
+        release.targetZoteroVersion == "7"
+          ? manifestData.name
+          : plugin.name ?? manifestData.name ?? repo;
+      if (plugin.name == "__MSG_name__") {
+        if (zipEntryNames.includes("_locales/zh-CN/messages.json")) {
+          const message = zip
+            .getEntry("_locales/zh-CN/messages.json")!
+            .getData()
+            .toString("utf8");
+          const messageData = jsonc.parse(message);
+          plugin.name = messageData.name.message;
+        } else {
+          plugin.name = repo;
+        }
+      }
       release.id = manifestData.applications.zotero.id;
-      // release.id = manifestData.applications.zotero.id;
       release.xpiVersion = manifestData.version || "";
       plugin.description = plugin.description || manifestData.description || "";
       // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
@@ -180,6 +198,11 @@ async function fetchPlugin(plugin: PluginInfo) {
             "",
             "NO desc",
           ])[1];
+
+      plugin.name =
+        plugin.name ||
+        (fileData.match(/em:name="(.*?)"/) ??
+          fileData.match(/<em:name>(.*?)<\/em:name>/) ?? ["", "No Name"])[1];
 
       release.xpiVersion = (fileData.match(/em:version="(.*?)"/) ??
         fileData.match(/<em:version>(.*?)<\/em:version>/) ?? ["", ""])[1];
