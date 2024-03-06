@@ -37,7 +37,11 @@ export interface PluginInfo extends PluginInfoBase {
   name: string;
   releases: ReleaseInfo[];
   description: string;
+  /**
+   * @deprecated Please use stars instead.
+   */
   star: number;
+  stars: number;
   watchers: number;
   author: {
     name: string;

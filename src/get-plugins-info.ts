@@ -43,6 +43,7 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
 
     plugin.description = desc;
     plugin.star = resp.data.stargazers_count;
+    plugin.stars = resp.data.stargazers_count;
     plugin.watchers = resp.data.subscribers_count;
   });
 

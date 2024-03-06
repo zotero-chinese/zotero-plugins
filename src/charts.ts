@@ -22,7 +22,7 @@ const require = createRequire(import.meta.url),
 interface PluginMapInfo {
   owner?: string;
   repo?: string;
-  star?: number;
+  stars?: number;
   watchers?: number;
   description?: string;
   starHistory?: Date[];
@@ -57,7 +57,7 @@ async function fetchInfo(plugin: PluginInfo) {
   pluginMap[plugin.name] = {
     owner,
     repo,
-    star: plugin.star,
+    stars: plugin.star,
     watchers: plugin.watchers,
     description: plugin.description,
     author: {
@@ -189,10 +189,10 @@ function drawTrendingBar(day: number) {
     startDate = new Date(now.setDate(now.getDate() - day));
   return Object.entries(pluginMap).map(([name, info]) => {
     let begin = info.starHistory!.findIndex((date) => date >= startDate);
-    if (begin < 0) begin = info.star!;
+    if (begin < 0) begin = info.stars!;
     return {
       name,
-      weight: info.star! - begin,
+      weight: info.stars! - begin,
       custom: {
         description: info.description,
         avatar: info.author!.avatar,
@@ -261,9 +261,9 @@ function drawAuthorPie() {
     };
     authorMap[plugin.author!.name].plugins.push({
       name,
-      stars: plugin.star!,
+      stars: plugin.stars!,
     });
-    authorMap[plugin.author!.name].stars += plugin.star!;
+    authorMap[plugin.author!.name].stars += plugin.stars!;
   }
   let colorIndex = 0;
   Object.entries(authorMap)
@@ -355,7 +355,7 @@ function drawActivities() {
           ) / closedIssues.length
         ),
         toFixedNum(
-          (info.star! * 7) /
+          (info.stars! * 7) /
             getDays(info.starHistory![0], info.starHistory!.at(-1)!)
         ),
       ],
