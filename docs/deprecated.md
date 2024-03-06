@@ -28,3 +28,21 @@
   - 停止维护原因：不再适配 Zotero 7
   - 记录时间：2023/10/24
   - 汉化版（`lychichem/zotfile`）于 2024 年 2 月 9 日删除仓库，停止维护
+
+- Zotero Preview
+  - 作者: windingwind
+  - 仓库：windingwind/zotero-pdf-preview
+  - 描述：PDF 预览
+  - 最后版本：1.0.0-4（Z7）、0.3.7（Z6）
+  - 最后更新时间：2023/8/27
+  - 停止维护原因：Zotro 7 beta 55 起内建附件预览
+  - 记录时间：2024/3/5
+
+- Night
+  - 作者：tefkah
+  - 仓库：tefkah/zotero-night
+  - 描述：夜间模式
+  - 最后版本：0.1.0-2 （Z7）、0.4.23（Z6）
+  - 最后更新时间：2023/11/12
+  - 停止维护原因：Zotero 7 beta 55 起内建深色模式
+  - 记录时间：2024/3/5
