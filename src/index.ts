@@ -2,7 +2,7 @@ import { Octokit } from "octokit";
 // import { plugins } from "./plugins";
 import { plugins as pluginsProd } from "./plugins";
 import { test as pluginsDev } from "./plugins";
-import { writeFile } from "./utils";
+import { readFile, writeFile } from "./utils";
 import getChartOptions from "./charts";
 import { fetchPlugins } from "./get-plugins-info";
 import { renderMarkdown } from "./render-markdown";
@@ -18,7 +18,7 @@ export const dist = "../docs/dist",
   });
 
 export function args() {
-  return <"fetchPlugins" | "charts">process.argv.slice(2)[0];
+  return <"fetchPlugins" | "md" | "charts">process.argv.slice(2)[0];
 }
 
 async function main(mode: "fetchPlugins" | "charts" | string) {
@@ -45,16 +45,19 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
           : "";
         writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist));
 
-        console.log("处理 Markdown");
-        const markdownContent = await renderMarkdown(pluginsInfoDist);
-        writeFile(`${dist}/plugins.md`, markdownContent);
-
         let shields = {
           lastUpdate: new Date().toLocaleString("zh-CN"),
         };
         writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
       }
       break;
+    case "md": {
+      console.log("处理 Markdown");
+      const pluginsInfoDist = readFile(`${dist}/plugins.json`);
+      const markdownContent = await renderMarkdown(pluginsInfoDist);
+      writeFile(`${dist}/plugins.md`, markdownContent);
+      break;
+    }
     case "charts":
       {
         const chartOptions = await getChartOptions(plugins);
