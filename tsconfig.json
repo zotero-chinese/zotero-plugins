@@ -1,26 +1,11 @@
 {
-  "compilerOptions": {
-    "module": "ESNext",
-    "esModuleInterop": true,
-    "target": "ESNext",
-    "moduleResolution": "Node",
-    "outDir": "dist",
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "isolatedModules": false,
-    "strict": true,
-    "noImplicitAny": true,
-    "useUnknownInCatchVariables": false,
-    "resolveJsonModule": true,
-    "inlineSourceMap": true
-  },
-  "include": ["src"],
-  // "include": ["src", "typings", "../zotero-types"],
-  "exclude": ["build", "dist", "node_modules"],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  },
-  "lib": ["esnext"]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }
