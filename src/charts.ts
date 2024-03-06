@@ -22,7 +22,7 @@ const require = createRequire(import.meta.url),
 interface PluginMapInfo {
   owner?: string;
   repo?: string;
-  stars?: number;
+  star?: number;
   watchers?: number;
   description?: string;
   starHistory?: Date[];
@@ -51,19 +51,19 @@ interface PluginMapInfo {
 }
 
 async function fetchInfo(plugin: PluginInfo) {
-  const [owner, repo] = plugin.repo.split("/"),
-    info = await octokit.rest.repos.get({ owner, repo });
+  const [owner, repo] = plugin.repo.split("/");
+  // info = await octokit.rest.repos.get({ owner, repo });
 
   pluginMap[plugin.name] = {
     owner,
     repo,
-    stars: info.data.stargazers_count,
-    watchers: info.data.subscribers_count,
-    description: info.data.description ?? "",
+    star: plugin.star,
+    watchers: plugin.watchers,
+    description: plugin.description,
     author: {
-      name: info.data.owner.login,
-      url: info.data.owner.html_url,
-      avatar: info.data.owner.avatar_url,
+      name: plugin.author.name,
+      url: plugin.author.url,
+      avatar: plugin.author.avatar,
     },
     starHistory: await getStarHistory(owner, repo),
     contributors: await getContributors(owner, repo),
@@ -189,10 +189,10 @@ function drawTrendingBar(day: number) {
     startDate = new Date(now.setDate(now.getDate() - day));
   return Object.entries(pluginMap).map(([name, info]) => {
     let begin = info.starHistory!.findIndex((date) => date >= startDate);
-    if (begin < 0) begin = info.stars!;
+    if (begin < 0) begin = info.star!;
     return {
       name,
-      weight: info.stars! - begin,
+      weight: info.star! - begin,
       custom: {
         description: info.description,
         avatar: info.author!.avatar,
@@ -261,9 +261,9 @@ function drawAuthorPie() {
     };
     authorMap[plugin.author!.name].plugins.push({
       name,
-      stars: plugin.stars!,
+      stars: plugin.star!,
     });
-    authorMap[plugin.author!.name].stars += plugin.stars!;
+    authorMap[plugin.author!.name].stars += plugin.star!;
   }
   let colorIndex = 0;
   Object.entries(authorMap)
@@ -355,7 +355,7 @@ function drawActivities() {
           ) / closedIssues.length
         ),
         toFixedNum(
-          (info.stars! * 7) /
+          (info.star! * 7) /
             getDays(info.starHistory![0], info.starHistory!.at(-1)!)
         ),
       ],

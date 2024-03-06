@@ -1,10 +1,10 @@
-import { PluginInfo } from "./types";
+import { PluginInfo, PluginInfoBase } from "./types";
 
 /**
  * 贡献者贡献插件时，请按照 `repo` 字母顺序排序。
  * Please sort the plugins in alphabetical order by `name` when contributing.
  */
-export const plugins: PluginInfo[] = [
+export const plugins: PluginInfoBase[] = [
   {
     repo: "018/zotcard",
     releases: [
@@ -756,7 +756,7 @@ export const plugins: PluginInfo[] = [
 ];
 
 // 以下列表仅供开发测试使用
-export const test: PluginInfo[] = [
+export const test: PluginInfoBase[] = [
   {
     repo: "northword/zotero-format-metadata",
     releases: [

@@ -60,7 +60,8 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
     }
     case "charts":
       {
-        const chartOptions = await getChartOptions(plugins);
+        const pluginsInfoDist = readFile(`${dist}/plugins.json`);
+        const chartOptions = await getChartOptions(pluginsInfoDist);
         writeFile(
           `${dist}/charts.json`,
           JSON.stringify(

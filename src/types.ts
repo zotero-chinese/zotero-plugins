@@ -1,9 +1,5 @@
 export interface PluginInfoBase {
   /**
-   * 插件名称
-   */
-  name?: string;
-  /**
    * 插件仓库
    *
    * 例如：northword/zotero-format-metadata
@@ -35,11 +31,15 @@ interface ReleaseInfoBase {
 }
 
 export interface PluginInfo extends PluginInfoBase {
+  /**
+   * 插件名称
+   */
+  name: string;
   releases: ReleaseInfo[];
-  description?: string;
-  star?: number;
-  watchers?: number;
-  author?: {
+  description: string;
+  star: number;
+  watchers: number;
+  author: {
     name: string;
     url: string;
     avatar: string;
@@ -50,19 +50,19 @@ interface ReleaseInfo extends ReleaseInfoBase {
   /**
    * 插件 ID，自 XPI 中提取
    */
-  id?: string;
+  id: string;
   /**
    * 插件版本，自 XPI 中提取
    */
-  xpiVersion?: string;
-  xpiDownloadUrl?: {
+  xpiVersion: string;
+  xpiDownloadUrl: {
     github: string;
     gitee: string;
     ghProxy: string;
     jsdeliver: string;
     kgithub: string;
   };
-  releaseDate?: string;
-  downloadCount?: number;
-  assetId?: number;
+  releaseDate: string;
+  downloadCount: number;
+  assetId: number;
 }
