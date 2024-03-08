@@ -1,5 +1,3 @@
-<!-- DownloadModal.vue -->
-
 <template>
   <div class="modal" v-if="showModal">
     <div class="modal-content">
@@ -9,33 +7,34 @@
         <li v-for="release in selectedPlugin.releases" :key="release.targetZoteroVersion">
           <p>适配 Zotero 版本: {{ release.targetZoteroVersion }}</p>
           <p>插件版本：{{ release.tagName }}</p>
-          <p>下载链接:
-          <ul>
+          <p>下载链接:</p>
+          <ul class="downloadLinkList">
             <li v-for="(value, key) in release.xpiDownloadUrl">
-              <p>{{ key }}: {{ value }}</p>
-              <!-- <a href={{ value }}>{{ key }}</a> -->
+              <a :href="value">{{ key }}</a>
             </li>
           </ul>
-          </p>
         </li>
       </ul>
     </div>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import type { PluginInfo } from '@/types';
+import { defineComponent } from 'vue';
+import type { PropType } from 'vue';
+export default defineComponent({
   name: "DownloadModal",
   props: {
     showModal: Boolean,
-    selectedPlugin: Object
+    selectedPlugin: { type: Object as PropType<PluginInfo>, required: true }
   },
   methods: {
     closeModal() {
       this.$emit("closeModal");
     }
   }
-};
+});
 </script>
 
 <style scoped>
@@ -47,7 +46,7 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  /* overflow: auto; */
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
@@ -72,5 +71,28 @@ export default {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.downloadLinkList li {
+  text-decoration: none;
+  list-style: none;
+  display: inline;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #000000;
+  /* background-color: #30DDEB; */
+}
+
+.downloadLinkList li a {
+  color: #040404;
+  text-decoration: none;
+  margin: 0px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.downloadLinkList li:hover {
+  background-color: blue;
 }
 </style>

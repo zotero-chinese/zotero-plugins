@@ -1,6 +1,6 @@
 import { octokit } from ".";
 import { writeFile } from "./utils";
-import { PluginInfo } from "./types";
+import type { PluginInfo } from "../types";
 import type { Board } from "@highcharts/dashboards";
 import type {
   Options,

@@ -1,5 +1,3 @@
-<!-- PluginList.vue -->
-
 <template>
   <div>
     <button @click="sortBy('name')">Sort by Name</button>
@@ -14,24 +12,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import type { PropType } from 'vue';
 import PluginCard from "./plugin-card.vue";
 import DownloadModal from "./download-modal.vue";
+import type { PluginInfo } from "@/types";
 
-export default {
+export default defineComponent({
   name: "PluginList",
   components: {
     PluginCard,
     DownloadModal
   },
   props: {
-    plugins: Array
+    plugins: { type: Array as PropType<PluginInfo[]>, required: true }
   },
   data() {
     return {
       showModal: false,
-      selectedPlugin: null,
-      sortByField: ""
+      selectedPlugin: this.plugins[0],
+      sortByField: ''
     };
   },
   computed: {
@@ -48,19 +49,19 @@ export default {
     }
   },
   methods: {
-    showDownloads(plugin) {
+    showDownloads(plugin: PluginInfo) {
       this.selectedPlugin = plugin;
       this.showModal = true;
     },
     closeModal() {
       this.showModal = false;
-      this.selectedPlugin = null;
+      // this.selectedPlugin = null;
     },
-    sortBy(field) {
+    sortBy(field: string) {
       this.sortByField = field;
     }
   }
-};
+});
 </script>
 
 <style scoped>

@@ -3,7 +3,7 @@ import { franc } from "franc-min";
 // import translate from "google-translate-api-x";
 import AdmZip from "adm-zip";
 import * as xml2js from "xml2js";
-import { PluginInfo, PluginInfoBase } from "./types";
+import type { PluginInfo, PluginInfoBase } from "../types";
 import { writeFile } from "./utils";
 import { octokit } from ".";
 import { dist } from ".";
@@ -210,15 +210,4 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
   }
   console.info(`${plugin.name} 处理完成`);
   return plugin;
-}
-
-async function getAuthorInfo(username: string) {
-  // 作者信息
-  await octokit.rest.users
-    .getByUsername({ username: username })
-    .then((resp) => ({
-      name: resp.data.name || username,
-      url: resp.data.blog || resp.data.html_url,
-      avatar: resp.data.avatar_url,
-    }));
 }
