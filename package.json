@@ -1,20 +1,14 @@
 {
   "name": "zotero-plugins",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Zotero 插件合集",
-  "main": "index.js",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "get-info": "tsx src/backend/index.ts fetchPlugins",
-    "get-chart": "tsx src/backend/index.ts charts",
-    "write-md": "tsx src/backend/index.ts md",
-    "debug:info": "cross-env NODE_ENV=development npm run get-info",
-    "debug:chart": "cross-env NODE_ENV=development npm run get-chart",
-    "website": "docsify serve docs",
-    "website:dev": "vite",
-    "website:build": "run-p type-check \"build-only {@}\" --",
-    "website:preview": "vite preview",
-    "website:build-only": "vite build",
-    "website:type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,32 +23,17 @@
   "homepage": "https://github.com/northword/zotero-plugins#readme",
   "type": "module",
   "devDependencies": {
-    "@highcharts/dashboards": "^1.3.1",
-    "@tsconfig/node20": "^20.1.2",
-    "@types/adm-zip": "^0.5.5",
-    "@types/node": "^20.11.17",
-    "@types/xml2js": "^0.4.14",
-    "@vitalets/google-translate-api": "^9.2.0",
-    "@vitejs/plugin-vue": "^5.0.3",
-    "@vue/cli": "^5.0.8",
+    "@rushstack/eslint-patch": "^1.7.2",
+    "@types/node": "^20.11.25",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/tsconfig": "^0.5.1",
-    "adm-zip": "^0.5.10",
     "cross-env": "^7.0.3",
-    "docsify-cli": "^4.4.4",
-    "franc-min": "^6.2.0",
-    "google-translate-api-x": "^10.6.8",
-    "highcharts": "^11.3.0",
-    "jsonc": "^2.0.0",
-    "markdown-table-ts": "^1.0.3",
-    "npm-run-all2": "^6.1.1",
-    "octokit": "^3.1.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.22.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
     "tsx": "^4.7.1",
-    "typescript": "~5.3.0",
-    "vite": "^5.0.11",
-    "vue-tsc": "^1.8.27",
-    "xml2js": "^0.6.2"
-  },
-  "dependencies": {
-    "vue": "^3.4.21"
+    "typescript": "~5.3.3"
   }
 }

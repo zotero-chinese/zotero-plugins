@@ -38,12 +38,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }}
         run: |
+          cd backend/ 
           pnpm run get-info
-          pnpm run write-md
+          # pnpm run write-md
           pnpm run get-chart
+          cd ../frontend
+          pnpm website:build
+          cd ..
 
       - name: Upload Output
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          path: docs/
+          path: |
+            backend/dist/
+            frontend/dist/
           retention-days: 3
