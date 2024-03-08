@@ -1,4 +1,4 @@
-declare interface PluginInfoBase {
+export interface PluginInfoBase {
   /**
    * 插件仓库
    *
@@ -13,7 +13,7 @@ declare interface PluginInfoBase {
   releases: ReleaseInfoBase[];
 }
 
-declare interface ReleaseInfoBase {
+export interface ReleaseInfoBase {
   /**
    * 当前发布版对应的 Zotero 版本
    */
@@ -30,7 +30,7 @@ declare interface ReleaseInfoBase {
   tagName: "latest" | "pre" | string;
 }
 
-declare interface PluginInfo extends PluginInfoBase {
+export interface PluginInfo extends PluginInfoBase {
   /**
    * 插件名称
    */
@@ -50,7 +50,7 @@ declare interface PluginInfo extends PluginInfoBase {
   };
 }
 
-declare interface ReleaseInfo extends ReleaseInfoBase {
+export interface ReleaseInfo extends ReleaseInfoBase {
   /**
    * 插件 ID，自 XPI 中提取
    */

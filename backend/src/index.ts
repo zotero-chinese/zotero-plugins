@@ -1,14 +1,9 @@
 import { Octokit } from "octokit";
-// import { plugins } from "./plugins";
-import { plugins as pluginsProd } from "./plugins";
-import { test as pluginsDev } from "./plugins";
+import plugins from "./plugins";
 import { readFile, writeFile } from "./utils";
 import getChartOptions from "./charts";
 import { fetchPlugins } from "./get-plugins-info";
 import { renderMarkdown } from "./render-markdown";
-
-const plugins =
-  process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 

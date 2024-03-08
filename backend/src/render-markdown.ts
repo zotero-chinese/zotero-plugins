@@ -1,4 +1,5 @@
 import { Align, getMarkdownTable } from "markdown-table-ts";
+import { PluginInfo } from "../types";
 
 function safeStringInMarkdownTable(string?: string) {
   return string?.replaceAll("|", "&vert;");

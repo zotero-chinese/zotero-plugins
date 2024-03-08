@@ -10,6 +10,7 @@ import { writeFile } from "./utils";
 import { octokit } from ".";
 import { dist } from ".";
 import { jsonc } from "jsonc";
+import { PluginInfoBase, PluginInfo } from "../types";
 
 export function fetchPlugins(plugins: PluginInfoBase[]) {
   return Promise.all(plugins.map(fetchPlugin));
