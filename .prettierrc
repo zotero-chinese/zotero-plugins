@@ -1,4 +1,5 @@
 {
   "tabWidth": 2,
-  "singleQuote": false
+  "singleQuote": false,
+  "html-whitespace-sensitivity": "ignore"
 }

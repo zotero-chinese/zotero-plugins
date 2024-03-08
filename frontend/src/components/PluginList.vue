@@ -1,10 +1,12 @@
 <template>
   <div>
-    <button @click="sortBy('name')">Sort by Name</button>
-    <button @click="sortBy('stars')">Sort by Stars</button>
-    <button @click="sortBy('targetZoteroVersion')">
-      Sort by Zotero Version
-    </button>
+    <div class="sort-buttom">
+      <button @click="sortBy('name')">Sort by Name</button>
+      <button @click="sortBy('stars')">Sort by Stars</button>
+      <button @click="sortBy('targetZoteroVersion')">
+        Sort by Zotero Version
+      </button>
+    </div>
 
     <div class="card-container">
       <PluginCard
@@ -84,6 +86,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.sort-buttom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.sort-buttom button {
+  padding: 2px;
+  margin: 0px 5px;
+}
 .card-container {
   display: flex;
   flex-wrap: wrap;
