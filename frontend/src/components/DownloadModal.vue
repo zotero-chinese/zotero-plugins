@@ -1,21 +1,60 @@
 <template>
   <div class="modal" v-if="showModal">
-    <div class="modal-content">
+    <div class="modal-content radius" :style="{
+    borderRadius: `var(--el-border-radius-base)`,
+    boxShadow: `var(--el-box-shadow)`,
+  }">
       <span class="close" @click="closeModal">&times;</span>
-      <h2>下载 {{ selectedPlugin.name }}</h2>
-      <div
-        v-for="release in selectedPlugin.releases"
-        :key="release.targetZoteroVersion"
-      >
-        <p>适配 Zotero 版本: {{ release.targetZoteroVersion }}</p>
-        <p>插件版本：{{ release.tagName }}</p>
-        <p>下载链接:</p>
-        <div class="downloadLinkList">
-          <li v-for="(value, key) in release.xpiDownloadUrl" :key="key">
-            <a :href="value">{{ key }}</a>
-          </li>
-        </div>
-      </div>
+      <el-container>
+        <el-header>
+          <h2>下载 {{ selectedPlugin.name }}</h2>
+        </el-header>
+
+        <el-main>
+          <el-space wrap>
+            <el-card v-for="release in selectedPlugin.releases" :key="release.targetZoteroVersion">
+
+              <template #header>
+                <div class="card-header">
+                  <span>适配 Zotero {{ release.targetZoteroVersion }}</span>
+                </div>
+              </template>
+
+              <p>插件版本：{{ release.xpiVersion }}</p>
+              <p>发布时间：{{ new Date(release.releaseDate).toLocaleString() }}</p>
+              <p>下载量：{{ release.downloadCount }}</p>
+              <p>下载链接:</p>
+              <el-button v-for="(value, key) in release.xpiDownloadUrl" :key="key" tag="a" :href="value" text bg>
+                {{ key }}
+              </el-button>
+
+              <!-- <template #footer>Footer content</template> -->
+            </el-card>
+          </el-space>
+        </el-main>
+
+        <el-footer>
+          <el-text>
+            <el-icon>
+              <InfoFilled />
+            </el-icon>
+            本页面为每一个插件都提供了多个下载地址，请逐个尝试选择可用的地址。火狐浏览器用户请通过在链接上右击，选择“另存为”来下载 XPI 包。插件之间可能存在冲突，建议按需安装。
+          </el-text>
+          <br />
+          <el-text type="warning">
+            <el-icon>
+              <WarnTriangleFilled />
+            </el-icon>
+            Zotero 6 与 Zotero 7 的插件可能互不兼容，请按自己的 Zotero 版本下载对应的插件版本。查看 Zotero 版本和安装插件步骤请参考：<el-link
+              href="https://zotero-chinese.com/user-guide/plugins/about-plugin.html" type="danger">关于 Zotero 插件 -
+              安装插件</el-link>
+            。
+          </el-text>
+
+        </el-footer>
+      </el-container>
+
+
     </div>
   </div>
 </template>
@@ -46,14 +85,14 @@ export default defineComponent({
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--color-background-mute);
+  /* background-color: var(--color-background-mute); */
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
   background-color: #fefefe;
-  border: 1px solid #888;
-  padding: 20px;
+  /* border: 1px solid #888; */
+  padding: 10px 20px 40px 20px;
   position: fixed;
   width: 80%;
   left: 50%;
@@ -73,28 +112,5 @@ export default defineComponent({
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-
-.downloadLinkList li {
-  text-decoration: none;
-  list-style: none;
-  display: inline;
-  /* padding: 10px; */
-  margin: 10px;
-  border: 1px solid var(--color-border);
-  /* background-color: #30DDEB; */
-}
-
-.downloadLinkList li a {
-  color: #040404;
-  text-decoration: none;
-  margin: 10px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-}
-
-.downloadLinkList li:hover {
-  border-color: var(--color-border-hover);
 }
 </style>

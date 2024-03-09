@@ -1,21 +1,38 @@
 <template>
-  <div class="card">
-    <div class="header">
-      <h2>
-        <a :href="`https://github.com/${plugin.repo}`">{{ plugin.name }}</a>
-      </h2>
+  <el-card shadow="hover">
+    <template #header>
+      <div class="card-header">
+        <b>
+          <el-link :href="`https://github.com/${plugin.repo}`" target="_blank"><el-text tag="b" size="large">{{
+            plugin.name
+          }}</el-text></el-link>
+        </b>
+      </div>
+    </template>
 
-      <p>
-        <a :href="plugin.author.url">{{ plugin.author.name }}</a> , Stars:
-        {{ plugin.stars }}
-      </p>
-      <p class="desc">{{ plugin.description }}</p>
-    </div>
+    <el-space>
+      <el-text>
+        <el-icon>
+          <Avatar />
+        </el-icon>
+        <el-link :href="plugin.author.url"> {{ plugin.author.name }} </el-link>
+      </el-text>
 
-    <div class="footer">
-      <button @click="showDownloads">Download</button>
-    </div>
-  </div>
+      <el-text>
+        <el-icon>
+          <StarFilled />
+        </el-icon> {{ plugin.stars }}
+      </el-text>
+    </el-space>
+
+    <p class="desc">
+      <el-text truncated line-clamp="5"> {{ plugin.description }} </el-text>
+    </p>
+
+    <template #footer>
+      <el-button type="primary" @click="showDownloads">Download</el-button>
+    </template>
+  </el-card>
 </template>
 
 <script lang="ts">
@@ -37,22 +54,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.card {
-  width: 30%;
-  margin: 1%;
-  padding: 1%;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
 .desc {
-  /* max-height: 100px; */
-  height: 150px;
-  overflow: hidden;
-  /* white-space: nowrap; */
-  text-overflow: clip;
+  height: 100px;
 }
-.footer {
+
+.desc span {
+  /* max-height: 100px; */
+  white-space: normal;
 }
 </style>
