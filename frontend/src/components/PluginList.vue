@@ -1,6 +1,11 @@
 <template>
   <div class="toolbar">
-    <el-select v-model="tag" placeholder="适配 Zotero 版本" size="large" style="width: 200px;">
+    <el-select
+      v-model="tag"
+      placeholder="适配 Zotero 版本"
+      size="large"
+      style="width: 200px"
+    >
       <template #prefix>
         <el-icon>
           <Filter />
@@ -11,7 +16,12 @@
       <el-option label="Zotero 7" value="zotero7"></el-option>
     </el-select>
 
-    <el-select v-model="sortBy" placeholder="排序" size="large" style="width: 200px;">
+    <el-select
+      v-model="sortBy"
+      placeholder="排序"
+      size="large"
+      style="width: 200px"
+    >
       <template #prefix>
         <el-icon>
           <Sort />
@@ -22,30 +32,45 @@
       <el-option label="最后更新时间" value="lastUpdated" disabled></el-option>
     </el-select>
 
-    <el-input v-model="searchText" size="large" placeholder="搜索插件..." clearable @clear="clearSearch"
-      @input="performSearch">
+    <el-input
+      v-model="searchText"
+      size="large"
+      placeholder="搜索插件..."
+      clearable
+      @clear="clearSearch"
+      @input="performSearch"
+    >
       <template #prefix>
         <el-icon>
           <Search />
         </el-icon>
       </template>
     </el-input>
-
   </div>
 
-
   <el-row :gutter="20">
-    <el-col :xs="12" :sm="8" :md="8" :lg="6" :xl="4" v-for="plugin in sortedPlugins" :key="plugin.repo">
+    <el-col
+      :xs="12"
+      :sm="8"
+      :md="8"
+      :lg="6"
+      :xl="4"
+      v-for="plugin in sortedPlugins"
+      :key="plugin.repo"
+    >
       <div class="grid-content ep-bg-purple">
         <PluginCard :plugin="plugin" @showDownloads="showDownloads" />
       </div>
     </el-col>
   </el-row>
 
-  <DownloadModal :showModal="showModal" :selectedPlugin="selectedPlugin" @closeModal="closeModal" />
+  <DownloadModal
+    :showModal="showModal"
+    :selectedPlugin="selectedPlugin"
+    @closeModal="closeModal"
+  />
 
   <el-empty v-if="filteredPlugins.length == 0" description="无匹配插件" />
-
 </template>
 
 <script lang="ts">
@@ -69,14 +94,13 @@ export default defineComponent({
       // filteredPlugins: this.plugins,
       showModal: false,
       selectedPlugin: this.plugins[0],
-      searchText: '',
+      searchText: "",
       sortBy: "stars",
       tag: "",
     };
   },
   computed: {
     sortedPlugins() {
-      console.log("tag", this.tag, this.filteredPlugins);
       if (this.sortBy === "name") {
         return this.filteredPlugins
           .slice()
@@ -106,11 +130,13 @@ export default defineComponent({
       if (this.searchText) {
         const searchTextLower = this.searchText.toLowerCase();
         filtered = filtered.filter((plugin) => {
-          return plugin.name.toLowerCase().includes(searchTextLower) || plugin.description.toLowerCase().includes(searchTextLower);
+          return (
+            plugin.name.toLowerCase().includes(searchTextLower) ||
+            plugin.description.toLowerCase().includes(searchTextLower)
+          );
         });
       }
       return filtered;
-
     },
   },
   methods: {
@@ -124,11 +150,11 @@ export default defineComponent({
     },
     performSearch() {
       // Handle search logic here
-      console.log('Performing search:', this.searchText);
+      console.log("Performing search:", this.searchText);
     },
     clearSearch() {
-      this.searchText = '';
-    }
+      this.searchText = "";
+    },
   },
 });
 </script>

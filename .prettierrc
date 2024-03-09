@@ -1,5 +1,7 @@
 {
   "tabWidth": 2,
+  "printWidth": 80,
   "singleQuote": false,
-  "html-whitespace-sensitivity": "ignore"
+  "htmlWhitespaceSensitivity": "ignore",
+  "proseWrap": "preserve"
 }

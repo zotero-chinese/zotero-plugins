@@ -3,9 +3,9 @@
     <template #header>
       <div class="card-header">
         <b>
-          <el-link :href="`https://github.com/${plugin.repo}`" target="_blank"><el-text tag="b" size="large">{{
-            plugin.name
-          }}</el-text></el-link>
+          <el-link :href="`https://github.com/${plugin.repo}`" target="_blank">
+            <el-text tag="b" size="large">{{ plugin.name }}</el-text>
+          </el-link>
         </b>
       </div>
     </template>
@@ -15,18 +15,19 @@
         <el-icon>
           <Avatar />
         </el-icon>
-        <el-link :href="plugin.author.url"> {{ plugin.author.name }} </el-link>
+        <el-link :href="plugin.author.url">{{ plugin.author.name }}</el-link>
       </el-text>
 
       <el-text>
         <el-icon>
           <StarFilled />
-        </el-icon> {{ plugin.stars }}
+        </el-icon>
+        {{ plugin.stars }}
       </el-text>
     </el-space>
 
     <p class="desc">
-      <el-text truncated line-clamp="5"> {{ plugin.description }} </el-text>
+      <el-text truncated line-clamp="5">{{ plugin.description }}</el-text>
     </p>
 
     <template #footer>

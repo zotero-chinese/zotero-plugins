@@ -14,9 +14,7 @@ export async function renderMarkdown(plugins: PluginInfo[]) {
       return b.star! - a.star!;
     })
     .forEach((plugin) => {
-      let name = `[${safeStringInMarkdownTable(
-        plugin.name,
-      )}](https://github.com/${plugin.repo}) </br>`;
+      let name = `[${safeStringInMarkdownTable(plugin.name)}](https://github.com/${plugin.repo}) </br>`;
       name += `![GitHub Repo stars ${plugin.star}](https://img.shields.io/github/stars/${plugin.repo})`;
       plugin.releases.forEach((release, index) => {
         if (release.assetId == undefined) {
@@ -40,9 +38,7 @@ export async function renderMarkdown(plugins: PluginInfo[]) {
           !index ? name : "",
           !index ? safeStringInMarkdownTable(plugin.description) : "",
           !index
-            ? `[${safeStringInMarkdownTable(plugin.author?.name)}](${
-                plugin.author?.url
-              })`
+            ? `[${safeStringInMarkdownTable(plugin.author?.name)}](${plugin.author?.url})`
             : "",
           release.targetZoteroVersion,
           release.xpiVersion,

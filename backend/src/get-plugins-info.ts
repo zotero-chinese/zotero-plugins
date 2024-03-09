@@ -125,9 +125,7 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
       release.xpiDownloadUrl = {
         github: asset.browser_download_url,
         gitee: `https://gitee.com/northword/zotero-plugins/raw/gh-pages/dist/xpi/${release.assetId}.xpi`,
-        ghProxy: `https://ghproxy.com/?q=${encodeURI(
-          asset.browser_download_url,
-        )}`,
+        ghProxy: `https://ghproxy.com/?q=${encodeURI(asset.browser_download_url)}`,
         jsdeliver: `https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/dist/xpi/${release.assetId}.xpi`,
         kgithub: asset.browser_download_url.replace(
           "github.com",
