@@ -12,6 +12,9 @@ import { dist } from ".";
 import { jsonc } from "jsonc";
 import { PluginInfoBase, PluginInfo } from "../types";
 
+const XpiIds: number[] = [];
+// todo: 缓存XPI；将backend的dist单独保存，分离前后端工作流，对PR启用工作流和预览
+
 export function fetchPlugins(plugins: PluginInfoBase[]) {
   return Promise.all(plugins.map(fetchPlugin));
 }
@@ -116,6 +119,7 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
       }
 
       release.assetId = asset.id;
+      XpiIds.push(asset.id);
       release.releaseDate = asset.updated_at;
       release.downloadCount = asset.download_count;
       release.xpiDownloadUrl = {
