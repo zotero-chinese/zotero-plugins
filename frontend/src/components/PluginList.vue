@@ -43,6 +43,9 @@
   </el-row>
 
   <DownloadModal :showModal="showModal" :selectedPlugin="selectedPlugin" @closeModal="closeModal" />
+
+  <el-empty v-if="filteredPlugins.length == 0" description="无匹配插件" />
+
 </template>
 
 <script lang="ts">
