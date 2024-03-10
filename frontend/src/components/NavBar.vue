@@ -3,7 +3,7 @@
     :default-active="activeIndex"
     mode="horizontal"
     :ellipsis="false"
-    router="true"
+    router
   >
     <el-menu-item index="0">
       <img src="/favicon.ico" alt="Zotero Chinese logo" />
@@ -16,21 +16,21 @@
     <el-menu-item index="/charts">插件排行榜</el-menu-item>
 
     <el-link href="https://zotero-chinese.com/user-guide/" target="_blank">
-      <el-menu-item class="external-link">百科全书</el-menu-item>
+      <el-menu-item class="external-link" index="./">百科全书</el-menu-item>
     </el-link>
 
-    <el-sub-menu>
+    <el-sub-menu index="./">
       <template #title>更多资料</template>
 
       <el-link
         href="https://zotero-chinese.com/plugin-dev-guide/"
         target="_blank"
       >
-        <el-menu-item>插件开发手册</el-menu-item>
+        <el-menu-item index="./">插件开发手册</el-menu-item>
       </el-link>
 
       <el-link href="https://zotero-chinese.com/about.html" target="_blank">
-        <el-menu-item>关于</el-menu-item>
+        <el-menu-item index="./">关于</el-menu-item>
       </el-link>
     </el-sub-menu>
 
@@ -44,7 +44,7 @@
         content="GitHub 仓库"
         placement="bottom"
       >
-        <el-menu-item>
+        <el-menu-item index="./">
           <el-icon :size="20">
             <GitHubIcon />
           </el-icon>
@@ -61,7 +61,6 @@ import GitHubIcon from "./icons/GitHubIcon.vue";
 export default defineComponent({
   name: "NavBar",
   components: { GitHubIcon },
-
   data() {
     return {
       activeIndex: window.location.hash.slice(1),
