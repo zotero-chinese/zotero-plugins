@@ -11,19 +11,33 @@
     </template>
 
     <el-space>
-      <el-text>
-        <el-icon>
-          <Avatar />
-        </el-icon>
-        <el-link :href="plugin.author.url">{{ plugin.author.name }}</el-link>
-      </el-text>
+      <el-tooltip
+        class="box-item"
+        effect="dark"
+        content="插件作者"
+        placement="bottom"
+      >
+        <el-text>
+          <el-icon>
+            <Avatar />
+          </el-icon>
+          <el-link :href="plugin.author.url">{{ plugin.author.name }}</el-link>
+        </el-text>
+      </el-tooltip>
 
-      <el-text>
-        <el-icon>
-          <StarFilled />
-        </el-icon>
-        {{ plugin.stars }}
-      </el-text>
+      <el-tooltip
+        class="box-item"
+        effect="dark"
+        content="插件星标量"
+        placement="bottom"
+      >
+        <el-text>
+          <el-icon>
+            <StarFilled />
+          </el-icon>
+          {{ plugin.stars }}
+        </el-text>
+      </el-tooltip>
     </el-space>
 
     <p class="desc">
@@ -31,7 +45,7 @@
     </p>
 
     <template #footer>
-      <el-button type="primary" @click="showDownloads">Download</el-button>
+      <el-button type="primary" @click="showDownloads">下载</el-button>
     </template>
   </el-card>
 </template>

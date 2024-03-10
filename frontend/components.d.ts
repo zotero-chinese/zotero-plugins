@@ -28,6 +28,7 @@ declare module 'vue' {
     ElSpace: typeof import('element-plus/es')['ElSpace']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElText: typeof import('element-plus/es')['ElText']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
     GitHubIcon: typeof import('./src/components/icons/GitHubIcon.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     PluginCard: typeof import('./src/components/PluginCard.vue')['default']

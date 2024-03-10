@@ -27,11 +27,18 @@
     </el-sub-menu>
 
     <el-link href="https://github.com/zotero-chinese/zotero-plugins">
-      <el-menu-item>
-        <el-icon :size="20">
-          <GitHubIcon />
-        </el-icon>
-      </el-menu-item>
+      <el-tooltip
+        class="box-item"
+        effect="dark"
+        content="GitHub 仓库"
+        placement="bottom"
+      >
+        <el-menu-item>
+          <el-icon :size="20">
+            <GitHubIcon />
+          </el-icon>
+        </el-menu-item>
+      </el-tooltip>
     </el-link>
   </el-menu>
 </template>

@@ -18,6 +18,7 @@
             <el-card
               v-for="release in selectedPlugin.releases"
               :key="release.targetZoteroVersion"
+              shadow="hover"
             >
               <template #header>
                 <div class="card-header">
