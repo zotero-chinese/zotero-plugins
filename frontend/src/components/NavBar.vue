@@ -53,7 +53,7 @@ export default defineComponent({
 
   data() {
     return {
-      activeIndex: "/",
+      activeIndex: window.location.hash.slice(1),
     };
   },
 });
