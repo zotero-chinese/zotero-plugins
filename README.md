@@ -14,7 +14,7 @@
 
 - **Zotero 中文社区主域名：<https://plugins.zotero-chinese.com>**
 - Netlify: <https://zotero-plugins.netlify.app/>
-- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/>
+- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/> （该地址暂不可用，将自动跳转主域名）
 
 ## 提交插件
 
