@@ -32,7 +32,6 @@
     "google-translate-api-x": "^10.6.8",
     "highcharts": "^11.4.0",
     "jsonc": "^2.0.0",
-    "markdown-table-ts": "^1.0.3",
     "octokit": "^3.1.2",
     "xml2js": "^0.6.2"
   }

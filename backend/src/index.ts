@@ -3,7 +3,7 @@ import plugins from "./plugins";
 import { readFile, writeFile } from "./utils";
 import getChartOptions from "./charts";
 import { fetchPlugins } from "./get-plugins-info";
-import { renderMarkdown } from "./render-markdown";
+// import { renderMarkdown } from "./render-markdown";
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 
@@ -47,10 +47,10 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
       }
       break;
     case "md": {
-      console.log("处理 Markdown");
-      const pluginsInfoDist = readFile(`${dist}/plugins.json`);
-      const markdownContent = await renderMarkdown(pluginsInfoDist);
-      writeFile(`${dist}/plugins.md`, markdownContent);
+      // console.log("处理 Markdown");
+      // const pluginsInfoDist = readFile(`${dist}/plugins.json`);
+      // const markdownContent = await renderMarkdown(pluginsInfoDist);
+      // writeFile(`${dist}/plugins.md`, markdownContent);
       break;
     }
     case "charts":

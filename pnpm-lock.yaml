@@ -80,9 +80,6 @@ importers:
       jsonc:
         specifier: ^2.0.0
         version: 2.0.0
-      markdown-table-ts:
-        specifier: ^1.0.3
-        version: 1.0.3
       octokit:
         specifier: ^3.1.2
         version: 3.1.2
@@ -2349,10 +2346,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
-
-  /markdown-table-ts@1.0.3:
-    resolution: {integrity: sha512-lYrp7FXmBqpmGmsEF92WnSukdgYvLm15FPIODZOx9+3nobkxJxjBYcszqZf5VqTjBtISPSNC7zjU9o3zwpL6AQ==}
-    dev: true
 
   /memoize-one@6.0.0:
     resolution: {integrity: sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==}
