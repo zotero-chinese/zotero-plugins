@@ -153,9 +153,12 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
           ? manifestData.name
           : plugin.name ?? manifestData.name ?? repo;
       if (plugin.name == "__MSG_name__") {
-        if (zipEntryNames.includes("_locales/zh-CN/messages.json")) {
+        const locale = ["zh-CN", "zh", manifestData.default_locale]
+          .map(e => `_locales/${e}/messages.json`)
+          .find(e => !!zipEntryNames.includes(e));
+        if (locale) {
           const message = zip
-            .getEntry("_locales/zh-CN/messages.json")!
+            .getEntry(locale)!
             .getData()
             .toString("utf8");
           const messageData = jsonc.parse(message);
