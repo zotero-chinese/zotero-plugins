@@ -18,7 +18,7 @@
     "highcharts": "^11.4.0",
     "highcharts-vue": "^2.0.0",
     "vue": "^3.4.21",
-    "vue-router": "4",
+    "vue-router": "^4.3.0",
     "zotero-plugins-data": "workspace:zotero-plugins-data@*"
   },
   "devDependencies": {
