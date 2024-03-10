@@ -3,7 +3,7 @@
     :default-active="activeIndex"
     mode="horizontal"
     :ellipsis="false"
-    @select="handleMenuSelect"
+    router="true"
   >
     <el-menu-item index="0">
       <img src="/favicon.ico" alt="Zotero Chinese logo" />
@@ -11,24 +11,23 @@
     </el-menu-item>
     <div class="flex-grow" />
 
-    <el-link href="#/">
-      <el-menu-item index="#/">插件商店</el-menu-item>
+    <el-menu-item index="/">插件商店</el-menu-item>
+
+    <el-menu-item index="/charts">插件排行榜</el-menu-item>
+
+    <el-link href="https://zotero-chinese.com/user-guide/" target="_blank">
+      <el-menu-item class="external-link">百科全书</el-menu-item>
     </el-link>
 
-    <el-link href="#/charts">
-      <el-menu-item index="#/charts">插件排行榜</el-menu-item>
-    </el-link>
-    <el-link href="https://zotero-chinese.com/user-guide/" target="_blank">
-      <el-menu-item index="3" class="external-link">百科全书</el-menu-item>
-    </el-link>
     <el-sub-menu index="4">
       <template #title>更多资料</template>
-      <el-menu-item index="2-1" disabled>插件开发手册</el-menu-item>
-      <el-menu-item index="2-2" disabled>item two</el-menu-item>
-      <el-menu-item index="2-3" disabled>关于</el-menu-item>
+      <el-menu-item disabled>插件开发手册</el-menu-item>
+      <el-menu-item disabled>item two</el-menu-item>
+      <el-menu-item disabled>关于</el-menu-item>
     </el-sub-menu>
+
     <el-link href="https://github.com/zotero-chinese/zotero-plugins">
-      <el-menu-item index="2">
+      <el-menu-item>
         <el-icon :size="20">
           <GitHubIcon />
         </el-icon>
@@ -47,20 +46,8 @@ export default defineComponent({
 
   data() {
     return {
-      activeIndex: "#/",
+      activeIndex: "/",
     };
-  },
-
-  methods: {
-    handleMenuSelect(index: string) {
-      // Handle menu item selection here
-      // if (index.startsWith("http")) {
-      //   window.open(index, "_blank");
-      // } else if (index.startsWith("/")) {
-      //   window.open(`./${index}`, "_blank");
-      // }
-      this.activeIndex = index;
-    },
   },
 });
 </script>
