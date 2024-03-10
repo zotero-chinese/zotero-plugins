@@ -1,14 +1,45 @@
 <template>
-  <div id="container">Loading ...</div>
+  <div
+    id="container"
+    :class="{ 'highcharts-dark': darkMode, 'highcharts-light': !darkMode }"
+  >
+    Loading ...
+  </div>
 </template>
 
 <script lang="ts">
 import chartsData from "zotero-plugins-data/dist/charts.json";
 import { defineComponent } from "vue";
 
+import * as Highcharts from "highcharts";
+import HighchartsMore from "highcharts/highcharts-more";
+HighchartsMore(Highcharts);
+import WordCloudGraph from "highcharts/modules/wordcloud";
+WordCloudGraph(Highcharts);
+import HighchartsBoost from "highcharts/modules/boost";
+HighchartsBoost(Highcharts);
+import HighStock from "highcharts/modules/stock";
+HighStock(Highcharts);
+import MouseWheelZoom from "highcharts/modules/mouse-wheel-zoom";
+MouseWheelZoom(Highcharts);
+import ParallelCoordinates from "highcharts/modules/parallel-coordinates";
+ParallelCoordinates(Highcharts);
+import VariablePieGraph from "highcharts/modules/variable-pie";
+VariablePieGraph(Highcharts);
+import HighchartsExporting from "highcharts/modules/exporting";
+HighchartsExporting(Highcharts);
+import HighchartsExportData from "highcharts/modules/export-data";
+HighchartsExportData(Highcharts);
+import NoDataToDisplay from "highcharts/modules/no-data-to-display";
+NoDataToDisplay(Highcharts);
+import HighchartsPlugin from "@highcharts/dashboards/es-modules/Dashboards/Plugins/HighchartsPlugin";
+HighchartsPlugin.custom.connectHighcharts(Highcharts);
+import Dashboards from "@highcharts/dashboards/es-modules/masters/dashboards.src";
+import type { Board } from "@highcharts/dashboards";
+Dashboards.PluginHandler.addPlugin(HighchartsPlugin);
+
 export default defineComponent({
   name: "ChartsView",
-  components: {},
   data() {
     return {};
   },
@@ -20,86 +51,49 @@ export default defineComponent({
       if (pos < 2.5 / 2.75) return 7.5625 * (pos -= 2.25 / 2.75) * pos + 0.9375;
       return 7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375;
     };
-
-    const highchartsModules = [
-      "highcharts",
-      "modules/boost",
-      "highcharts-more",
-      "modules/wordcloud",
-      "modules/exporting",
-      "modules/stock",
-      "dashboards/dashboards",
-      "modules/accessibility",
-      "modules/mouse-wheel-zoom",
-      "modules/no-data-to-display",
-      "modules/parallel-coordinates",
-      "dashboards/modules/dashboards-plugin",
-    ];
-
-    const self = this;
-    const loadHighchartsModule = function (index: number) {
-      if (index >= highchartsModules.length) {
-        self.loadChartsJson();
-        return;
-      }
-
-      const module = highchartsModules[index];
-      const script = document.createElement("script");
-      script.src = `https://code.highcharts.com/${module}.src.js`;
-      script.async = true;
-      script.defer = true;
-      script.onload = function () {
-        console.log(`Loaded Highcharts module: ${module}`);
-        loadHighchartsModule(index + 1);
-      };
-      script.onerror = function () {
-        console.error(`Failed to load Highcharts module: ${module}`);
-      };
-      document.head.appendChild(script);
-    };
-
-    loadHighchartsModule(0);
+    this.loadChartsJson();
+  },
+  computed: {
+    darkMode() {
+      return matchMedia("(prefers-color-scheme: dark)").matches;
+    },
   },
 
   methods: {
     loadChartsJson() {
       for (const com of chartsData.components) {
         if (com.chartOptions?.exporting) {
-          // @ts-ignore
-          com.chartOptions.exporting.menuItemDefinitions.invertSelection.onclick =
-            function () {
-              // @ts-ignore
-
-              this.series.forEach((series) =>
-                series.setVisible(undefined, false),
-              );
-              // @ts-ignore
-              this.redraw();
-            };
+          (
+            com.chartOptions.exporting.menuItemDefinitions
+              .invertSelection as any
+          ).onclick = function (this: Highcharts.Chart) {
+            this.series.forEach((series) =>
+              series.setVisible(undefined, false),
+            );
+            this.redraw();
+          };
         }
       }
-      // @ts-ignore
-      chartsData.components[2].chartOptions.plotOptions.series.point.events.click =
-        function () {
-          // @ts-ignore
-          location.href = "https://github.com/" + this.custom.repo;
-        };
-      // @ts-ignore
-      console.debug(Dashboards.board("container", chartsData));
-
-      // @ts-ignore
-      Highcharts.Templating.helpers.log = function () {
-        console.debug(arguments[0].ctx);
+      (
+        chartsData.components[2].chartOptions!.plotOptions!.series.point!
+          .events as any
+      ).click = function (this: any) {
+        location.href = "https://github.com/" + this.custom.repo;
       };
+      console.debug(Dashboards.board("container", chartsData as Board.Options));
+
+      // Highcharts.Templating.helpers.log = function () {
+      //   console.debug(arguments[0].ctx);
+      // };
     },
   },
 });
 </script>
 
 <style>
-@import url("https://code.highcharts.com/css/highcharts.css");
-@import url("https://code.highcharts.com/dashboards/css/dashboards.css");
-@import url("https://code.highcharts.com/css/datagrid.css");
+@import url("highcharts/css/highcharts.css");
+@import url("@highcharts/dashboards/css/dashboards.css");
+@import url("@highcharts/dashboards/css/datagrid.css");
 
 :root {
   --highcharts-neutral-color-5: #fff;

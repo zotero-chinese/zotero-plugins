@@ -30,7 +30,7 @@
     "adm-zip": "^0.5.10",
     "franc-min": "^6.2.0",
     "google-translate-api-x": "^10.6.8",
-    "highcharts": "^11.3.0",
+    "highcharts": "^11.4.0",
     "jsonc": "^2.0.0",
     "markdown-table-ts": "^1.0.3",
     "octokit": "^3.1.2",
