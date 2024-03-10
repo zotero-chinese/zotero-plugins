@@ -71,9 +71,13 @@ export const plugins: PluginInfoBase[] = [
     repo: "Dominic-DallOsto/zotero-reading-list",
     releases: [
       {
-        targetZoteroVersion: "6",
+        targetZoteroVersion: "7",
         tagName: "latest",
       },
+      {
+        targetZoteroVersion: "6",
+        tagName: "0.3.2",
+      }
     ],
   },
   {
