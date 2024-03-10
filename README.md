@@ -66,6 +66,34 @@ interface PluginInfo {
 - `backend/`：存放与获取插件信息有关的脚本
 - `frontend/`：存放网页的源码
 
+开发前，需要根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
+
+```bash
+# 克隆仓库
+git clone https://github.com/northword/zotero-plugins.git zotero-plugins
+cd zotero-plugins
+
+# 安装依赖
+npm install -g pnpm
+pnpm install
+
+# 获取插件信息
+cd backend/
+pnpm data:info
+
+# 获取图表信息
+cd backend/
+pnpm data:chart
+
+# 启动网站开发服务器
+cd frontend/
+pnpm website:dev
+
+# 构建网站
+cd frontend/
+pnpm website:build
+```
+
 ### 后端
 
 [`backend/src/index.ts`](./backend/src/index.ts) 为主要逻辑脚本，它执行如下操作：
@@ -83,22 +111,7 @@ GitHub Action Bot 定时运行 `backend/src/index.ts` 脚本，执行上述步�
 
 ### 前端
 
-前端使用 Vue + Typescript + Element Plus + Vite 进行开发。所需要的插件数据通过 pnpm 工作空间从 backend 读取。
-
-### 开发
-
-根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
-
-```bash
-# 克隆仓库
-git clone https://github.com/northword/zotero-plugins.git zotero-plugins
-cd zotero-plugins
-
-# 安装依赖
-npm install -g pnpm
-pnpm install
-
-```
+前端使用 Vue 3 + Typescript + Element Plus + Vite 进行开发，插件排行榜页面使用 HighCharts 开发。所需要的插件数据通过 pnpm 工作空间从 backend 读取。
 
 ## 致谢
 
