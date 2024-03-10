@@ -28,6 +28,6 @@ cd ../
 
 # 复制构建结果以便部署
 mkdir $dist
-cp -rf backend/dist/* frontend/dist/* $dist/
+cp -rf backend/dist/ frontend/dist/* $dist/
 
 echo "Done!"
