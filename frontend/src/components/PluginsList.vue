@@ -29,6 +29,7 @@
       </template>
       <el-option label="星标量" value="stars"></el-option>
       <el-option label="插件名" value="name"></el-option>
+      <el-option label="作者" value="author"></el-option>
       <el-option label="最后更新时间" value="lastUpdated" disabled></el-option>
     </el-select>
 
@@ -107,6 +108,10 @@ export default defineComponent({
           .sort((a, b) => a.name.localeCompare(b.name));
       } else if (this.sortBy === "stars") {
         return this.filteredPlugins.slice().sort((a, b) => b.stars - a.stars);
+      } else if (this.sortBy === "author") {
+        return this.filteredPlugins
+          .slice()
+          .sort((a, b) => a.author.name.localeCompare(b.author.name));
       } else {
         return this.filteredPlugins;
       }
