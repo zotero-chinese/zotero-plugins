@@ -8,5 +8,9 @@ yarn.lock
 
 .husky/
 
+# Auto generated files
+auto-imports.d.ts
+components.d.ts
+
 # dist
 **/dist/**
