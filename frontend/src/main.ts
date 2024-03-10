@@ -3,19 +3,7 @@ import App from "./App.vue";
 const app = createApp(App);
 
 // Router
-import { createRouter, createWebHashHistory } from "vue-router";
-const routes = [
-    { path: "/", component: () => import("./views/PluginsMarket.vue") },
-    { path: "/charts", component: () => import("./views/PluginsChart.vue") },
-  ],
-  router = createRouter({
-    history: createWebHashHistory(),
-    routes,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    scrollBehavior(to, from, savedPosition) {
-      return { top: 0 };
-    },
-  });
+import router from "./router";
 app.use(router);
 
 // Element Plus
