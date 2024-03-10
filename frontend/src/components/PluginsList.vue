@@ -81,7 +81,7 @@ import DownloadModal from "./DownloadModal.vue";
 import type { PluginInfo } from "zotero-plugins-data";
 
 export default defineComponent({
-  name: "PluginList",
+  name: "PluginsList",
   components: {
     PluginCard,
     DownloadModal,

@@ -22,15 +22,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PluginList from "../components/PluginList.vue";
+import PluginsList from "../components/PluginsList.vue";
 import plugins from "zotero-plugins-data/dist/plugins.json";
 import type { PluginInfo } from "zotero-plugins-data";
 import updateTime from "zotero-plugins-data/dist/shields.json";
 
 export default defineComponent({
-  name: "PluginsStore",
+  name: "PluginsMarket",
   components: {
-    PluginList,
+    PluginList: PluginsList,
   },
   data() {
     return {

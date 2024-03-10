@@ -5,8 +5,8 @@ const app = createApp(App);
 // Router
 import { createRouter, createWebHashHistory } from "vue-router";
 const routes = [
-    { path: "/", component: () => import("./views/PluginsStore.vue") },
-    { path: "/charts", component: () => import("./views/ChartsView.vue") },
+    { path: "/", component: () => import("./views/PluginsMarket.vue") },
+    { path: "/charts", component: () => import("./views/PluginsChart.vue") },
   ],
   router = createRouter({
     history: createWebHashHistory(),

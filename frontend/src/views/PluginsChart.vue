@@ -39,7 +39,7 @@ import type { Board } from "@highcharts/dashboards";
 Dashboards.PluginHandler.addPlugin(HighchartsPlugin);
 
 export default defineComponent({
-  name: "ChartsView",
+  name: "PluginsChart",
   data() {
     return {};
   },

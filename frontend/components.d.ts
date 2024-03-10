@@ -32,7 +32,7 @@ declare module 'vue' {
     GitHubIcon: typeof import('./src/components/icons/GitHubIcon.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     PluginCard: typeof import('./src/components/PluginCard.vue')['default']
-    PluginList: typeof import('./src/components/PluginList.vue')['default']
+    PluginsList: typeof import('./src/components/PluginsList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
