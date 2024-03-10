@@ -19,14 +19,25 @@
       <el-menu-item class="external-link">百科全书</el-menu-item>
     </el-link>
 
-    <el-sub-menu index="4">
+    <el-sub-menu>
       <template #title>更多资料</template>
-      <el-menu-item disabled>插件开发手册</el-menu-item>
-      <el-menu-item disabled>item two</el-menu-item>
-      <el-menu-item disabled>关于</el-menu-item>
+
+      <el-link
+        href="https://zotero-chinese.com/plugin-dev-guide/"
+        target="_blank"
+      >
+        <el-menu-item>插件开发手册</el-menu-item>
+      </el-link>
+
+      <el-link href="https://zotero-chinese.com/about.html" target="_blank">
+        <el-menu-item>关于</el-menu-item>
+      </el-link>
     </el-sub-menu>
 
-    <el-link href="https://github.com/zotero-chinese/zotero-plugins">
+    <el-link
+      href="https://github.com/zotero-chinese/zotero-plugins"
+      target="_blank"
+    >
       <el-tooltip
         class="box-item"
         effect="dark"
