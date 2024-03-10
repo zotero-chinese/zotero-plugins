@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write .",
+    "prepare": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,9 +32,14 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2"
+  },
+  "lint-staged": {
+    "*.*": "prettier --write"
   }
 }
