@@ -79,7 +79,7 @@ const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: "6",
         tagName: "v0.3.2",
-      }
+      },
     ],
   },
   {
