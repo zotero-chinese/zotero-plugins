@@ -13,6 +13,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import NavBar from "./components/NavBar.vue";
+import { useDark } from "@vueuse/core";
 
 export default defineComponent({
   name: "App",
@@ -20,9 +21,9 @@ export default defineComponent({
     NavBar,
   },
   data() {
-    return {};
+    return {
+      isDark: useDark(),
+    };
   },
 });
 </script>
-
-<style scoped></style>

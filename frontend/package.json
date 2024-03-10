@@ -13,6 +13,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "@highcharts/dashboards": "^1.3.1",
+    "@vueuse/core": "^10.9.0",
     "element-plus": "^2.6.1",
     "highcharts": "^11.4.0",
     "highcharts-vue": "^2.0.0",
