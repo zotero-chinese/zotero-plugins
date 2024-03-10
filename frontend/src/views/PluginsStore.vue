@@ -16,13 +16,13 @@
     <el-main>
       <PluginList :plugins="plugins" />
     </el-main>
-    <el-footer>Footer</el-footer>
+    <el-footer></el-footer>
   </el-container>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PluginList from "./PluginList.vue";
+import PluginList from "../components/PluginList.vue";
 import plugins from "zotero-plugins-data/dist/plugins.json";
 import type { PluginInfo } from "zotero-plugins-data";
 import updateTime from "zotero-plugins-data/dist/shields.json";

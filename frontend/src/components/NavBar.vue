@@ -10,9 +10,11 @@
       <h1>Zotero 中文社区</h1>
     </el-menu-item>
     <div class="flex-grow" />
+
     <el-link href="#/">
       <el-menu-item index="#/">插件商店</el-menu-item>
     </el-link>
+
     <el-link href="#/charts">
       <el-menu-item index="#/charts">插件排行榜</el-menu-item>
     </el-link>
@@ -52,11 +54,11 @@ export default defineComponent({
   methods: {
     handleMenuSelect(index: string) {
       // Handle menu item selection here
-      if (index.startsWith("http")) {
-        window.open(index, "_blank");
-      } else if (index.startsWith("/")) {
-        window.open(`./${index}`, "_blank");
-      }
+      // if (index.startsWith("http")) {
+      //   window.open(index, "_blank");
+      // } else if (index.startsWith("/")) {
+      //   window.open(`./${index}`, "_blank");
+      // }
       this.activeIndex = index;
     },
   },
