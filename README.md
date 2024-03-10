@@ -18,7 +18,15 @@
 
 ## 提交插件
 
-插件信息保存在 [`backend/src/plugins.ts`](./backend/src/plugins.ts)，数据格式如下：
+> [!NOTE]
+>
+> 如何添加未收录的插件？
+>
+> 编辑 [`backend/src/plugins.ts`](./backend/src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容格式如下所示，已有的内容亦可作为参考。
+>
+> 添加时请按 `repo` 排序。
+>
+> 编辑完成后提交，发起 Pull Request，仓库成员将尽快处理。
 
 ```ts
 interface PluginInfo {
@@ -51,16 +59,6 @@ interface PluginInfo {
 }
 ```
 
-> [!NOTE]
->
-> 如何添加未收录的插件？
->
-> 编辑 [`backend/src/plugins.ts`](./backend/src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容如上所示，已有的内容亦可作为参考。
->
-> 添加时请按 `repo` 排序。
->
-> 编辑完成后提交，发起 Pull Request，仓库成员将尽快处理。
-
 ## 开发指南
 
 仓库采用 pnpm 工作空间组织，目录如下：
@@ -74,7 +72,6 @@ interface PluginInfo {
 
 - 遍历上述插件信息列表，从 GitHub 获取每一个插件的基本信息和发行版，将获取到的信息保存在 [`backend/dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
 - 同时将 XPI 包保存在 [`backend/dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
-- ~~根据得到的信息，渲染为 Markdown 表格，写入 [`backend/dist/plugins.md`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.md)~~
 
 GitHub Action Bot 定时运行 `backend/src/index.ts` 脚本，执行上述步骤，并将 `backend/dist` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
 
@@ -86,7 +83,7 @@ GitHub Action Bot 定时运行 `backend/src/index.ts` 脚本，执行上述步�
 
 ### 前端
 
-前端使用 Vue + Typescript + Vite 进行开发。所需要的插件数据通过 pnpm 工作空间从 backend 读取。
+前端使用 Vue + Typescript + Element Plus + Vite 进行开发。所需要的插件数据通过 pnpm 工作空间从 backend 读取。
 
 ### 开发
 

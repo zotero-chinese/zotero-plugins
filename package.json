@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write .",
     "prepare": "husky install",
+    "build": "bash .github/build.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -40,6 +41,6 @@
     "typescript": "^5.4.2"
   },
   "lint-staged": {
-    "*.*": "prettier --write"
+    "*": "prettier --ignore-unknown --write"
   }
 }

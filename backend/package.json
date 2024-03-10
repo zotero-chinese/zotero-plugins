@@ -5,11 +5,10 @@
   "main": "src/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "get-info": "tsx src/index.ts fetchPlugins",
-    "get-chart": "tsx src/index.ts charts",
-    "write-md": "tsx src/index.ts md",
-    "debug:info": "cross-env NODE_ENV=development npm run get-info",
-    "debug:chart": "cross-env NODE_ENV=development npm run get-chart"
+    "data:info": "tsx src/index.ts fetchPlugins",
+    "data:chart": "tsx src/index.ts charts",
+    "debug:info": "cross-env NODE_ENV=development npm run data:info",
+    "debug:chart": "cross-env NODE_ENV=development npm run data:chart"
   },
   "repository": {
     "type": "git",

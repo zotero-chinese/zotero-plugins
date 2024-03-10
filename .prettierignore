@@ -12,5 +12,8 @@ yarn.lock
 auto-imports.d.ts
 components.d.ts
 
+# No parser
+.github/*.sh
+
 # dist
 **/dist/**
