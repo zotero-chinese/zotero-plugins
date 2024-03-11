@@ -63,7 +63,7 @@ export default defineComponent({
   components: { GitHubIcon },
   data() {
     return {
-      activeIndex: window.location.hash.slice(1),
+      activeIndex: window.location.hash.slice(1) || "/",
     };
   },
 });
