@@ -1,8 +1,6 @@
 <template>
   <el-container>
-    <el-affix>
-      <NavBar />
-    </el-affix>
+    <NavBar />
     <el-main>
       <router-view></router-view>
     </el-main>
