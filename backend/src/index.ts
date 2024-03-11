@@ -1,18 +1,13 @@
 import { Octokit } from "octokit";
-// import { plugins } from "./plugins";
-import { plugins as pluginsProd } from "./plugins";
-import { test as pluginsDev } from "./plugins";
+import plugins from "./plugins";
 import { readFile, writeFile } from "./utils";
 import getChartOptions from "./charts";
 import { fetchPlugins } from "./get-plugins-info";
-import { renderMarkdown } from "./render-markdown";
-
-const plugins =
-  process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
+// import { renderMarkdown } from "./render-markdown";
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
 
-export const dist = "../docs/dist",
+export const dist = "./dist",
   octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
@@ -27,7 +22,7 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
 
   if (quotaStart.remaining < 1500) {
     console.log(
-      `TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`
+      `TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`,
     );
     process.exit(1);
   }
@@ -40,22 +35,22 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
         !process.env.CI
           ? writeFile(
               `${dist}/plugins-debug.json`,
-              JSON.stringify(plugins, null, 2)
+              JSON.stringify(plugins, null, 2),
             )
           : "";
         writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist));
 
-        let shields = {
+        const shields = {
           lastUpdate: new Date().toLocaleString("zh-CN"),
         };
         writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
       }
       break;
     case "md": {
-      console.log("处理 Markdown");
-      const pluginsInfoDist = readFile(`${dist}/plugins.json`);
-      const markdownContent = await renderMarkdown(pluginsInfoDist);
-      writeFile(`${dist}/plugins.md`, markdownContent);
+      // console.log("处理 Markdown");
+      // const pluginsInfoDist = readFile(`${dist}/plugins.json`);
+      // const markdownContent = await renderMarkdown(pluginsInfoDist);
+      // writeFile(`${dist}/plugins.md`, markdownContent);
       break;
     }
     case "charts":
@@ -67,8 +62,8 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
           JSON.stringify(
             chartOptions,
             null,
-            process.env.NODE_ENV == "development" ? 2 : 0
-          )
+            process.env.NODE_ENV == "development" ? 2 : 0,
+          ),
         );
       }
       break;

@@ -9,6 +9,7 @@
 <!-- 拟于 Zotero 7 正式发布后，将不再适配 7 的插件移入此页面 -->
 
 - Zotero File
+
   - 作者：Polygon
   - 仓库：<https://github.com/MuiseDestiny/zotero-file>
   - 描述：Zotero 7 Meet ZotFile: Zotero plugin to manage your attachments: automatically rename, move, and attach PDFs (or other files) to Zotero items.
@@ -19,6 +20,7 @@
   - 记录时间：2023/10/24
 
 - ZotFile
+
   - 作者：Joscha Legewie
   - 仓库：<https://github.com/jlegewie/zotfile>
   - 描述：Zotero plugin to manage your attachments: automatically rename, move, and attach PDFs (or other files) to Zotero items, sync PDFs from your Zotero library to your (mobile) PDF reader (e.g. an iPad, Android tablet, etc.), and extract PDF annotations.
@@ -30,6 +32,7 @@
   - 汉化版（`lychichem/zotfile`）于 2024 年 2 月 9 日删除仓库，停止维护
 
 - Zotero Preview
+
   - 作者: windingwind
   - 仓库：windingwind/zotero-pdf-preview
   - 描述：PDF 预览

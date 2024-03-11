@@ -1,6 +1,4 @@
 import { octokit } from ".";
-import { writeFile } from "./utils";
-import { PluginInfo } from "./types";
 import type { Board } from "@highcharts/dashboards";
 import type {
   Options,
@@ -13,6 +11,7 @@ import type {
 } from "highcharts";
 
 import { createRequire } from "module";
+import { PluginInfo } from "../types";
 const require = createRequire(import.meta.url),
   pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == "development"
@@ -121,10 +120,10 @@ async function getDownloadsCount(owner: string, repo: string) {
     // 优先选择 xpi 文件，其次是 zip 文件，否则选择第一个文件
     const xpi =
       release.assets.find(
-        (asset) => asset.content_type == "application/x-xpinstall"
+        (asset) => asset.content_type == "application/x-xpinstall",
       ) ||
       release.assets.find((asset) =>
-        /application\/(x-)?zip(-compressed)?/.test(asset.content_type)
+        /application\/(x-)?zip(-compressed)?/.test(asset.content_type),
       ) ||
       release.assets[0];
 
@@ -149,7 +148,7 @@ async function getStarHistory(owner: string, repo: string) {
         headers: {
           accept: "application/vnd.github.star+json",
         },
-      }
+      },
     ),
     allDate = new Array<Date>();
   for await (const { data } of iterator)
@@ -180,7 +179,7 @@ async function drawStarHistory() {
     } as SeriesSplineOptions;
   });
   return (await Promise.all(series)).sort(
-    (a, b) => b.data!.length - a.data!.length
+    (a, b) => b.data!.length - a.data!.length,
   );
 }
 
@@ -287,7 +286,7 @@ function drawAuthorPie() {
             y: plugin.stars,
             className: "stargazers-pie-plugin",
             colorIndex,
-          }))
+          })),
       );
     });
   return [authorSeries, pluginSeries];
@@ -295,7 +294,7 @@ function drawAuthorPie() {
 
 function drawIssueBar() {
   const categories = Object.keys(pluginMap).sort(
-      (a, b) => pluginMap[b].issues!.length - pluginMap[a].issues!.length
+      (a, b) => pluginMap[b].issues!.length - pluginMap[a].issues!.length,
     ),
     closed: SeriesBarOptions = {
       type: "bar",
@@ -304,7 +303,7 @@ function drawIssueBar() {
       data: categories.map(
         (name) =>
           pluginMap[name].issues!.filter((issue) => issue.closedAt != null)
-            .length
+            .length,
       ),
     },
     open: SeriesBarOptions = {
@@ -314,7 +313,7 @@ function drawIssueBar() {
       data: categories.map(
         (name) =>
           pluginMap[name].issues!.filter((issue) => issue.closedAt == null)
-            .length
+            .length,
       ),
     };
   return [open, closed];
@@ -334,7 +333,7 @@ function drawActivities() {
   for (const [name, info] of Object.entries(pluginMap)) {
     const totalSize = info.releases!.reduce(
         (sum, release) => sum + release.size,
-        0
+        0,
       ),
       closedIssues = info.issues!.filter((issue) => issue.closedAt != null);
     series.push({
@@ -345,18 +344,18 @@ function drawActivities() {
         info.watchers!,
         toFixedNum(
           info.totalDownloads! /
-            getDays(info.releases!.at(-1)!.published_at, new Date())
+            getDays(info.releases!.at(-1)!.published_at, new Date()),
         ),
         toFixedNum(totalSize / info.releases!.length / 1024 / 1024),
         toFixedNum(
           closedIssues.reduce(
             (sum, issue) => sum + getDays(issue.createdAt, issue.closedAt!),
-            0
-          ) / closedIssues.length
+            0,
+          ) / closedIssues.length,
         ),
         toFixedNum(
           (info.stars! * 7) /
-            getDays(info.starHistory![0], info.starHistory!.at(-1)!)
+            getDays(info.starHistory![0], info.starHistory!.at(-1)!),
         ),
       ],
     });
@@ -375,7 +374,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
   if (process.env.NODE_ENV == "development")
     for (const plugin in pluginMap)
       pluginMap[plugin].starHistory = pluginMap[plugin].starHistory?.map(
-        (date) => new Date(date)
+        (date) => new Date(date),
       );
   const pointColor = "var(--highcharts-color-{point.colorIndex})",
     exporting = {
@@ -564,7 +563,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
           xAxis: {
             categories: Object.keys(pluginMap).sort(
               (a, b) =>
-                pluginMap[b].issues!.length - pluginMap[a].issues!.length
+                pluginMap[b].issues!.length - pluginMap[a].issues!.length,
             ),
           },
           yAxis: {

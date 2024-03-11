@@ -1,10 +1,12 @@
-import { PluginInfo, PluginInfoBase } from "./types";
+import { PluginInfoBase } from "../types";
 
 /**
+ * 插件列表
+ *
  * 贡献者贡献插件时，请按照 `repo` 字母顺序排序。
  * Please sort the plugins in alphabetical order by `name` when contributing.
  */
-export const plugins: PluginInfoBase[] = [
+const plugins: PluginInfoBase[] = [
   {
     repo: "018/zotcard",
     releases: [
@@ -77,7 +79,7 @@ export const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: "6",
         tagName: "v0.3.2",
-      }
+      },
     ],
   },
   {
@@ -759,8 +761,11 @@ export const plugins: PluginInfoBase[] = [
   },
 ];
 
-// 以下列表仅供开发测试使用
-export const test: PluginInfoBase[] = [
+/**
+ * 仅供开发测试使用的插件列表
+ *
+ */
+const pluginsDev: PluginInfoBase[] = [
   {
     repo: "northword/zotero-format-metadata",
     releases: [
@@ -797,3 +802,5 @@ export const test: PluginInfoBase[] = [
     ],
   },
 ];
+
+export default process.env.NODE_ENV == "development" ? pluginsDev : plugins;

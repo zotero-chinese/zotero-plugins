@@ -15,12 +15,6 @@
     "resolveJsonModule": true,
     "inlineSourceMap": true
   },
-  "include": ["src"],
-  // "include": ["src", "typings", "../zotero-types"],
-  "exclude": ["build", "dist", "node_modules"],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  },
-  "lib": ["esnext"]
+  "lib": ["esnext"],
+  "include": ["src", "types"]
 }

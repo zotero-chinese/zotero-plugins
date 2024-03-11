@@ -1,13 +1,19 @@
+/* eslint-disable */
+// 临时禁用 eslint
+
 import fs from "fs";
 import { franc } from "franc-min";
 // import translate from "google-translate-api-x";
 import AdmZip from "adm-zip";
 import * as xml2js from "xml2js";
-import { PluginInfo, PluginInfoBase } from "./types";
 import { writeFile } from "./utils";
 import { octokit } from ".";
 import { dist } from ".";
 import { jsonc } from "jsonc";
+import { PluginInfoBase, PluginInfo } from "../types";
+
+const XpiIds: number[] = [];
+// todo: 缓存XPI；将backend的dist单独保存，分离前后端工作流，对PR启用工作流和预览
 
 export function fetchPlugins(plugins: PluginInfoBase[]) {
   return Promise.all(plugins.map(fetchPlugin));
@@ -54,7 +60,7 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
         name: resp.data.name || owner,
         url: resp.data.blog || resp.data.html_url,
         avatar: resp.data.avatar_url,
-      })
+      }),
   );
 
   // 发行版
@@ -107,24 +113,23 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
           .then((resp) => {
             writeFile(
               `${dist}/xpi/${asset.id}.xpi`,
-              Buffer.from(resp.data as unknown as ArrayBuffer)
+              Buffer.from(resp.data as unknown as ArrayBuffer),
             );
           });
       }
 
       release.assetId = asset.id;
+      XpiIds.push(asset.id);
       release.releaseDate = asset.updated_at;
       release.downloadCount = asset.download_count;
       release.xpiDownloadUrl = {
         github: asset.browser_download_url,
         gitee: `https://gitee.com/northword/zotero-plugins/raw/gh-pages/dist/xpi/${release.assetId}.xpi`,
-        ghProxy: `https://ghproxy.com/?q=${encodeURI(
-          asset.browser_download_url
-        )}`,
+        ghProxy: `https://ghproxy.com/?q=${encodeURI(asset.browser_download_url)}`,
         jsdeliver: `https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/dist/xpi/${release.assetId}.xpi`,
         kgithub: asset.browser_download_url.replace(
           "github.com",
-          "kkgithub.com"
+          "kkgithub.com",
         ),
       };
     });
@@ -149,13 +154,10 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
           : plugin.name ?? manifestData.name ?? repo;
       if (plugin.name == "__MSG_name__") {
         const locale = ["zh-CN", "zh", manifestData.default_locale]
-          .map(e => `_locales/${e}/messages.json`)
-          .find(e => !!zipEntryNames.includes(e));
+          .map((e) => `_locales/${e}/messages.json`)
+          .find((e) => !!zipEntryNames.includes(e));
         if (locale) {
-          const message = zip
-            .getEntry(locale)!
-            .getData()
-            .toString("utf8");
+          const message = zip.getEntry(locale)!.getData().toString("utf8");
           const messageData = jsonc.parse(message);
           plugin.name = messageData.name.message;
         } else {
@@ -191,7 +193,7 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
               }
             })
             .filter((id: string | undefined) => id !== undefined)[0];
-        }
+        },
       );
       // 从 install.rdf 中获取 description
       plugin.description =

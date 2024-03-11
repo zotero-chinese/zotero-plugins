@@ -13,7 +13,7 @@ export interface PluginInfoBase {
   releases: ReleaseInfoBase[];
 }
 
-interface ReleaseInfoBase {
+export interface ReleaseInfoBase {
   /**
    * 当前发布版对应的 Zotero 版本
    */
@@ -50,7 +50,7 @@ export interface PluginInfo extends PluginInfoBase {
   };
 }
 
-interface ReleaseInfo extends ReleaseInfoBase {
+export interface ReleaseInfo extends ReleaseInfoBase {
   /**
    * 插件 ID，自 XPI 中提取
    */
