@@ -32,7 +32,7 @@ import NoDataToDisplay from "highcharts/modules/no-data-to-display";
 NoDataToDisplay(Highcharts);
 import HighchartsPlugin from "@highcharts/dashboards/es-modules/Dashboards/Plugins/HighchartsPlugin";
 HighchartsPlugin.custom.connectHighcharts(Highcharts);
-import Dashboards from "@highcharts/dashboards/es-modules/masters/dashboards.src";
+import Dashboards from "@highcharts/dashboards";
 import type { Board } from "@highcharts/dashboards";
 Dashboards.PluginHandler.addPlugin(HighchartsPlugin);
 
