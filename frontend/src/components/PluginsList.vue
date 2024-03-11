@@ -170,6 +170,15 @@ export default defineComponent({
   justify-content: space-around;
   padding-bottom: 20px;
 }
+.toolbar > * {
+  margin: 0 8px;
+}
+.toolbar > :first-child {
+  margin-left: 0;
+}
+.toolbar > :last-child {
+  margin-right: 0;
+}
 
 .grid-content {
   border-radius: 4px;

@@ -2,6 +2,7 @@
   <el-menu
     :default-active="activeIndex"
     mode="horizontal"
+    background-color="var(--el-mask-color-extra-light)"
     :ellipsis="false"
     router
   >
