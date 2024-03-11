@@ -2,9 +2,7 @@
   <div
     id="container"
     :class="{ 'highcharts-dark': darkMode, 'highcharts-light': !darkMode }"
-  >
-    Loading ...
-  </div>
+  />
 </template>
 
 <script lang="ts">
