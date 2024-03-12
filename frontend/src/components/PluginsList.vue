@@ -1,7 +1,8 @@
 <template>
   <div class="toolbar">
+    <!-- Zotero 版本筛选 -->
     <el-select
-      v-model="tag"
+      v-model="zotero"
       placeholder="适配 Zotero 版本"
       size="large"
       style="width: 200px"
@@ -16,6 +17,7 @@
       <el-option label="Zotero 7" value="zotero7"></el-option>
     </el-select>
 
+    <!-- 排序 -->
     <el-select
       v-model="sortBy"
       placeholder="排序"
@@ -33,6 +35,7 @@
       <el-option label="最后更新时间" value="lastUpdated" disabled></el-option>
     </el-select>
 
+    <!-- 搜索 -->
     <el-input
       v-model="searchText"
       size="large"
@@ -49,6 +52,20 @@
     </el-input>
   </div>
 
+  <!-- 标签筛选 -->
+  <el-checkbox-group v-model="selectedTags" size="large">
+    <!-- <el-checkbox value="all" border>All</el-checkbox> -->
+    <el-checkbox
+      v-for="(tagDetail, tag) in allTags"
+      :key="tagDetail"
+      :value="tag"
+      border
+    >
+      {{ tagDetail.label }}
+    </el-checkbox>
+  </el-checkbox-group>
+
+  <!-- 插件卡片列表 -->
   <el-row :gutter="20">
     <el-col
       :xs="12"
@@ -64,14 +81,15 @@
       </div>
     </el-col>
   </el-row>
+  <!-- 空状态 -->
+  <el-empty v-if="filteredPlugins.length == 0" description="无匹配插件" />
 
+  <!-- 下载页面 -->
   <DownloadModal
     :showModal="showModal"
     :selectedPlugin="selectedPlugin"
     @closeModal="closeModal"
   />
-
-  <el-empty v-if="filteredPlugins.length == 0" description="无匹配插件" />
 </template>
 
 <script lang="ts">
@@ -80,6 +98,7 @@ import type { PropType } from "vue";
 import PluginCard from "./PluginCard.vue";
 import DownloadModal from "./DownloadModal.vue";
 import type { PluginInfo } from "zotero-plugins-data";
+import { tags } from "@/types/tags";
 
 export default defineComponent({
   name: "PluginsList",
@@ -97,7 +116,9 @@ export default defineComponent({
       selectedPlugin: this.plugins[0],
       searchText: "",
       sortBy: "stars",
-      tag: "",
+      zotero: "",
+      selectedTags: [],
+      allTags: tags,
     };
   },
   computed: {
@@ -118,14 +139,14 @@ export default defineComponent({
     },
     filteredPlugins() {
       let filtered = this.plugins;
-      if (this.tag == "zotero6") {
+      if (this.zotero == "zotero6") {
         filtered = filtered.filter((plugin) => {
           return plugin.releases.some(
             (release) => release.targetZoteroVersion === "6",
           );
         });
         // return this.plugins.filter((plugin) => plugin.name.endWith("Zotero"));
-      } else if (this.tag == "zotero7") {
+      } else if (this.zotero == "zotero7") {
         filtered = filtered.filter((plugin) => {
           return plugin.releases.some(
             (release) => release.targetZoteroVersion === "7",
@@ -139,6 +160,11 @@ export default defineComponent({
             plugin.name.toLowerCase().includes(searchTextLower) ||
             plugin.description.toLowerCase().includes(searchTextLower)
           );
+        });
+      }
+      if (this.selectedTags.length !== 0) {
+        filtered = filtered.filter((plugin) => {
+          return this.selectedTags.some((tag) => plugin.tags.includes(tag));
         });
       }
       return filtered;
@@ -178,6 +204,30 @@ export default defineComponent({
 }
 .toolbar > :last-child {
   margin-right: 0;
+}
+.el-checkbox-group {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.el-checkbox {
+  margin: 0px 10px 10px 0px;
+}
+
+.el-checkbox > :deep(.el-checkbox__input) {
+  display: none !important;
+}
+
+.el-checkbox-button {
+  border: var(--el-border);
+  border-radius: var(--el-border-radius-base);
+  /* box-shadow: none!important; */
+}
+.el-checkbox-button__inner {
+  border: unset !important;
+  border-left-color: unset !important;
 }
 
 .grid-content {

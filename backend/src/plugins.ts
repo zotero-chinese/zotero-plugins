@@ -19,6 +19,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "v2.8",
       },
     ],
+    tags: ["notes"],
   },
   {
     repo: "018/zotero-excalidraw",
@@ -28,6 +29,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "AgiNetz/semantic-zotero",
@@ -37,6 +39,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "AlbertShenC/Zotero-Literature-Manager",
@@ -46,6 +49,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "Bowen-0x00/zotero-action-cmd",
@@ -55,6 +59,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["productivity"],
   },
   {
     repo: "ChenglongMa/zoplicate",
@@ -68,6 +73,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "zotero6",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "Dominic-DallOsto/zotero-reading-list",
@@ -81,6 +87,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "v0.3.2",
       },
     ],
+    tags: ["productivity"],
   },
   {
     repo: "FrLars21/ZoteroCitationCountsManager",
@@ -90,6 +97,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "pre",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "ManuelaRunge/Zotitle",
@@ -99,6 +107,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "MuiseDestiny/ZoteroStyle",
@@ -112,6 +121,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["favorite", "interface"],
   },
   {
     repo: "MuiseDestiny/eaiser-citation",
@@ -125,6 +135,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.3.1",
       },
     ],
+    tags: ["favorite", "writing"],
   },
   {
     repo: "MuiseDestiny/zotero-attanger",
@@ -134,6 +145,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "MuiseDestiny/zotero-figure",
@@ -147,6 +159,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.0.7",
       },
     ],
+    tags: ["reader", "productivity"],
   },
   {
     repo: "MuiseDestiny/zotero-gpt",
@@ -160,6 +173,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["interface"],
   },
   {
     repo: "MuiseDestiny/zotero-reference",
@@ -173,6 +187,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata", "reader"],
   },
   {
     repo: "NicoleMayer/zotero-save-with-tag",
@@ -182,6 +197,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "PubPeerFoundation/pubpeer_zotero_plugin",
@@ -191,6 +207,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "RoadToDream/ZotMeta",
@@ -200,6 +217,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "SiriusXT/Zotero-Scholar-Rank",
@@ -209,6 +227,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "Theigrams/zotero-pdf-custom-rename",
@@ -218,6 +237,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "UB-Mannheim/zotero-ocr",
@@ -227,6 +247,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["others"],
   },
   {
     repo: "Zar-rok/Zotero-Add-Collection-Tag",
@@ -236,6 +257,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["others"],
   },
   {
     repo: "argenos/zotero-mdnotes",
@@ -245,6 +267,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["notes"],
   },
   {
     repo: "bwiernik/zotero-shortdoi",
@@ -254,6 +277,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "daeh/zotero-obsidian-citations",
@@ -267,6 +291,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "pre",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "dvanoni/notero",
@@ -280,6 +305,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "egh/zotxt",
@@ -293,6 +319,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "eschnett/zotero-citationcounts",
@@ -302,6 +329,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "ethanwillis/zotero-scihub",
@@ -311,6 +339,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "fkguo/zotero-inspire",
@@ -324,6 +353,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["developer"],
   },
   {
     repo: "frangoud/ZoteroDuplicatesMerger",
@@ -333,6 +363,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "franzbischoff/zotero-pdf-metadata",
@@ -342,6 +373,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "frianasoa/Ze-Notes",
@@ -355,6 +387,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["notes"],
   },
   {
     repo: "github-young/zotero-better-authors",
@@ -364,6 +397,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["interface"],
   },
   {
     repo: "iShareStuff/Backup-Plugin-for-Zotero",
@@ -373,6 +407,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["others"],
   },
   {
     repo: "iShareStuff/ZoteroFields-Plugin-for-Zotero",
@@ -382,6 +417,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "iShareStuff/ZoteroTheme",
@@ -391,6 +427,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["interface"],
   },
   {
     repo: "inciteful-xyz/inciteful-zotero-plugin",
@@ -400,6 +437,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "jlegewie/zotfile",
@@ -409,6 +447,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "justinribeiro/zotero-google-scholar-citation-count",
@@ -418,6 +457,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "jyjulianwong/PolarRec-Zotero-Plugin",
@@ -427,6 +467,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "pre",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "l0o0/jasminum",
@@ -440,6 +481,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["favorite", "metadata"],
   },
   {
     repo: "l0o0/tara",
@@ -453,6 +495,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "pre",
       },
     ],
+    tags: ["others"],
   },
   {
     repo: "mpatelh/zbatch",
@@ -462,6 +505,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["productivity"],
   },
   {
     repo: "northword/zotero-format-metadata",
@@ -475,6 +519,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.4.4",
       },
     ],
+    tags: ["favorite", "metadata"],
   },
   {
     repo: "paulusm/zotero-trilium",
@@ -484,6 +529,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "redleafnew/delitemwithatt",
@@ -497,6 +543,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.1.06",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "redleafnew/zotero-updateifs",
@@ -506,6 +553,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "redleafnew/zotero-updateifsE",
@@ -519,6 +567,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.13.0",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "retorquere/zotero-better-bibtex",
@@ -532,6 +581,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "retorquere/zotero-open-pdf",
@@ -545,6 +595,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "retorquere/zotero-pmcid-fetcher",
@@ -554,6 +605,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "retorquere/zotero-storage-scanner",
@@ -563,6 +615,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "scitedotai/scite-zotero-plugin",
@@ -572,6 +625,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "syt2/Zotero-TLDR",
@@ -581,6 +635,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "syt2/zotero-addons",
@@ -594,6 +649,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.6.0-6",
       },
     ],
+    tags: ["others"],
   },
   {
     repo: "syt2/zotero-scipdf",
@@ -603,6 +659,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "tefkah/zotero-night",
@@ -612,6 +669,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["interface"],
   },
   {
     repo: "theRatramnus/RIOPACAddChapter",
@@ -621,6 +679,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "theRatramnus/Zotero-download-DigiVatLib-pdf",
@@ -630,6 +689,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "volatile-static/Chartero",
@@ -643,6 +703,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["visualization", "interface"],
   },
   {
     repo: "wbthomason/zotodo",
@@ -652,6 +713,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["productivity"],
   },
   {
     repo: "whacked/zotero-special-tags-column",
@@ -665,6 +727,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["others"],
   },
   {
     repo: "wileyyugioh/zotmoov",
@@ -674,6 +737,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "pre",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "windingwind/zotero-actions-tags",
@@ -687,6 +751,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["productivity"],
   },
   {
     repo: "windingwind/zotero-better-notes",
@@ -700,6 +765,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["favorite", "notes"],
   },
   {
     repo: "windingwind/zotero-pdf-preview",
@@ -709,6 +775,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["attachment"],
   },
   {
     repo: "windingwind/zotero-pdf-translate",
@@ -722,6 +789,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["favorite", "productivity"],
   },
   {
     repo: "wshanks/Zutilo",
@@ -731,6 +799,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["productivity"],
   },
   {
     repo: "wshanks/lyz",
@@ -740,6 +809,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["integration"],
   },
   {
     repo: "yhmtsai/KeepZotero",
@@ -749,6 +819,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["others"],
   },
   {
     repo: "zzlb0224/zotero-annotation-manage",
@@ -758,6 +829,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["others"],
   },
 ];
 
@@ -778,6 +850,7 @@ const pluginsDev: PluginInfoBase[] = [
         tagName: "0.4.4",
       },
     ],
+    tags: ["metadata"],
   },
   {
     repo: "volatile-static/Chartero",
@@ -787,6 +860,7 @@ const pluginsDev: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
+    tags: ["visualization"],
   },
   {
     repo: "syt2/zotero-addons",
@@ -800,6 +874,7 @@ const pluginsDev: PluginInfoBase[] = [
         tagName: "0.6.0-6",
       },
     ],
+    tags: ["others"],
   },
 ];
 

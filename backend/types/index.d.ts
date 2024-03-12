@@ -11,6 +11,8 @@ export interface PluginInfoBase {
    * 插件的发布地址信息
    */
   releases: ReleaseInfoBase[];
+
+  tags: TagType[];
 }
 
 export interface ReleaseInfoBase {
@@ -70,3 +72,32 @@ export interface ReleaseInfo extends ReleaseInfoBase {
   downloadCount: number;
   assetId: number;
 }
+
+/**
+ * 插件标签
+ */
+export type TagType =
+  // 推荐列表
+  | "favorite"
+  // 条目元数据维护
+  | "metadata"
+  // UI相关
+  | "interface"
+  // 附件管理相关
+  | "attachment"
+  // 笔记增强
+  | "notes"
+  // 阅读器增强
+  | "reader"
+  // 效率增强、生产力工具
+  | "productivity"
+  // 可视化、文库分析
+  | "visualization"
+  // 第三方软件集成
+  | "integration"
+  // 字处理软件集成或增强
+  | "writing"
+  // 开发者工具
+  | "developer"
+  // 其他
+  | "others";
