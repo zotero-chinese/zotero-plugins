@@ -1,0 +1,7 @@
+packages:
+  # 后端内容，包名 zotero-plugins-data
+  - "backend/**"
+  # 前端内容，包名 zotero-plugins-website
+  - "frontend/**"
+  # exclude packages that are inside test directories
+  - "!**/test/**"

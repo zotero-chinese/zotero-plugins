@@ -10,7 +10,7 @@ export function readFile(filePath: string) {
 
 export function writeFile(
   filePath: string,
-  data: string | NodeJS.ArrayBufferView
+  data: string | NodeJS.ArrayBufferView,
 ) {
   // 获取目标目录路径
   const dirPath = path.dirname(filePath);
@@ -26,7 +26,7 @@ export function writeFile(
 }
 
 export function copyFileSync(source: string, target: string) {
-  var targetFile = target;
+  let targetFile = target;
 
   // If target is a directory, a new file with the same name will be created
   if (fs.existsSync(target)) {
@@ -39,10 +39,10 @@ export function copyFileSync(source: string, target: string) {
 }
 
 export function copyFolderRecursiveSync(source: string, target: string) {
-  var files = Array();
+  let files = Array();
 
   // Check if folder needs to be created or integrated
-  var targetFolder = path.join(target);
+  const targetFolder = path.join(target);
   if (!fs.existsSync(targetFolder)) {
     fs.mkdirSync(targetFolder);
   }
@@ -51,7 +51,7 @@ export function copyFolderRecursiveSync(source: string, target: string) {
   if (fs.lstatSync(source).isDirectory()) {
     files = fs.readdirSync(source);
     files.forEach(function (file) {
-      var curSource = path.join(source, file);
+      const curSource = path.join(source, file);
       if (fs.lstatSync(curSource).isDirectory()) {
         copyFolderRecursiveSync(curSource, targetFolder);
       } else {

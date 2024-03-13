@@ -1,30 +1,28 @@
 import { Octokit } from "octokit";
-// import { plugins } from "./plugins";
-import { plugins as pluginsProd } from "./plugins";
-import { test as pluginsDev } from "./plugins";
-import { writeFile } from "./utils";
+import plugins from "./plugins";
+import { readFile, writeFile } from "./utils";
 import getChartOptions from "./charts";
-import { fetchPlugins } from "./get_plugins_info";
-import { renderMarkdown } from "./renderMarkdown";
-
-const plugins =
-  process.env.NODE_ENV == "development" ? pluginsDev : pluginsProd;
+import { fetchPlugins } from "./get-plugins-info";
+// import { renderMarkdown } from "./render-markdown";
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
-export const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-export const dist = "../docs/dist";
+
+export const dist = "./dist",
+  octokit = new Octokit({
+    auth: process.env.GITHUB_TOKEN,
+  });
 
 export function args() {
-  return <"fetchPlugins" | "charts">process.argv.slice(2)[0];
+  return <"fetchPlugins" | "md" | "charts">process.argv.slice(2)[0];
 }
 
 async function main(mode: "fetchPlugins" | "charts" | string) {
   const quotaStart = (await octokit.rest.rateLimit.get()).data.rate;
   console.log(quotaStart);
 
-  if (quotaStart.remaining < 900) {
+  if (quotaStart.remaining < 1500) {
     console.log(
-      `TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`
+      `TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`,
     );
     process.exit(1);
   }
@@ -33,29 +31,39 @@ async function main(mode: "fetchPlugins" | "charts" | string) {
   switch (mode) {
     case "fetchPlugins":
       {
-        let pluginsInfoDist = await fetchPlugins(plugins);
+        const pluginsInfoDist = await fetchPlugins(plugins);
+        !process.env.CI
+          ? writeFile(
+              `${dist}/plugins-debug.json`,
+              JSON.stringify(plugins, null, 2),
+            )
+          : "";
         writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist));
 
-        console.log("处理 Markdown");
-        const markdownContent = await renderMarkdown(pluginsInfoDist);
-        writeFile(`${dist}/plugins.md`, markdownContent);
-
-        let shields = {
+        const shields = {
           lastUpdate: new Date().toLocaleString("zh-CN"),
         };
         writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2));
       }
       break;
+    case "md": {
+      // console.log("处理 Markdown");
+      // const pluginsInfoDist = readFile(`${dist}/plugins.json`);
+      // const markdownContent = await renderMarkdown(pluginsInfoDist);
+      // writeFile(`${dist}/plugins.md`, markdownContent);
+      break;
+    }
     case "charts":
       {
-        const chartOptions = await getChartOptions(plugins);
+        const pluginsInfoDist = readFile(`${dist}/plugins.json`);
+        const chartOptions = await getChartOptions(pluginsInfoDist);
         writeFile(
           `${dist}/charts.json`,
           JSON.stringify(
             chartOptions,
             null,
-            process.env.NODE_ENV == "development" ? 2 : 0
-          )
+            process.env.NODE_ENV == "development" ? 2 : 0,
+          ),
         );
       }
       break;

@@ -14,20 +14,14 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  plugins-info:
-    name: Plugins Info
-    uses: ./.github/workflows/plugins-info.yml
-    secrets: inherit
-
-  charts:
-    name: Charts Info
-    uses: ./.github/workflows/charts.yml
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
     secrets: inherit
 
   deploy:
     needs:
-      - plugins-info
-      - charts
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -37,16 +31,16 @@ jobs:
           fetch-depth: 0
 
       - name: Download Build Output
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: artifact
-          path: docs
+          path: dist
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: docs
+          folder: dist
           single-commit: true
           git-config-name: github-actions[bot]
           git-config-email: github-actions[bot]@users.noreply.github.com

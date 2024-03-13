@@ -1,9 +1,10 @@
 # Zotero 插件合集
 
-![GitHub 自动构建状态](https://img.shields.io/github/actions/workflow/status/northword/zotero-plugins/main.yml)
+![GitHub 自动构建状态](https://img.shields.io/github/actions/workflow/status/northword/zotero-plugins/main.yml?logo=githubactions)
 [![Netlify 部署状态](https://api.netlify.com/api/v1/badges/bae2ef92-2f0a-4076-ae7c-6619933cdf39/deploy-status)](https://app.netlify.com/sites/zotero-plugins/deploys)
-![GitHub 最后更新时间](https://img.shields.io/github/last-commit/northword/zotero-plugins/gh-pages)
-![最后更新](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0)
+![GitHub 最后更新时间](https://img.shields.io/github/last-commit/northword/zotero-plugins/main?logo=github)
+![最后更新](https://img.shields.io/badge/dynamic/json?logo=github&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0)
+![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hw/zotero-chinese/zotero-plugins?logo=jsdelivr)
 
 :cn: 本仓库提供了若干 Zotero 插件的信息及其 XPI 包，尝试在 Zotero 官方插件商店建立前，提供集中的插件商店服务。
 
@@ -13,20 +14,22 @@
 
 - **Zotero 中文社区主域名：<https://plugins.zotero-chinese.com>**
 - Netlify: <https://zotero-plugins.netlify.app/>
-- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/>
+- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/> （该地址暂不可用，将自动跳转主域名）
 
-## 贡献
+## 提交插件
 
-### 插件信息
-
-插件信息保存在 [`src/plugins.ts`](./src/plugins.ts)，数据格式如下：
+> [!NOTE]
+>
+> 如何添加未收录的插件？
+>
+> 编辑 [`backend/src/plugins.ts`](./backend/src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容格式如下所示，已有的内容亦可作为参考。
+>
+> 添加时请按 `repo` 排序。
+>
+> 编辑完成后提交，发起 Pull Request，仓库成员将尽快处理。
 
 ```ts
 interface PluginInfo {
-  /**
-   * 插件名称
-   */
-  name: string;
   /**
    * 插件仓库
    *
@@ -40,7 +43,7 @@ interface PluginInfo {
    */
   releases: Array<{
     /**
-     * 当前发布版对应的 Zotero 版本
+     * 当前发布版对应的 Zotero 版本，"7" 或 "6"
      */
     targetZoteroVersion: string;
     /**
@@ -56,35 +59,14 @@ interface PluginInfo {
 }
 ```
 
-对于每一个插件，只有必填项需要填写在 [`src/plugins.ts`](./src/plugins.ts) 中，其余字段脚本运行时可以获取。
+## 开发指南
 
-> [!NOTE]
->
-> 如何添加未收录的插件？
->
-> 编辑 [`src/plugins.ts`](./src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容如上所示，已有的内容亦可作为参考。
->
-> 编辑完成后提交，发起 Pull Request，仓库成员将尽快处理。
+仓库采用 pnpm 工作空间组织，目录如下：
 
-### 构建过程
+- `backend/`：存放与获取插件信息有关的脚本
+- `frontend/`：存放网页的源码
 
-[`src/index.ts`](./src/index.ts) 为主要逻辑脚本，它执行如下操作：
-
-- 遍历上述插件信息列表，从 GitHub 获取每一个插件的基本信息和发行版，将获取到的信息保存在 [`docs/dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
-- 同时将 XPI 包保存在 [`docs/dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
-- 根据得到的信息，渲染为 Markdown 表格，写入 [`docs/dist/plugins.md`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.md)
-
-GitHub Action Bot 定时运行 `src/index.ts` 脚本，执行上述步骤，并将 `docs/dist` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
-
-> [!NOTE]
->
-> 如何将本项目作为依赖项进行二次开发？
->
-> 开发者可以使用 [`gh-pages` 分支中 `dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json) 等构建文件。
-
-### 开发
-
-根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
+开发前，需要根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
 
 ```bash
 # 克隆仓库
@@ -95,15 +77,41 @@ cd zotero-plugins
 npm install -g pnpm
 pnpm install
 
-# 构建插件信息表格
-pnpm run get-info
+# 获取插件信息
+cd backend/
+pnpm data:info
 
-# 启动网页预览服务器
-pnpm run website
+# 获取图表信息
+cd backend/
+pnpm data:chart
 
-# 构建插件排行榜图表页面
-pnpm run get-chart
+# 启动网站开发服务器
+cd frontend/
+pnpm website:dev
+
+# 构建网站
+cd frontend/
+pnpm website:build
 ```
+
+### 后端
+
+[`backend/src/index.ts`](./backend/src/index.ts) 为主要逻辑脚本，它执行如下操作：
+
+- 遍历上述插件信息列表，从 GitHub 获取每一个插件的基本信息和发行版，将获取到的信息保存在 [`backend/dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
+- 同时将 XPI 包保存在 [`backend/dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
+
+GitHub Action Bot 定时运行 `backend/src/index.ts` 脚本，执行上述步骤，并将 `backend/dist` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
+
+> [!NOTE]
+>
+> 如何将本项目作为依赖项进行二次开发？
+>
+> 开发者可以使用 [`gh-pages` 分支中 `dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json) 等构建文件。
+
+### 前端
+
+前端使用 Vue 3 + Typescript + Element Plus + Vite 进行开发，插件排行榜页面使用 HighCharts 开发。所需要的插件数据通过 pnpm 工作空间从 backend 读取。
 
 ## 致谢
 

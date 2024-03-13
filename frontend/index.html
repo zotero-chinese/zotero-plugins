@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zotero 插件商店 - Zotero 中文社区</title>
+    <link rel="icon" href="/favicon.ico" />
+    <meta
+      name="description"
+      content="本站点是由 Zotero 中文社区整理的 Zotero 插件下载汇总导航网站。网站后台定期收集 GitHub 上最新的 Zotero 插件信息并汇总，方便国内用户检索和下载。"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // 由于 base 的问题，部署于 GitHub Pages 上的版本暂不可用
+      // 等待前后端可以分离构建时恢复
+      if (window.location.host == "zotero-chinese.github.io") {
+        window.location.href = "https://plugins.zotero-chinese.com/";
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
