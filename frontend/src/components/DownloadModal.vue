@@ -1,7 +1,7 @@
 <template>
   <div class="modal" v-if="showModal">
     <div
-      class="modal-content radius"
+      class="modal-content"
       :style="{
         borderRadius: `var(--el-border-radius-base)`,
         boxShadow: `var(--el-box-shadow)`,
@@ -103,13 +103,11 @@ export default defineComponent({
   top: 0;
   width: 100%;
   height: 100%;
-  /* background-color: var(--color-background-mute); */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--el-overlay-color-light);
 }
 
 .modal-content {
-  background-color: #fefefe;
-  /* border: 1px solid #888; */
+  background-color: var(--el-bg-color);
   padding: 10px 20px 40px 20px;
   position: fixed;
   width: 80%;
@@ -119,7 +117,7 @@ export default defineComponent({
 }
 
 .close {
-  color: #aaa;
+  color: var(--el-border-color);
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -127,7 +125,7 @@ export default defineComponent({
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: var(--el-border-color-hover);
   text-decoration: none;
   cursor: pointer;
 }
