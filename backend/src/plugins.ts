@@ -73,7 +73,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "zotero6",
       },
     ],
-    tags: ["metadata"],
+    tags: ["favorite", "metadata"],
   },
   {
     repo: "Dominic-DallOsto/zotero-reading-list",
@@ -649,7 +649,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.6.0-6",
       },
     ],
-    tags: ["others"],
+    tags: ["favorite", "others"],
   },
   {
     repo: "syt2/zotero-scipdf",
