@@ -61,7 +61,14 @@
       :value="tag"
       border
     >
-      {{ tagDetail.label }}
+      <el-tooltip
+        class="box-item"
+        effect="dark"
+        :content="tagDetail.description"
+        placement="bottom"
+      >
+        {{ tagDetail.label }}
+      </el-tooltip>
     </el-checkbox>
   </el-checkbox-group>
 
@@ -139,17 +146,13 @@ export default defineComponent({
     },
     filteredPlugins() {
       let filtered = this.plugins;
-      if (this.zotero == "zotero6") {
+
+      if (this.zotero !== "") {
         filtered = filtered.filter((plugin) => {
           return plugin.releases.some(
-            (release) => release.targetZoteroVersion === "6",
-          );
-        });
-        // return this.plugins.filter((plugin) => plugin.name.endWith("Zotero"));
-      } else if (this.zotero == "zotero7") {
-        filtered = filtered.filter((plugin) => {
-          return plugin.releases.some(
-            (release) => release.targetZoteroVersion === "7",
+            (release) =>
+              release.targetZoteroVersion ===
+              (this.zotero == "zotero6" ? "6" : "7"),
           );
         });
       }
@@ -164,7 +167,7 @@ export default defineComponent({
       }
       if (this.selectedTags.length !== 0) {
         filtered = filtered.filter((plugin) => {
-          return this.selectedTags.some((tag) => plugin.tags.includes(tag));
+          return this.selectedTags.every((tag) => plugin.tags.includes(tag));
         });
       }
       return filtered;

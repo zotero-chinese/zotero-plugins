@@ -121,7 +121,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
-    tags: ["favorite", "interface"],
+    tags: ["favorite", "interface", "visualization"],
   },
   {
     repo: "MuiseDestiny/eaiser-citation",
@@ -159,7 +159,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "0.0.7",
       },
     ],
-    tags: ["reader", "productivity"],
+    tags: ["favorite", "reader", "productivity"],
   },
   {
     repo: "MuiseDestiny/zotero-gpt",
@@ -173,7 +173,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
-    tags: ["interface"],
+    tags: ["interface", "productivity"],
   },
   {
     repo: "MuiseDestiny/zotero-reference",
@@ -187,7 +187,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
-    tags: ["metadata", "reader"],
+    tags: ["favorite", "metadata", "reader"],
   },
   {
     repo: "NicoleMayer/zotero-save-with-tag",
