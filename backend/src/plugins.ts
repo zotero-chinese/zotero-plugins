@@ -703,7 +703,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
-    tags: ["visualization", "interface"],
+    tags: ["favorite", "visualization", "interface"],
   },
   {
     repo: "wbthomason/zotodo",
