@@ -43,6 +43,22 @@
     <p class="desc">
       <el-text truncated line-clamp="5">{{ plugin.description }}</el-text>
     </p>
+    <div class="tags">
+      <el-tag
+        v-for="tag in plugin.tags"
+        :key="tag"
+        :type="tag == 'favorite' ? 'success' : 'info'"
+      >
+        <el-tooltip
+          class="box-item"
+          effect="dark"
+          :content="tagsInfo[tag].description"
+          placement="bottom"
+        >
+          {{ tagsInfo[tag].label }}
+        </el-tooltip>
+      </el-tag>
+    </div>
 
     <template #footer>
       <el-button type="primary" @click="showDownloads">下载</el-button>
@@ -51,7 +67,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { tags } from "@/types/tags";
+import { defineComponent, ref } from "vue";
 import type { PropType } from "vue";
 import type { PluginInfo } from "zotero-plugins-data";
 
@@ -65,6 +82,11 @@ export default defineComponent({
       this.$emit("showDownloads", this.plugin);
     },
   },
+  data() {
+    return {
+      tagsInfo: ref(tags),
+    };
+  },
 });
 </script>
 
@@ -76,5 +98,9 @@ export default defineComponent({
 .desc span {
   /* max-height: 100px; */
   white-space: normal;
+}
+
+.el-tag {
+  margin: 5px 5px 0px 0px;
 }
 </style>
