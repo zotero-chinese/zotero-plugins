@@ -54,8 +54,8 @@ importers:
   backend:
     devDependencies:
       '@highcharts/dashboards':
-        specifier: 1.3.1
-        version: 1.3.1(highcharts@11.4.0)
+        specifier: 2.0.0
+        version: 2.0.0(highcharts@11.4.0)
       '@types/adm-zip':
         specifier: 0.5.5
         version: 0.5.5
@@ -93,8 +93,8 @@ importers:
         specifier: 2.3.1
         version: 2.3.1(vue@3.4.21)
       '@highcharts/dashboards':
-        specifier: 1.3.1
-        version: 1.3.1(highcharts@11.4.0)
+        specifier: 2.0.0
+        version: 2.0.0(highcharts@11.4.0)
       '@vueuse/core':
         specifier: 10.9.0
         version: 10.9.0(vue@3.4.21)
@@ -444,8 +444,8 @@ packages:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
     dev: false
 
-  /@highcharts/dashboards@1.3.1(highcharts@11.4.0):
-    resolution: {integrity: sha512-vT3ojxON5EKmhxUUZZzy5TG98pGqe2Z13/WTMuCu6LY/vBwjq4hts2AY0Nmd6XX4ad5Eov+zGPZ8ohJZbCbirw==}
+  /@highcharts/dashboards@2.0.0(highcharts@11.4.0):
+    resolution: {integrity: sha512-ACFKb1cjZ/QJ5sXCZAoXGxBbN/4hTb/ya03+oHzcbedhuLko8F9gwJgMNWTA2f9IdPXrzM5T0eXA2LAefZB0Pg==}
     peerDependencies:
       highcharts: '>=10.0.0'
     dependencies:
