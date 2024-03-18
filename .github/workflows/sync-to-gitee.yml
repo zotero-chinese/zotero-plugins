@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Get current repository name
         id: info
-        uses: actions/github-script@v3.1
+        uses: actions/github-script@v4.1
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           result-encoding: string
