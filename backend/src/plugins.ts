@@ -246,6 +246,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: "6",
         tagName: "latest",
       },
+      {
+        targetZoteroVersion: "7",
+        tagName: "latest",
+      },
     ],
     tags: ["others"],
   },
