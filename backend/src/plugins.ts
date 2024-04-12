@@ -190,16 +190,6 @@ const plugins: PluginInfoBase[] = [
     tags: ["favorite", "metadata", "reader"],
   },
   {
-    repo: "NicoleMayer/zotero-save-with-tag",
-    releases: [
-      {
-        targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-    ],
-    tags: ["metadata"],
-  },
-  {
     repo: "PubPeerFoundation/pubpeer_zotero_plugin",
     releases: [
       {
@@ -724,10 +714,6 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: "6",
-        tagName: "latest",
-      },
-      {
-        targetZoteroVersion: "5",
         tagName: "latest",
       },
     ],
