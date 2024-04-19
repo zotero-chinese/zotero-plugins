@@ -16,18 +16,18 @@ if [ -d "$dist" ]; then
 fi
 
 # 获取后端
-cd backend/ 
+# cd backend/ 
 pnpm run data:info
 pnpm run data:chart
 cd ../
 
-# 构建前端
-cd frontend/
-pnpm website:build
-cd ../
+# # 构建前端
+# cd frontend/
+# pnpm website:build
+# cd ../
 
 # 复制构建结果以便部署
-mkdir $dist
-cp -rf backend/dist/ frontend/dist/* $dist/
+# mkdir $dist
+# cp -rf backend/dist/ frontend/dist/* $dist/
 
 echo "Done!"
