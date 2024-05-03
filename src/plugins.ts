@@ -347,7 +347,7 @@ const plugins: PluginInfoBase[] = [
         tagName: "latest",
       },
     ],
-    tags: ["developer"],
+    tags: ["metadata"],
   },
   {
     repo: "frangoud/ZoteroDuplicatesMerger",
