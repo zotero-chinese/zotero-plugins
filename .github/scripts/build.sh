@@ -25,5 +25,6 @@ mkdir $dist/dist
 mv $dist/*.json $dist/xpi $dist/dist -f
 cp .github/scripts/index.html $dist
 cp .github/scripts/_redirects $dist
+touch $dist/.nojekyll
 
 echo "Done!"
