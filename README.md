@@ -22,7 +22,7 @@
 >
 > 如何添加未收录的插件？
 >
-> 编辑 [`backend/src/plugins.ts`](./backend/src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容格式如下所示，已有的内容亦可作为参考。
+> 编辑 [`src/plugins.ts`](./src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容格式如下所示，已有的内容亦可作为参考。
 >
 > 添加时请按 `repo` 排序。
 >
@@ -61,11 +61,6 @@ interface PluginInfo {
 
 ## 开发指南
 
-仓库采用 pnpm 工作空间组织，目录如下：
-
-- `backend/`：存放与获取插件信息有关的脚本
-- `frontend/`：存放网页的源码
-
 开发前，需要根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
 
 ```bash
@@ -78,40 +73,24 @@ npm install -g pnpm
 pnpm install
 
 # 获取插件信息
-cd backend/
 pnpm data:info
 
 # 获取图表信息
-cd backend/
 pnpm data:chart
-
-# 启动网站开发服务器
-cd frontend/
-pnpm website:dev
-
-# 构建网站
-cd frontend/
-pnpm website:build
 ```
 
-### 后端
+[`src/index.ts`](./src/index.ts) 为主要逻辑脚本，它执行如下操作：
 
-[`backend/src/index.ts`](./backend/src/index.ts) 为主要逻辑脚本，它执行如下操作：
+- 遍历上述插件信息列表，从 GitHub 获取每一个插件的基本信息和发行版，将获取到的信息保存在 [`dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
+- 同时将 XPI 包保存在 [`dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
 
-- 遍历上述插件信息列表，从 GitHub 获取每一个插件的基本信息和发行版，将获取到的信息保存在 [`backend/dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
-- 同时将 XPI 包保存在 [`backend/dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
-
-GitHub Action Bot 定时运行 `backend/src/index.ts` 脚本，执行上述步骤，并将 `backend/dist` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
+GitHub Action Bot 定时运行 `src/index.ts` 脚本，执行上述步骤，并将 `dist/` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
 
 > [!NOTE]
 >
 > 如何将本项目作为依赖项进行二次开发？
 >
 > 开发者可以使用 [`gh-pages` 分支中 `dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json) 等构建文件。
-
-### 前端
-
-前端使用 Vue 3 + Typescript + Element Plus + Vite 进行开发，插件排行榜页面使用 HighCharts 开发。所需要的插件数据通过 pnpm 工作空间从 backend 读取。
 
 ## 致谢
 
