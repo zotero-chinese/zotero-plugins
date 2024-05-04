@@ -19,7 +19,7 @@ fi
 # cd backend/ 
 pnpm run data:info
 pnpm run data:chart
-cd ../
+# cd ../
 
 # # 构建前端
 # cd frontend/

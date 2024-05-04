@@ -15,7 +15,7 @@ import { PluginInfo } from "../types";
 const require = createRequire(import.meta.url),
   pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == "development"
-      ? require("../docs/dist/charts-debug.json")
+      ? require("../dist/charts-debug.json")
       : {};
 
 interface PluginMapInfo {
@@ -369,7 +369,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
   // for (const plugin of plugins) await fetchInfo(plugin);
 
   // 仅供测试时用
-  // writeFile('../docs/dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
+  // writeFile('../dist/charts-debug.json', JSON.stringify(pluginMap, null, 2));
 
   if (process.env.NODE_ENV == "development")
     for (const plugin in pluginMap)
