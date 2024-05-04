@@ -41,7 +41,6 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
-          target-folder: dist
           single-commit: true
           git-config-name: github-actions[bot]
           git-config-email: github-actions[bot]@users.noreply.github.com

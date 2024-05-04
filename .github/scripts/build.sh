@@ -14,20 +14,16 @@ dist="dist"
 if [ -d "$dist" ]; then
     rm -rf "$dist"
 fi
+mkdir $dist
 
-# 获取后端
-# cd backend/ 
+# 获取数据
 pnpm run data:info
-pnpm run data:chart
-# cd ../
+# pnpm run data:chart
 
-# # 构建前端
-# cd frontend/
-# pnpm website:build
-# cd ../
-
-# 复制构建结果以便部署
-# mkdir $dist
-# cp -rf backend/dist/ frontend/dist/* $dist/
+# 复制兼容性网页
+mkdir $dist/dist
+mv $dist/*.json $dist/xpi $dist/dist -f
+cp .github/scripts/index.html $dist
+cp .github/scripts/_redirects $dist
 
 echo "Done!"
