@@ -18,7 +18,7 @@ mkdir $dist
 
 # 获取数据
 pnpm run data:info
-# pnpm run data:chart
+pnpm run data:chart
 
 # 复制兼容性网页
 mkdir $dist/dist
