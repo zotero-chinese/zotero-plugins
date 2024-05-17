@@ -34,7 +34,7 @@
     "@vitalets/google-translate-api": "9.2.0",
     "adm-zip": "0.5.12",
     "cross-env": "7.0.3",
-    "eslint": "8.57.0",
+    "eslint": "9.3.0",
     "franc-min": "6.2.0",
     "google-translate-api-x": "10.6.8",
     "highcharts": "11.4.0",
