@@ -1,16 +1,14 @@
-/* eslint-disable */
-// 临时禁用 eslint
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import fs from "fs";
 import { franc } from "franc-min";
 // import translate from "google-translate-api-x";
 import AdmZip from "adm-zip";
 import * as xml2js from "xml2js";
-import { writeFile } from "./utils";
-import { octokit } from ".";
-import { dist } from ".";
+import { writeFile } from "./utils.js";
+import { octokit, dist } from "./index.js";
 import { jsonc } from "jsonc";
-import { PluginInfoBase, PluginInfo } from "../types";
+import { PluginInfoBase, PluginInfo } from "../types/index.js";
 
 const XpiIds: number[] = [];
 // todo: 缓存XPI；将backend的dist单独保存，分离前后端工作流，对PR启用工作流和预览
@@ -101,7 +99,7 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
       }
 
       if (!fs.existsSync(`${dist}/xpi/${asset.id}.xpi`)) {
-        const xpiFlie = await octokit.rest.repos
+        await octokit.rest.repos
           .getReleaseAsset({
             owner: owner,
             repo: repo,

@@ -1,4 +1,4 @@
-import { octokit } from ".";
+import { octokit } from "./index.js";
 import type { Board } from "@highcharts/dashboards";
 import type {
   Options,
@@ -11,7 +11,7 @@ import type {
 } from "highcharts";
 
 import { createRequire } from "module";
-import { PluginInfo } from "../types";
+import { PluginInfo } from "../types/index.js";
 const require = createRequire(import.meta.url),
   pluginMap: { [name: string]: PluginMapInfo } =
     process.env.NODE_ENV == "development"

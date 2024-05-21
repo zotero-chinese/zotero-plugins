@@ -39,7 +39,7 @@ export function copyFileSync(source: string, target: string) {
 }
 
 export function copyFolderRecursiveSync(source: string, target: string) {
-  let files = Array();
+  let files = [];
 
   // Check if folder needs to be created or integrated
   const targetFolder = path.join(target);

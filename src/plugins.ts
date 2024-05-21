@@ -1,4 +1,4 @@
-import { PluginInfoBase } from "../types";
+import { PluginInfoBase } from "../types/index.js";
 
 /**
  * 插件列表

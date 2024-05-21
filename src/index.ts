@@ -1,8 +1,8 @@
 import { Octokit } from "octokit";
-import plugins from "./plugins";
-import { readFile, writeFile } from "./utils";
-import getChartOptions from "./charts";
-import { fetchPlugins } from "./get-plugins-info";
+import plugins from "./plugins.js";
+import { readFile, writeFile } from "./utils.js";
+import getChartOptions from "./charts.js";
+import { fetchPlugins } from "./get-plugins-info.js";
 // import { renderMarkdown } from "./render-markdown";
 
 if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN 未设置");
