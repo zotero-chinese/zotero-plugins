@@ -471,7 +471,8 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
       {
         cell: "star-history",
         type: "Highcharts",
-        chartConstructor: "stockChart",
+        // Disable stock to fix https://github.com/zotero-chinese/website/issues/6
+        // chartConstructor: "stockChart",
         chartOptions: {
           chart: { type: "spline", height: 600 },
           exporting,
