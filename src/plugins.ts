@@ -274,15 +274,15 @@ const plugins: PluginInfoBase[] = [
     tags: ["metadata"],
   },
   {
-    repo: "daeh/zotero-obsidian-citations",
+    repo: "daeh/zotero-markdb-connect",
     releases: [
       {
-        targetZoteroVersion: "6",
+        targetZoteroVersion: "7",
         tagName: "latest",
       },
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: "6",
+        tagName: "v0.0.27",
       },
     ],
     tags: ["integration"],
