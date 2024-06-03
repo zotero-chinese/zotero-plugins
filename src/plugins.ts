@@ -282,7 +282,7 @@ const plugins: PluginInfoBase[] = [
       },
       {
         targetZoteroVersion: "6",
-        tagName: "0.0.27",
+        tagName: "v0.0.27",
       },
     ],
     tags: ["integration"],
