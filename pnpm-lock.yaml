@@ -12,8 +12,8 @@ importers:
         specifier: 9.4.0
         version: 9.4.0
       '@highcharts/dashboards':
-        specifier: 1.3.1
-        version: 1.3.1(highcharts@11.4.3)
+        specifier: 2.1.0
+        version: 2.1.0(highcharts@11.4.3)
       '@types/adm-zip':
         specifier: 0.5.5
         version: 0.5.5
@@ -245,8 +245,8 @@ packages:
     resolution: {integrity: sha512-HAbhAYKfsAC2EkTqve00ibWIZlaU74Z1EHwAjYr4PXF0YU2VEA1zSIKSSpKszRLRWwHzzRZXvK632u+uXzvsvw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@highcharts/dashboards@1.3.1':
-    resolution: {integrity: sha512-vT3ojxON5EKmhxUUZZzy5TG98pGqe2Z13/WTMuCu6LY/vBwjq4hts2AY0Nmd6XX4ad5Eov+zGPZ8ohJZbCbirw==}
+  '@highcharts/dashboards@2.1.0':
+    resolution: {integrity: sha512-tdnM4bFEREoADljplmd+EgZ1dTNY+e88mvHGs4JlsDRrETsW/o01QFdQDCUVXVWzIgc4NXotJvrR7GtRn21jhQ==}
     peerDependencies:
       highcharts: '>=10.0.0'
 
@@ -1335,7 +1335,7 @@ snapshots:
 
   '@eslint/object-schema@2.1.3': {}
 
-  '@highcharts/dashboards@1.3.1(highcharts@11.4.3)':
+  '@highcharts/dashboards@2.1.0(highcharts@11.4.3)':
     dependencies:
       highcharts: 11.4.3
 
