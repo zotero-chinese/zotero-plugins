@@ -43,8 +43,8 @@
     "lint-staged": "15.2.5",
     "npm-run-all2": "6.2.0",
     "octokit": "4.0.2",
-    "prettier": "3.3.0",
-    "tsx": "4.11.2",
+    "prettier": "3.3.1",
+    "tsx": "4.13.3",
     "typescript": "5.4.5",
     "typescript-eslint": "7.12.0",
     "xml2js": "0.6.2"
