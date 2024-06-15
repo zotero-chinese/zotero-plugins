@@ -4,6 +4,7 @@ import type {
   Options,
   SeriesPieOptions,
   PointOptionsObject,
+  SeriesLineOptions,
   SeriesSplineOptions,
   SeriesWordcloudOptions,
   SeriesBarOptions,
@@ -329,7 +330,7 @@ function drawActivities() {
       duration = endDate.getTime() - startDate.getTime();
     return duration / 1000 / 60 / 60 / 24;
   }
-  const series: Highcharts.SeriesLineOptions[] = [];
+  const series: SeriesLineOptions[] = [];
   for (const [name, info] of Object.entries(pluginMap)) {
     const totalSize = info.releases!.reduce(
         (sum, release) => sum + release.size,
