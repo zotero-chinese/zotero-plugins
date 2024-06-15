@@ -408,9 +408,6 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
         {
           rows: [
             {
-              cells: [{ id: "title" }],
-            },
-            {
               cells: [
                 {
                   id: "dashboard-col-0",
@@ -458,16 +455,6 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
       ],
     },
     components: [
-      {
-        cell: "title",
-        type: "HTML",
-        elements: [
-          {
-            tagName: "h1",
-            textContent: "🤩 Awesome Zotero Plugins",
-          },
-        ],
-      },
       {
         cell: "star-history",
         type: "Highcharts",
