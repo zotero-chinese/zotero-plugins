@@ -398,7 +398,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
     } as ExportingOptions;
   return {
     editMode: {
-      enabled: true,
+      enabled: false,
       contextMenu: {
         enabled: true,
         items: ["editMode"],
