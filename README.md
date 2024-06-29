@@ -1,118 +1,118 @@
-# Zotero 插件合集
+# Zotero Plugins Collection
 
-![GitHub 自动构建状态](https://img.shields.io/github/actions/workflow/status/northword/zotero-plugins/main.yml?logo=githubactions)
-[![Netlify 部署状态](https://api.netlify.com/api/v1/badges/bae2ef92-2f0a-4076-ae7c-6619933cdf39/deploy-status)](https://app.netlify.com/sites/zotero-plugins/deploys)
-![GitHub 最后更新时间](https://img.shields.io/github/last-commit/northword/zotero-plugins/main?logo=github)
-![最后更新](https://img.shields.io/badge/dynamic/json?logo=github&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0)
+![GitHub Action Status](https://img.shields.io/github/actions/workflow/status/northword/zotero-plugins/main.yml?logo=githubactions)
+[![Netlify deploys](https://api.netlify.com/api/v1/badges/bae2ef92-2f0a-4076-ae7c-6619933cdf39/deploy-status)](https://app.netlify.com/sites/zotero-plugins/deploys)
+![GitHub last commit](https://img.shields.io/github/last-commit/northword/zotero-plugins/main?logo=github)
+![last updated](https://img.shields.io/badge/dynamic/json?logo=github&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=last%20updated)
 ![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hw/zotero-chinese/zotero-plugins?logo=jsdelivr)
 
-:cn: 本仓库提供了若干 Zotero 插件的信息及其 XPI 包，尝试在 Zotero 官方插件商店建立前，提供集中的插件商店服务。
+_This README is also available in: [:cn: 简体中文](./README-zh.md) | :gb: English._
 
-:gb: This repository provides information of several Zotero plugins and their XPI packages , in an attempt to provide a centralized plugin store service until the official Zotero plugin store is ready.
+This repository provides information of several Zotero plugins and their XPI packages , in an attempt to provide a centralized plugin store service until the official Zotero plugin store is ready.
 
-## 访问
+## View
 
-- **Zotero 中文社区主域名：<https://plugins.zotero-chinese.com>**
+- **Main domin of Zotero Chinese: <https://zotero-chinese.com/plugins>**
 - Netlify: <https://zotero-plugins.netlify.app/>
-- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/> （该地址暂不可用，将自动跳转主域名）
+- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/>
 
-## 提交插件
+## Submitting Plugins
 
 > [!NOTE]
 >
-> 如何添加未收录的插件？
+> How to add a plugin that hasn't been included?
 >
-> 编辑 [`src/plugins.ts`](./src/plugins.ts)，在 `plugins` 列表中添加一个对象，内容格式如下所示，已有的内容亦可作为参考。
+> Edit [`src/plugins.ts`](./src/plugins.ts), and add an object to the `plugins` list in the following format. Existing entries can serve as references.
 >
-> 添加时请按 `repo` 排序。
+> When adding, please sort by `repo`.
 >
-> 编辑完成后提交，发起 Pull Request，仓库成员将尽快处理。
+> After editing, commit and pull request. We will process it as soon as possible.
 
 ```ts
 interface PluginInfo {
   /**
-   * 插件仓库
+   * Repository of plugin
    *
-   * 例如：northword/zotero-format-metadata
+   * Example: northword/zotero-format-metadata
    *
-   * 注意前后均无 `/`
+   * Note: no `/` at the beginning or end
    */
   repo: string;
   /**
-   * 插件的发布地址信息
+   * Release information of the plugin
    */
   releases: Array<{
     /**
-     * 当前发布版对应的 Zotero 版本，"7" 或 "6"
+     * Zotero version for this release, "7" or "6"
      */
     targetZoteroVersion: string;
     /**
-     * 当前发布版对应的下载通道
+     * Download channel for this release
      *
-     * `latest`：最新正式发布；
-     * `pre`：最新预发布；
-     * `string`：发布对应的 `git.tag_name`；
-     * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
+     * `latest`: Latest official release;
+     * `pre`: Latest pre-release;
+     * `string`: Corresponding `git.tag_name` of the release;
+     * Note that some `git.tag_name` have `v` while others do not, you can check the release link to determine.
      */
     tagName: "latest" | "pre" | string;
   }>;
 }
 ```
 
-## 开发指南
+## Development Guide
 
-开发前，需要根据 [GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 创建 GitHub 个人访问令牌，将其存入本地环境变量 `GITHUB_TOKEN`。
+Before starting development, you need to create a [GitHub personal access token](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and store it in the local environment variable `GITHUB_TOKEN`.
 
 ```bash
-# 克隆仓库
+# Clone the repository
 git clone https://github.com/northword/zotero-plugins.git zotero-plugins
 cd zotero-plugins
 
-# 安装依赖
+# Install dependencies
 npm install -g pnpm
 pnpm install
 
-# 获取插件信息
+# Fetch plugin information
 pnpm data:info
 
-# 获取图表信息
+# Fetch chart information
 pnpm data:chart
 ```
 
-[`src/index.ts`](./src/index.ts) 为主要逻辑脚本，它执行如下操作：
+[`src/index.ts`](./src/index.ts) is the main logic script, which performs the following actions:
 
-- 遍历上述插件信息列表，从 GitHub 获取每一个插件的基本信息和发行版，将获取到的信息保存在 [`dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
-- 同时将 XPI 包保存在 [`dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
+- Iterates through the plugin information list, fetches basic information and releases for each plugin from GitHub, and saves the obtained information in [`dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
+- Saves the XPI packages in [`dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
 
-GitHub Action Bot 定时运行 `src/index.ts` 脚本，执行上述步骤，并将 `dist/` 部署到 [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) 分支。
+The GitHub Action Bot periodically runs the `src/index.ts` script, performs the above steps, and deploys the `dist/` to the [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) branch.
 
 > [!NOTE]
 >
-> 如何将本项目作为依赖项进行二次开发？
+> How to use this project as a dependency for secondary development?
 >
-> 开发者可以使用 [`gh-pages` 分支中 `dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json) 等构建文件。
+> Developers can use the dist files like [`dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json) from the `gh-pages` branch.
 
-## 致谢
+## Acknowledgements
 
-感谢 Zotero 社区及开发者们的付出！
+Thanks to the Zotero community and developers for their contributions!
 
-本项目使用了如下代理或公共 CDN 服务完成 XPI 分发：
+This project uses the following proxies or public CDN services for XPI distribution:
 
-- GitHub 代理：<https://github.com/hunshcn/gh-proxy>
-- JsDeliver：<https://www.jsdelivr.com/>
+- GitHub Proxy: <https://github.com/hunshcn/gh-proxy>
+- JsDeliver: <https://www.jsdelivr.com/>
 - KGitHub: <https://help.kkgithub.com/>
 
-本项目是对 [l0o0/ZoteroPlugins](https://github.com/l0o0/ZoteroPlugins) 的 Typescript 重新实现。
+This project is a TypeScript reimplementation of [l0o0/ZoteroPlugins](https://github.com/l0o0/ZoteroPlugins).
 
-本项目部署在 GitHub Pages 和 Netlify.
+This project is deployed on GitHub Pages and Netlify.
 
 [![netlify](https://www.netlify.com/v3/img/components/netlify-color-bg.svg)](https://www.netlify.com)
 
-## 贡献者
+## Contributors
 
-[![本项目贡献者](https://contrib.rocks/image?repo=zotero-chinese/zotero-plugins)](https://github.com/zotero-chinese/zotero-plugins/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=zotero-chinese/zotero-plugins)](https://github.com/zotero-chinese/zotero-plugins/graphs/contributors)
 
-## 协议
+## License
 
 MIT License
 
