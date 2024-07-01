@@ -1,4 +1,5 @@
-import { PluginInfoBase } from "../types/index.js";
+import { env } from 'node:process'
+import type { PluginInfoBase } from '../types/index.js'
 
 /**
  * 插件列表
@@ -8,820 +9,820 @@ import { PluginInfoBase } from "../types/index.js";
  */
 const plugins: PluginInfoBase[] = [
   {
-    repo: "018/zotcard",
+    repo: '018/zotcard',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "v2.8",
+        targetZoteroVersion: '6',
+        tagName: 'v2.8',
       },
     ],
-    tags: ["notes"],
+    tags: ['notes'],
   },
   {
-    repo: "018/zotero-excalidraw",
+    repo: '018/zotero-excalidraw',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "AgiNetz/semantic-zotero",
+    repo: 'AgiNetz/semantic-zotero',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "AlbertShenC/Zotero-Literature-Manager",
+    repo: 'AlbertShenC/Zotero-Literature-Manager',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "Bowen-0x00/zotero-action-cmd",
+    repo: 'Bowen-0x00/zotero-action-cmd',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["productivity"],
+    tags: ['productivity'],
   },
   {
-    repo: "ChenglongMa/zoplicate",
+    repo: 'ChenglongMa/zoplicate',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "zotero6",
+        targetZoteroVersion: '6',
+        tagName: 'zotero6',
       },
     ],
-    tags: ["favorite", "metadata"],
+    tags: ['favorite', 'metadata'],
   },
   {
-    repo: "Dominic-DallOsto/zotero-reading-list",
+    repo: 'Dominic-DallOsto/zotero-reading-list',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "v0.3.2",
+        targetZoteroVersion: '6',
+        tagName: 'v0.3.2',
       },
     ],
-    tags: ["productivity"],
+    tags: ['productivity'],
   },
   {
-    repo: "FrLars21/ZoteroCitationCountsManager",
+    repo: 'FrLars21/ZoteroCitationCountsManager',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "ManuelaRunge/Zotitle",
+    repo: 'ManuelaRunge/Zotitle',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "MuiseDestiny/ZoteroStyle",
+    repo: 'MuiseDestiny/ZoteroStyle',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["favorite", "interface", "visualization"],
+    tags: ['favorite', 'interface', 'visualization'],
   },
   {
-    repo: "MuiseDestiny/eaiser-citation",
+    repo: 'MuiseDestiny/eaiser-citation',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.3.1",
+        targetZoteroVersion: '6',
+        tagName: '0.3.1',
       },
     ],
-    tags: ["favorite", "writing"],
+    tags: ['favorite', 'writing'],
   },
   {
-    repo: "MuiseDestiny/zotero-attanger",
+    repo: 'MuiseDestiny/zotero-attanger',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "MuiseDestiny/zotero-figure",
+    repo: 'MuiseDestiny/zotero-figure',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.0.7",
+        targetZoteroVersion: '6',
+        tagName: '0.0.7',
       },
     ],
-    tags: ["favorite", "reader", "productivity"],
+    tags: ['favorite', 'reader', 'productivity'],
   },
   {
-    repo: "MuiseDestiny/zotero-gpt",
+    repo: 'MuiseDestiny/zotero-gpt',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["interface", "productivity"],
+    tags: ['interface', 'productivity'],
   },
   {
-    repo: "MuiseDestiny/zotero-reference",
+    repo: 'MuiseDestiny/zotero-reference',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["favorite", "metadata", "reader"],
+    tags: ['favorite', 'metadata', 'reader'],
   },
   {
-    repo: "PubPeerFoundation/pubpeer_zotero_plugin",
+    repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "RoadToDream/ZotMeta",
+    repo: 'RoadToDream/ZotMeta',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "SiriusXT/Zotero-Scholar-Rank",
+    repo: 'SiriusXT/Zotero-Scholar-Rank',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "Theigrams/zotero-pdf-custom-rename",
+    repo: 'Theigrams/zotero-pdf-custom-rename',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "UB-Mannheim/zotero-ocr",
+    repo: 'UB-Mannheim/zotero-ocr',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
   {
-    repo: "Zar-rok/Zotero-Add-Collection-Tag",
+    repo: 'Zar-rok/Zotero-Add-Collection-Tag',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
   {
-    repo: "argenos/zotero-mdnotes",
+    repo: 'argenos/zotero-mdnotes',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["notes"],
+    tags: ['notes'],
   },
   {
-    repo: "bwiernik/zotero-shortdoi",
+    repo: 'bwiernik/zotero-shortdoi',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "daeh/zotero-markdb-connect",
+    repo: 'daeh/zotero-markdb-connect',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "v0.0.27",
+        targetZoteroVersion: '6',
+        tagName: 'v0.0.27',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "dvanoni/notero",
+    repo: 'dvanoni/notero',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "egh/zotxt",
+    repo: 'egh/zotxt',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "eschnett/zotero-citationcounts",
+    repo: 'eschnett/zotero-citationcounts',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "ethanwillis/zotero-scihub",
+    repo: 'ethanwillis/zotero-scihub',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "fkguo/zotero-inspire",
+    repo: 'fkguo/zotero-inspire',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "frangoud/ZoteroDuplicatesMerger",
+    repo: 'frangoud/ZoteroDuplicatesMerger',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "franzbischoff/zotero-pdf-metadata",
+    repo: 'franzbischoff/zotero-pdf-metadata',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "frianasoa/Ze-Notes",
+    repo: 'frianasoa/Ze-Notes',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["notes"],
+    tags: ['notes'],
   },
   {
-    repo: "github-young/zotero-better-authors",
+    repo: 'github-young/zotero-better-authors',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["interface"],
+    tags: ['interface'],
   },
   {
-    repo: "iShareStuff/Backup-Plugin-for-Zotero",
+    repo: 'iShareStuff/Backup-Plugin-for-Zotero',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
   {
-    repo: "iShareStuff/ZoteroFields-Plugin-for-Zotero",
+    repo: 'iShareStuff/ZoteroFields-Plugin-for-Zotero',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "iShareStuff/ZoteroTheme",
+    repo: 'iShareStuff/ZoteroTheme',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["interface"],
+    tags: ['interface'],
   },
   {
-    repo: "inciteful-xyz/inciteful-zotero-plugin",
+    repo: 'inciteful-xyz/inciteful-zotero-plugin',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "jlegewie/zotfile",
+    repo: 'jlegewie/zotfile',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "justinribeiro/zotero-google-scholar-citation-count",
+    repo: 'justinribeiro/zotero-google-scholar-citation-count',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "jyjulianwong/PolarRec-Zotero-Plugin",
+    repo: 'jyjulianwong/PolarRec-Zotero-Plugin',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "pre",
+        targetZoteroVersion: '6',
+        tagName: 'pre',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "l0o0/jasminum",
+    repo: 'l0o0/jasminum',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["favorite", "metadata"],
+    tags: ['favorite', 'metadata'],
   },
   {
-    repo: "l0o0/tara",
+    repo: 'l0o0/tara',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
   {
-    repo: "mpatelh/zbatch",
+    repo: 'mpatelh/zbatch',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["productivity"],
+    tags: ['productivity'],
   },
   {
-    repo: "northword/zotero-format-metadata",
+    repo: 'northword/zotero-format-metadata',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.4.4",
+        targetZoteroVersion: '6',
+        tagName: '0.4.4',
       },
     ],
-    tags: ["favorite", "metadata"],
+    tags: ['favorite', 'metadata'],
   },
   {
-    repo: "paulusm/zotero-trilium",
+    repo: 'paulusm/zotero-trilium',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "redleafnew/delitemwithatt",
+    repo: 'redleafnew/delitemwithatt',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.1.06",
+        targetZoteroVersion: '6',
+        tagName: '0.1.06',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "redleafnew/zotero-updateifs",
+    repo: 'redleafnew/zotero-updateifs',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "redleafnew/zotero-updateifsE",
+    repo: 'redleafnew/zotero-updateifsE',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.13.0",
+        targetZoteroVersion: '6',
+        tagName: '0.13.0',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "retorquere/zotero-better-bibtex",
+    repo: 'retorquere/zotero-better-bibtex',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "retorquere/zotero-open-pdf",
+    repo: 'retorquere/zotero-open-pdf',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "retorquere/zotero-pmcid-fetcher",
+    repo: 'retorquere/zotero-pmcid-fetcher',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "retorquere/zotero-storage-scanner",
+    repo: 'retorquere/zotero-storage-scanner',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "scitedotai/scite-zotero-plugin",
+    repo: 'scitedotai/scite-zotero-plugin',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "syt2/Zotero-TLDR",
+    repo: 'syt2/Zotero-TLDR',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "syt2/zotero-addons",
+    repo: 'syt2/zotero-addons',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.6.0-6",
+        targetZoteroVersion: '6',
+        tagName: '0.6.0-6',
       },
     ],
-    tags: ["favorite", "others"],
+    tags: ['favorite', 'others'],
   },
   {
-    repo: "syt2/zotero-scipdf",
+    repo: 'syt2/zotero-scipdf',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "tefkah/zotero-night",
+    repo: 'tefkah/zotero-night',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["interface"],
+    tags: ['interface'],
   },
   {
-    repo: "theRatramnus/RIOPACAddChapter",
+    repo: 'theRatramnus/RIOPACAddChapter',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "theRatramnus/Zotero-download-DigiVatLib-pdf",
+    repo: 'theRatramnus/Zotero-download-DigiVatLib-pdf',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "volatile-static/Chartero",
+    repo: 'volatile-static/Chartero',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "1.3.3",
+        targetZoteroVersion: '6',
+        tagName: '1.3.3',
       },
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["favorite", "visualization", "interface"],
+    tags: ['favorite', 'visualization', 'interface'],
   },
   {
-    repo: "wbthomason/zotodo",
+    repo: 'wbthomason/zotodo',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["productivity"],
+    tags: ['productivity'],
   },
   {
-    repo: "whacked/zotero-special-tags-column",
+    repo: 'whacked/zotero-special-tags-column',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
   {
-    repo: "wileyyugioh/zotmoov",
+    repo: 'wileyyugioh/zotmoov',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "windingwind/zotero-actions-tags",
+    repo: 'windingwind/zotero-actions-tags',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["productivity"],
+    tags: ['productivity'],
   },
   {
-    repo: "windingwind/zotero-better-notes",
+    repo: 'windingwind/zotero-better-notes',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["favorite", "notes"],
+    tags: ['favorite', 'notes'],
   },
   {
-    repo: "windingwind/zotero-pdf-preview",
+    repo: 'windingwind/zotero-pdf-preview',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["attachment"],
+    tags: ['attachment'],
   },
   {
-    repo: "windingwind/zotero-pdf-translate",
+    repo: 'windingwind/zotero-pdf-translate',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "pre",
+        targetZoteroVersion: '7',
+        tagName: 'pre',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["favorite", "productivity"],
+    tags: ['favorite', 'productivity'],
   },
   {
-    repo: "wshanks/Zutilo",
+    repo: 'wshanks/Zutilo',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["productivity"],
+    tags: ['productivity'],
   },
   {
-    repo: "wshanks/lyz",
+    repo: 'wshanks/lyz',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["integration"],
+    tags: ['integration'],
   },
   {
-    repo: "yhmtsai/KeepZotero",
+    repo: 'yhmtsai/KeepZotero',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
   {
-    repo: "zzlb0224/zotero-annotation-manage",
+    repo: 'zzlb0224/zotero-annotation-manage',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
-];
+]
 
 /**
  * 仅供开发测试使用的插件列表
@@ -829,43 +830,43 @@ const plugins: PluginInfoBase[] = [
  */
 const pluginsDev: PluginInfoBase[] = [
   {
-    repo: "northword/zotero-format-metadata",
+    repo: 'northword/zotero-format-metadata',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.4.4",
+        targetZoteroVersion: '6',
+        tagName: '0.4.4',
       },
     ],
-    tags: ["metadata"],
+    tags: ['metadata'],
   },
   {
-    repo: "volatile-static/Chartero",
+    repo: 'volatile-static/Chartero',
     releases: [
       {
-        targetZoteroVersion: "6",
-        tagName: "latest",
+        targetZoteroVersion: '6',
+        tagName: 'latest',
       },
     ],
-    tags: ["visualization"],
+    tags: ['visualization'],
   },
   {
-    repo: "syt2/zotero-addons",
+    repo: 'syt2/zotero-addons',
     releases: [
       {
-        targetZoteroVersion: "7",
-        tagName: "latest",
+        targetZoteroVersion: '7',
+        tagName: 'latest',
       },
       {
-        targetZoteroVersion: "6",
-        tagName: "0.6.0-6",
+        targetZoteroVersion: '6',
+        tagName: '0.6.0-6',
       },
     ],
-    tags: ["others"],
+    tags: ['others'],
   },
-];
+]
 
-export default process.env.NODE_ENV == "development" ? pluginsDev : plugins;
+export default env.NODE_ENV === 'development' ? pluginsDev : plugins

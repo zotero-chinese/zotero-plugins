@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "esModuleInterop": true,
     "target": "ESNext",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "outDir": "dist",
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "isolatedModules": false,
+    "resolveJsonModule": true,
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "useUnknownInCatchVariables": false,
-    "resolveJsonModule": true,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": false,
+    "skipLibCheck": true
   },
   "lib": ["esnext"],
   "include": ["src", "types"]

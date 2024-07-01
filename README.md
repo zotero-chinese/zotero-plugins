@@ -37,7 +37,7 @@ interface PluginInfo {
    *
    * Note: no `/` at the beginning or end
    */
-  repo: string;
+  repo: string
   /**
    * Release information of the plugin
    */
@@ -45,7 +45,7 @@ interface PluginInfo {
     /**
      * Zotero version for this release, "7" or "6"
      */
-    targetZoteroVersion: string;
+    targetZoteroVersion: string
     /**
      * Download channel for this release
      *
@@ -54,8 +54,8 @@ interface PluginInfo {
      * `string`: Corresponding `git.tag_name` of the release;
      * Note that some `git.tag_name` have `v` while others do not, you can check the release link to determine.
      */
-    tagName: "latest" | "pre" | string;
-  }>;
+    tagName: 'latest' | 'pre' | string
+  }>
 }
 ```
 

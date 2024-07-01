@@ -1,7 +1,19 @@
 {
   "name": "zotero-plugins",
+  "type": "module",
   "version": "0.0.0",
+  "private": "true",
   "description": "Zotero 插件合集",
+  "author": "northword",
+  "license": "MIT",
+  "homepage": "https://github.com/northword/zotero-plugins#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northword/zotero-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/northword/zotero-plugins/issues"
+  },
   "main": "src/index.js",
   "types": "types/index.d.ts",
   "scripts": {
@@ -9,24 +21,13 @@
     "data:chart": "tsx src/index.ts charts",
     "debug:info": "cross-env NODE_ENV=development npm run data:info",
     "debug:chart": "cross-env NODE_ENV=development npm run data:chart",
-    "lint": "eslint . --fix & prettier --write .",
+    "lint": "eslint . --fix",
     "prepare": "husky",
     "build": "bash .github/scripts/build.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/northword/zotero-plugins.git"
-  },
-  "author": "northword",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/northword/zotero-plugins/issues"
-  },
-  "homepage": "https://github.com/northword/zotero-plugins#readme",
-  "type": "module",
   "devDependencies": {
-    "@eslint/js": "9.4.0",
+    "@antfu/eslint-config": "^2.21.2",
     "@highcharts/dashboards": "2.1.0",
     "@types/adm-zip": "0.5.5",
     "@types/node": "20.14.2",
@@ -43,13 +44,11 @@
     "lint-staged": "15.2.5",
     "npm-run-all2": "6.2.0",
     "octokit": "4.0.2",
-    "prettier": "3.3.1",
     "tsx": "4.13.3",
     "typescript": "5.4.5",
-    "typescript-eslint": "7.12.0",
     "xml2js": "0.6.2"
   },
   "lint-staged": {
-    "*": "prettier --ignore-unknown --write"
+    "*.*": "eslint --fix"
   }
 }

@@ -6,20 +6,20 @@ export interface PluginInfoBase {
    *
    * 注意前后均无 `/`
    */
-  repo: string;
+  repo: string
   /**
    * 插件的发布地址信息
    */
-  releases: ReleaseInfoBase[];
+  releases: ReleaseInfoBase[]
 
-  tags: TagType[];
+  tags: TagType[]
 }
 
 export interface ReleaseInfoBase {
   /**
    * 当前发布版对应的 Zotero 版本
    */
-  targetZoteroVersion: string;
+  targetZoteroVersion: string
   /**
    * 当前发布版对应的下载通道
    *
@@ -29,48 +29,48 @@ export interface ReleaseInfoBase {
    * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
    * 程序执行后，`tagName` 将替换为实际的 `git.tag_name`
    */
-  tagName: "latest" | "pre" | string;
+  tagName: 'latest' | 'pre' | string
 }
 
 export interface PluginInfo extends PluginInfoBase {
   /**
    * 插件名称
    */
-  name: string;
-  releases: ReleaseInfo[];
-  description: string;
+  name: string
+  releases: ReleaseInfo[]
+  description: string
   /**
    * @deprecated Please use stars instead.
    */
-  star: number;
-  stars: number;
-  watchers: number;
+  star: number
+  stars: number
+  watchers: number
   author: {
-    name: string;
-    url: string;
-    avatar: string;
-  };
+    name: string
+    url: string
+    avatar: string
+  }
 }
 
 export interface ReleaseInfo extends ReleaseInfoBase {
   /**
    * 插件 ID，自 XPI 中提取
    */
-  id: string;
+  id: string
   /**
    * 插件版本，自 XPI 中提取
    */
-  xpiVersion: string;
+  xpiVersion: string
   xpiDownloadUrl: {
-    github: string;
-    gitee: string;
-    ghProxy: string;
-    jsdeliver: string;
-    kgithub: string;
-  };
-  releaseDate: string;
-  downloadCount: number;
-  assetId: number;
+    github: string
+    gitee: string
+    ghProxy: string
+    jsdeliver: string
+    kgithub: string
+  }
+  releaseDate: string
+  downloadCount: number
+  assetId: number
 }
 
 /**
@@ -78,26 +78,26 @@ export interface ReleaseInfo extends ReleaseInfoBase {
  */
 export type TagType =
   // 推荐列表
-  | "favorite"
+  | 'favorite'
   // 条目元数据维护
-  | "metadata"
+  | 'metadata'
   // UI相关
-  | "interface"
+  | 'interface'
   // 附件管理相关
-  | "attachment"
+  | 'attachment'
   // 笔记增强
-  | "notes"
+  | 'notes'
   // 阅读器增强
-  | "reader"
+  | 'reader'
   // 效率增强、生产力工具
-  | "productivity"
+  | 'productivity'
   // 可视化、文库分析
-  | "visualization"
+  | 'visualization'
   // 第三方软件集成
-  | "integration"
+  | 'integration'
   // 字处理软件集成或增强
-  | "writing"
+  | 'writing'
   // 开发者工具
-  | "developer"
+  | 'developer'
   // 其他
-  | "others";
+  | 'others'

@@ -35,7 +35,7 @@ interface PluginInfo {
    *
    * 注意前后均无 `/`
    */
-  repo: string;
+  repo: string
   /**
    * 插件的发布地址信息
    */
@@ -43,7 +43,7 @@ interface PluginInfo {
     /**
      * 当前发布版对应的 Zotero 版本，"7" 或 "6"
      */
-    targetZoteroVersion: string;
+    targetZoteroVersion: string
     /**
      * 当前发布版对应的下载通道
      *
@@ -52,8 +52,8 @@ interface PluginInfo {
      * `string`：发布对应的 `git.tag_name`；
      * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
      */
-    tagName: "latest" | "pre" | string;
-  }>;
+    tagName: 'latest' | 'pre' | string
+  }>
 }
 ```
 

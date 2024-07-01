@@ -29,5 +29,5 @@ jobs:
           dst_account_type: user
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
-          static_list: "${{ steps.info.outputs.result }}"
+          static_list: '${{ steps.info.outputs.result }}'
           force_update: true

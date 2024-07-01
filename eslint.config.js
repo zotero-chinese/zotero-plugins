@@ -1,9 +1,9 @@
-// @ts-check
+import antfu from '@antfu/eslint-config'
 
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-
-export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-);
+export default antfu({
+  javascript: {
+    overrides: {
+      'no-console': 'off',
+    },
+  },
+})
