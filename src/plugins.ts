@@ -101,6 +101,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'ImperialSquid/zotero-zotts',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader'],
+  },
+  {
     repo: 'ManuelaRunge/Zotitle',
     releases: [
       {
