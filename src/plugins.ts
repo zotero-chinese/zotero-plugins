@@ -53,6 +53,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'AllanChain/zotero-arxiv-workflow',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'Bowen-0x00/zotero-action-cmd',
     releases: [
       {
