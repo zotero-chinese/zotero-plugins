@@ -21,7 +21,8 @@
     "data:chart": "tsx src/index.ts charts",
     "debug:info": "cross-env NODE_ENV=development npm run data:info",
     "debug:chart": "cross-env NODE_ENV=development npm run data:chart",
-    "lint": "eslint . --fix",
+    "lint:fix": "eslint . --fix",
+    "lint:check": "eslint .",
     "prepare": "husky",
     "build": "bash .github/scripts/build.sh",
     "test": "echo \"Error: no test specified\" && exit 1"

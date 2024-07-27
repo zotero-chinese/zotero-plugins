@@ -2,8 +2,10 @@ name: CI
 
 on:
   schedule:
-    - cron: '25 1 * * *'
+    - cron: '25 0 * * *'
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
@@ -14,14 +16,23 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
+  lint:
+    name: Lint
+    if: github.event_name != 'schedule'
+    uses: ./.github/workflows/lint.yml
+    secrets: inherit
+
   build:
     name: Build
+    if: github.repository == 'zotero-chinese/zotero-plugins' && github.event_name != 'pull_request'
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
   deploy:
+    name: Deploy to GitHub
     needs:
       - build
+    if: github.repository == 'zotero-chinese/zotero-plugins' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -49,12 +60,13 @@ jobs:
     name: Sync to Gitee
     needs:
       - deploy
+    if: github.repository == 'zotero-chinese/zotero-plugins' && github.event_name != 'pull_request'
     uses: ./.github/workflows/sync-to-gitee.yml
     secrets: inherit
 
   send-dispatch:
     name: Send dispatch to website
-    if: github.ref_name == 'main'
+    if: github.repository == 'zotero-chinese/zotero-plugins' && github.event_name != 'pull_request'
     needs:
       - deploy
     runs-on: ubuntu-latest

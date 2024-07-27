@@ -5,8 +5,13 @@ import type { PluginInfoBase } from '../types/index.js'
  * 插件列表
  *
  * 贡献者贡献插件时，请按照 `repo` 字母顺序排序。
+ *
+ * Plugins list
+ *
  * Please sort the plugins in alphabetical order by `name` when contributing.
+ *
  */
+/// @keep-sorted { "keys": ["repo", "tags"] }
 const plugins: PluginInfoBase[] = [
   {
     repo: '018/zotcard',
@@ -63,6 +68,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'argenos/zotero-mdnotes',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['notes'],
+  },
+  {
     repo: 'Bowen-0x00/zotero-action-cmd',
     releases: [
       {
@@ -71,6 +86,16 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['productivity'],
+  },
+  {
+    repo: 'bwiernik/zotero-shortdoi',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
   },
   {
     repo: 'ChenglongMa/zoplicate',
@@ -87,214 +112,6 @@ const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
-    repo: 'Dominic-DallOsto/zotero-reading-list',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: 'v0.3.2',
-      },
-    ],
-    tags: ['productivity'],
-  },
-  {
-    repo: 'FrLars21/ZoteroCitationCountsManager',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'pre',
-      },
-    ],
-    tags: ['metadata'],
-  },
-  {
-    repo: 'ImperialSquid/zotero-zotts',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['reader'],
-  },
-  {
-    repo: 'ManuelaRunge/Zotitle',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['metadata'],
-  },
-  {
-    repo: 'MuiseDestiny/ZoteroStyle',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'pre',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['favorite', 'interface', 'visualization'],
-  },
-  {
-    repo: 'MuiseDestiny/eaiser-citation',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: '0.3.1',
-      },
-    ],
-    tags: ['favorite', 'writing'],
-  },
-  {
-    repo: 'MuiseDestiny/zotero-attanger',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['attachment'],
-  },
-  {
-    repo: 'MuiseDestiny/zotero-figure',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: '0.0.7',
-      },
-    ],
-    tags: ['favorite', 'reader', 'productivity'],
-  },
-  {
-    repo: 'MuiseDestiny/zotero-gpt',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'pre',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['interface', 'productivity'],
-  },
-  {
-    repo: 'MuiseDestiny/zotero-reference',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'pre',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['favorite', 'metadata', 'reader'],
-  },
-  {
-    repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['integration'],
-  },
-  {
-    repo: 'RoadToDream/ZotMeta',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['metadata'],
-  },
-  {
-    repo: 'SiriusXT/Zotero-Scholar-Rank',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['metadata'],
-  },
-  {
-    repo: 'Theigrams/zotero-pdf-custom-rename',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['attachment'],
-  },
-  {
-    repo: 'UB-Mannheim/zotero-ocr',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['others'],
-  },
-  {
-    repo: 'Zar-rok/Zotero-Add-Collection-Tag',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['others'],
-  },
-  {
-    repo: 'argenos/zotero-mdnotes',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['notes'],
-  },
-  {
-    repo: 'bwiernik/zotero-shortdoi',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['metadata'],
-  },
-  {
     repo: 'daeh/zotero-markdb-connect',
     releases: [
       {
@@ -307,6 +124,20 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration'],
+  },
+  {
+    repo: 'Dominic-DallOsto/zotero-reading-list',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v0.3.2',
+      },
+    ],
+    tags: ['productivity'],
   },
   {
     repo: 'dvanoni/notero',
@@ -405,6 +236,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['notes'],
   },
   {
+    repo: 'FrLars21/ZoteroCitationCountsManager',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'pre',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'github-young/zotero-better-authors',
     releases: [
       {
@@ -413,6 +254,26 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['interface'],
+  },
+  {
+    repo: 'ImperialSquid/zotero-zotts',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader'],
+  },
+  {
+    repo: 'inciteful-xyz/inciteful-zotero-plugin',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
   },
   {
     repo: 'iShareStuff/Backup-Plugin-for-Zotero',
@@ -443,16 +304,6 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['interface'],
-  },
-  {
-    repo: 'inciteful-xyz/inciteful-zotero-plugin',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['integration'],
   },
   {
     repo: 'jlegewie/zotfile',
@@ -513,6 +364,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
+    repo: 'ManuelaRunge/Zotitle',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'mpatelh/zbatch',
     releases: [
       {
@@ -521,6 +382,86 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['productivity'],
+  },
+  {
+    repo: 'MuiseDestiny/eaiser-citation',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.3.1',
+      },
+    ],
+    tags: ['favorite', 'writing'],
+  },
+  {
+    repo: 'MuiseDestiny/zotero-attanger',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment'],
+  },
+  {
+    repo: 'MuiseDestiny/zotero-figure',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.0.7',
+      },
+    ],
+    tags: ['favorite', 'reader', 'productivity'],
+  },
+  {
+    repo: 'MuiseDestiny/zotero-gpt',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'pre',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface', 'productivity'],
+  },
+  {
+    repo: 'MuiseDestiny/zotero-reference',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'pre',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['favorite', 'metadata', 'reader'],
+  },
+  {
+    repo: 'MuiseDestiny/ZoteroStyle',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'pre',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['favorite', 'interface', 'visualization'],
   },
   {
     repo: 'northword/zotero-format-metadata',
@@ -538,6 +479,16 @@ const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'paulusm/zotero-trilium',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
+  },
+  {
+    repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
     releases: [
       {
         targetZoteroVersion: '6',
@@ -633,6 +584,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['attachment'],
   },
   {
+    repo: 'RoadToDream/ZotMeta',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'scitedotai/scite-zotero-plugin',
     releases: [
       {
@@ -643,10 +604,10 @@ const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
-    repo: 'syt2/Zotero-TLDR',
+    repo: 'SiriusXT/Zotero-Scholar-Rank',
     releases: [
       {
-        targetZoteroVersion: '7',
+        targetZoteroVersion: '6',
         tagName: 'latest',
       },
     ],
@@ -677,6 +638,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['attachment'],
   },
   {
+    repo: 'syt2/Zotero-TLDR',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'tefkah/zotero-night',
     releases: [
       {
@@ -685,6 +656,16 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['interface'],
+  },
+  {
+    repo: 'Theigrams/zotero-pdf-custom-rename',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment'],
   },
   {
     repo: 'theRatramnus/RIOPACAddChapter',
@@ -705,6 +686,20 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['attachment'],
+  },
+  {
+    repo: 'UB-Mannheim/zotero-ocr',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others'],
   },
   {
     repo: 'volatile-static/Chartero',
@@ -803,16 +798,6 @@ const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'productivity'],
   },
   {
-    repo: 'wshanks/Zutilo',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['productivity'],
-  },
-  {
     repo: 'wshanks/lyz',
     releases: [
       {
@@ -823,7 +808,27 @@ const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'wshanks/Zutilo',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'yhmtsai/KeepZotero',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others'],
+  },
+  {
+    repo: 'Zar-rok/Zotero-Add-Collection-Tag',
     releases: [
       {
         targetZoteroVersion: '6',
