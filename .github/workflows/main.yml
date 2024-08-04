@@ -76,4 +76,4 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: zotero-chinese/website
-          event-type: update-content
+          event-type: update-triggered-by-plugins-repo
