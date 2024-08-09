@@ -750,11 +750,11 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'pre',
+        tagName: 'latest',
       },
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: 'v0.3.0',
       },
     ],
     tags: ['productivity'],
@@ -764,11 +764,11 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'pre',
+        tagName: 'latest',
       },
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: '1.0.4',
       },
     ],
     tags: ['favorite', 'notes'],
@@ -788,7 +788,7 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'pre',
+        tagName: 'v1.0.25',
       },
       {
         targetZoteroVersion: '6',
