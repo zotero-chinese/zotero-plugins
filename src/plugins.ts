@@ -788,11 +788,11 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'v1.0.25',
+        tagName: 'latest',
       },
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: 'v1.0.25',
       },
     ],
     tags: ['favorite', 'productivity'],
