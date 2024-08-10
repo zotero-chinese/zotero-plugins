@@ -91,6 +91,10 @@ const plugins: PluginInfoBase[] = [
     repo: 'bwiernik/zotero-shortdoi',
     releases: [
       {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '6',
         tagName: 'latest',
       },
@@ -328,6 +332,10 @@ const plugins: PluginInfoBase[] = [
   {
     repo: 'jyjulianwong/PolarRec-Zotero-Plugin',
     releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'pre',
+      },
       {
         targetZoteroVersion: '6',
         tagName: 'pre',
