@@ -323,6 +323,10 @@ const plugins: PluginInfoBase[] = [
     repo: 'justinribeiro/zotero-google-scholar-citation-count',
     releases: [
       {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '6',
         tagName: 'latest',
       },
