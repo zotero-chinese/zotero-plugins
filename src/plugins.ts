@@ -96,7 +96,7 @@ const plugins: PluginInfoBase[] = [
       },
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: 'v1.4.2',
       },
     ],
     tags: ['metadata'],
@@ -466,11 +466,11 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'pre',
+        tagName: 'latest',
       },
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: '2.6.7',
       },
     ],
     tags: ['favorite', 'interface', 'visualization'],
