@@ -11,7 +11,7 @@ import type { PluginInfoBase } from '../types/index.js'
  * Please sort the plugins in alphabetical order by `name` when contributing.
  *
  */
-/// @keep-sorted { "keys": ["repo", "tags"] }
+// @keep-sorted { "keys": ["repo", "tags"] }
 const plugins: PluginInfoBase[] = [
   {
     repo: '018/zotcard',
@@ -609,8 +609,12 @@ const plugins: PluginInfoBase[] = [
     repo: 'scitedotai/scite-zotero-plugin',
     releases: [
       {
-        targetZoteroVersion: '6',
+        targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v1.11.6',
       },
     ],
     tags: ['integration'],

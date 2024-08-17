@@ -36,8 +36,8 @@ async function main(mode: 'fetchPlugins' | 'charts' | string) {
         const pluginsInfoDist = await fetchPlugins(plugins)
         if (!env.CI) {
           writeFile(
-                `${dist}/plugins-debug.json`,
-                JSON.stringify(plugins, null, 2),
+            `${dist}/plugins-debug.json`,
+            JSON.stringify(plugins, null, 2),
           )
         }
         writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist))
