@@ -28,7 +28,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.26.0",
+    "@antfu/eslint-config": "^3.0.0",
     "@highcharts/dashboards": "2.3.0",
     "@types/adm-zip": "0.5.5",
     "@types/node": "20.16.2",
