@@ -452,11 +452,11 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'pre',
+        tagName: 'latest',
       },
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: '0.5.8',
       },
     ],
     tags: ['favorite', 'metadata', 'reader'],
