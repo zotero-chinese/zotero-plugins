@@ -64,6 +64,20 @@ const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'CentreForDigitalHumanities/lidia-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others'],
+  },
+  {
     repo: 'ChenglongMa/zoplicate',
     releases: [
       {
@@ -82,6 +96,30 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration'],
+  },
+  {
+    repo: 'dcartertod/zotero-plugins',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
+  },
+  {
+    repo: 'diegodlh/zotero-cita',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'v1.0.0-beta.0',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      }
+    ],
+    tags: ['others']
   },
   {
     repo: 'Dominic-DallOsto/zotero-reading-list',
@@ -184,6 +222,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'Juris-M/zotero-odf-scan-plugin',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'justinribeiro/zotero-google-scholar-citation-count',
     releases: [
       {
@@ -202,6 +250,16 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration'],
+  },
+  {
+    repo: 'lifan0127/ai-research-assistant',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
   },
   {
     repo: 'l0o0/jasminum',
@@ -294,6 +352,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'q77190858/zotero-pdf-background',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
+  },
+  {
     repo: 'redleafnew/delitemwithatt',
     releases: [
       {
@@ -314,6 +382,16 @@ const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'retorquere/zotero-auto-index',
+    releases: [
+      {
+        targetZoteroVersion: '5',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
+  },
+  {
     repo: 'retorquere/zotero-better-bibtex',
     releases: [
       {
@@ -322,6 +400,36 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration'],
+  },
+  {
+    repo: 'retorquere/zotero-cite-columns',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
+  },
+  {
+    repo: 'retorquere/zotero-date-from-last-modified',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
+  },
+  {
+    repo: 'retorquere/zotero-folder-import',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
   },
   {
     repo: 'retorquere/zotero-open-pdf',
@@ -342,6 +450,16 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['metadata'],
+  },
+  {
+    repo: 'retorquere/zotero-storage-scanner',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment'],
   },
   {
     repo: 'RoadToDream/ZotMeta',
@@ -523,6 +641,16 @@ const pluginsDev: PluginInfoBase[] = [
       },
     ],
     tags: ['visualization'],
+  },
+  {
+    repo: 'retorquere/zotero-debug-log',
+    releases: [
+      {
+        targetZoteroVersion: '6',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others']
   },
   {
     repo: 'syt2/zotero-addons',
