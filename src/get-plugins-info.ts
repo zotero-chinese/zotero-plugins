@@ -3,7 +3,6 @@ import { Buffer } from 'node:buffer'
 import { franc } from 'franc-min'
 // import translate from "google-translate-api-x";
 import AdmZip from 'adm-zip'
-import * as xml2js from 'xml2js'
 import { jsonc } from 'jsonc'
 import type { PluginInfo, PluginInfoBase } from '../types/index.js'
 import { writeFile } from './utils.js'
@@ -46,7 +45,6 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
     }
 
     plugin.description = desc
-    plugin.star = resp.data.stargazers_count
     plugin.stars = resp.data.stargazers_count
     plugin.watchers = resp.data.subscribers_count
   })
@@ -141,80 +139,36 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
     const zip = new AdmZip(`${dist}/xpi/${release.assetId}.xpi`)
     const zipEntries = zip.getEntries()
     const zipEntryNames = zipEntries.map(zipEntrie => zipEntrie.entryName)
-    if (zipEntryNames.includes('manifest.json')) {
-      const fileData = zip
-        .getEntry('manifest.json')!
-        .getData()
-        .toString('utf8')
-      const manifestData = jsonc.parse(fileData)
+    if (!zipEntryNames.includes('manifest.json'))
+      throw new Error('Bad XPI file')
 
-      plugin.name
+    const fileData = zip
+      .getEntry('manifest.json')!
+      .getData()
+      .toString('utf8')
+    const manifestData = jsonc.parse(fileData)
+
+    plugin.name
         = release.targetZoteroVersion === '7'
-          ? manifestData.name
-          : plugin.name ?? manifestData.name ?? repo
-      if (plugin.name === '__MSG_name__') {
-        const locale = ['zh-CN', 'zh', manifestData.default_locale]
-          .map(e => `_locales/${e}/messages.json`)
-          .find(e => !!zipEntryNames.includes(e))
-        if (locale) {
-          const message = zip.getEntry(locale)!.getData().toString('utf8')
-          const messageData = jsonc.parse(message)
-          plugin.name = messageData.name.message
-        }
-        else {
-          plugin.name = repo
-        }
+        ? manifestData.name
+        : plugin.name ?? manifestData.name ?? repo
+    if (plugin.name === '__MSG_name__') {
+      const locale = ['zh-CN', 'zh', manifestData.default_locale]
+        .map(e => `_locales/${e}/messages.json`)
+        .find(e => !!zipEntryNames.includes(e))
+      if (locale) {
+        const message = zip.getEntry(locale)!.getData().toString('utf8')
+        const messageData = jsonc.parse(message)
+        plugin.name = messageData.name.message
       }
-      release.id = manifestData.applications.zotero.id
-      release.xpiVersion = manifestData.version || ''
-      plugin.description = plugin.description || manifestData.description || ''
-      // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
-    }
-    else if (zipEntryNames.includes('install.rdf')) {
-      const fileData = zip.getEntry('install.rdf')!.getData().toString('utf8')
-
-      // 从 install.rdf 中获取 id
-      function replaceRDF(name: string) {
-        return name.replace('RDF:', '')
+      else {
+        plugin.name = repo
       }
-      xml2js.parseString(
-        fileData,
-        {
-          mergeAttrs: true,
-          attrNameProcessors: [replaceRDF],
-          tagNameProcessors: [replaceRDF],
-        },
-        (_err, result) => {
-          const manifestData = result // JSON.parse(result);
-          // console.log(util.inspect(result, false, null));
-          release.id = manifestData.RDF.Description
-            .map((Description: any) => {
-              // console.log(Description);
-              if (Description.about === 'urn:mozilla:install-manifest') {
-                return Description['em:id'][0]
-              }
-              return ''
-            })
-            .filter((id: string | undefined) => id !== undefined)[0]
-        },
-      )
-      // 从 install.rdf 中获取 description
-      plugin.description
-        = plugin.description
-        ?? (fileData.match(/em:description="(.*?)"/)
-        ?? fileData.match(/<em:description>(.*?)<\/em:description>/) ?? [
-          '',
-          'NO desc',
-        ])[1]
-
-      plugin.name
-        = plugin.name
-        || (fileData.match(/em:name="(.*?)"/)
-        ?? fileData.match(/<em:name>(.*?)<\/em:name>/) ?? ['', 'No Name'])[1]
-
-      release.xpiVersion = (fileData.match(/em:version="(.*?)"/)
-      ?? fileData.match(/<em:version>(.*?)<\/em:version>/) ?? ['', ''])[1]
     }
+    release.id = manifestData.applications.zotero.id
+    release.xpiVersion = manifestData.version || ''
+    plugin.description = plugin.description || manifestData.description || ''
+    // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
   }
   console.info(`${plugin.name} 处理完成`)
   return plugin
