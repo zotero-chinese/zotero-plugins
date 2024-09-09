@@ -258,7 +258,7 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'pre',
+        tagName: 'latest',
       },
     ],
     tags: ['interface', 'productivity'],
