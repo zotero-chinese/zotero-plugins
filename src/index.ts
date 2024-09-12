@@ -1,86 +1,64 @@
 import { argv, env, exit } from 'node:process'
-import { Octokit } from 'octokit'
-import getChartOptions from './charts.js'
-import { fetchPlugins } from './get-plugins-info.js'
+import fs from 'fs-extra'
+import { consola } from 'consola'
+import getChartOptions from './handler/charts-data.js'
+import { fetchPlugins } from './handler/plugins-data.js'
 import plugins from './plugins.js'
-import { readFile, writeFile } from './utils.js'
-// import { renderMarkdown } from "./render-markdown";
+import { checkRateLimit } from './utils/index.js'
+import { cleanAssets } from './handler/file-cache.js'
 
 if (!env.GITHUB_TOKEN)
   throw new Error('GITHUB_TOKEN 未设置')
 
 export const dist = './dist'
-export const octokit = new Octokit({
-  auth: env.GITHUB_TOKEN,
-})
 
-export function args() {
-  return <'fetchPlugins' | 'md' | 'charts'>argv.slice(2)[0]
+async function handlePluginsData() {
+  const pluginsInfoDist = await fetchPlugins(plugins)
+  fs.outputJSONSync(`${dist}/plugins-debug.json`, pluginsInfoDist, { spaces: 2 })
+  fs.outputJSONSync(`${dist}/plugins.json`, pluginsInfoDist)
+
+  cleanAssets()
+
+  const shields = {
+    lastUpdate: new Date().toLocaleString('zh-CN'),
+  }
+  fs.outputJSONSync(`${dist}/shields.json`, shields)
 }
 
-async function main(mode: 'fetchPlugins' | 'charts' | string) {
-  const quotaStart = (await octokit.rest.rateLimit.get()).data.rate
-  console.log(quotaStart)
+async function handleChartsData() {
+  const pluginsInfoDist = fs.readJSONSync(`${dist}/plugins.json`)
+  const chartOptions = await getChartOptions(pluginsInfoDist)
+  fs.outputJSONSync(`${dist}/charts.json`, chartOptions, { spaces: env.NODE_ENV === 'development' ? 2 : 0 })
+}
 
+async function main() {
+  const mode: 'fetchPlugins' | 'charts' | string = argv.slice(2)[0]
+
+  const quotaStart = await checkRateLimit()
   if (quotaStart.remaining < 1500) {
-    console.log(
-      `TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`,
-    )
+    consola.error(`TOKEN 余量不足, ${new Date(quotaStart.reset).toLocaleTimeString()}后重试`)
     exit(1)
   }
 
-  console.log('开始处理')
-  switch (mode) {
-    case 'fetchPlugins':
-      {
-        const pluginsInfoDist = await fetchPlugins(plugins)
-        if (!env.CI) {
-          writeFile(
-            `${dist}/plugins-debug.json`,
-            JSON.stringify(plugins, null, 2),
-          )
-        }
-        writeFile(`${dist}/plugins.json`, JSON.stringify(pluginsInfoDist))
+  consola.log('开始处理')
+  fs.ensureDir(dist)
 
-        const shields = {
-          lastUpdate: new Date().toLocaleString('zh-CN'),
-        }
-        writeFile(`${dist}/shields.json`, JSON.stringify(shields, null, 2))
-      }
-      break
-    case 'md': {
-      // console.log("处理 Markdown");
-      // const pluginsInfoDist = readFile(`${dist}/plugins.json`);
-      // const markdownContent = await renderMarkdown(pluginsInfoDist);
-      // writeFile(`${dist}/plugins.md`, markdownContent);
-      break
-    }
-    case 'charts':
-      {
-        const pluginsInfoDist = readFile(`${dist}/plugins.json`)
-        const chartOptions = await getChartOptions(pluginsInfoDist)
-        writeFile(
-          `${dist}/charts.json`,
-          JSON.stringify(
-            chartOptions,
-            null,
-            env.NODE_ENV === 'development' ? 2 : 0,
-          ),
-        )
-      }
-      break
-    default:
-      console.log('No arg, exit.')
-      break
+  if (mode === 'fetchPlugins') {
+    await handlePluginsData()
+  }
+  else if (mode === 'charts') {
+    await handleChartsData()
+  }
+  else {
+    consola.error('No arg, exit.')
   }
 
-  console.log('完成')
-  const quotaEnd = (await octokit.rest.rateLimit.get()).data.rate
-  console.log(quotaEnd)
-  console.log(`共计请求 ${quotaStart.remaining - quotaEnd.remaining} 次`)
+  consola.log('完成')
+  const quotaEnd = await checkRateLimit()
+  consola.log(`共计请求 ${quotaStart.remaining - quotaEnd.remaining} 次`)
 }
 
-main(args()).catch((err) => {
-  console.log(err)
+main().catch((err) => {
+  consola.error(err)
   exit(1)
 })

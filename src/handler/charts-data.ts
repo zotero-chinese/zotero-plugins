@@ -1,4 +1,3 @@
-import { createRequire } from 'node:module'
 import { env } from 'node:process'
 import type { Board } from '@highcharts/dashboards'
 import type {
@@ -11,14 +10,14 @@ import type {
   SeriesSplineOptions,
   SeriesWordcloudOptions,
 } from 'highcharts'
+import consola from 'consola'
+import fs from 'fs-extra'
+import type { PluginInfo } from '../types.js'
+import { octokit } from '../utils/index.js'
 
-import type { PluginInfo } from '../types/index.js'
-import { octokit } from './index.js'
-
-const require = createRequire(import.meta.url)
 const pluginMap: { [name: string]: PluginMapInfo }
     = env.NODE_ENV === 'development'
-      ? require('../dist/charts-debug.json')
+      ? fs.readJSONSync('./dist/charts-debug.json')
       : {}
 
 interface PluginMapInfo {
@@ -75,7 +74,7 @@ async function fetchInfo(plugin: PluginInfo) {
   pluginMap[plugin.name].totalDownloads = pluginMap[
     plugin.name
   ].releases!.reduce((sum, release) => sum + release.downloadCount, 0)
-  console.info(plugin.name, 'done')
+  consola.info(plugin.name, 'done')
 }
 
 async function getIssues(owner: string, repo: string) {

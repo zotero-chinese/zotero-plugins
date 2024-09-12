@@ -1,5 +1,5 @@
 import { env } from 'node:process'
-import type { PluginInfoBase } from '../types/index.js'
+import type { PluginInfoBase } from './types.js'
 
 /**
  * 插件列表

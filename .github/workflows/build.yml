@@ -34,6 +34,14 @@ jobs:
       - name: Install deps
         run: pnpm install
 
+      - name: Cache dist
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-dist
+        with:
+          path: dist
+          key: ${{ env.cache-name }}-${{ hashFiles('dist/plugins.json') }}
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }}
