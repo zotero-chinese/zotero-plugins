@@ -40,7 +40,10 @@ jobs:
           cache-name: cache-dist
         with:
           path: dist
-          key: ${{ env.cache-name }}-${{ hashFiles('dist/plugins.json') }}
+          key: ${{ env.cache-name }}-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            ${{ env.cache-name }}-${{ runner.os }}
+            ${{ env.cache-name }}
 
       - name: Build
         env:
