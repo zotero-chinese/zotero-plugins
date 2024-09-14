@@ -1,5 +1,5 @@
-import process from 'node:process'
 import { Buffer } from 'node:buffer'
+import process from 'node:process'
 import { Octokit } from 'octokit'
 
 export const octokit = new Octokit({

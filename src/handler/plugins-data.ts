@@ -1,10 +1,10 @@
-import fs from 'fs-extra'
-import AdmZip from 'adm-zip'
-import { jsonc } from 'jsonc'
-import { consola } from 'consola'
 import type { PluginInfo, PluginInfoBase, ReleaseInfo, ReleaseInfoBase } from '../types.js'
-import { getRelease, getReleaseAssetBuffer, octokit, translateString } from '../utils/index.js'
+import AdmZip from 'adm-zip'
+import { consola } from 'consola'
+import fs from 'fs-extra'
+import { jsonc } from 'jsonc'
 import { dist } from '../index.js'
+import { getRelease, getReleaseAssetBuffer, octokit, translateString } from '../utils/index.js'
 
 export function fetchPlugins(plugins: PluginInfoBase[]) {
   return Promise.all(plugins.map(fetchPlugin))

@@ -1,4 +1,3 @@
-import { env } from 'node:process'
 import type { Board } from '@highcharts/dashboards'
 import type {
   ExportingOptions,
@@ -10,9 +9,10 @@ import type {
   SeriesSplineOptions,
   SeriesWordcloudOptions,
 } from 'highcharts'
+import type { PluginInfo } from '../types.js'
+import { env } from 'node:process'
 import consola from 'consola'
 import fs from 'fs-extra'
-import type { PluginInfo } from '../types.js'
 import { octokit } from '../utils/index.js'
 
 const pluginMap: { [name: string]: PluginMapInfo }
@@ -305,8 +305,7 @@ function drawIssueBar() {
     colorIndex: 101,
     data: categories.map(
       name =>
-        pluginMap[name].issues!.filter(issue => issue.closedAt != null)
-          .length,
+        pluginMap[name].issues!.filter(issue => issue.closedAt != null).length,
     ),
   }
   const open: SeriesBarOptions = {
@@ -315,8 +314,7 @@ function drawIssueBar() {
     colorIndex: 102,
     data: categories.map(
       name =>
-        pluginMap[name].issues!.filter(issue => issue.closedAt === null)
-          .length,
+        pluginMap[name].issues!.filter(issue => issue.closedAt === null).length,
     ),
   }
   return [open, closed]

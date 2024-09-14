@@ -1,11 +1,11 @@
 import { argv, env, exit } from 'node:process'
-import fs from 'fs-extra'
 import { consola } from 'consola'
+import fs from 'fs-extra'
 import getChartOptions from './handler/charts-data.js'
+import { cleanAssets } from './handler/file-cache.js'
 import { fetchPlugins } from './handler/plugins-data.js'
 import plugins from './plugins.js'
 import { checkRateLimit } from './utils/index.js'
-import { cleanAssets } from './handler/file-cache.js'
 
 if (!env.GITHUB_TOKEN)
   throw new Error('GITHUB_TOKEN 未设置')

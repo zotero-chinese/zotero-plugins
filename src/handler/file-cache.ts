@@ -1,9 +1,9 @@
-import process from 'node:process'
-import { globbySync } from 'globby'
-import { consola } from 'consola'
-import fs from 'fs-extra'
-import { difference } from 'es-toolkit'
 import type { PluginInfo } from '../types.js'
+import process from 'node:process'
+import { consola } from 'consola'
+import { difference } from 'es-toolkit'
+import fs from 'fs-extra'
+import { globbySync } from 'globby'
 
 export function cleanAssets() {
   const currentAssets = globbySync('dist/xpi/*.xpi')
