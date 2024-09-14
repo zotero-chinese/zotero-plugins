@@ -84,6 +84,26 @@ const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'Dominic-DallOsto/zotero-annotations-count',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface', 'visualization'],
+  },
+  {
+    repo: 'Dominic-DallOsto/zotero-pin-items',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface'],
+  },
+  {
     repo: 'Dominic-DallOsto/zotero-reading-list',
     releases: [
       {
@@ -362,6 +382,16 @@ const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration'],
+  },
+  {
+    repo: 'StevenGLee/zotero-author-browser',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['visualization'],
   },
   {
     repo: 'syt2/zotero-addons',
