@@ -353,6 +353,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'panhaoyu/zotero-categorial-tags',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata', 'productivity', 'interface'],
+  },
+  {
     repo: 'redleafnew/delitemwithatt',
     releases: [
       {
