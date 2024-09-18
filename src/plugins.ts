@@ -1,5 +1,4 @@
 import type { PluginInfoBase } from './types.js'
-import { env } from 'node:process'
 
 /**
  * 插件列表
@@ -12,13 +11,17 @@ import { env } from 'node:process'
  *
  */
 // @keep-sorted { "keys": ["repo", "tags"] }
-const plugins: PluginInfoBase[] = [
+export const plugins: PluginInfoBase[] = [
   {
     repo: '018/zotcard',
     releases: [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v2.8',
       },
     ],
     tags: ['notes'],
@@ -60,6 +63,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v1.4.2',
+      },
     ],
     tags: ['metadata'],
   },
@@ -70,6 +77,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'zotero6',
+      },
     ],
     tags: ['favorite', 'metadata'],
   },
@@ -79,6 +90,10 @@ const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v0.0.27',
       },
     ],
     tags: ['integration'],
@@ -110,6 +125,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v0.3.2',
+      },
     ],
     tags: ['productivity'],
   },
@@ -118,6 +137,10 @@ const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
         tagName: 'latest',
       },
     ],
@@ -250,6 +273,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.3.1',
+      },
     ],
     tags: ['favorite', 'writing'],
   },
@@ -269,6 +296,10 @@ const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.0.7',
       },
     ],
     tags: ['favorite', 'reader', 'productivity'],
@@ -300,6 +331,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: '2.6.7',
+      },
     ],
     tags: ['favorite', 'interface', 'visualization'],
   },
@@ -309,6 +344,10 @@ const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.4.4',
       },
     ],
     tags: ['favorite', 'metadata'],
@@ -320,6 +359,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.1.06',
+      },
     ],
     tags: ['attachment'],
   },
@@ -329,6 +372,10 @@ const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.13.0',
       },
     ],
     tags: ['metadata'],
@@ -380,6 +427,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v1.11.6',
+      },
     ],
     tags: ['integration'],
   },
@@ -399,6 +450,10 @@ const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.6.0-6',
       },
     ],
     tags: ['favorite', 'others'],
@@ -470,6 +525,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: '1.3.3',
+      },
     ],
     tags: ['favorite', 'visualization', 'interface'],
   },
@@ -490,6 +549,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v0.3.0',
+      },
     ],
     tags: ['productivity'],
   },
@@ -500,6 +563,10 @@ const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: '1.0.4',
+      },
     ],
     tags: ['favorite', 'notes'],
   },
@@ -509,6 +576,10 @@ const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v1.0.25',
       },
     ],
     tags: ['favorite', 'productivity'],
@@ -529,7 +600,7 @@ const plugins: PluginInfoBase[] = [
  * 仅供开发测试使用的插件列表
  *
  */
-const pluginsDev: PluginInfoBase[] = [
+export const pluginsDev: PluginInfoBase[] = [
   {
     repo: 'northword/zotero-format-metadata',
     releases: [
@@ -569,5 +640,3 @@ const pluginsDev: PluginInfoBase[] = [
     tags: ['others'],
   },
 ]
-
-export default env.NODE_ENV === 'development' ? pluginsDev : plugins

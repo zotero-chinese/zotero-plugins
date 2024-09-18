@@ -95,44 +95,85 @@ function parseXPI(filePath: string): {
   const zip = new AdmZip(filePath)
   const zipEntries = zip.getEntries()
   const zipEntryNames = zipEntries.map(zipEntrie => zipEntrie.entryName)
-  if (!zipEntryNames.includes('manifest.json'))
-    throw new Error('Bad XPI file')
 
-  const fileData = zip
-    .getEntry('manifest.json')!
-    .getData()
-    .toString('utf8')
-  const manifestData = jsonc.parse(fileData)
+  if (zipEntryNames.includes('manifest.json')) {
+    const fileData = zip
+      .getEntry('manifest.json')!
+      .getData()
+      .toString('utf8')
+    const manifestData = jsonc.parse(fileData)
 
-  function getManifestValueLocal(key: string) {
-    const locale = ['zh-CN', 'zh', manifestData.default_locale]
-      .map(e => `_locales/${e}/messages.json`)
-      .find(e => !!zipEntryNames.includes(e))
-    if (locale) {
-      const message = zip.getEntry(locale)!.getData().toString('utf8')
-      const messageData = jsonc.parse(message)
-      return messageData[key].message
+    function getManifestValueLocal(key: string) {
+      const locale = ['zh-CN', 'zh', manifestData.default_locale]
+        .map(e => `_locales/${e}/messages.json`)
+        .find(e => !!zipEntryNames.includes(e))
+      if (locale) {
+        const message = zip.getEntry(locale)!.getData().toString('utf8')
+        const messageData = jsonc.parse(message)
+        return messageData[key].message
+      }
+    }
+
+    // Plugin Name
+    let name = manifestData.name
+    if (name === '__MSG_name__') {
+      name = getManifestValueLocal('name')
+    }
+
+    // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
+    let description = manifestData.description
+    if (description === '__MSG_description')
+      description = getManifestValueLocal('description')
+
+    const id = manifestData.applications.zotero.id
+    const xpiVersion = manifestData.version
+
+    return {
+      name,
+      description,
+      id,
+      xpiVersion,
     }
   }
-
-  // Plugin Name
-  let name = manifestData.name
-  if (name === '__MSG_name__') {
-    name = getManifestValueLocal('name')
+  else if (zipEntryNames.includes('install.rdf')) {
+    return parseInstallRef(zip)
   }
+  else {
+    throw new Error('Bad XPI file')
+  }
+}
 
-  // todo: 适配多语言，当值为 `__MSG_description__` 是前往 i18n 目录获取
-  let description = manifestData.description
-  if (description === '__MSG_description')
-    description = getManifestValueLocal('description')
+// 临时恢复 Zotero 6 插件解析
+function parseInstallRef(zip: AdmZip) {
+  const fileData = zip.getEntry('install.rdf')!.getData().toString('utf8')
 
-  const id = manifestData.applications.zotero.id
-  const xpiVersion = manifestData.version
+  // 从 install.rdf 中获取 id
+  const id
+  = (fileData.match(/em:id="(.*?)"/)
+    ?? fileData.match(/<em:id>(.*?)<\/em:id>/) ?? [
+    '',
+    'NO id',
+  ])[1]
+
+  // 从 install.rdf 中获取 description
+  const description
+     = (fileData.match(/em:description="(.*?)"/)
+       ?? fileData.match(/<em:description>(.*?)<\/em:description>/) ?? [
+       '',
+       'NO desc',
+     ])[1]
+
+  const name
+    = (fileData.match(/em:name="(.*?)"/)
+      ?? fileData.match(/<em:name>(.*?)<\/em:name>/) ?? ['', 'No Name'])[1]
+
+  const xpiVersion = (fileData.match(/em:version="(.*?)"/)
+    ?? fileData.match(/<em:version>(.*?)<\/em:version>/) ?? ['', ''])[1]
 
   return {
     name,
-    description,
     id,
+    description,
     xpiVersion,
   }
 }

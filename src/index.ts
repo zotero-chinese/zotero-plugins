@@ -1,10 +1,11 @@
 import { argv, env, exit } from 'node:process'
 import { consola } from 'consola'
 import fs from 'fs-extra'
+import { deprecatedPlugins } from './deprecated.js'
 import getChartOptions from './handler/charts-data.js'
 import { cleanAssets } from './handler/file-cache.js'
 import { fetchPlugins } from './handler/plugins-data.js'
-import plugins from './plugins.js'
+import { plugins, pluginsDev } from './plugins.js'
 import { checkRateLimit } from './utils/index.js'
 
 if (!env.GITHUB_TOKEN)
@@ -12,8 +13,31 @@ if (!env.GITHUB_TOKEN)
 
 export const dist = './dist'
 
+function getPlugins() {
+  if (env.NODE_ENV === 'development')
+    return pluginsDev
+
+  return [...plugins, ...deprecatedPlugins]
+
+  // const mergedPlugins = unionBy(plugins, deprecatedPlugins, p => p.repo)
+  // return mergedPlugins.map((item) => {
+  //   const list1Item = plugins.find(l => l.repo === item.repo)
+  //   const list2Item = deprecatedPlugins.find(l => l.repo === item.repo)
+
+  //   if (list1Item && list2Item) {
+  //     return {
+  //       ...item,
+  //       releases: [...list1Item.releases, ...list2Item.releases],
+  //       tags: union(list1Item.tags, list2Item.tags),
+  //     }
+  //   }
+  //   return item
+  // })
+};
+
 async function handlePluginsData() {
-  const pluginsInfoDist = await fetchPlugins(plugins)
+  const allPlugins = getPlugins()
+  const pluginsInfoDist = await fetchPlugins(allPlugins)
   fs.outputJSONSync(`${dist}/plugins-debug.json`, pluginsInfoDist, { spaces: 2 })
   fs.outputJSONSync(`${dist}/plugins.json`, pluginsInfoDist)
 
