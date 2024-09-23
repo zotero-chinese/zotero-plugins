@@ -253,6 +253,10 @@ export const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'pre',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v0.2.9',
+      },
     ],
     tags: ['favorite', 'metadata'],
   },
