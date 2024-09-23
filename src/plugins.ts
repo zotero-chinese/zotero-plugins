@@ -363,6 +363,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata', 'productivity', 'interface'],
   },
   {
+    repo: 'TimeTrapzz/zotero-ccf-info',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'redleafnew/delitemwithatt',
     releases: [
       {
