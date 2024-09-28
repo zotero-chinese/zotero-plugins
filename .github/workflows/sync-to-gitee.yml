@@ -11,23 +11,9 @@ jobs:
   sync-gitee:
     runs-on: ubuntu-latest
     steps:
-      - name: Get current repository name
-        id: info
-        uses: actions/github-script@v7
+      - uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          result-encoding: string
-          script: |
-            return context.repo.repo;
-
-      - name: Mirror the GitHub repos to Gitee
-        uses: Yikun/hub-mirror-action@master
-        with:
-          src: github/zotero-chinese
-          src_account_type: org
-          dst: gitee/northword
-          dst_account_type: user
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token: ${{ secrets.GITEE_TOKEN }}
-          static_list: '${{ steps.info.outputs.result }}'
-          force_update: true
+          source-repo: 'git@github.com:zotero-chinese/zotero-plugins.git'
+          destination-repo: 'git@gitee.com:northword/zotero-plugins.git'
