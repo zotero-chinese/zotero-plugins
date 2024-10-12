@@ -141,7 +141,7 @@ export const plugins: PluginInfoBase[] = [
       },
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: 'v0.5.17',
       },
     ],
     tags: ['integration'],
@@ -152,6 +152,10 @@ export const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v6.0.3',
       },
     ],
     tags: ['integration'],
@@ -222,6 +226,10 @@ export const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: '0.0.9',
       },
     ],
     tags: ['integration'],
@@ -314,6 +322,10 @@ export const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
+      },      
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.2.8',
       },
     ],
     tags: ['interface', 'productivity'],
