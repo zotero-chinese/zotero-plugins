@@ -279,6 +279,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
+    repo: 'lifan0127/ai-research-assistant',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: '0.8.0',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'MuiseDestiny/eaiser-citation',
     releases: [
       {
