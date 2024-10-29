@@ -12,7 +12,7 @@ This repository provides information of several Zotero plugins and their XPI pac
 
 ## View
 
-- **Main domin of Zotero Chinese: <https://zotero-chinese.com/plugins>**
+- **Main domain of Zotero Chinese: <https://zotero-chinese.com/plugins>**
 - Netlify: <https://zotero-plugins.netlify.app/>
 - GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/>
 
