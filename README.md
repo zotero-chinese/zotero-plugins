@@ -1,7 +1,6 @@
 # Zotero Plugins Collection
 
 ![GitHub Action Status](https://img.shields.io/github/actions/workflow/status/northword/zotero-plugins/main.yml?logo=githubactions)
-[![Netlify deploys](https://api.netlify.com/api/v1/badges/bae2ef92-2f0a-4076-ae7c-6619933cdf39/deploy-status)](https://app.netlify.com/sites/zotero-plugins/deploys)
 ![GitHub last commit](https://img.shields.io/github/last-commit/northword/zotero-plugins/main?logo=github)
 ![last updated](https://img.shields.io/badge/dynamic/json?logo=github&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=last%20updated)
 ![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hw/zotero-chinese/zotero-plugins?logo=jsdelivr)
@@ -10,11 +9,10 @@ _This README is also available in: [:cn: 简体中文](./README-zh.md) | :gb: En
 
 This repository provides information of several Zotero plugins and their XPI packages , in an attempt to provide a centralized plugin store service until the official Zotero plugin store is ready.
 
-## View
+## Visiting
 
-- **Main domain of Zotero Chinese: <https://zotero-chinese.com/plugins>**
-- Netlify: <https://zotero-plugins.netlify.app/>
-- GitHub Pages: <https://zotero-chinese.github.io/zotero-plugins/>
+- **Main domain of Zotero Chinese: <https://zotero-chinese.com/plugins/>**
+- GitHub Pages: <https://zotero-chinese.github.io/plugins/>
 
 ## Submitting Plugins
 
