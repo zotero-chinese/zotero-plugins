@@ -10,9 +10,9 @@ _This README is also available in: [:cn: 简体中文](./README-zh.md) | :gb: En
 
 This repository provides information of several Zotero plugins and their XPI packages , in an attempt to provide a centralized plugin store service until the official Zotero plugin store is ready.
 
-## Visit
+## Visiting
 
-- **Main domain of Zotero Chinese: <https://zotero-chinese.com/plugins>**
+- **Main domain of Zotero Chinese: <https://zotero-chinese.com/plugins/>**
 - GitHub Pages: <https://zotero-chinese.github.io/plugins/>
 
 ## Submitting Plugins
