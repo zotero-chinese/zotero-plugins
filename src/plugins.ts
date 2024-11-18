@@ -593,6 +593,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['attachment'],
   },
   {
+    repo: 'windingwind/bionic-for-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader'],
+  },
+  {
     repo: 'windingwind/zotero-actions-tags',
     releases: [
       {
