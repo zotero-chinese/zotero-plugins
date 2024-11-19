@@ -635,7 +635,7 @@ export const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'latest',
+        tagName: 'v2.0.5',
       },
       {
         targetZoteroVersion: '6',
