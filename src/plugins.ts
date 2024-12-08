@@ -255,6 +255,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'kazgu/zotero-chatgpt',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'l0o0/jasminum',
     releases: [
       {
@@ -290,7 +300,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: '0.8.0',
       },
     ],
-    tags: ['productivity'],
+    tags: ['ai', 'productivity'],
   },
   {
     repo: 'MuiseDestiny/eaiser-citation',
@@ -342,7 +352,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: '0.2.8',
       },
     ],
-    tags: ['interface', 'productivity'],
+    tags: ['ai', 'interface', 'productivity'],
   },
   {
     repo: 'MuiseDestiny/zotero-reference',
@@ -591,6 +601,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['attachment'],
+  },
+  {
+    repo: 'windfollowingheart/zotero-paper-agent',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
   },
   {
     repo: 'windingwind/bionic-for-zotero',

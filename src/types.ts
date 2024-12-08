@@ -91,6 +91,8 @@ export type TagType =
   | 'visualization'
   // 第三方软件集成
   | 'integration'
+  // AI 集成
+  | 'ai'
   // 字处理软件集成或增强
   | 'writing'
   // 开发者工具
