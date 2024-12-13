@@ -403,6 +403,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata', 'productivity', 'interface'],
   },
   {
+    repo: 'papersgpt/papersgpt-for-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'redleafnew/delitemwithatt',
     releases: [
       {
