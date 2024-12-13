@@ -37,6 +37,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'alima-webdev/zotero-review-assistant',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface', 'visualization'],
+  },
+  {
     repo: 'AllanChain/zotero-arxiv-workflow',
     releases: [
       {
