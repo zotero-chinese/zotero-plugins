@@ -37,6 +37,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'alima-webdev/zotero-review-assistant',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface', 'visualization'],
+  },
+  {
     repo: 'AllanChain/zotero-arxiv-workflow',
     releases: [
       {
@@ -401,6 +411,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['metadata', 'productivity', 'interface'],
+  },
+  {
+    repo: 'papersgpt/papersgpt-for-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
   },
   {
     repo: 'redleafnew/delitemwithatt',
