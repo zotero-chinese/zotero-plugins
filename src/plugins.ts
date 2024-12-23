@@ -116,7 +116,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'pre',
       },
     ],
-    tags: ['integration'],
+    tags: ['metadata'],
   },
   {
     repo: 'Dominic-DallOsto/zotero-annotations-count',
