@@ -109,6 +109,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'diegodlh/zotero-cita',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'pre',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'Dominic-DallOsto/zotero-annotations-count',
     releases: [
       {
