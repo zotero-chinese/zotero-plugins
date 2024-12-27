@@ -66,7 +66,7 @@ async function parseRelease(owner: string, repo: string, releaseBase: ReleaseInf
   if (!fs.existsSync(`${dist}/xpi/${asset.id}.xpi`)) {
     const buffer = await getReleaseAssetBuffer(owner, repo, asset.id)
     fs.outputFileSync(`${dist}/xpi/${asset.id}.xpi`, buffer)
-    consola.log(`  Write ${asset.name} ${asset.id}`)
+    consola.log(`  Write ${asset.id}.xpi -> ${asset.name}`)
   }
 
   release.assetId = asset.id
