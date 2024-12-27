@@ -51,14 +51,16 @@ async function parseRelease(owner: string, repo: string, releaseBase: ReleaseInf
   const resp = await getRelease(owner, repo, releaseBase.tagName)
   release.tagName = resp.tag_name
 
-  const asset = resp.assets
+  let asset = resp.assets
     .filter(asset => asset.content_type === 'application/x-xpinstall')
     .sort((a, b) =>
       new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
     )[0]
 
   if (!asset) {
-    throw new Error(`  ${owner}/${repo} ${release.tagName} 不存在 XPI`)
+    asset = resp.assets.filter(asset => asset.name.endsWith('.zip'))[0]
+    if (!asset)
+      throw new Error(`  ${owner}/${repo} ${release.tagName} 不存在 XPI`)
   }
 
   if (!fs.existsSync(`${dist}/xpi/${asset.id}.xpi`)) {
