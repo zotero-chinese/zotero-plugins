@@ -704,6 +704,20 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
+  {
+    repo: 'q77190858/zotero-pdf-background',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v0.0.2',
+      },
+    ],
+    tags: ['reader'],
+  },
 ]
 
 /**
