@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": "true",
-  "packageManager": "pnpm@9.15.1",
+  "packageManager": "pnpm@9.15.2",
   "description": "Zotero 插件合集",
   "author": "northword",
   "license": "MIT",
