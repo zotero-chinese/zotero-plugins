@@ -13,7 +13,7 @@ importers:
         version: 3.12.1(@typescript-eslint/utils@8.19.0(eslint@9.17.0)(typescript@5.7.2))(@vue/compiler-sfc@3.4.31)(eslint@9.17.0)(typescript@5.7.2)
       '@highcharts/dashboards':
         specifier: ^2.3.0
-        version: 2.3.0(highcharts@11.4.8)
+        version: 2.3.0(highcharts@12.0.1)
       '@types/adm-zip':
         specifier: ^0.5.5
         version: 0.5.7
@@ -48,8 +48,8 @@ importers:
         specifier: ^14.0.2
         version: 14.0.2
       highcharts:
-        specifier: ^11.4.8
-        version: 11.4.8
+        specifier: ^12.0.0
+        version: 12.0.1
       husky:
         specifier: ^9.1.6
         version: 9.1.7
@@ -1190,8 +1190,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  highcharts@11.4.8:
-    resolution: {integrity: sha512-5Tke9LuzZszC4osaFisxLIcw7xgNGz4Sy3Jc9pRMV+ydm6sYqsPYdU8ELOgpzGNrbrRNDRBtveoR5xS3SzneEA==}
+  highcharts@12.0.1:
+    resolution: {integrity: sha512-86pku0cZnHfEu6uqbbEpU50XKHcAFFXeD4pYvxlVBRDLRDlxpT0WuClgJBuBJZof1ZjFUh1D7IxUxFgt9Epb7Q==}
 
   hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -2232,9 +2232,9 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@highcharts/dashboards@2.3.0(highcharts@11.4.8)':
+  '@highcharts/dashboards@2.3.0(highcharts@12.0.1)':
     dependencies:
-      highcharts: 11.4.8
+      highcharts: 12.0.1
 
   '@humanfs/core@0.19.1': {}
 
@@ -3213,7 +3213,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  highcharts@11.4.8: {}
+  highcharts@12.0.1: {}
 
   hosted-git-info@2.8.9: {}
 
