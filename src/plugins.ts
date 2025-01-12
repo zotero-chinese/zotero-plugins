@@ -479,6 +479,16 @@ export const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
+        tagName: 'debug-bridge',
+      },
+    ],
+    tags: ['developer'],
+  },
+  {
+    repo: 'retorquere/zotero-better-bibtex',
+    releases: [
+      {
+        targetZoteroVersion: '7',
         tagName: 'latest',
       },
     ],
