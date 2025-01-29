@@ -525,6 +525,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'SciImage/zotero-attachment-scanner',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment'],
+  },
+  {
     repo: 'scitedotai/scite-zotero-plugin',
     releases: [
       {
