@@ -181,6 +181,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'etShaw-zh/zotracer',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration', 'visualization', 'productivity'],
+  },
+  {
     repo: 'fkguo/zotero-inspire',
     releases: [
       {
