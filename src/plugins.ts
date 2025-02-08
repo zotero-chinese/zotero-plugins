@@ -95,6 +95,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'Creling/Zotero-Metadata-Scraper',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'daeh/zotero-markdb-connect',
     releases: [
       {
