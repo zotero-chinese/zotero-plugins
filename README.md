@@ -16,6 +16,8 @@ This repository provides information of several Zotero plugins and their XPI pac
 
 ## Submitting Plugins
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/zotero-chinese/zotero-plugins?quickstart=1)
+
 > [!NOTE]
 >
 > How to add a plugin that hasn't been included?
@@ -67,7 +69,7 @@ git clone https://github.com/northword/zotero-plugins.git zotero-plugins
 cd zotero-plugins
 
 # Install dependencies
-npm install -g pnpm
+corepack enable
 pnpm install
 
 # Fetch plugin information

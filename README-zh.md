@@ -16,6 +16,8 @@ _This README is also available in: :cn: 简体中文 | [:gb: English](./README-z
 
 ## 提交插件
 
+[![在 GitHub Codespaces 中打开](https://github.com/codespaces/badge.svg)](https://codespaces.new/zotero-chinese/zotero-plugins?quickstart=1)
+
 > [!NOTE]
 >
 > 如何添加未收录的插件？
@@ -67,7 +69,7 @@ git clone https://github.com/northword/zotero-plugins.git zotero-plugins
 cd zotero-plugins
 
 # 安装依赖
-npm install -g pnpm
+corepack enable
 pnpm install
 
 # 获取插件信息
