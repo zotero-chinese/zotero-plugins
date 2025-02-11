@@ -251,6 +251,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface'],
   },
   {
+    repo: 'guaguastandup/zotero-pdf2zh',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'ImperialSquid/zotero-zotts',
     releases: [
       {
