@@ -395,7 +395,8 @@ export const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'latest',
+        tagName: 'custom',
+        customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-gpt.xpi',
       },
       {
         targetZoteroVersion: '6',
@@ -409,7 +410,8 @@ export const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'latest',
+        tagName: 'custom',
+        customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-reference.xpi',
       },
     ],
     tags: ['favorite', 'metadata', 'reader'],
@@ -419,7 +421,8 @@ export const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'latest',
+        tagName: 'custom',
+        customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-style.xpi',
       },
       {
         targetZoteroVersion: '6',
@@ -790,27 +793,18 @@ export const pluginsDev: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
-    repo: 'volatile-static/Chartero',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['visualization'],
-  },
-  {
-    repo: 'syt2/zotero-addons',
+    repo: 'MuiseDestiny/ZoteroStyle',
     releases: [
       {
         targetZoteroVersion: '7',
-        tagName: 'latest',
+        tagName: 'custom',
+        customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-style.xpi',
       },
       {
         targetZoteroVersion: '6',
-        tagName: '0.6.0-6',
+        tagName: '2.6.7',
       },
     ],
-    tags: ['others'],
+    tags: ['favorite', 'interface', 'visualization'],
   },
 ]
