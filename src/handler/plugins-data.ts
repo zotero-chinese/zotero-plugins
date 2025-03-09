@@ -4,6 +4,7 @@ import { consola } from 'consola'
 import fs from 'fs-extra'
 import { jsonc } from 'jsonc'
 import { dist } from '../index.js'
+import { download } from '../utils/fs.js'
 import { getRelease, getReleaseAssetBuffer, octokit, translateString } from '../utils/index.js'
 
 export function fetchPlugins(plugins: PluginInfoBase[]) {
@@ -32,7 +33,13 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
 
   // 发行版
   for (const release of plugin.releases) {
-    const releaseDist = await parseRelease(owner, repo, release)
+    let releaseDist: ReleaseInfo
+    if (release.tagName === 'custom') {
+      releaseDist = await parseCustomRelease(owner, repo, release)
+    }
+    else {
+      releaseDist = await parseGitHubRelease(owner, repo, release)
+    }
     Object.assign(release, releaseDist)
 
     const xpiData = parseXPI(`${dist}/xpi/${release.assetId}.xpi`)
@@ -45,7 +52,7 @@ async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {
   return plugin
 }
 
-async function parseRelease(owner: string, repo: string, releaseBase: ReleaseInfoBase): Promise<ReleaseInfo> {
+async function parseGitHubRelease(owner: string, repo: string, releaseBase: ReleaseInfoBase): Promise<ReleaseInfo> {
   const release = { ...releaseBase } as ReleaseInfo
 
   const resp = await getRelease(owner, repo, releaseBase.tagName)
@@ -66,7 +73,7 @@ async function parseRelease(owner: string, repo: string, releaseBase: ReleaseInf
   if (!fs.existsSync(`${dist}/xpi/${asset.id}.xpi`)) {
     const buffer = await getReleaseAssetBuffer(owner, repo, asset.id)
     fs.outputFileSync(`${dist}/xpi/${asset.id}.xpi`, buffer)
-    consola.log(`  Write ${asset.id}.xpi -> ${asset.name}`)
+    consola.log(`  Write ${asset.id}.xpi (${asset.name})`)
   }
 
   release.assetId = asset.id
@@ -82,6 +89,42 @@ async function parseRelease(owner: string, repo: string, releaseBase: ReleaseInf
       'kkgithub.com',
     ),
   }
+  return release
+}
+
+async function parseCustomRelease(owner: string, repo: string, releaseBase: ReleaseInfoBase): Promise<ReleaseInfo> {
+  const release = { ...releaseBase } as ReleaseInfo
+  const link = release.customLink
+  if (!link)
+    throw new Error('customLink 未提供')
+
+  const name = `${owner}-${repo}-${releaseBase.targetZoteroVersion}`
+  await download(link, `${dist}/xpi/${name}.xpi`)
+  consola.log(`  Write ${name}.xpi -> ${name}`)
+
+  const zip = new AdmZip(`${dist}/xpi/${name}.xpi`)
+  const zipEntries = zip.getEntries()
+  const zipEntryNames = zipEntries.map(zipEntrie => zipEntrie.entryName)
+
+  if (zipEntryNames.includes('manifest.json')) {
+    const time = zip
+      .getEntry('manifest.json')!
+      .header
+      .time
+    release.releaseDate = time.toISOString()
+  }
+
+  release.releaseDate ??= new Date().toISOString()
+  release.assetId = name
+  release.downloadCount = 0
+  release.xpiDownloadUrl = {
+    gitee: link,
+    github: link,
+    ghProxy: link,
+    jsdeliver: link,
+    kgithub: link,
+  }
+
   return release
 }
 

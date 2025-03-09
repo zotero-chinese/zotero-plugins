@@ -29,7 +29,8 @@ export interface ReleaseInfoBase {
    * 注意 `git.tag_name` 有的有 `v` 而有的没有，可以通过发布链接来判断
    * 程序执行后，`tagName` 将替换为实际的 `git.tag_name`
    */
-  tagName: 'latest' | 'pre' | string
+  tagName: 'latest' | 'pre' | string | 'custom'
+  customLink?: string
 }
 
 export interface PluginInfo extends PluginInfoBase {
@@ -66,7 +67,7 @@ export interface ReleaseInfo extends ReleaseInfoBase {
   }
   releaseDate: string
   downloadCount: number
-  assetId: number
+  assetId: number | string
 }
 
 /**
