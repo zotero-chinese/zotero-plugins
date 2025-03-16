@@ -727,7 +727,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['others'],
+    tags: ['developer'],
   },
   {
     repo: 'windingwind/zotero-actions-tags',
