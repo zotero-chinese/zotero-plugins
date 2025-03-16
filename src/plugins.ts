@@ -720,6 +720,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['reader'],
   },
   {
+    repo: 'windingwind/know-ur-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['developer'],
+  },
+  {
     repo: 'windingwind/zotero-actions-tags',
     releases: [
       {
