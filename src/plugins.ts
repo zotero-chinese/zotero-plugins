@@ -528,6 +528,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'retorquere/zotero-folder-import',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'retorquere/zotero-open-pdf',
     releases: [
       {
