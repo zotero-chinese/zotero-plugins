@@ -568,6 +568,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'Rphone/zotero-tab-enhance',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface', 'productivity'],
+  },
+  {
     repo: 'SciImage/zotero-attachment-scanner',
     releases: [
       {
