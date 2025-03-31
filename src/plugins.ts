@@ -792,6 +792,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'productivity'],
   },
   {
+    repo: 'yhmtsai/KeepZotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v0.0.2',
+      },
+    ],
+    tags: ['others'],
+  },
+  {
     repo: 'zzlb0224/zotero-annotation-manage',
     releases: [
       {
