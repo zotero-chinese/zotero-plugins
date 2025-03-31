@@ -253,16 +253,6 @@ export const deprecatedPlugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
-    repo: 'yhmtsai/KeepZotero',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['others'],
-  },
-  {
     repo: 'Zar-rok/Zotero-Add-Collection-Tag',
     releases: [
       {
