@@ -453,7 +453,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['favorite','attachment','integration'],
+    tags: ['favorite', 'attachment', 'integration'],
   },
   {
     repo: 'panhaoyu/zotero-categorial-tags',
