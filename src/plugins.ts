@@ -446,6 +446,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'nutstore/zotero-plugin-nutstore-sso',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['favorite','attachment','integration'],
+  },
+  {
     repo: 'panhaoyu/zotero-categorial-tags',
     releases: [
       {
