@@ -119,6 +119,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'david3684/zotero-tab-limiter',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others'],
+  },
+  {
     repo: 'diegodlh/zotero-cita',
     releases: [
       {
