@@ -507,7 +507,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['attachment','interface'],
+    tags: ['interface'],
   },
   {
     repo: 'redleafnew/delitemwithatt',
