@@ -500,6 +500,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['reader'],
   },
   {
+    repo: 'qiwei-ma/zotero-pdf-setHorizontal',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment','interface'],
+  },
+  {
     repo: 'redleafnew/delitemwithatt',
     releases: [
       {
