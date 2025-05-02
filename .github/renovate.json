@@ -1,11 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "schedule:monthly",
-    "group:allNonMajor",
-    ":prHourlyLimitNone",
-    ":prConcurrentLimitNone"
-  ],
-  "labels": ["dependencies"]
+  "extends": ["local>zotero-chinese/renovate-config"]
 }
