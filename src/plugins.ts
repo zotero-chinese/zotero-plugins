@@ -37,6 +37,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: '1ywan/zotero-odh',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
+  },
+  {
     repo: 'alima-webdev/zotero-review-assistant',
     releases: [
       {
