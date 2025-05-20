@@ -618,6 +618,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface', 'productivity'],
   },
   {
+    repo: 'scigreat/zotbox',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata', 'productivity'],
+  },
+  {
     repo: 'SciImage/zotero-attachment-scanner',
     releases: [
       {
