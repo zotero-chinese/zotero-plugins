@@ -81,7 +81,7 @@ async function parseGitHubRelease(owner: string, repo: string, releaseBase: Rele
   release.downloadCount = asset.download_count
   release.xpiDownloadUrl = {
     github: asset.browser_download_url,
-    gitee: `https://gitee.com/northword/zotero-plugins/raw/gh-pages/xpi/${release.assetId}.xpi`,
+    gitee: `https://gitee.com/zotero-chinese-x/zotero-plugins/raw/gh-pages/xpi/${release.assetId}.xpi`,
     ghProxy: `https://gh-proxy.com/${encodeURI(asset.browser_download_url)}`,
     jsdeliver: `https://cdn.jsdelivr.net/gh/northword/zotero-plugins@gh-pages/xpi/${release.assetId}.xpi`,
     kgithub: asset.browser_download_url.replace(

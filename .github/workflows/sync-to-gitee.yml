@@ -16,4 +16,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
         with:
           source-repo: 'git@github.com:zotero-chinese/zotero-plugins.git'
-          destination-repo: 'git@gitee.com:northword/zotero-plugins.git'
+          destination-repo: 'git@gitee.com:zotero-chinese-x/zotero-plugins.git'
