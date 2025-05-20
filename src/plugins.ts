@@ -625,7 +625,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['favorite', 'metadata', 'productivity'],
+    tags: ['metadata', 'productivity'],
   },
   {
     repo: 'SciImage/zotero-attachment-scanner',
