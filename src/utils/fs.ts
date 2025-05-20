@@ -1,22 +1,13 @@
 import { writeFile } from 'node:fs/promises'
-import { Readable } from 'node:stream'
+import { ofetch } from 'ofetch'
 
 export async function download(url: string, path: string) {
-  const response = await fetch(url)
-  if (!response.ok || response.body === null) {
-    throw new Error(`Failed to fetch: ${url}`)
-  }
-  const reader = response.body.getReader()
-  const stream = new Readable({
-    async read() {
-      const { done, value } = await reader.read()
-      if (done) {
-        this.push(null)
-      }
-      else {
-        this.push(value)
-      }
-    },
+  const data = await ofetch(url, {
+    responseType: 'stream',
+    retry: 3,
+    retryDelay: 500, // ms
+    retryStatusCodes: [404, 500], // response status codes to retry
   })
-  await writeFile(path, stream)
+
+  await writeFile(path, data)
 }
