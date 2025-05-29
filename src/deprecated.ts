@@ -243,16 +243,6 @@ export const deprecatedPlugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
-    repo: 'wshanks/Zutilo',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'v3.10.0',
-      },
-    ],
-    tags: ['productivity'],
-  },
-  {
     repo: 'Zar-rok/Zotero-Add-Collection-Tag',
     releases: [
       {
