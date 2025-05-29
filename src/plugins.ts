@@ -832,6 +832,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'productivity'],
   },
   {
+    repo: 'wshanks/Zutilo',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v3.10.0',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'yhmtsai/KeepZotero',
     releases: [
       {
