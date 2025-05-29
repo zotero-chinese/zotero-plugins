@@ -247,7 +247,7 @@ export const deprecatedPlugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '6',
-        tagName: 'latest',
+        tagName: 'v3.10.0',
       },
     ],
     tags: ['productivity'],
