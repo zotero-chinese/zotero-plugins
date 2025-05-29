@@ -838,6 +838,10 @@ export const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '6',
+        tagName: 'v3.10.0',
+      },
     ],
     tags: ['productivity'],
   },
