@@ -1,4 +1,5 @@
-import { writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
+import { dirname } from 'node:path'
 import { ofetch } from 'ofetch'
 
 export async function download(url: string, path: string) {
@@ -9,5 +10,6 @@ export async function download(url: string, path: string) {
     retryStatusCodes: [404, 500], // response status codes to retry
   })
 
+  await mkdir(dirname(path), { recursive: true })
   await writeFile(path, data)
 }
