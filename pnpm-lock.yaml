@@ -12,8 +12,8 @@ importers:
         specifier: ^4.13.2
         version: 4.13.2(@typescript-eslint/utils@8.33.0(eslint@9.28.0)(typescript@5.8.3))(@vue/compiler-sfc@3.4.31)(eslint-import-resolver-node@0.3.9)(eslint@9.28.0)(typescript@5.8.3)
       '@highcharts/dashboards':
-        specifier: ^2.3.0
-        version: 2.3.0(highcharts@12.2.0)
+        specifier: ^3.3.0
+        version: 3.3.0(highcharts@12.2.0)
       '@types/adm-zip':
         specifier: ^0.5.7
         version: 0.5.7
@@ -391,8 +391,8 @@ packages:
     resolution: {integrity: sha512-0J+zgWxHN+xXONWIyPWKFMgVuJoZuGiIFu8yxk7RJjxkzpGmyja5wRFqZIVtjDVOQpV+Rw0iOAjYPE2eQyjr0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@highcharts/dashboards@2.3.0':
-    resolution: {integrity: sha512-YWL0OLsXk+uGhJ5GaA3q+kq5/AJ/FxN9o6SgCBBIkcogTlnWVTgpy/TBh+xDqlea0+Er5p8pL7HPwNuFn5wyIw==}
+  '@highcharts/dashboards@3.3.0':
+    resolution: {integrity: sha512-WuVj9dFADpjfKLuMwDys31TmRAF8hfS7ln5qUOs57gwh0Rcc/8qn8k+ABvXVUBNbuAEUV5Z3MHG8HHJP9EMFQA==}
     peerDependencies:
       highcharts: '>=10.0.0'
 
@@ -2377,7 +2377,7 @@ snapshots:
       '@eslint/core': 0.14.0
       levn: 0.4.1
 
-  '@highcharts/dashboards@2.3.0(highcharts@12.2.0)':
+  '@highcharts/dashboards@3.3.0(highcharts@12.2.0)':
     dependencies:
       highcharts: 12.2.0
 
