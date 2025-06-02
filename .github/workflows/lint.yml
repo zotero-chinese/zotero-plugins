@@ -10,7 +10,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -34,6 +34,6 @@ jobs:
       - name: Install deps
         run: pnpm install
 
-      - name: Build
+      - name: Lint
         run: |
           pnpm lint:check

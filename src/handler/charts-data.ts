@@ -615,7 +615,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
               showFirstLabel: false,
               showLastLabel: true,
             },
-            styledMode: true
+            styledMode: true,
           },
           tooltip: {
             pointFormat: `

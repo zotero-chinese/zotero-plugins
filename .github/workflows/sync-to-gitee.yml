@@ -10,6 +10,7 @@ env:
 jobs:
   sync-gitee:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: wearerequired/git-mirror-action@master
         env:
