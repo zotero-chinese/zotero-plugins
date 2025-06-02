@@ -459,11 +459,11 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
     },
     components: [
       {
-        cell: 'star-history',
+        renderTo: 'star-history',
         type: 'Highcharts',
         chartConstructor: 'stockChart',
         chartOptions: {
-          chart: { type: 'spline', height: 600 },
+          chart: { type: 'spline', height: 600, styledMode: true },
           exporting,
           series: await drawStarHistory(),
           legend: { enabled: true, maxHeight: 160 },
@@ -483,12 +483,13 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
         } as Options,
       },
       {
-        cell: 'dashboard-col-0',
+        renderTo: 'dashboard-col-0',
         type: 'Highcharts',
         chartOptions: {
           title: { text: '🚀 Trending' },
           xAxis: { visible: false },
           chart: {
+            styledMode: true,
             animation: {
               duration: 1200,
               easing: 'wordCloudEasing',
@@ -530,10 +531,11 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
         } as Options,
       },
       {
-        cell: 'dashboard-col-1',
+        renderTo: 'dashboard-col-1',
         type: 'Highcharts',
         chartOptions: {
           title: { text: '🔭 Stargazers' },
+          chart: { styledMode: true },
           tooltip: {
             useHTML: true,
             headerFormat: `<span 
@@ -544,10 +546,10 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
         } as Options,
       },
       {
-        cell: 'dashboard-col-2',
+        renderTo: 'dashboard-col-2',
         type: 'Highcharts',
         chartOptions: {
-          chart: { type: 'bar' },
+          chart: { type: 'bar', styledMode: true },
           title: { text: '⊙ Issues' },
           series: drawIssueBar(),
           xAxis: {
@@ -599,7 +601,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
         } as Options,
       },
       {
-        cell: 'dashboard-col-3',
+        renderTo: 'dashboard-col-3',
         type: 'Highcharts',
         chartOptions: {
           title: { text: '🕸️ Activities' },
@@ -613,6 +615,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
               showFirstLabel: false,
               showLastLabel: true,
             },
+            styledMode: true
           },
           tooltip: {
             pointFormat: `
