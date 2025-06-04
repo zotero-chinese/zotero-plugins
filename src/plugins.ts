@@ -476,6 +476,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'attachment', 'integration'],
   },
   {
+    repo: 'OneOneLiu/zotero-annotation-summary',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'panhaoyu/zotero-categorial-tags',
     releases: [
       {
