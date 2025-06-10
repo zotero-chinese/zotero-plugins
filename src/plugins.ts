@@ -770,6 +770,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['attachment'],
   },
   {
+    repo: 'WilliamsLiang/zotero-skr',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'windfollowingheart/zotero-paper-agent',
     releases: [
       {
