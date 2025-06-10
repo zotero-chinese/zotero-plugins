@@ -777,7 +777,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['ai', 'interface', 'productivity'],
+    tags: ['ai', 'productivity'],
   },
   {
     repo: 'windfollowingheart/zotero-paper-agent',
