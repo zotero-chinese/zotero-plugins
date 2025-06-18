@@ -153,16 +153,6 @@ export const deprecatedPlugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
-    repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
-    releases: [
-      {
-        targetZoteroVersion: '6',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['integration'],
-  },
-  {
     repo: 'redleafnew/zotero-updateifs',
     releases: [
       {
