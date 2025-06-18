@@ -115,6 +115,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'daeh/zotero-citation-tally',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'daeh/zotero-markdb-connect',
     releases: [
       {
@@ -484,6 +494,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['productivity'],
+  },
+  {
+    repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
   },
   {
     repo: 'panhaoyu/zotero-categorial-tags',
