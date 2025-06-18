@@ -496,16 +496,6 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
-    repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['integration'],
-  },
-  {
     repo: 'panhaoyu/zotero-categorial-tags',
     releases: [
       {
@@ -524,6 +514,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['ai', 'productivity'],
+  },
+  {
+    repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
   },
   {
     repo: 'q77190858/zotero-pdf-background',
