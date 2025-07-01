@@ -73,30 +73,30 @@ export interface ReleaseInfo extends ReleaseInfoBase {
 /**
  * 插件标签
  */
-export type TagType =
+export type TagType
   // 推荐列表
-  | 'favorite'
+  = | 'favorite'
   // 条目元数据维护
-  | 'metadata'
+    | 'metadata'
   // UI相关
-  | 'interface'
+    | 'interface'
   // 附件管理相关
-  | 'attachment'
+    | 'attachment'
   // 笔记增强
-  | 'notes'
+    | 'notes'
   // 阅读器增强
-  | 'reader'
+    | 'reader'
   // 效率增强、生产力工具
-  | 'productivity'
+    | 'productivity'
   // 可视化、文库分析
-  | 'visualization'
+    | 'visualization'
   // 第三方软件集成
-  | 'integration'
+    | 'integration'
   // AI 集成
-  | 'ai'
+    | 'ai'
   // 字处理软件集成或增强
-  | 'writing'
+    | 'writing'
   // 开发者工具
-  | 'developer'
+    | 'developer'
   // 其他
-  | 'others'
+    | 'others'
