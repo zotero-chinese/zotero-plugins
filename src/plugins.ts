@@ -67,6 +67,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'B3000Kcn/minimize-zotero-to-tray',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface'],
+  },
+  {
     repo: 'Bowen-0x00/zotero-action-cmd',
     releases: [
       {
@@ -908,16 +918,6 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['others'],
-  },
-  {
-    repo: 'B3000Kcn/minimize-zotero-to-tray',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['interface'],
   },
 ]
 
