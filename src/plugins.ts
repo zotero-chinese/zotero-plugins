@@ -909,6 +909,16 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
+  {
+    repo: 'B3000Kcn/minimize-zotero-to-tray',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface'],
+  },
 ]
 
 /**
