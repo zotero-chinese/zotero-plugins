@@ -919,6 +919,16 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
+  {
+    repo: 'WildDataX/suppr-zotero-plugin',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
 ]
 
 /**
