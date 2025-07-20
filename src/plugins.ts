@@ -475,6 +475,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'northword/zotero-format-metadata',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -870,6 +874,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'windingwind/zotero-pdf-translate',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
