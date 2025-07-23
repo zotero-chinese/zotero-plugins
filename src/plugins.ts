@@ -379,6 +379,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
+    repo: 'l0o0/MagicZotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity', 'integration'],
+  },
+  {
     repo: 'lifan0127/ai-research-assistant',
     releases: [
       {
