@@ -3,16 +3,28 @@
 {
   "name": "Zotero Plugins Marketplace",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  // https://github.com/devcontainers/images/tree/main/src/base-ubuntu
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    "ghcr.io/devcontainers-contrib/features/pnpm:2": {}
+    // https://github.com/devcontainers/features/blob/main/src/node/README.md
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "pnpmVersion": "latest"
+    }
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [5173, 4173],
-  // "portsAttributes": {},
+  "forwardPorts": [5173, 4173],
+  "portsAttributes": {
+    "5173": {
+      "label": "dev port"
+    },
+    "4173": {
+      "label": "build port"
+    }
+  },
 
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "pnpm i",
@@ -24,13 +36,12 @@
       // Set *default* container specific settings.json values on container create.
       "extensions": [
         "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
         "davidanson.vscode-markdownlint"
       ]
     },
     "codespaces": {
-      "openFiles": [
-        "./src/plugins.ts"
-      ]
+      "openFiles": ["./README.md"]
     }
   }
 
