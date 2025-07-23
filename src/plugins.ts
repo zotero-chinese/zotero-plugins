@@ -369,16 +369,6 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
-    repo: 'l0o0/tara',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['others'],
-  },
-  {
     repo: 'l0o0/MagicZotero',
     releases: [
       {
@@ -387,6 +377,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['ai', 'productivity', 'integration'],
+  },
+  {
+    repo: 'l0o0/tara',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others'],
   },
   {
     repo: 'lifan0127/ai-research-assistant',
