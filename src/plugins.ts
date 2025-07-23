@@ -369,6 +369,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'l0o0/MagicZotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity', 'integration'],
+  },
+  {
     repo: 'l0o0/tara',
     releases: [
       {
