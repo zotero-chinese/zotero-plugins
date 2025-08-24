@@ -115,16 +115,6 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
-    repo: 'Creling/Zotero-Metadata-Scraper',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['metadata'],
-  },
-  {
     repo: 'cookjohn/zotero-mcp',
     releases: [
       {
@@ -133,6 +123,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration', 'ai'],
+  },
+  {
+    repo: 'Creling/Zotero-Metadata-Scraper',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
   },
   {
     repo: 'daeh/zotero-citation-tally',
