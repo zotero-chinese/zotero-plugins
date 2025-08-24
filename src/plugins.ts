@@ -125,6 +125,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'cookjohn/zotero-mcp',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration', 'ai'],
+  },
+  {
     repo: 'daeh/zotero-citation-tally',
     releases: [
       {
