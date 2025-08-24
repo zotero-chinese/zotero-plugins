@@ -115,6 +115,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'cookjohn/zotero-mcp',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration', 'ai'],
+  },
+  {
     repo: 'Creling/Zotero-Metadata-Scraper',
     releases: [
       {
