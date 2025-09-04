@@ -115,6 +115,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'cookjohn/zotero-mcp',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration', 'ai'],
+  },
+  {
     repo: 'Creling/Zotero-Metadata-Scraper',
     releases: [
       {
@@ -369,6 +379,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'l0o0/MagicZotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity', 'integration'],
+  },
+  {
     repo: 'l0o0/tara',
     releases: [
       {
@@ -474,6 +494,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'northword/zotero-format-metadata',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -790,6 +814,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'visualization', 'interface'],
   },
   {
+    repo: 'WildDataX/suppr-zotero-plugin',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'wileyyugioh/zotmoov',
     releases: [
       {
@@ -870,6 +904,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'windingwind/zotero-pdf-translate',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
