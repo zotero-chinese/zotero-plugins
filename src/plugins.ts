@@ -957,6 +957,16 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
+ {
+    repo: 'samreading/zotero-mindmap',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
 ]
 
 /**
