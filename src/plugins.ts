@@ -692,6 +692,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface', 'productivity'],
   },
   {
+    repo: 'samreading/zotero-mindmap',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'SciImage/zotero-attachment-scanner',
     releases: [
       {
