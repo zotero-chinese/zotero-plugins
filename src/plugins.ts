@@ -530,6 +530,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'attachment', 'integration'],
   },
   {
+  repo: 'occasional15/researchopia',
+  releases: [
+    {
+      targetZoteroVersion: '7',
+      tagName: 'latest',
+    },
+  ],
+  tags: ['integration', 'metadata', 'productivity'],
+},
+  {
     repo: 'OneOneLiu/zotero-annotation-summary',
     releases: [
       {
