@@ -537,7 +537,7 @@ export const plugins: PluginInfoBase[] = [
       tagName: 'latest',
     },
   ],
-  tags: ['integration', 'metadata', 'productivity'],
+  tags: ['integration'],
 },
   {
     repo: 'OneOneLiu/zotero-annotation-summary',
