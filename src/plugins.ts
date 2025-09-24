@@ -375,6 +375,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai', 'productivity'],
   },
   {
+    repo: 'l0o0/Garden-for-Zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'l0o0/jasminum',
     releases: [
       {
