@@ -16,9 +16,9 @@ import fs from 'fs-extra'
 import { octokit } from '../utils/index.js'
 
 const pluginMap: { [name: string]: PluginMapInfo }
-    = env.NODE_ENV === 'development'
-      ? fs.readJSONSync('./dist/charts-debug.json')
-      : {}
+  = env.NODE_ENV === 'development'
+    ? fs.readJSONSync('./dist/charts-debug.json')
+    : {}
 
 interface PluginMapInfo {
   owner?: string
