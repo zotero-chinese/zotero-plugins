@@ -25,7 +25,7 @@ jobs:
           version: 10.17.1
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.17.1
           registry-url: 'https://registry.npmjs.org'
