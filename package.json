@@ -41,7 +41,7 @@
     "eslint": "^9.32.0",
     "franc-min": "^6.2.0",
     "fs-extra": "^11.3.0",
-    "globby": "^14.1.0",
+    "globby": "^15.0.0",
     "highcharts": "^12.3.0",
     "husky": "^9.1.7",
     "jsonc": "^2.0.0",
