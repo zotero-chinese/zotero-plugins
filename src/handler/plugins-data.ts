@@ -194,19 +194,19 @@ function parseInstallRef(zip: AdmZip) {
 
   // 从 install.rdf 中获取 id
   const id
-  = (fileData.match(/em:id="(.*?)"/)
-    ?? fileData.match(/<em:id>(.*?)<\/em:id>/) ?? [
-    '',
-    'NO id',
-  ])[1]
+    = (fileData.match(/em:id="(.*?)"/)
+      ?? fileData.match(/<em:id>(.*?)<\/em:id>/) ?? [
+      '',
+      'NO id',
+    ])[1]
 
   // 从 install.rdf 中获取 description
   const description
-     = (fileData.match(/em:description="(.*?)"/)
-       ?? fileData.match(/<em:description>(.*?)<\/em:description>/) ?? [
-       '',
-       'NO desc',
-     ])[1]
+    = (fileData.match(/em:description="(.*?)"/)
+      ?? fileData.match(/<em:description>(.*?)<\/em:description>/) ?? [
+      '',
+      'NO desc',
+    ])[1]
 
   const name
     = (fileData.match(/em:name="(.*?)"/)
