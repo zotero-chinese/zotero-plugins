@@ -988,6 +988,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
+    repo: 'yueneiqi/zotero2eagle',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
+  },
+  {
     repo: 'zzlb0224/zotero-annotation-manage',
     releases: [
       {
