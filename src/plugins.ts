@@ -47,6 +47,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'aidecameron/zotero-annotation-color-customizer',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['interface', 'visualization'],
+  },
+  {
     repo: 'alima-webdev/zotero-review-assistant',
     releases: [
       {
