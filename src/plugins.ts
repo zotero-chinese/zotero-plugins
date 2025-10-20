@@ -87,6 +87,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface'],
   },
   {
+    repo: 'BlueBlueKitty/zotero-ainote',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['notes', 'ai', 'productivity'],
+  },
+  {
     repo: 'Bowen-0x00/zotero-action-cmd',
     releases: [
       {
