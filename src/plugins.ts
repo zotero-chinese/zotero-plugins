@@ -766,6 +766,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'steven-jianhao-li/zotero-AI-Butler',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'notes', 'productivity'],
+  },
+  {
     repo: 'StevenGLee/zotero-author-browser',
     releases: [
       {
