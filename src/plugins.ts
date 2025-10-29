@@ -1035,7 +1035,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['ai', 'notes', 'productivity', 'interface'],
+    tags: ['ai', 'notes', 'productivity'],
   },
 ]
 
