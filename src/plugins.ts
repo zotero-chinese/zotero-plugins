@@ -566,6 +566,10 @@ export const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '8',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
     ],
     tags: ['integration'],
   },
