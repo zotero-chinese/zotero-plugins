@@ -560,7 +560,7 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'attachment', 'integration'],
   },
   {
-    repo: 'occasional15/researchopia',
+    repo: 'occasional16/researchopia',
     releases: [
       {
         targetZoteroVersion: '8',
