@@ -52,7 +52,7 @@ jobs:
           pnpm build
 
       - name: Upload Output
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           path: dist
           retention-days: 3
