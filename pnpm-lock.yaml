@@ -12,8 +12,8 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0(@vue/compiler-sfc@3.4.31)(eslint@9.39.0)(typescript@5.9.3)
       '@highcharts/dashboards':
-        specifier: ^3.6.0
-        version: 3.6.0(highcharts@12.4.0)
+        specifier: ^4.0.0
+        version: 4.0.0(highcharts@12.4.0)
       '@types/adm-zip':
         specifier: ^0.5.7
         version: 0.5.7
@@ -134,10 +134,6 @@ packages:
 
   '@babel/helper-string-parser@7.27.1':
     resolution: {integrity: sha512-qMlSxKbpRlAridDExk92nSobyDdpPijUq2DW6oDnUqd0iOGxmQjyqhMIihI9+zv4LPyZdRje2cavWPbCbWm3eA==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-validator-identifier@7.27.1':
-    resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-identifier@7.28.5':
@@ -385,8 +381,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@highcharts/dashboards@3.6.0':
-    resolution: {integrity: sha512-FkJIbH9qq8JCv8XejMmdzCpoukaVOI0aBdM5pqH/CSqFb8xc3/2oUpbB566Ml9SSQonQkQtGz/itKUaqVTgMnA==}
+  '@highcharts/dashboards@4.0.0':
+    resolution: {integrity: sha512-bHNTvSNfQZ5tQPWSdXlSQFiYrQLSPM3amNOb0uNHc3Df9AB2sY4yLTqM3X9FNdLrwFy4FSD+5gQy7gcJcERKAQ==}
     peerDependencies:
       highcharts: '>=10.0.0'
 
@@ -2034,8 +2030,6 @@ snapshots:
 
   '@babel/helper-string-parser@7.27.1': {}
 
-  '@babel/helper-validator-identifier@7.27.1': {}
-
   '@babel/helper-validator-identifier@7.28.5': {}
 
   '@babel/parser@7.27.1':
@@ -2045,7 +2039,7 @@ snapshots:
   '@babel/types@7.27.1':
     dependencies:
       '@babel/helper-string-parser': 7.27.1
-      '@babel/helper-validator-identifier': 7.27.1
+      '@babel/helper-validator-identifier': 7.28.5
 
   '@clack/core@0.5.0':
     dependencies:
@@ -2227,7 +2221,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@highcharts/dashboards@3.6.0(highcharts@12.4.0)':
+  '@highcharts/dashboards@4.0.0(highcharts@12.4.0)':
     dependencies:
       highcharts: 12.4.0
 
