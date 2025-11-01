@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
-    "@highcharts/dashboards": "^3.6.0",
+    "@highcharts/dashboards": "^4.0.0",
     "@types/adm-zip": "^0.5.7",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.9.2",
