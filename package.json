@@ -33,7 +33,7 @@
     "@highcharts/dashboards": "^3.6.0",
     "@types/adm-zip": "^0.5.7",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^22.18.13",
+    "@types/node": "^24.9.2",
     "adm-zip": "^0.5.16",
     "consola": "^3.4.2",
     "cross-env": "10.1.0",
