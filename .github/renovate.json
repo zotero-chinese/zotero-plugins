@@ -1,4 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>zotero-chinese/renovate-config"]
+  "extends": ["local>zotero-chinese/renovate-config"],
+
+  "ignoreDeps": [
+    "@highcharts/dashboards"
+  ]
 }
