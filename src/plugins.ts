@@ -1041,6 +1041,16 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
+  {
+    repo: 'BaiRuic/BibGenie',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
 ]
 
 /**
