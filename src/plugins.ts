@@ -97,6 +97,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface'],
   },
   {
+    repo: 'BaiRuic/BibGenie',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'BlueBlueKitty/zotero-ainote',
     releases: [
       {
@@ -1040,16 +1050,6 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['others'],
-  },
-  {
-    repo: 'BaiRuic/BibGenie',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['ai', 'productivity'],
   },
 ]
 
