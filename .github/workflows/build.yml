@@ -13,26 +13,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10.24.0
-
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24.11.1
-          registry-url: 'https://registry.npmjs.org'
-          cache: pnpm
-
-      - name: Install deps
-        run: pnpm install
+      - name: Setup JS
+        uses: zotero-plugin-dev/workflows/setup-js@main
 
       - name: Cache dist
         uses: actions/cache@v4

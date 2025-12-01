@@ -14,12 +14,6 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  lint:
-    name: Lint
-    if: github.event_name != 'schedule'
-    uses: ./.github/workflows/lint.yml
-    secrets: inherit
-
   build:
     name: Build
     if: github.repository == 'zotero-chinese/zotero-plugins' && github.event_name != 'pull_request'

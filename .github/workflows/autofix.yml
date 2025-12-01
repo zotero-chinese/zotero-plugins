@@ -1,6 +1,7 @@
 name: autofix.ci # needed to securely identify the workflow
 
 on:
+  push:
   pull_request:
     branches:
       - main
@@ -10,15 +11,8 @@ permissions:
 
 jobs:
   autofix:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24.11.1
-          cache: pnpm
-      - run: pnpm install
-      - run: pnpm run lint:fix
-      - uses: autofix-ci/action@main
+    uses: zotero-plugin-dev/workflows/.github/workflows/autofix.yml@main
+    permissions:
+      contents: read
+    with:
+      command: 'pnpm lint:fix'
