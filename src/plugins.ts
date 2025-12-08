@@ -395,7 +395,7 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai', 'productivity'],
   },
   {
-    repo: 'kevin65536/zotero-openreivew-plugin',
+    repo: 'kevin65536/zotero-openreview-plugin',
     releases: [
       {
         targetZoteroVersion: '7',
