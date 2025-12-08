@@ -395,6 +395,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai', 'productivity'],
   },
   {
+    repo: 'kevin65536/zotero-openreivew-plugin',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'v0.1.0',
+      },
+    ],
+    tags: ['openreview', 'fetch'],
+  },
+  {
     repo: 'l0o0/Garden-for-Zotero',
     releases: [
       {
