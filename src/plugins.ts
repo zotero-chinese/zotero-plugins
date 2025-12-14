@@ -271,6 +271,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'ET06731/zotero-paper2slides',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity', 'notes'],
+  },
+  {
     repo: 'etShaw-zh/zotracer',
     releases: [
       {
