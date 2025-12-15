@@ -351,6 +351,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
+    repo: 'immersive-translate/zotero-immersivetranslate',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'ImperialSquid/zotero-zotts',
     releases: [
       {
