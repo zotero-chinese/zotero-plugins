@@ -77,6 +77,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'ANGJustinl/zotero-plugin-hjfy',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment', 'productivity'],
+  },
+  {
     repo: 'B3000Kcn/daily-folder-for-zotero',
     releases: [
       {
