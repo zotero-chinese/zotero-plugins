@@ -830,6 +830,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['visualization'],
   },
   {
+    repo: 'syt2/paper-chat-for-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
+  },
+  {
     repo: 'syt2/zotero-addons',
     releases: [
       {
