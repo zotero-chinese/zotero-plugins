@@ -395,6 +395,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'janbaykara/zotero-syllabus',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity', 'visualization'],
+  },
+  {
     repo: 'justinribeiro/zotero-google-scholar-citation-count',
     releases: [
       {
