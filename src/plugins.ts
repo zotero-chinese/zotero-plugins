@@ -405,6 +405,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity', 'visualization'],
   },
   {
+    repo: 'justinfjx/zotero-ai-collection',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity', 'collection'],
+  },
+  {
     repo: 'justinribeiro/zotero-google-scholar-citation-count',
     releases: [
       {
