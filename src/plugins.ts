@@ -416,7 +416,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['ai', 'productivity', 'collection'],
+    tags: ['ai', 'productivity'],
   },
   {
     repo: 'justinribeiro/zotero-google-scholar-citation-count',
