@@ -1119,6 +1119,16 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
+  {
+    repo: 'edwintuan/pdf-ai-bookmarks',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
+  },
 ]
 
 /**
