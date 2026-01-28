@@ -461,6 +461,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['developer'],
   },
   {
+    repo: 'gracefullight/pkgs',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['writing'],
+  },
+  {
     repo: 'guaguastandup/zotero-pdf2zh',
     releases: [
       {
