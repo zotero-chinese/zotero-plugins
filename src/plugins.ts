@@ -143,6 +143,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
+    repo: 'bulletproof-system/zotero-maimemo-sync',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
+  },
+  {
     repo: 'bwiernik/zotero-shortdoi',
     releases: [
       {
@@ -235,6 +245,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['others'],
+  },
+  {
+    repo: 'dawaltconley/zotero-center-pdf',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader'],
   },
   {
     repo: 'diegodlh/zotero-cita',
@@ -373,6 +393,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'forrtproject/fred_zotero',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader'],
+  },
+  {
     repo: 'franzbischoff/zotero-pdf-metadata',
     releases: [
       {
@@ -419,6 +449,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['interface'],
+  },
+  {
+    repo: 'GOKORURI007/zotero-api-plus',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['developer'],
   },
   {
     repo: 'guaguastandup/zotero-pdf2zh',
@@ -473,6 +513,36 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'introfini/mcp-server-zotero-dev',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['developer'],
+  },
+  {
+    repo: 'introfini/ZotSeek',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
+  },
+  {
+    repo: 'jagaldol/zotero-cite-preview-resizer',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader'],
+  },
+  {
     repo: 'janbaykara/zotero-syllabus',
     releases: [
       {
@@ -481,6 +551,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['productivity', 'visualization'],
+  },
+  {
+    repo: 'jetxa/zotero-ai-assistant',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
   },
   {
     repo: 'jlegewie/beaver-zotero',
@@ -495,6 +575,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['ai'],
+  },
+  {
+    repo: 'jmiba/Zotero-add-items-from-text',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
   },
   {
     repo: 'justinfjx/zotero-ai-collection',
@@ -544,11 +634,15 @@ export const plugins: PluginInfoBase[] = [
     repo: 'kevin65536/zotero-openreview-plugin',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
-        tagName: 'v0.1.0',
+        tagName: 'latest',
       },
     ],
-    tags: ['openreview', 'fetch'],
+    tags: ['metadata'],
   },
   {
     repo: 'l0o0/Garden-for-Zotero',
@@ -956,6 +1050,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['metadata'],
+  },
+  {
+    repo: 'Royshare/zotero-spotlight',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
   },
   {
     repo: 'Rphone/zotero-tab-enhance',
