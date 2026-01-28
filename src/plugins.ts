@@ -81,6 +81,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'ANGJustinl/zotero-plugin-hjfy',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment', 'productivity'],
+  },
+  {
     repo: 'B3000Kcn/daily-folder-for-zotero',
     releases: [
       {
@@ -305,6 +315,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'edwintuan/pdf-ai-bookmarks',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
+  },
+  {
     repo: 'egh/zotxt',
     releases: [
       {
@@ -317,6 +337,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration'],
+  },
+  {
+    repo: 'ET06731/zotero-paper2slides',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity', 'notes'],
   },
   {
     repo: 'etShaw-zh/zotracer',
@@ -405,6 +435,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
+    repo: 'immersive-translate/zotero-immersivetranslate',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'ImperialSquid/zotero-zotts',
     releases: [
       {
@@ -431,6 +471,30 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration'],
+  },
+  {
+    repo: 'janbaykara/zotero-syllabus',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity', 'visualization'],
+  },
+  {
+    repo: 'justinfjx/zotero-ai-collection',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
   },
   {
     repo: 'justinribeiro/zotero-google-scholar-citation-count',
@@ -461,6 +525,16 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['ai', 'productivity'],
+  },
+  {
+    repo: 'kevin65536/zotero-openreview-plugin',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'v0.1.0',
+      },
+    ],
+    tags: ['openreview', 'fetch'],
   },
   {
     repo: 'l0o0/Garden-for-Zotero',
@@ -944,6 +1018,20 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['visualization'],
+  },
+  {
+    repo: 'syt2/paper-chat-for-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
   },
   {
     repo: 'syt2/zotero-addons',
