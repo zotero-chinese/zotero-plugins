@@ -483,6 +483,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity', 'visualization'],
   },
   {
+    repo: 'jlegewie/beaver-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
+  },
+  {
     repo: 'justinfjx/zotero-ai-collection',
     releases: [
       {
