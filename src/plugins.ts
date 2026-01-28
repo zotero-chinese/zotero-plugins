@@ -70,6 +70,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'AllanChain/zotero-arxiv-workflow',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -90,6 +94,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'B3000Kcn/daily-folder-for-zotero',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -100,6 +108,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'B3000Kcn/minimize-zotero-to-tray',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -109,6 +121,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'BlueBlueKitty/zotero-ainote',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -144,6 +160,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'ChenglongMa/zoplicate',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -157,6 +177,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'cookjohn/zotero-mcp',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -188,6 +212,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'daeh/zotero-markdb-connect',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -212,6 +240,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'diegodlh/zotero-cita',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'pre',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'pre',
       },
@@ -221,6 +253,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'Dominic-DallOsto/zotero-annotations-count',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -232,6 +268,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'Dominic-DallOsto/zotero-pin-items',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -241,6 +281,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'Dominic-DallOsto/zotero-reading-list',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -255,6 +299,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'dvanoni/notero',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -314,6 +362,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'fkguo/zotero-inspire',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -333,6 +385,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'frianasoa/Ze-Notes',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -354,6 +410,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'github-young/zotero-better-authors',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -363,6 +423,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'guaguastandup/zotero-pdf2zh',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -393,6 +457,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'inciteful-xyz/inciteful-zotero-plugin',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -472,6 +540,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'l0o0/Garden-for-Zotero',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -481,6 +553,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'l0o0/jasminum',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -496,6 +572,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'l0o0/MagicZotero',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -505,6 +585,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'l0o0/tara',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -530,6 +614,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'MuiseDestiny/eaiser-citation',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -544,6 +632,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'MuiseDestiny/zotero-attanger',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -553,6 +645,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'MuiseDestiny/zotero-figure',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -567,6 +663,12 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'MuiseDestiny/zotero-gpt',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'custom',
+        customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-gpt.xpi',
+
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'custom',
@@ -583,6 +685,11 @@ export const plugins: PluginInfoBase[] = [
     repo: 'MuiseDestiny/zotero-reference',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'custom',
+        customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-reference.xpi',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'custom',
         customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-reference.xpi',
@@ -593,6 +700,11 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'MuiseDestiny/ZoteroStyle',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'custom',
+        customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-style.xpi',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'custom',
@@ -631,7 +743,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['favorite', 'attachment', 'integration'],
+    tags: ['attachment', 'integration'],
   },
   {
     repo: 'occasional16/researchopia',
@@ -651,6 +763,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'OneOneLiu/zotero-annotation-summary',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -660,6 +776,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'panhaoyu/zotero-categorial-tags',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -680,6 +800,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'PubPeerFoundation/pubpeer_zotero_plugin',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -705,6 +829,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'qiwei-ma/zotero-pdf-setHorizontal',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -714,6 +842,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'redleafnew/delitemwithatt',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -728,6 +860,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'redleafnew/zotero-updateifsE',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -753,6 +889,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'retorquere/zotero-better-bibtex',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -772,6 +912,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'retorquere/zotero-open-pdf',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -813,6 +957,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'samreading/zotero-mindmap',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -822,6 +970,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'SciImage/zotero-attachment-scanner',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -846,6 +998,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'steven-jianhao-li/zotero-AI-Butler',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -881,6 +1037,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'syt2/zotero-addons',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -895,6 +1055,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'syt2/zotero-scipdf',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -904,6 +1068,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'syt2/Zotero-TLDR',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -945,6 +1113,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'TimeTrapzz/zotero-ccf-info',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -955,6 +1127,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'UB-Mannheim/zotero-ocr',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -964,6 +1140,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'volatile-static/Chartero',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -979,6 +1159,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'WildDataX/suppr-zotero-plugin',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -988,6 +1172,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'wileyyugioh/zotmoov',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -1019,8 +1207,12 @@ export const plugins: PluginInfoBase[] = [
     repo: 'windingwind/bionic-for-zotero',
     releases: [
       {
-        targetZoteroVersion: '7',
+        targetZoteroVersion: '8',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'v0.1.1',
       },
     ],
     tags: ['reader'],
@@ -1028,6 +1220,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'windingwind/know-ur-zotero',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
@@ -1039,8 +1235,12 @@ export const plugins: PluginInfoBase[] = [
     repo: 'windingwind/zotero-actions-tags',
     releases: [
       {
-        targetZoteroVersion: '7',
+        targetZoteroVersion: '8',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'v2.1.1',
       },
       {
         targetZoteroVersion: '6',
@@ -1053,8 +1253,12 @@ export const plugins: PluginInfoBase[] = [
     repo: 'windingwind/zotero-better-notes',
     releases: [
       {
-        targetZoteroVersion: '7',
+        targetZoteroVersion: '8',
         tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'v3.0.1',
       },
       {
         targetZoteroVersion: '6',
@@ -1072,7 +1276,7 @@ export const plugins: PluginInfoBase[] = [
       },
       {
         targetZoteroVersion: '7',
-        tagName: 'latest',
+        tagName: 'v2.3.14',
       },
       {
         targetZoteroVersion: '6',
@@ -1113,6 +1317,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'yueneiqi/zotero2eagle',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
@@ -1122,6 +1330,10 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'zzlb0224/zotero-annotation-manage',
     releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
