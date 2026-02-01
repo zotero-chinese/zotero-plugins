@@ -13,6 +13,16 @@ import type { PluginInfoBase } from './types.js'
 // @keep-sorted { "keys": ["repo", "tags"] }
 export const plugins: PluginInfoBase[] = [
   {
+    repo: '1ywan/zotero-odh',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration'],
+  },
+  {
     repo: '018/zotcard',
     releases: [
       {
@@ -28,16 +38,6 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: '018/zotero-excalidraw',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['integration'],
-  },
-  {
-    repo: '1ywan/zotero-odh',
     releases: [
       {
         targetZoteroVersion: '7',
