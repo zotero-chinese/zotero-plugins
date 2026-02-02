@@ -987,6 +987,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'replynow20/gemini-zotero',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
