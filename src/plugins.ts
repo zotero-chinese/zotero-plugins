@@ -1215,6 +1215,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'taotaozsky2025-beep/zotero-var-highlighter',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
