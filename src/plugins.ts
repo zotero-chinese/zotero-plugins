@@ -1212,6 +1212,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
+    repo: 'taotaozsky2025-beep/zotero-var-highlighter',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader', 'productivity'],
+  },
+  {
     repo: 'Theigrams/zotero-pdf-custom-rename',
     releases: [
       {
