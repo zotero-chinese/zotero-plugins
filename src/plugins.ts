@@ -119,6 +119,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface'],
   },
   {
+    repo: 'binbinsh/zotero-easytrans',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity', 'ai'],
+  },
+  {
     repo: 'BlueBlueKitty/zotero-ainote',
     releases: [
       {
