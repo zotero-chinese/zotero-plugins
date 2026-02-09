@@ -847,6 +847,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'nutstore/zotero-plugin-nutstore-sso',
     releases: [
       {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
