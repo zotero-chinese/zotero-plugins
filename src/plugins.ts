@@ -1463,7 +1463,7 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
-   {
+  {
     repo: 'yilewang/zotero-llm',
     releases: [
       {
@@ -1476,7 +1476,7 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['ai', 'notes', 'productivity'],
-  }, 
+  },
   {
     repo: 'yueneiqi/zotero2eagle',
     releases: [
