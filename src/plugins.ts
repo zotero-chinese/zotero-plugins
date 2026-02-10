@@ -1463,6 +1463,20 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['others'],
   },
+   {
+    repo: 'yilewang/zotero-llm',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'notes', 'productivity'],
+  }, 
   {
     repo: 'yueneiqi/zotero2eagle',
     releases: [
