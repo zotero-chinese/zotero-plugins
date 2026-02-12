@@ -533,6 +533,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai'],
   },
   {
+    repo: 'j-cyoung/PaperViewZoteroPlugin',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'jagaldol/zotero-cite-preview-resizer',
     releases: [
       {
