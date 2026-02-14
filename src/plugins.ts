@@ -1166,6 +1166,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['visualization'],
   },
   {
+    repo: 'swcxito/zotero-ai-bar',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'syt2/paper-chat-for-zotero',
     releases: [
       {
