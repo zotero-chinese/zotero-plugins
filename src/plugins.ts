@@ -1488,7 +1488,7 @@ export const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
-    repo: 'yilewang/zotero-llm',
+    repo: 'yilewang/llm-for-zotero',
     releases: [
       {
         targetZoteroVersion: '8',
