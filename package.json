@@ -29,7 +29,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.7.3",
+    "@antfu/eslint-config": "^7.6.1",
     "@highcharts/dashboards": "^3.6.0",
     "@types/adm-zip": "^0.5.7",
     "@types/fs-extra": "^11.0.4",
