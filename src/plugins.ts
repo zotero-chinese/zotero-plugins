@@ -57,6 +57,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface'],
   },
   {
+    repo: 'alansirius/Zotero-Exitem',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity', 'ai', 'notes'],
+  },
+  {
     repo: 'alima-webdev/zotero-review-assistant',
     releases: [
       {
