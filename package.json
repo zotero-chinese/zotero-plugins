@@ -38,7 +38,7 @@
     "consola": "^3.4.2",
     "cross-env": "10.1.0",
     "es-toolkit": "^1.44.0",
-    "eslint": "^9.39.3",
+    "eslint": "^10.0.2",
     "franc-min": "^6.2.0",
     "fs-extra": "^11.3.3",
     "globby": "^16.1.1",
