@@ -1354,6 +1354,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
+    repo: 'Visterainer/zoteroAI',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'volatile-static/Chartero',
     releases: [
       {
