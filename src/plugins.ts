@@ -800,7 +800,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: '0.0.7',
       },
     ],
-    tags: ['favorite', 'reader', 'productivity'],
+    tags: ['reader', 'productivity'],
   },
   {
     repo: 'MuiseDestiny/zotero-gpt',
@@ -837,7 +837,7 @@ export const plugins: PluginInfoBase[] = [
         customLink: 'https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-reference.xpi',
       },
     ],
-    tags: ['favorite', 'metadata', 'reader'],
+    tags: ['metadata', 'reader'],
   },
   {
     repo: 'MuiseDestiny/ZoteroStyle',
