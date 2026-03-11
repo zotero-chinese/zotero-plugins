@@ -997,7 +997,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['productivity', 'notes', 'reader'],
+    tags: ['reader'],
   },
   {
     repo: 'redleafnew/delitemwithatt',
