@@ -990,6 +990,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['interface'],
   },
   {
+    repo: 'quertt/zotero-keyword-highlighter',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity', 'notes', 'reader'],
+  },
+  {
     repo: 'redleafnew/delitemwithatt',
     releases: [
       {
