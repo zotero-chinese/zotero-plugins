@@ -537,6 +537,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: 'Infinity4B/zotero-hjfy-split-reader',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader', 'productivity'],
+  },
+  {
     repo: 'introfini/mcp-server-zotero-dev',
     releases: [
       {
