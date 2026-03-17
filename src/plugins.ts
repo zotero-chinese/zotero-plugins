@@ -994,7 +994,7 @@ export const plugins: PluginInfoBase[] = [
       },
       {
         targetZoteroVersion: '7',
-        tagName: '0.0.2',
+        tagName: 'v0.0.2',
       },
     ],
     tags: ['interface'],
