@@ -1564,6 +1564,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
+    repo: 'YanSH258/zotero-dailypaper',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
+  },
+  {
     repo: 'yhmtsai/KeepZotero',
     releases: [
       {
@@ -1618,16 +1628,6 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['others'],
-  },
-  {
-    repo: 'YanSH258/zotero-dailypaper',
-    releases: [
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['ai'],
   },
 ]
 
