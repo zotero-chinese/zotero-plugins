@@ -986,6 +986,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['reader'],
   },
   {
+    repo: 'Qiujv/zotero-hashtags-column',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: '0.0.2',
+      },
+    ],
+    tags: ['interface'],
+  },
+  {
     repo: 'qiwei-ma/zotero-pdf-setHorizontal',
     releases: [
       {
