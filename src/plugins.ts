@@ -763,6 +763,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai', 'productivity'],
   },
   {
+    repo: 'menyoung/zoTLDR',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai'],
+  },
+  {
     repo: 'MuiseDestiny/eaiser-citation',
     releases: [
       {
