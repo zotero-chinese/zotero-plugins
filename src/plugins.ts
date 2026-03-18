@@ -485,6 +485,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['developer'],
   },
   {
+    repo: 'GroundbreakerLhy/CCF-Rank',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'guaguastandup/zotero-pdf2zh',
     releases: [
       {
