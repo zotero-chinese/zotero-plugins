@@ -933,6 +933,10 @@ export const plugins: PluginInfoBase[] = [
     repo: 'occasional16/researchopia',
     releases: [
       {
+        targetZoteroVersion: '9',
+        tagName: 'latest',
+      },
+      {
         targetZoteroVersion: '8',
         tagName: 'latest',
       },
