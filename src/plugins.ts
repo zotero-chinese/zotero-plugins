@@ -157,6 +157,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
+    repo: 'BryceWG/zotero-ai-tags',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['others'],
+  },
+  {
     repo: 'bulletproof-system/zotero-maimemo-sync',
     releases: [
       {
