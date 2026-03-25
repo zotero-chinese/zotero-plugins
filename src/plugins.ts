@@ -98,7 +98,7 @@ export const plugins: PluginInfoBase[] = [
     repo: 'ANGJustinl/zotero-plugin-hjfy',
     releases: [
       {
-        targetZoteroVersion: '7',
+        targetZoteroVersion: '8',
         tagName: 'latest',
       },
     ],
