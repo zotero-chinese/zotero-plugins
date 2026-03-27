@@ -417,6 +417,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration', 'visualization', 'productivity'],
   },
   {
+    repo: 'federicotorrielli/zotero-metadata-hunter',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['favorite', 'metadata', 'productivity'],
+  },
+  {
     repo: 'fkguo/zotero-inspire',
     releases: [
       {
