@@ -595,6 +595,17 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai'],
   },
   {
+    repo: 'Jarvis-Towne/paper-feed-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['RSS'],
+  },
+  {
+  {
     repo: 'j-cyoung/PaperViewZoteroPlugin',
     releases: [
       {
