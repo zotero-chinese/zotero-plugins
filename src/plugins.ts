@@ -635,6 +635,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity', 'visualization'],
   },
   {
+    repo: 'Jarvis-Towne/paper-feed-zotero',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['metadata'],
+  },
+  {
     repo: 'jetxa/zotero-ai-assistant',
     releases: [
       {
