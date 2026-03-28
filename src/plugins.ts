@@ -602,7 +602,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['RSS'],
+    tags: ['metadata'],
   },
   {
   {
