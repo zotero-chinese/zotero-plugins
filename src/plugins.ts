@@ -615,7 +615,6 @@ export const plugins: PluginInfoBase[] = [
     tags: ['metadata'],
   },
   {
-  {
     repo: 'j-cyoung/PaperViewZoteroPlugin',
     releases: [
       {
