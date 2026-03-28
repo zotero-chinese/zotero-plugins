@@ -424,7 +424,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['favorite', 'metadata', 'productivity'],
+    tags: ['metadata'],
   },
   {
     repo: 'fkguo/zotero-inspire',
