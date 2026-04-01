@@ -1262,6 +1262,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['attachment'],
   },
   {
+    repo: 'ScienceLiveHub/science-live-platform',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration', 'metadata', 'writing'],
+  },
+  {
     repo: 'scitedotai/scite-zotero-plugin',
     releases: [
       {
