@@ -1268,8 +1268,12 @@ export const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '7',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
     ],
-    tags: ['integration', 'metadata', 'writing'],
+    tags: ['integration', 'metadata'],
   },
   {
     repo: 'scitedotai/scite-zotero-plugin',
