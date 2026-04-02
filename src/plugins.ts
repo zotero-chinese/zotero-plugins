@@ -1248,6 +1248,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
+    repo: 'ScienceLiveHub/science-live-platform',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['integration', 'metadata'],
+  },
+  {
     repo: 'SciImage/zotero-attachment-scanner',
     releases: [
       {
