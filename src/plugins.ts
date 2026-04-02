@@ -1248,20 +1248,6 @@ export const plugins: PluginInfoBase[] = [
     tags: ['productivity'],
   },
   {
-    repo: 'SciImage/zotero-attachment-scanner',
-    releases: [
-      {
-        targetZoteroVersion: '8',
-        tagName: 'latest',
-      },
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['attachment'],
-  },
-  {
     repo: 'ScienceLiveHub/science-live-platform',
     releases: [
       {
@@ -1274,6 +1260,20 @@ export const plugins: PluginInfoBase[] = [
       },
     ],
     tags: ['integration', 'metadata'],
+  },
+  {
+    repo: 'SciImage/zotero-attachment-scanner',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['attachment'],
   },
   {
     repo: 'scitedotai/scite-zotero-plugin',
