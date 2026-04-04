@@ -213,6 +213,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'metadata'],
   },
   {
+    repo: 'Chikit-L/zotero-fulltext-translate',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['productivity'],
+  },
+  {
     repo: 'cookjohn/zotero-mcp',
     releases: [
       {
