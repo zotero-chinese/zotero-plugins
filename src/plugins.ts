@@ -811,6 +811,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
+    repo: 'leike0813/Zotero-Skills',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      }
+    ],
+    tags: ['ai', 'productivity', 'integration'],
+  },
+  {
     repo: 'lifan0127/ai-research-assistant',
     releases: [
       {
