@@ -6,8 +6,7 @@ import fs from 'fs-extra'
 import { jsonc } from 'jsonc'
 import { dist } from '../index.js'
 import { download } from '../utils/fs.js'
-import { handlePluginErrors } from '../utils/github-issues.js'
-import { getRelease, getReleaseAssetBuffer, octokit, translateString } from '../utils/index.js'
+import { getRelease, getReleaseAssetBuffer, handlePluginErrors, octokit, translateString } from '../utils/index.js'
 
 export async function fetchPlugins(plugins: PluginInfoBase[]) {
   const results = await Promise.allSettled(plugins.map(fetchPlugin))
