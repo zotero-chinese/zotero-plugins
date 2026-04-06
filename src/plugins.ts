@@ -816,7 +816,7 @@ export const plugins: PluginInfoBase[] = [
       {
         targetZoteroVersion: '7',
         tagName: 'latest',
-      }
+      },
     ],
     tags: ['ai', 'integration'],
   },
