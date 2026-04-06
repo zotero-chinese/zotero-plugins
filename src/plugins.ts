@@ -1488,6 +1488,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['others'],
   },
   {
+    repo: 'vastronghq/MarginMind',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'notes', 'productivity'],
+  },
+  {
     repo: 'Visterainer/zoteroAI',
     releases: [
       {
