@@ -818,7 +818,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       }
     ],
-    tags: ['ai', 'productivity', 'integration'],
+    tags: ['ai', 'integration'],
   },
   {
     repo: 'lifan0127/ai-research-assistant',
