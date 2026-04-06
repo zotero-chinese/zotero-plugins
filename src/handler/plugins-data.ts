@@ -1,10 +1,12 @@
 import type { PluginInfo, PluginInfoBase, ReleaseInfo, ReleaseInfoBase } from '../types.js'
+import { env } from 'node:process'
 import AdmZip from 'adm-zip'
 import { consola } from 'consola'
 import fs from 'fs-extra'
 import { jsonc } from 'jsonc'
 import { dist } from '../index.js'
 import { download } from '../utils/fs.js'
+import { handlePluginErrors } from '../utils/github-issues.js'
 import { getRelease, getReleaseAssetBuffer, octokit, translateString } from '../utils/index.js'
 
 export async function fetchPlugins(plugins: PluginInfoBase[]) {
@@ -18,8 +20,13 @@ export async function fetchPlugins(plugins: PluginInfoBase[]) {
     }
   }
 
-  if (errors.length) {
-    throw new Error(`${errors.length} errors found`)
+  if (env.GITHUB_ACTIONS) {
+    await handlePluginErrors(errors)
+  }
+  else {
+    if (errors.length) {
+      throw new Error(`${errors.length} errors found`)
+    }
   }
 }
 
