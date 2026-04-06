@@ -836,6 +836,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai', 'productivity'],
   },
   {
+    repo: 'lisontowind/zotero-copilot',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'lisontowind/zotero-mineru',
     releases: [
       {
