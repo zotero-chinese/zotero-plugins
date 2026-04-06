@@ -856,6 +856,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['ai'],
   },
   {
+    repo: 'mobench/zotero-annotation-links',
+    releases: [
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['reader'],
+  },
+  {
     repo: 'MuiseDestiny/eaiser-citation',
     releases: [
       {
