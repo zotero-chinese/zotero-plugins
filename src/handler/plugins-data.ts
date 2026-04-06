@@ -7,8 +7,20 @@ import { dist } from '../index.js'
 import { download } from '../utils/fs.js'
 import { getRelease, getReleaseAssetBuffer, octokit, translateString } from '../utils/index.js'
 
-export function fetchPlugins(plugins: PluginInfoBase[]) {
-  return Promise.all(plugins.map(fetchPlugin))
+export async function fetchPlugins(plugins: PluginInfoBase[]) {
+  const results = await Promise.allSettled(plugins.map(fetchPlugin))
+  const errors = []
+  for (const [index, result] of results.entries()) {
+    if (result.status === 'rejected') {
+      const plugin = plugins[index]
+      consola.error(plugin.repo, result.reason)
+      errors.push({ repo: plugin.repo, error: result.reason })
+    }
+  }
+
+  if (errors.length) {
+    throw new Error(`${errors.length} errors found`)
+  }
 }
 
 async function fetchPlugin(pluginBase: PluginInfoBase): Promise<PluginInfo> {

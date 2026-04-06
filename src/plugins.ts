@@ -474,20 +474,21 @@ export const plugins: PluginInfoBase[] = [
     ],
     tags: ['attachment'],
   },
-  {
-    repo: 'frianasoa/Ze-Notes',
-    releases: [
-      {
-        targetZoteroVersion: '8',
-        tagName: 'latest',
-      },
-      {
-        targetZoteroVersion: '7',
-        tagName: 'latest',
-      },
-    ],
-    tags: ['notes'],
-  },
+  // 26/4/6: this github user has been removed
+  // {
+  //   repo: 'frianasoa/Ze-Notes',
+  //   releases: [
+  //     {
+  //       targetZoteroVersion: '8',
+  //       tagName: 'latest',
+  //     },
+  //     {
+  //       targetZoteroVersion: '7',
+  //       tagName: 'latest',
+  //     },
+  //   ],
+  //   tags: ['notes'],
+  // },
   {
     repo: 'FrLars21/ZoteroCitationCountsManager',
     releases: [
