@@ -1495,7 +1495,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['ai', 'notes', 'productivity'],
+    tags: ['ai'],
   },
   {
     repo: 'Visterainer/zoteroAI',
