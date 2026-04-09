@@ -1561,6 +1561,20 @@ export const plugins: PluginInfoBase[] = [
     tags: ['favorite', 'visualization', 'interface'],
   },
   {
+    repo: 'wdcpclover/ai4paper',
+    releases: [
+      {
+        targetZoteroVersion: '7',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+    ],
+    tags: ['ai', 'productivity'],
+  },
+  {
     repo: 'WildDataX/suppr-zotero-plugin',
     releases: [
       {
