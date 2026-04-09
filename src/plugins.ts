@@ -627,7 +627,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['ai', 'productivity'],
+    tags: ['ai', 'productivity', 'reader', 'notes', 'metadata', 'writing', 'interface'],
   },
   {
     repo: 'jagaldol/zotero-cite-preview-resizer',
@@ -1572,7 +1572,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['ai', 'productivity'],
+    tags: ['ai', 'productivity', 'reader', 'notes', 'metadata', 'writing', 'interface'],
   },
   {
     repo: 'WildDataX/suppr-zotero-plugin',
