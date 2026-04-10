@@ -1572,7 +1572,7 @@ export const plugins: PluginInfoBase[] = [
         tagName: 'latest',
       },
     ],
-    tags: ['ai', 'productivity', 'reader', 'notes', 'metadata', 'writing', 'interface'],
+    tags: ['ai', 'productivity', 'reader', 'notes', 'metadata', 'interface', 'visualization'],
   },
   {
     repo: 'WildDataX/suppr-zotero-plugin',
