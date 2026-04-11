@@ -1579,6 +1579,10 @@ export const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '8',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '9',
+        tagName: 'latest',
+      },
     ],
     tags: ['ai', 'productivity', 'reader', 'notes', 'metadata', 'interface', 'visualization'],
   },
