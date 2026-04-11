@@ -11,8 +11,10 @@ set -e
 dist="dist"
 
 # 获取数据
-pnpm run data:info
+# pnpm run data:info
+curl -L -o "$dist/plugins.json" "https://github.com/syt2/zotero-addons-scraper/releases/latest/download/addon_infos.json"
 pnpm run data:chart
+
 
 # 复制兼容性文件
 if [ ! -d "$dist/dist" ]; then
