@@ -842,6 +842,10 @@ export const plugins: PluginInfoBase[] = [
         targetZoteroVersion: '8',
         tagName: 'latest',
       },
+      {
+        targetZoteroVersion: '9',
+        tagName: 'latest',
+      },
     ],
     tags: ['ai', 'productivity'],
   },
@@ -850,6 +854,10 @@ export const plugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '8',
+        tagName: 'latest',
+      },
+      {
+        targetZoteroVersion: '9',
         tagName: 'latest',
       },
     ],
