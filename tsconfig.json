@@ -9,12 +9,11 @@
     "noImplicitAny": true,
     "useUnknownInCatchVariables": false,
     "inlineSourceMap": true,
-    "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
     "skipLibCheck": true
   },
   "lib": ["esnext"],
-  "include": ["src", "types"]
+  "include": ["src"]
 }
