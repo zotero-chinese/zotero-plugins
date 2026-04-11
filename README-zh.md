@@ -14,7 +14,19 @@ _This README is also available in: :cn: 简体中文 | [:gb: English](./README-z
 
 **Zotero 中文社区主域名：<https://zotero-chinese.com/plugins>**
 
+## 状态
+
+该仓库暂时处于冻结状态，不再接收插件提交，现有插件信息将继续更新至 2026 年 6 月，之后该仓库将存档。
+
+网站更新不受影响，网站将使用 [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) 仓库的信息进行构建，直至 Zotero 官方商店建立。
+
+新的插件请提交至 [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) 仓库，谢谢！
+
 ## 提交插件
+
+> [!WARNING]
+>
+> 此仓库不再接收插件提交请求，新的插件请提交至 [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) 仓库，谢谢！
 
 [![在 GitHub Codespaces 中打开](https://github.com/codespaces/badge.svg)](https://codespaces.new/zotero-chinese/zotero-plugins?quickstart=1)
 

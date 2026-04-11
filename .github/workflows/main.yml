@@ -52,7 +52,7 @@ jobs:
     name: Sync to Gitee
     needs:
       - deploy
-    if: github.repository == 'zotero-chinese/zotero-plugins' && github.event_name != 'pull_request'
+    if: github.repository == 'zotero-chinese/zotero-plugins' && github.event_name != 'pull_request' && github.event_name != 'push'
     uses: ./.github/workflows/sync-to-gitee.yml
     secrets: inherit
 

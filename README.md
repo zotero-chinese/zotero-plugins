@@ -14,7 +14,19 @@ This repository provides information of several Zotero plugins and their XPI pac
 - **Main domain of Zotero Chinese: <https://zotero-chinese.com/plugins/>**
 - GitHub Pages: <https://zotero-chinese.github.io/plugins/>
 
+## Status
+
+This repository is temporarily on hold and will no longer accept plugin submissions. Existing plugin information will continue to be updated until June 2026, after which the repository will be archived.
+
+The website updates are not affected, and the website will be built using information from the [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) repository until the official Zotero store is established.
+
+New plugins should be submitted to the [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) repository. Thank you!
+
 ## Submitting Plugins
+
+> [!WARNING]
+>
+> This repository no longer accepts plugin submission requests. Please submit new plugins to the [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) repository. Thank you!
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/zotero-chinese/zotero-plugins?quickstart=1)
 
