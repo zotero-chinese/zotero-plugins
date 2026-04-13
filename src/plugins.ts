@@ -23,6 +23,16 @@ export const plugins: PluginInfoBase[] = [
     tags: ['integration'],
   },
   {
+    repo: "Ares960826/zotero-grouptag",
+    releases: [
+      {
+        targetZoteroVersion: "9",
+        tagName: "latest",
+      }
+    ],
+    tags: ['integration'],
+  },
+  {
     repo: '018/zotcard',
     releases: [
       {
