@@ -12,6 +12,9 @@ dist="dist"
 
 # 获取数据
 # pnpm run data:info
+if [ ! -d "$dist" ]; then
+    mkdir $dist
+fi
 curl -L -o "$dist/plugins.json" "https://github.com/syt2/zotero-addons-scraper/releases/latest/download/addon_infos.json"
 pnpm run data:chart
 
