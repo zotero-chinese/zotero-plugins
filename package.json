@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": "true",
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.2",
   "description": "Zotero 插件合集",
   "author": "northword",
   "license": "MIT",
@@ -37,19 +37,19 @@
     "adm-zip": "^0.5.17",
     "consola": "^3.4.2",
     "cross-env": "10.1.0",
-    "es-toolkit": "^1.45.1",
-    "eslint": "^10.2.0",
+    "es-toolkit": "^1.46.1",
+    "eslint": "^10.2.1",
     "franc-min": "^6.2.0",
     "fs-extra": "^11.3.4",
     "globby": "^16.2.0",
-    "highcharts": "^12.5.0",
+    "highcharts": "^12.6.0",
     "husky": "^9.1.7",
     "jsonc": "^2.0.0",
     "lint-staged": "^16.4.0",
     "octokit": "^5.0.5",
     "ofetch": "^1.5.1",
     "tsx": "^4.21.0",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "lint-staged": {
     "*.*": "eslint --fix"
