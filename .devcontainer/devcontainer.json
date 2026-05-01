@@ -9,7 +9,7 @@
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     // https://github.com/devcontainers/features/blob/main/src/node/README.md
-    "ghcr.io/devcontainers/features/node:1": {
+    "ghcr.io/devcontainers/features/node:2": {
       "version": "lts",
       "pnpmVersion": "latest"
     }
