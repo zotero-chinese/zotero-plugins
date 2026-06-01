@@ -45,7 +45,7 @@
     "highcharts": "^12.6.0",
     "husky": "^9.1.7",
     "jsonc": "^2.0.0",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.0.7",
     "octokit": "^5.0.5",
     "ofetch": "^1.5.1",
     "tsx": "^4.22.4",
