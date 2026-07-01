@@ -42,7 +42,7 @@
     "franc-min": "^6.2.0",
     "fs-extra": "^11.3.5",
     "globby": "^16.2.0",
-    "highcharts": "^12.6.0",
+    "highcharts": "^13.0.0",
     "husky": "^9.1.7",
     "jsonc": "^2.0.0",
     "lint-staged": "^17.0.7",

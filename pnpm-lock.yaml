@@ -13,7 +13,7 @@ importers:
         version: 9.0.0(@typescript-eslint/rule-tester@8.56.1(eslint@10.4.1)(typescript@6.0.3))(@typescript-eslint/typescript-estree@8.60.0(typescript@6.0.3))(@typescript-eslint/utils@8.60.0(eslint@10.4.1)(typescript@6.0.3))(@vue/compiler-sfc@3.4.31)(eslint@10.4.1)(ts-declaration-location@1.0.7(typescript@6.0.3))(typescript@6.0.3)
       '@highcharts/dashboards':
         specifier: ^3.6.0
-        version: 3.6.0(highcharts@12.6.0)
+        version: 3.6.0(highcharts@13.0.0)
       '@types/adm-zip':
         specifier: ^0.5.8
         version: 0.5.8
@@ -48,8 +48,8 @@ importers:
         specifier: ^16.2.0
         version: 16.2.0
       highcharts:
-        specifier: ^12.6.0
-        version: 12.6.0
+        specifier: ^13.0.0
+        version: 13.0.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -1298,8 +1298,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  highcharts@12.6.0:
-    resolution: {integrity: sha512-zWwoXECOakJT2huBMqIZOjDNLLgyZFCcfZqTj2g6cvYOGxjF3nvooC+rIaF5aKiharluyGKNflfRNrzOAIjdRg==}
+  highcharts@13.0.0:
+    resolution: {integrity: sha512-AoFXei9hSnVXo8X5PmXzSiNXwPMgA+NzyN35uRRy0N1XwbJbRI1laTCaaFci9QB9Wyv9ZFWlgF0xzgivavJpDA==}
     peerDependencies:
       jspdf: ^4.1.0
       svg2pdf.js: ^2.7.0
@@ -2260,9 +2260,9 @@ snapshots:
       '@eslint/core': 1.2.1
       levn: 0.4.1
 
-  '@highcharts/dashboards@3.6.0(highcharts@12.6.0)':
+  '@highcharts/dashboards@3.6.0(highcharts@13.0.0)':
     dependencies:
-      highcharts: 12.6.0
+      highcharts: 13.0.0
 
   '@humanfs/core@0.19.1': {}
 
@@ -3284,7 +3284,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  highcharts@12.6.0: {}
+  highcharts@13.0.0: {}
 
   html-entities@2.6.0: {}
 
