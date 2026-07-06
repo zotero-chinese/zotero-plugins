@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": "true",
-  "packageManager": "pnpm@10.34.4",
+  "packageManager": "pnpm@11.10.0",
   "description": "Zotero 插件合集",
   "author": "northword",
   "license": "MIT",
@@ -48,7 +48,7 @@
     "lint-staged": "^17.0.8",
     "octokit": "^5.0.5",
     "ofetch": "^1.5.1",
-    "tsx": "^4.22.4",
+    "tsx": "^4.23.0",
     "typescript": "^6.0.3"
   },
   "lint-staged": {
