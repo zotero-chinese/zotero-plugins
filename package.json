@@ -44,7 +44,7 @@
     "globby": "^16.2.4",
     "highcharts": "^12.6.0",
     "husky": "^9.1.7",
-    "jsonc": "^2.0.0",
+    "jsonc": "^3.0.0",
     "lint-staged": "^17.4.1",
     "octokit": "^5.0.5",
     "ofetch": "^1.5.1",
