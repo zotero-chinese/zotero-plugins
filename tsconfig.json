@@ -14,6 +14,12 @@
     "isolatedModules": false,
     "skipLibCheck": true
   },
-  "lib": ["esnext"],
-  "include": ["src"]
+  "lib": [
+    "esnext"
+  ],
+  "include": [
+    "src",
+    "scripts",
+    "checks"
+  ]
 }

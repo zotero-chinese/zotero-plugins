@@ -49,3 +49,6 @@ dist
 **/*bak.*
 # ts 编译的 js
 src/**/*.js
+.cache/
+
+!checks/*.test.ts

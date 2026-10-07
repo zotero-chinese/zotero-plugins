@@ -1,0 +1,89 @@
+name: Sync upstream plugin sources
+
+on:
+  schedule:
+    # 05:45 Asia/Shanghai, before the 06:25 collector run.
+    - cron: '45 21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-upstream-plugin-sources
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository == 'zotero-chinese/zotero-plugins'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Setup JS
+        uses: zotero-plugin-dev/workflows/setup-js@main
+
+      - name: Checkout upstream source data
+        uses: actions/checkout@v7
+        with:
+          repository: syt2/zotero-addons-scraper
+          ref: master
+          path: .cache/upstream
+          sparse-checkout: addons
+          persist-credentials: false
+
+      - name: Fetch and merge upstream sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          pnpm exec tsx scripts/fetch-upstream.ts
+          pnpm data:sync-source .cache/upstream .cache/upstream-sync/addon_infos.json
+          pnpm exec eslint src/plugins.ts src/deprecated.ts --fix
+          git -C .cache/upstream rev-parse HEAD > .cache/upstream-sync/source-commit.txt
+
+      - name: Validate merged catalog
+        run: |
+          pnpm typecheck
+          pnpm test
+          pnpm lint:check
+
+      - name: Detect catalog changes
+        id: changes
+        run: |
+          if git diff --quiet -- src/plugins.ts src/deprecated.ts; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create or update source sync PR
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.ACCESS_TOKEN || github.token }}
+          branch: automation/sync-syt2-sources
+          base: main
+          delete-branch: true
+          add-paths: |
+            src/plugins.ts
+            src/deprecated.ts
+          commit-message: 'chore: sync plugin sources from syt2'
+          title: 'chore: sync plugin sources from syt2'
+          body: |
+            Updates the local plugin catalog from syt2/zotero-addons-scraper's source list and published release.
+
+            Preserves local-only plugins, repository aliases, verified compatibility labels and historical selectors.
+
+            Validation: typecheck, regression tests and lint. Source commit, release metadata and merge report are in the workflow artifact.
+
+      - name: Upload sync evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: upstream-source-sync
+          path: |
+            .cache/upstream-sync/report.json
+            .cache/upstream-sync/release.json
+            .cache/upstream-sync/source-commit.txt
+          include-hidden-files: true
+          retention-days: 14

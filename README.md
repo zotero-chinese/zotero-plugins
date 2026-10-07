@@ -1,133 +1,60 @@
 # Zotero Plugins Collection
 
-![GitHub Action Status](https://img.shields.io/github/actions/workflow/status/northword/zotero-plugins/main.yml?logo=githubactions)
-![GitHub last commit](https://img.shields.io/github/last-commit/northword/zotero-plugins/main?logo=github)
-![last updated](https://img.shields.io/badge/dynamic/json?logo=github&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnorthword%2Fzotero-plugins%2Fgh-pages%2Fdist%2Fshields.json&query=%24.lastUpdate&label=last%20updated)
-![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hw/zotero-chinese/zotero-plugins?logo=jsdelivr)
+This repository maintains a local Zotero plugin catalog and independently collects repository metadata and XPI compatibility information. Visit [Zotero Chinese](https://zotero-chinese.com/plugins). [中文说明](README-zh.md).
 
-_This README is also available in: [:cn: 简体中文](./README-zh.md) | :gb: English._
+## New plugins and plugin updates
 
-This repository provides information of several Zotero plugins and their XPI packages , in an attempt to provide a centralized plugin store service until the official Zotero plugin store is ready.
+We are accepting new plugin submissions and updates to existing plugin information again. Contributions are welcome through an [issue](https://github.com/zotero-chinese/zotero-plugins/issues/new) or pull request.
 
-## Visiting
+- New plugins: include the repository URL, a brief description and a release/download link. For a pull request, add an entry to `src/plugins.ts` in repository-name order, with `repo`, `tags`, `releases` and `discoverReleases: true`. An empty `releases` array enables discovery of the latest stable release.
+- Plugin updates: describe the correction, such as a repository transfer, category, download URL or historical compatibility range, and include supporting links.
 
-- **Main domain of Zotero Chinese: <https://zotero-chinese.com/plugins/>**
-- GitHub Pages: <https://zotero-chinese.github.io/plugins/>
+The collector checks the latest stable release, so ordinary version releases generally require no manual catalog edit. Historical release selectors still need maintenance for older Zotero versions. Reviewed submissions enter the local catalog after merging; store availability depends on publication builds and the website's configured data source.
 
-## Status
+## Collector rollout
 
-This repository is temporarily on hold and will no longer accept plugin submissions. Existing plugin information will continue to be updated until June 2026, after which the repository will be archived.
+The default `shadow` build runs our collector and compares its candidate data with the external scraper. Published `plugins.json` continues to use external data during validation. Chart collection remains disabled; published charts are preserved.
 
-The website updates are not affected, and the website will be built using information from the [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) repository until the official Zotero store is established.
+1. Merge the changes and inspect `comparison.json` and `collector/fetch-report.json` in the Actions artifact.
+2. Check repository coverage, historical releases, compatibility ranges and download URLs. Fetch failures, missing releases and version regressions block promotion.
+3. Run CI manually with `collector-mode: primary` to publish independently collected data. Set the repository variable `COLLECTOR_MODE=primary` after validation to retain this mode for scheduled builds. Revert it to `shadow` to publish external data again.
+4. The website still reads the external scraper directly. Switch both plugin data and update timestamps in website's `.github/scripts/fetch-data.mjs` after validating the independent output.
 
-New plugins should be submitted to the [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) repository. Thank you!
+Unreleased sources absent from the external output are marked pending and do not block promotion. The collector does not create issues or comments. Incomplete candidates remain available for inspection and cannot replace the published catalog in primary mode.
 
-## Submitting Plugins
+## Source reconciliation
 
-> [!WARNING]
->
-> This repository no longer accepts plugin submission requests. Please submit new plugins to the [syt2/zotero-addons-scraper](https://github.com/syt2/zotero-addons-scraper) repository. Thank you!
+On 2026-10-05 the local catalog was reconciled with upstream's `addons` directory: **337 unique repositories**, compared with **336 published plugins**. See [the reconciliation report](reports/source-reconciliation.json) for additions, duplicates and the unpublished source entry.
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/zotero-chinese/zotero-plugins?quickstart=1)
+`src/plugins.ts` contains active plugins; `src/deprecated.ts` retains legacy plugins. Historical release selectors are combined with the newest stable release from the most recent release page. XPI manifests determine compatible Zotero versions (6–11). `assetName` selects an attachment, `customLink` supports external download sources, and `tags` / `recommended` preserve upstream metadata.
 
-> [!NOTE]
->
-> How to add a plugin that hasn't been included?
->
-> Edit [`src/plugins.ts`](./src/plugins.ts), and add an object to the `plugins` list in the following format. Existing entries can serve as references.
->
-> When adding, please sort by `repo`.
->
-> After editing, commit and pull request. We will process it as soon as possible.
+## Development
 
-```ts
-interface PluginInfo {
-  /**
-   * Repository of plugin
-   *
-   * Example: northword/zotero-format-metadata
-   *
-   * Note: no `/` at the beginning or end
-   */
-  repo: string
-  /**
-   * Release information of the plugin
-   */
-  releases: Array<{
-    /**
-     * Zotero version for this release, "7" or "6"
-     */
-    targetZoteroVersion: string
-    /**
-     * Download channel for this release
-     *
-     * `latest`: Latest official release;
-     * `pre`: Latest pre-release;
-     * `string`: Corresponding `git.tag_name` of the release;
-     * Note that some `git.tag_name` have `v` while others do not, you can check the release link to determine.
-     */
-    tagName: 'latest' | 'pre' | string
-  }>
-}
-```
-
-## Development Guide
-
-Before starting development, you need to create a [GitHub personal access token](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and store it in the local environment variable `GITHUB_TOKEN`.
+Use the pnpm version in package.json and supply `GITHUB_TOKEN` through the environment.
 
 ```bash
-# Clone the repository
-git clone https://github.com/northword/zotero-plugins.git zotero-plugins
-cd zotero-plugins
-
-# Install dependencies
-corepack enable
-pnpm install
-
-# Fetch plugin information
-pnpm data:info
-
-# Fetch chart information
-pnpm data:chart
+pnpm install --frozen-lockfile
+pnpm typecheck
+pnpm lint:check
+pnpm test
+COLLECTOR_MODE=shadow pnpm build
+pnpm data:compare dist/external-plugins.json dist/collector/plugins.json
+pnpm data:sync-source /path/to/scraper-checkout /path/to/addon_infos.json
+pnpm lint:fix
 ```
 
-[`src/index.ts`](./src/index.ts) is the main logic script, which performs the following actions:
+Use `COLLECTOR_REPOS=owner/repo,owner/other` and `COLLECTOR_DIST=dist/sample` with `pnpm data:info` for a small sample. Review the diff after importing upstream data; local-only repositories are preserved.
 
-- Iterates through the plugin information list, fetches basic information and releases for each plugin from GitHub, and saves the obtained information in [`dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json)
-- Saves the XPI packages in [`dist/xpi/${github.release.asset.id}.xpi`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/xpi)
+XPI files are cached in `.cache/xpi` by asset ID and update time. Custom URLs are refreshed each run. Candidate data is written to `dist/collector`; published JSON is written to `dist` and the legacy `dist/dist` paths.
 
-The GitHub Action Bot periodically runs the `src/index.ts` script, performs the above steps, and deploys the `dist/` to the [`gh-page`](https://github.com/northword/zotero-plugins/blob/gh-pages/) branch.
+## Scheduled upstream source sync
 
-> [!NOTE]
->
-> How to use this project as a dependency for secondary development?
->
-> Developers can use the dist files like [`dist/plugins.json`](https://github.com/northword/zotero-plugins/blob/gh-pages/dist/plugins.json) from the `gh-pages` branch.
+`.github/workflows/sync-source.yml` runs daily at 05:45 Asia/Shanghai and supports manual dispatch. It merges syt2's source catalog and latest published snapshot, then creates or updates a PR on `automation/sync-syt2-sources` when the catalog changes. Review and merge the PR to update the collector's sources.
 
-## Acknowledgements
+The merge retains local-only plugins, repository aliases, historical selectors, verified compatibility corrections and the active/legacy split. New unpublished sources remain pending. Typecheck, tests and lint run before PR creation; artifacts record the source commit, release metadata and merge report.
 
-Thanks to the Zotero community and developers for their contributions!
-
-This project uses the following proxies or public CDN services for XPI distribution:
-
-- GitHub Proxy: <https://github.com/hunshcn/gh-proxy>
-- JsDeliver: <https://www.jsdelivr.com/>
-- KGitHub: <https://help.kkgithub.com/>
-
-This project is a TypeScript reimplementation of [l0o0/ZoteroPlugins](https://github.com/l0o0/ZoteroPlugins).
-
-This project is deployed on GitHub Pages and Netlify.
-
-[![netlify](https://www.netlify.com/v3/img/components/netlify-color-bg.svg)](https://www.netlify.com)
-
-## Contributors
-
-[![contributors](https://contrib.rocks/image?repo=zotero-chinese/zotero-plugins)](https://github.com/zotero-chinese/zotero-plugins/graphs/contributors)
+PR creation uses `ACCESS_TOKEN` when available, falling back to `GITHUB_TOKEN`. The fallback requires the repository setting allowing Actions to create PRs and does not trigger ordinary PR workflows. The sync job performs validation itself. PRs are not automatically merged, and upstream code is not executed.
 
 ## License
 
-MIT License
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=zotero-chinese/zotero-plugins&type=Date)](https://star-history.com/#zotero-chinese/zotero-plugins&Date)
+MIT. Thanks to Zotero, plugin authors and the external scraper maintainers.

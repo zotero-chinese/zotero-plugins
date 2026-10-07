@@ -2,21 +2,19 @@
   "name": "zotero-plugins",
   "type": "module",
   "version": "0.0.0",
-  "private": "true",
+  "private": true,
   "packageManager": "pnpm@12.8.1",
   "description": "Zotero 插件合集",
   "author": "northword",
   "license": "MIT",
-  "homepage": "https://github.com/northword/zotero-plugins#readme",
+  "homepage": "https://github.com/zotero-chinese/zotero-plugins#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/northword/zotero-plugins.git"
+    "url": "git+https://github.com/zotero-chinese/zotero-plugins.git"
   },
   "bugs": {
-    "url": "https://github.com/northword/zotero-plugins/issues"
+    "url": "https://github.com/zotero-chinese/zotero-plugins/issues"
   },
-  "main": "src/index.js",
-  "types": "types/index.d.ts",
   "scripts": {
     "data:info": "tsx src/index.ts fetchPlugins",
     "data:chart": "tsx src/index.ts charts",
@@ -26,7 +24,10 @@
     "lint:check": "eslint .",
     "prepare": "husky",
     "build": "bash .github/scripts/build.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --import tsx --test checks/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "data:compare": "tsx scripts/compare.ts",
+    "data:sync-source": "tsx scripts/sync-source.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.5.1",

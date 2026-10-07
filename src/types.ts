@@ -7,10 +7,14 @@ export interface PluginInfoBase {
    * 注意前后均无 `/`
    */
   repo: string
+  /** Previous repository names, retained for upstream comparison after transfers. */
+  aliases?: string[]
   /**
    * 插件的发布地址信息
    */
   releases: ReleaseInfoBase[]
+  recommended?: boolean
+  discoverReleases?: boolean
 
   tags: TagType[]
 }
@@ -31,6 +35,7 @@ export interface ReleaseInfoBase {
    */
   tagName: 'latest' | 'pre' | string | 'custom'
   customLink?: string
+  assetName?: string
 }
 
 export interface PluginInfo extends PluginInfoBase {
@@ -58,13 +63,11 @@ export interface ReleaseInfo extends ReleaseInfoBase {
    * 插件版本，自 XPI 中提取
    */
   xpiVersion: string
-  xpiDownloadUrl: {
-    github: string
-    gitee: string
-    ghProxy: string
-    jsdeliver: string
-    kgithub: string
-  }
+  minZoteroVersion: string
+  maxZoteroVersion: string
+  name?: string
+  description?: string
+  xpiDownloadUrl: Record<string, string>
   releaseDate: string
   downloadCount: number
   assetId: number | string
@@ -100,3 +103,4 @@ export type TagType
     | 'developer'
   // 其他
     | 'others'
+    | 'utility'

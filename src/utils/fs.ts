@@ -1,15 +1,15 @@
-import { mkdir, writeFile } from 'node:fs/promises'
-import { dirname } from 'node:path'
+import { Buffer } from 'node:buffer'
+import fs from 'fs-extra'
 import { ofetch } from 'ofetch'
 
+/** Buffer writes avoid leaving a partial cached XPI after a failed transfer. */
 export async function download(url: string, path: string) {
   const data = await ofetch(url, {
-    responseType: 'stream',
-    retry: 3,
-    retryDelay: 500, // ms
-    retryStatusCodes: [404, 500], // response status codes to retry
+    responseType: 'arrayBuffer',
+    timeout: 60000,
+    retry: 2,
+    retryDelay: 1000,
   })
-
-  await mkdir(dirname(path), { recursive: true })
-  await writeFile(path, data)
+  await fs.outputFile(`${path}.tmp`, Buffer.from(data))
+  await fs.move(`${path}.tmp`, path, { overwrite: true })
 }

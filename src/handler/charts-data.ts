@@ -223,7 +223,6 @@ function drawAuthorPie() {
         operator: '>',
         value: 5000,
       },
-      zIndex: 3,
       shadow: true,
     },
     tooltip: {
@@ -559,7 +558,7 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
             ),
           },
           yAxis: {
-            title: { text: null },
+            title: { text: undefined },
             type: 'logarithmic',
           },
           tooltip: {

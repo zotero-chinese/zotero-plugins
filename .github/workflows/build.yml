@@ -2,6 +2,10 @@ name: Build
 
 on:
   workflow_call:
+    inputs:
+      collector-mode:
+        type: string
+        default: shadow
 
 permissions:
   contents: write
@@ -12,6 +16,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Setup JS
         uses: zotero-plugin-dev/workflows/setup-js@main
@@ -27,13 +32,28 @@ jobs:
             ${{ env.cache-name }}-${{ runner.os }}
             ${{ env.cache-name }}
 
+      - name: Cache XPI packages
+        uses: actions/cache@v6
+        with:
+          path: .cache/xpi
+          key: collector-xpi-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: collector-xpi-${{ runner.os }}-
+
+      - name: Check collector
+        run: |
+          pnpm typecheck
+          pnpm test
+          pnpm lint:check
+
       - name: Build
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST }}
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST || github.token }}
+          COLLECTOR_MODE: ${{ inputs.collector-mode }}
         run: |
           pnpm build
 
       - name: Upload Output
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           path: dist

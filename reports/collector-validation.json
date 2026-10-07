@@ -1,0 +1,145 @@
+{
+  "checkedAt": "2026-10-05T03:06:39.540Z",
+  "mode": "shadow",
+  "sourceCount": 337,
+  "externalCount": 336,
+  "collectedCount": 336,
+  "missingFromSource": [],
+  "sourceOnly": [
+    "CHENYUZ-hub/zotero-literature-star-citation"
+  ],
+  "missingFromCollector": [
+    "CHENYUZ-hub/zotero-literature-star-citation"
+  ],
+  "collectorOnly": [],
+  "repositoryAliases": [
+    {
+      "repo": "haohaomin/zotero-codex",
+      "aliases": [
+        "renhao12356578/zotero-codex"
+      ]
+    },
+    {
+      "repo": "Moonweave-Research/zotero-reading-flow",
+      "aliases": [
+        "Moon-python/zotero-reading-flow"
+      ]
+    },
+    {
+      "repo": "wangqian06/zotero-pdf-background",
+      "aliases": [
+        "q77190858/zotero-pdf-background"
+      ]
+    }
+  ],
+  "missingReleases": [
+    {
+      "repo": "ievlevpn/zotero-theorem-list",
+      "targetZoteroVersion": "6"
+    },
+    {
+      "repo": "ievlevpn/zotero-latex-suite",
+      "targetZoteroVersion": "6"
+    }
+  ],
+  "changedVersions": [
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "9",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "8",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "7",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "6",
+      "external": "0.2.8",
+      "collected": "3.1.142"
+    }
+  ],
+  "invalidReleases": [],
+  "identityChanges": [],
+  "compatibilityChanges": [
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "9",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "8",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "7",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "6",
+      "external": "5.0 - 7.0.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "ievlevpn/zotero-theorem-list",
+      "targetZoteroVersion": "11",
+      "external": "* - *",
+      "collected": "6.999 - *"
+    }
+  ],
+  "regressedVersions": [],
+  "duplicateCollectedRepos": 0,
+  "fetchErrors": [],
+  "pendingSources": [
+    "CHENYUZ-hub/zotero-literature-star-citation"
+  ],
+  "validation": {
+    "fullCatalogRun": true,
+    "recheckedRepositories": [
+      "dvanoni/notero",
+      "justinribeiro/zotero-google-scholar-citation-count",
+      "ievlevpn/zotero-latex-suite",
+      "ievlevpn/zotero-theorem-list",
+      "frianasoa/Ze-Notes",
+      "l0o0/MagicZotero",
+      "MuiseDestiny/zotero-figure",
+      "MuiseDestiny/zotero-gpt"
+    ]
+  },
+  "readyForPrimary": false,
+  "upstreamCompatibilityDiscrepancies": [
+    {
+      "repo": "ievlevpn/zotero-theorem-list",
+      "externalTarget": "6",
+      "actualMinZoteroVersion": "6.999",
+      "evidence": "Current downloaded XPI manifest; no install.rdf in package"
+    },
+    {
+      "repo": "ievlevpn/zotero-latex-suite",
+      "externalTarget": "6",
+      "actualMinZoteroVersion": "6.999",
+      "evidence": "Current downloaded XPI manifest; no install.rdf in package"
+    }
+  ],
+  "checks": {
+    "typecheck": "passed",
+    "eslint": "passed",
+    "regressionTests": 12,
+    "workflowYaml": "passed"
+  }
+}
