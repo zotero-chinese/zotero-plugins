@@ -47,7 +47,7 @@ jobs:
 
       - name: Build
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN_NORTHWORD_GHOST || github.token }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN || github.token }}
           COLLECTOR_MODE: ${{ inputs.collector-mode }}
         run: |
           pnpm build
