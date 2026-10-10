@@ -13,7 +13,7 @@ The collector checks the latest stable release, so ordinary version releases gen
 
 ## Collector rollout
 
-The default `shadow` build runs our collector and compares its candidate data with the external scraper. Published `plugins.json` continues to use external data during validation. Chart collection remains disabled; published charts are preserved.
+The default `shadow` build runs our collector and compares its candidate data with the external scraper. Published `plugins.json` continues to use external data during validation, enriched with locally maintained Chinese names, summaries and search terms. Releases, compatibility and download URLs still come from the external data. Chart collection remains disabled; published charts are preserved.
 
 1. Merge the changes and inspect `comparison.json` and `collector/fetch-report.json` in the Actions artifact.
 2. Check repository coverage, historical releases, compatibility ranges and download URLs. Fetch failures, missing releases and version regressions block promotion.
@@ -27,6 +27,8 @@ Unreleased sources absent from the external output are marked pending and do not
 On 2026-10-05 the local catalog was reconciled with upstream's `addons` directory: **337 unique repositories**, compared with **336 published plugins**. See [the reconciliation report](reports/source-reconciliation.json) for additions, duplicates and the unpublished source entry.
 
 `src/plugins.ts` contains active plugins; `src/deprecated.ts` retains legacy plugins. Historical release selectors are combined with the newest stable release from the most recent release page. XPI manifests determine compatible Zotero versions (6–11). `assetName` selects an attachment, `customLink` supports external download sources, and `tags` / `recommended` preserve upstream metadata.
+
+Optional `nameZh`, `summaryZh` and `keywords` fields hold an established Chinese name, a short Chinese purpose statement and search terms. Maintain them in the source catalog; upstream sync preserves them, and both collector and shadow output include them. Omit `nameZh` when the plugin has no established Chinese name. Repository `aliases` remain separate and only identify previous repository names.
 
 ## Development
 

@@ -5,6 +5,7 @@ import fs from 'fs-extra'
 import { ofetch } from 'ofetch'
 import { deprecatedPlugins } from '../src/deprecated.js'
 import { canPromote, compareCatalog } from '../src/handler/comparison.js'
+import { applyCatalogMetadata } from '../src/handler/source-catalog.js'
 import { filterStorePlugins } from '../src/handler/store-policy.js'
 import { plugins } from '../src/plugins.js'
 
@@ -53,8 +54,8 @@ if (env.GITHUB_STEP_SUMMARY) {
 }
 if (mode === 'primary' && !ready)
   throw new Error('Primary promotion blocked: inspect dist/comparison.json')
-// Shadow mode keeps existing output while making the collector candidate reviewable.
-const storePlugins = filterStorePlugins(mode === 'primary' ? collected : external, [...plugins, ...deprecatedPlugins, ...collected])
+// Shadow mode keeps external release data and adds locally maintained search metadata.
+const storePlugins = filterStorePlugins(mode === 'primary' ? collected : applyCatalogMetadata(external, [...plugins, ...deprecatedPlugins]), [...plugins, ...deprecatedPlugins, ...collected])
 fs.outputJSONSync('dist/plugins.json', storePlugins)
 fs.outputJSONSync('dist/shields.json', { lastUpdate: new Date().toISOString(), source: mode === 'primary' ? 'zotero-chinese/zotero-plugins' : 'syt2/zotero-addons-scraper', mode })
 const charts = await ofetch('https://raw.githubusercontent.com/zotero-chinese/zotero-plugins/gh-pages/charts.json', {

@@ -7,6 +7,8 @@ import { dist, targetVersions, xpiCache } from '../config.js'
 import { download } from '../utils/fs.js'
 import { getRelease, octokit } from '../utils/github.js'
 import { compareVersions, supportsVersion } from '../utils/version.js'
+import { getCustomReleaseDate } from './custom-release-date.js'
+import { applyCatalogMetadata } from './source-catalog.js'
 import { filterStorePlugins } from './store-policy.js'
 import { parseXPI } from './xpi.js'
 
@@ -47,7 +49,7 @@ export async function fetchPlugins(plugins: PluginInfoBase[]): Promise<PluginInf
   const concurrency = Math.max(1, Math.min(8, Number(env.COLLECTOR_CONCURRENCY) || 4))
   await Promise.all(Array.from({ length: concurrency }, worker))
   fs.outputJSONSync(`${dist}/fetch-report.json`, report, { spaces: 2 })
-  return output.sort((a, b) => a.repo.toLowerCase().localeCompare(b.repo.toLowerCase()))
+  return applyCatalogMetadata(output.sort((a, b) => a.repo.toLowerCase().localeCompare(b.repo.toLowerCase())), plugins)
 }
 
 async function fetchPlugin(base: PluginInfoBase): Promise<PluginInfo | undefined> {
@@ -124,9 +126,10 @@ async function parseRelease(owner: string, repo: string, selector: ReleaseInfoBa
     url = selector.customLink
     assetId = createHash('sha256').update(url).digest('hex').slice(0, 20)
     path = `${xpiCache}/${assetId}.xpi`
+    // Resolve metadata first so a missing date does not replace the cached package.
+    releaseDate = await getCustomReleaseDate(url)
     // Custom URLs can change without changing their name, so always refresh them.
     await download(url, path)
-    releaseDate = new Date().toISOString()
   }
   else {
     const release = recent.find(r => r.tag_name === selector.tagName)

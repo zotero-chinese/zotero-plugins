@@ -73,7 +73,7 @@ jobs:
           body: |
             Updates the local plugin catalog from syt2/zotero-addons-scraper's source list and published release.
 
-            Preserves local-only plugins, repository aliases, verified compatibility labels and historical selectors.
+            Preserves local-only plugins, repository aliases, Chinese search metadata, verified compatibility labels and historical selectors.
 
             Validation: typecheck, regression tests and lint. Source commit, release metadata and merge report are in the workflow artifact.
 

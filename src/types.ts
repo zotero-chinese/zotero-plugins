@@ -9,6 +9,12 @@ export interface PluginInfoBase {
   repo: string
   /** Previous repository names, retained for upstream comparison after transfers. */
   aliases?: string[]
+  /** Community-maintained Chinese name, when the plugin has one. */
+  nameZh?: string
+  /** Short Chinese description of the plugin's purpose. */
+  summaryZh?: string
+  /** Search terms and familiar names, separate from repository aliases. */
+  keywords?: string[]
   /**
    * 插件的发布地址信息
    */
