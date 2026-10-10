@@ -1,0 +1,219 @@
+{
+  "checkedAt": "2026-10-10T01:50:44.194Z",
+  "mode": "shadow",
+  "excludedByBlacklist": [],
+  "sourceCount": 339,
+  "externalCount": 339,
+  "collectedCount": 336,
+  "missingFromSource": [
+    "xujialiu/Zotero-OpenReader",
+    "Cabdoge/pdf2notelink"
+  ],
+  "sourceOnly": [
+    "CHENYUZ-hub/zotero-literature-star-citation",
+    "xujialiu/Zotero-TTS"
+  ],
+  "missingFromCollector": [
+    "CHENYUZ-hub/zotero-literature-star-citation",
+    "occasional16/researchopia",
+    "xutaoya/paper-mind"
+  ],
+  "collectorOnly": [
+    "xujialiu/Zotero-TTS"
+  ],
+  "repositoryAliases": [
+    {
+      "repo": "haohaomin/zotero-codex",
+      "aliases": [
+        "renhao12356578/zotero-codex"
+      ]
+    },
+    {
+      "repo": "Moonweave-Research/zotero-reading-flow",
+      "aliases": [
+        "Moon-python/zotero-reading-flow"
+      ]
+    },
+    {
+      "repo": "wangqian06/zotero-pdf-background",
+      "aliases": [
+        "q77190858/zotero-pdf-background"
+      ]
+    }
+  ],
+  "missingReleases": [
+    {
+      "repo": "xujialiu/Zotero-OpenReader",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "11"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "7"
+    },
+    {
+      "repo": "ievlevpn/zotero-theorem-list",
+      "targetZoteroVersion": "6"
+    },
+    {
+      "repo": "ievlevpn/zotero-latex-suite",
+      "targetZoteroVersion": "6"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "Cabdoge/pdf2notelink",
+      "targetZoteroVersion": "10"
+    }
+  ],
+  "changedVersions": [
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "9",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "8",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "7",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "6",
+      "external": "0.2.8",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "wdcpclover/ai4paper",
+      "targetZoteroVersion": "11",
+      "external": "8.2.332",
+      "collected": "8.2.333"
+    },
+    {
+      "repo": "wdcpclover/ai4paper",
+      "targetZoteroVersion": "10",
+      "external": "8.2.332",
+      "collected": "8.2.333"
+    },
+    {
+      "repo": "wdcpclover/ai4paper",
+      "targetZoteroVersion": "9",
+      "external": "8.2.332",
+      "collected": "8.2.333"
+    },
+    {
+      "repo": "wdcpclover/ai4paper",
+      "targetZoteroVersion": "8",
+      "external": "8.2.332",
+      "collected": "8.2.333"
+    },
+    {
+      "repo": "wdcpclover/ai4paper",
+      "targetZoteroVersion": "7",
+      "external": "8.2.332",
+      "collected": "8.2.333"
+    },
+    {
+      "repo": "max3925vats/zotero-docling",
+      "targetZoteroVersion": "7",
+      "external": "0.4.0",
+      "collected": "0.3.3"
+    }
+  ],
+  "invalidReleases": [],
+  "identityChanges": [],
+  "compatibilityChanges": [
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "9",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "8",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "7",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "6",
+      "external": "5.0 - 7.0.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "max3925vats/zotero-docling",
+      "targetZoteroVersion": "7",
+      "external": "6.999 - 10.0.*",
+      "collected": "6.999 - *"
+    },
+    {
+      "repo": "ievlevpn/zotero-theorem-list",
+      "targetZoteroVersion": "11",
+      "external": "* - *",
+      "collected": "6.999 - *"
+    }
+  ],
+  "regressedVersions": [
+    {
+      "repo": "max3925vats/zotero-docling",
+      "targetZoteroVersion": "7",
+      "external": "0.4.0",
+      "collected": "0.3.3"
+    }
+  ],
+  "duplicateCollectedRepos": 0,
+  "fetchErrors": [
+    {
+      "repo": "occasional16/researchopia",
+      "error": "Historical release fetch failed: zotero-plugin: Not Found - https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name; zotero-plugin: Not Found - https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "error": "Historical release fetch failed: V3.3.3: Not Found - https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"
+    }
+  ],
+  "pendingSources": [
+    "CHENYUZ-hub/zotero-literature-star-citation"
+  ],
+  "readyForPrimary": false
+}
