@@ -13,7 +13,7 @@
 
 ## 逐步恢复采集
 
-默认运行 `shadow` 模式：采集器会处理本地清单，生成候选数据及与外部 scraper 的差异报告；对外的 `plugins.json` 暂时继续使用外部数据。图表沿用已发布数据，本阶段不恢复图表采集。
+默认运行 `shadow` 模式：采集器会处理本地清单，生成候选数据及与外部 scraper 的差异报告；对外的 `plugins.json` 暂时继续使用外部数据，并补充本地维护的中文名称、简介和搜索词。插件版本、兼容范围和下载地址仍来自外部数据。图表沿用已发布数据，本阶段不恢复图表采集。
 
 1. 合并代码后，定时 CI 自动运行独立采集。查看 Actions 构建产物中的 `comparison.json` 和 `collector/fetch-report.json`。
 2. 验证插件覆盖、历史版本、兼容范围和下载地址。采集失败、缺少插件或历史版本、版本倒退均会阻止正式切换。
@@ -35,6 +35,7 @@
 - `discoverReleases: true` 检查最近一页发行版中最新的正式版，与历史选择共同生成 Zotero 6–11 的兼容版本。
 - `assetName` 指定多附件仓库中的 XPI；`customLink` 支持非 GitHub 下载来源。
 - `tags` 和 `recommended` 来自源清单，支持在本地贡献新插件。
+- `nameZh`、`summaryZh`、`keywords` 可选，分别保存已有中文名称、一句中文用途介绍和搜索词；仅在源清单维护，采集与 shadow 发布都会携带。没有公认中文名称时省略 `nameZh`，保留插件原名。`aliases` 仅用于旧仓库名，不用于中文搜索。
 
 新增插件可在 `src/plugins.ts` 中按仓库名排序添加：
 
@@ -74,7 +75,7 @@ pnpm data:sync-source /path/to/zotero-addons-scraper /path/to/addon_infos.json
 pnpm lint:fix
 ```
 
-`data:sync-source` 会保留本地新增仓库，并同步外部的标签、推荐标记和已发布历史版本。提交前检查 diff 与差异报告。
+`data:sync-source` 会保留本地新增仓库和中文搜索信息，并同步外部的标签、推荐标记和已发布历史版本。提交前检查 diff 与差异报告。
 
 XPI 缓存放在 `.cache/xpi`，以附件 ID 和更新时间区分版本；自定义下载地址每次刷新。候选数据位于 `dist/collector`，最终发布数据位于 `dist`，并保留 `dist/dist/*.json` 的兼容路径。下载使用超时、重试和原子文件替换；错误响应或损坏安装包不会成为有效缓存。
 
