@@ -1,4 +1,4 @@
-import type { PluginInfoBase, ReleaseInfoBase, TagType } from '../types.js'
+import type { PluginInfo, PluginInfoBase, ReleaseInfoBase, TagType } from '../types.js'
 
 export interface UpstreamSource {
   repo: string
@@ -13,6 +13,17 @@ export interface PublishedSource {
 
 function sameSelector(a: ReleaseInfoBase, b: ReleaseInfoBase): boolean {
   return a.tagName === b.tagName && a.assetName === b.assetName && a.customLink === b.customLink
+}
+
+/** Use the same local editorial metadata for collector and external shadow output. */
+export function applyCatalogMetadata(published: PluginInfo[], sources: PluginInfoBase[]): PluginInfo[] {
+  const catalog = new Map(sources.flatMap(p => [p.repo, ...(p.aliases ?? [])].map(repo => [repo.toLowerCase(), p] as const)))
+  return published.map((plugin) => {
+    const source = catalog.get(plugin.repo.toLowerCase())
+    return source
+      ? { ...plugin, nameZh: source.nameZh, summaryZh: source.summaryZh, keywords: source.keywords }
+      : plugin
+  })
 }
 
 export function mergeSourceCatalog(current: PluginInfoBase[], upstream: UpstreamSource[], published: PublishedSource[]): PluginInfoBase[] {
@@ -48,11 +59,11 @@ export function mergeSourceCatalog(current: PluginInfoBase[], upstream: Upstream
     })
     const combined = [...incoming, ...(previous?.releases ?? [])]
     return {
+      ...previous,
       repo: previous?.repo ?? source.repo,
-      ...(previous?.aliases ? { aliases: previous.aliases } : {}),
       releases: combined.filter((release, i) => combined.findIndex(other => sameSelector(other, release) && other.targetZoteroVersion === release.targetZoteroVersion) === i),
       tags: source.tags,
-      ...(source.recommended ? { recommended: true } : {}),
+      recommended: source.recommended,
       discoverReleases: previous?.discoverReleases ?? true,
     }
   })
