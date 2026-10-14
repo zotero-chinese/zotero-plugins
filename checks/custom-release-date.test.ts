@@ -1,6 +1,8 @@
+import type { ReleaseInfo } from '../src/types.js'
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { getCustomReleaseDate } from '../src/handler/custom-release-date.js'
+import { setImmediate } from 'node:timers/promises'
+import { getCustomReleaseDate, refreshGiteeReleaseDates } from '../src/handler/custom-release-date.js'
 
 test('Gitee dates come from the selected file and branch, normalized to UTC', async () => {
   const date = await getCustomReleaseDate('https://gitee.com/MuiseDestiny/plugins/raw/master/nested/zotero-gpt.xpi', async (request) => {
@@ -36,4 +38,30 @@ test('missing or invalid source dates fail instead of publishing collection time
   }), /API unavailable/)
   await assert.rejects(getCustomReleaseDate('https://github.com/owner/plugin/releases/download/v1/missing.xpi', undefined, async () => ({ assets: [{ name: 'other.xpi', updated_at: '2026-01-01T00:00:00Z' }] })), /update time unavailable/)
   await assert.rejects(getCustomReleaseDate('https://example.org/plugin.xpi'), /Unsupported custom release date source/)
+})
+
+test('a failed Gitee lookup leaves every release unchanged after another date has resolved', async () => {
+  const releases = ['gpt', 'style'].map((name): ReleaseInfo => ({
+    id: `${name}@zotero`,
+    targetZoteroVersion: '10',
+    tagName: 'custom',
+    xpiVersion: '1.0',
+    minZoteroVersion: '10.0',
+    maxZoteroVersion: '10.*',
+    xpiDownloadUrl: { github: `https://gitee.com/MuiseDestiny/plugins/raw/master/zotero-${name}.xpi` },
+    releaseDate: '2026-05-01T22:47:34Z',
+    downloadCount: 0,
+    assetId: name,
+  }))
+  const snapshot = structuredClone(releases)
+  const pending = Promise.withResolvers<string>()
+  const refreshing = refreshGiteeReleaseDates([{ releases }], async (url) => {
+    return url.endsWith('zotero-gpt.xpi') ? '2026-10-10T05:57:44.000Z' : pending.promise
+  })
+  await setImmediate()
+  assert.deepEqual(releases, snapshot)
+  const rejected = assert.rejects(refreshing, /Gitee unavailable/)
+  pending.reject(new Error('Gitee unavailable'))
+  await rejected
+  assert.deepEqual(releases, snapshot)
 })

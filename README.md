@@ -13,7 +13,7 @@ The collector checks the latest stable release, so ordinary version releases gen
 
 ## Collector rollout
 
-The default `shadow` build runs our collector and compares its candidate data with the external scraper. Published `plugins.json` continues to use external data during validation, enriched with locally maintained Chinese names, summaries and search terms. Releases, compatibility and download URLs still come from the external data. Chart collection remains disabled; published charts are preserved.
+The default `shadow` build runs our collector and compares its candidate data with the external scraper. Published `plugins.json` continues to use external data during validation, enriched with locally maintained Chinese names, summaries and search terms. Versions, compatibility and download URLs still come from the external data. Gitee file dates come from their latest file commits; a failed date lookup stops publication. Chart collection remains disabled; published charts are preserved.
 
 1. Merge the changes and inspect `comparison.json` and `collector/fetch-report.json` in the Actions artifact.
 2. Check repository coverage, historical releases, compatibility ranges and download URLs. Fetch failures, missing releases and version regressions block promotion.
