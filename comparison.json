@@ -1,0 +1,518 @@
+{
+  "checkedAt": "2026-10-24T00:53:07.181Z",
+  "mode": "shadow",
+  "excludedByBlacklist": [],
+  "sourceCount": 339,
+  "externalCount": 351,
+  "collectedCount": 336,
+  "missingFromSource": [
+    "xujialiu/Zotero-OpenReader",
+    "daxiaxiong88/zotero-research",
+    "Liozhang/z-search",
+    "WWeiyiWang/BiRead",
+    "Liozhang/z-transplit",
+    "Veiluna/babeldoc-for-zotero",
+    "Noahxie83/zotero-lexibridge",
+    "Cabdoge/pdf2notelink",
+    "ouyangfeng2022/ZotMD",
+    "RedkieZhang717/vocabu_text",
+    "Ausanx/zotero-card-library",
+    "EEEEgoose/ocrflow",
+    "Ning703/zotero-excel-column-resize",
+    "liuwenbo0/zotero-local-translate",
+    "wangzikai01/zotero-row-colors"
+  ],
+  "sourceOnly": [
+    "CHENYUZ-hub/zotero-literature-star-citation",
+    "Noahxie83/zotero-local-mdx-click",
+    "xujialiu/Zotero-TTS"
+  ],
+  "missingFromCollector": [
+    "CHENYUZ-hub/zotero-literature-star-citation",
+    "occasional16/researchopia",
+    "xutaoya/paper-mind"
+  ],
+  "collectorOnly": [
+    "Noahxie83/zotero-local-mdx-click",
+    "xujialiu/Zotero-TTS"
+  ],
+  "repositoryAliases": [
+    {
+      "repo": "haohaomin/zotero-codex",
+      "aliases": [
+        "renhao12356578/zotero-codex"
+      ]
+    },
+    {
+      "repo": "Moonweave-Research/zotero-reading-flow",
+      "aliases": [
+        "Moon-python/zotero-reading-flow"
+      ]
+    },
+    {
+      "repo": "wangqian06/zotero-pdf-background",
+      "aliases": [
+        "q77190858/zotero-pdf-background"
+      ]
+    }
+  ],
+  "missingReleases": [
+    {
+      "repo": "retorquere/zotero-folder-import",
+      "targetZoteroVersion": "6"
+    },
+    {
+      "repo": "xujialiu/Zotero-OpenReader",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "daxiaxiong88/zotero-research",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "11"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "occasional16/researchopia",
+      "targetZoteroVersion": "7"
+    },
+    {
+      "repo": "ievlevpn/zotero-theorem-list",
+      "targetZoteroVersion": "6"
+    },
+    {
+      "repo": "ievlevpn/zotero-latex-suite",
+      "targetZoteroVersion": "6"
+    },
+    {
+      "repo": "Liozhang/z-search",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "Liozhang/z-search",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "WWeiyiWang/BiRead",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "WWeiyiWang/BiRead",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "WWeiyiWang/BiRead",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "Liozhang/z-transplit",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "Liozhang/z-transplit",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "Liozhang/z-transplit",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "Liozhang/z-transplit",
+      "targetZoteroVersion": "7"
+    },
+    {
+      "repo": "Veiluna/babeldoc-for-zotero",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "Veiluna/babeldoc-for-zotero",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "Veiluna/babeldoc-for-zotero",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "Veiluna/babeldoc-for-zotero",
+      "targetZoteroVersion": "7"
+    },
+    {
+      "repo": "Noahxie83/zotero-lexibridge",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "Cabdoge/pdf2notelink",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "ouyangfeng2022/ZotMD",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "ouyangfeng2022/ZotMD",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "ouyangfeng2022/ZotMD",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "ouyangfeng2022/ZotMD",
+      "targetZoteroVersion": "7"
+    },
+    {
+      "repo": "RedkieZhang717/vocabu_text",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "RedkieZhang717/vocabu_text",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "RedkieZhang717/vocabu_text",
+      "targetZoteroVersion": "8"
+    },
+    {
+      "repo": "RedkieZhang717/vocabu_text",
+      "targetZoteroVersion": "7"
+    },
+    {
+      "repo": "Ausanx/zotero-card-library",
+      "targetZoteroVersion": "9"
+    },
+    {
+      "repo": "EEEEgoose/ocrflow",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "Ning703/zotero-excel-column-resize",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "liuwenbo0/zotero-local-translate",
+      "targetZoteroVersion": "10"
+    },
+    {
+      "repo": "wangzikai01/zotero-row-colors",
+      "targetZoteroVersion": "10"
+    }
+  ],
+  "changedVersions": [
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "9",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "8",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "7",
+      "external": "3.1.3",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "6",
+      "external": "0.2.8",
+      "collected": "3.1.142"
+    },
+    {
+      "repo": "MuiseDestiny/ZoteroStyle",
+      "targetZoteroVersion": "9",
+      "external": "6.0.4",
+      "collected": "6.0.8"
+    },
+    {
+      "repo": "MuiseDestiny/ZoteroStyle",
+      "targetZoteroVersion": "8",
+      "external": "6.0.4",
+      "collected": "6.0.8"
+    },
+    {
+      "repo": "MuiseDestiny/ZoteroStyle",
+      "targetZoteroVersion": "7",
+      "external": "6.0.4",
+      "collected": "6.0.8"
+    },
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "10",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "9",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "8",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "7",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "10",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "9",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "8",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "7",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "10",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "9",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "8",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "7",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "qrkks/zotero-annotation-markdown",
+      "targetZoteroVersion": "10",
+      "external": "0.16.2",
+      "collected": "0.16.3"
+    },
+    {
+      "repo": "qrkks/zotero-annotation-markdown",
+      "targetZoteroVersion": "9",
+      "external": "0.16.2",
+      "collected": "0.16.3"
+    },
+    {
+      "repo": "max3925vats/zotero-docling",
+      "targetZoteroVersion": "7",
+      "external": "0.4.0",
+      "collected": "0.3.3"
+    },
+    {
+      "repo": "SolveSaint/RSSrch-for-Zotero",
+      "targetZoteroVersion": "11",
+      "external": "1.1.3",
+      "collected": "1.1.4"
+    },
+    {
+      "repo": "SolveSaint/RSSrch-for-Zotero",
+      "targetZoteroVersion": "10",
+      "external": "1.1.3",
+      "collected": "1.1.4"
+    }
+  ],
+  "invalidReleases": [],
+  "identityChanges": [],
+  "compatibilityChanges": [
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "9",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "8",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "7",
+      "external": "6.999 - 100.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/zotero-gpt",
+      "targetZoteroVersion": "6",
+      "external": "5.0 - 7.0.*",
+      "collected": "5.0 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/ZoteroStyle",
+      "targetZoteroVersion": "9",
+      "external": "6.999 - 9.*",
+      "collected": "6.999 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/ZoteroStyle",
+      "targetZoteroVersion": "8",
+      "external": "6.999 - 9.*",
+      "collected": "6.999 - 10.*"
+    },
+    {
+      "repo": "MuiseDestiny/ZoteroStyle",
+      "targetZoteroVersion": "7",
+      "external": "6.999 - 9.*",
+      "collected": "6.999 - 10.*"
+    },
+    {
+      "repo": "max3925vats/zotero-docling",
+      "targetZoteroVersion": "7",
+      "external": "6.999 - 10.0.*",
+      "collected": "6.999 - *"
+    }
+  ],
+  "regressedVersions": [
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "10",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "9",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "8",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "wileyyugioh/zotmoov",
+      "targetZoteroVersion": "7",
+      "external": "1.2.34",
+      "collected": "1.2.33"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "10",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "9",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "8",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "jlegewie/beaver-zotero",
+      "targetZoteroVersion": "7",
+      "external": "0.26.1-beta.1",
+      "collected": "0.26.0"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "10",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "9",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "8",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "ZionDoki/confucius",
+      "targetZoteroVersion": "7",
+      "external": "0.6.3-beta.1",
+      "collected": "0.6.2"
+    },
+    {
+      "repo": "max3925vats/zotero-docling",
+      "targetZoteroVersion": "7",
+      "external": "0.4.0",
+      "collected": "0.3.3"
+    }
+  ],
+  "duplicateCollectedRepos": 0,
+  "fetchErrors": [
+    {
+      "repo": "occasional16/researchopia",
+      "error": "Historical release fetch failed: zotero-plugin: Not Found - https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name; zotero-plugin: Not Found - https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"
+    },
+    {
+      "repo": "xutaoya/paper-mind",
+      "error": "Historical release fetch failed: V3.3.3: Not Found - https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"
+    }
+  ],
+  "pendingSources": [
+    "CHENYUZ-hub/zotero-literature-star-citation"
+  ],
+  "readyForPrimary": false
+}
