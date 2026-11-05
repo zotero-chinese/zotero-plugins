@@ -7,7 +7,7 @@ import { ofetch } from 'ofetch'
 import { deprecatedPlugins } from '../src/deprecated.js'
 import { canPromote, compareCatalog } from '../src/handler/comparison.js'
 import { refreshGiteeReleaseDates } from '../src/handler/custom-release-date.js'
-import { applyCatalogMetadata } from '../src/handler/source-catalog.js'
+import { mergeShadowCatalog } from '../src/handler/source-catalog.js'
 import { filterStorePlugins } from '../src/handler/store-policy.js'
 import { plugins } from '../src/plugins.js'
 
@@ -56,8 +56,10 @@ if (env.GITHUB_STEP_SUMMARY) {
 }
 if (mode === 'primary' && !ready)
   throw new Error('Primary promotion blocked: inspect dist/comparison.json')
-// Shadow keeps external versions and URLs, correcting dates for mutable Gitee files.
-const storePlugins = filterStorePlugins<PluginInfo>(mode === 'primary' ? collected : applyCatalogMetadata(external, [...plugins, ...deprecatedPlugins]), [...plugins, ...deprecatedPlugins, ...collected])
+// Shadow preserves upstream releases and adds reviewed plugins not yet listed there.
+const identities = [...plugins, ...deprecatedPlugins, ...collected]
+const sources = filterStorePlugins([...plugins, ...deprecatedPlugins], identities)
+const storePlugins = filterStorePlugins<PluginInfo>(mode === 'primary' ? collected : mergeShadowCatalog(external, collected, sources), identities)
 if (mode === 'shadow')
   await refreshGiteeReleaseDates(storePlugins)
 fs.outputJSONSync('dist/plugins.json', storePlugins)
