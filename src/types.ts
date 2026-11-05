@@ -21,6 +21,8 @@ export interface PluginInfoBase {
   releases: ReleaseInfoBase[]
   recommended?: boolean
   discoverReleases?: boolean
+  /** Publish this reviewed source in shadow mode when upstream has not listed it. */
+  publishInShadow?: boolean
 
   tags: TagType[]
 }

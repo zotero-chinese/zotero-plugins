@@ -79,6 +79,19 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: '6forwater29/citation-dialogue',
+    nameZh: '文献对话',
+    summaryZh: '查看论文引文图谱，连接 Obsidian、Notion 和本地 MCP。',
+    keywords: ['引文图谱', 'Obsidian', 'Notion', 'MCP'],
+    releases: [],
+    tags: [
+      'visualization',
+      'integration',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'aidecameron/zotero-annotation-color-customizer',
     releases: [
       {
@@ -120,6 +133,18 @@ export const plugins: PluginInfoBase[] = [
       'notes',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'AlexGrandbell/zotero-wdim',
+    nameZh: '和意为',
+    summaryZh: '在 PDF 选区或页面添加问号批注，标记阅读疑问。',
+    keywords: ['问号', '批注'],
+    releases: [],
+    tags: [
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'alima-webdev/zotero-review-assistant',
@@ -778,6 +803,17 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'dcy456/kokoro-reader',
+    summaryZh: '基于 Kokoro TTS 的离线 PDF 朗读，支持朗读单词。',
+    keywords: ['朗读', '语音', 'TTS'],
+    releases: [],
+    tags: [
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'diegodlh/zotero-cita',
     releases: [
       {
@@ -899,6 +935,18 @@ export const plugins: PluginInfoBase[] = [
       'ai',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'DreamPerday/PaperLens-Zotero',
+    summaryZh: '在 PDF 阅读器侧栏进行论文问答、逐段注解和证据核对。',
+    keywords: ['论文问答', '精读', '证据核对'],
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'DrinkTea905/zotero-paper-outline',
@@ -1853,6 +1901,19 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'JackBlack419/wenxian-yidu',
+    nameZh: '文献译读',
+    summaryZh: '支持 PDF 分屏、逐段对照、划词和离线翻译。',
+    keywords: ['翻译', '分屏', '离线'],
+    releases: [],
+    tags: [
+      'reader',
+      'ai',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'jadense-ai/jadense-in-zotero',
     releases: [
       {
@@ -2456,6 +2517,18 @@ export const plugins: PluginInfoBase[] = [
       'attachment',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'Logan12l/pinyin-for-zotero',
+    summaryZh: '修正中文作者多音字姓氏的拼音排序及文档引文顺序。',
+    keywords: ['拼音', '多音字', '作者排序'],
+    releases: [],
+    tags: [
+      'metadata',
+      'writing',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'LoveTheStar7/Zotero-CloseFlow',
@@ -3280,6 +3353,19 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'Philippyang21/zotero-pdf-helper',
+    summaryZh: '为扫描 PDF 添加文字层，整理高亮文字并补充书目信息。',
+    keywords: ['OCR', '扫描件', '文字层'],
+    releases: [],
+    tags: [
+      'attachment',
+      'reader',
+      'metadata',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'poesein/ZotQuery',
     releases: [
       {
@@ -3751,6 +3837,18 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'roey-angel/zotero-semantic-tagger',
+    summaryZh: '使用 Claude 从文库已有标签中自动选择标签，支持批量处理。',
+    keywords: ['自动标签', 'Claude'],
+    releases: [],
+    tags: [
+      'ai',
+      'metadata',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Royshare/zotero-spotlight',
     releases: [
       {
@@ -3899,6 +3997,18 @@ export const plugins: PluginInfoBase[] = [
       'integration',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'serbernardo/zotero-assistente-ia',
+    summaryZh: '使用用户配置的 AI 阅读、评价和比较论文，生成思维导图。',
+    keywords: ['AI Assistant', '论文问答', '思维导图'],
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'ShamanStone/Zotero_snapshot_reviver',
@@ -5079,6 +5189,18 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'y-0768/zotero-manuscript-grid',
+    nameZh: '稿纸格子',
+    summaryZh: '在 PDF 阅读器中插入一字一格的稿纸式文字批注。',
+    keywords: ['稿纸', '格子', '批注'],
+    releases: [],
+    tags: [
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'yanchou3/zotero-lastread-format',
     releases: [
       {
@@ -5164,6 +5286,19 @@ export const plugins: PluginInfoBase[] = [
       'metadata',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'yiiwang118/zotero-glossa',
+    summaryZh: '支持文献对话、划词翻译、公式显示，并将回答保存为笔记。',
+    keywords: ['论文问答', '划词翻译', '笔记'],
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+      'notes',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'yilewang/llm-for-zotero',

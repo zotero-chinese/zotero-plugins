@@ -26,6 +26,22 @@ export function applyCatalogMetadata(published: PluginInfo[], sources: PluginInf
   })
 }
 
+/** Keep upstream releases and supplement only explicitly reviewed local sources. */
+export function mergeShadowCatalog(external: PluginInfo[], collected: PluginInfo[], sources: PluginInfoBase[]): PluginInfo[] {
+  const published = [...external]
+  for (const source of sources.filter(p => p.publishInShadow)) {
+    const names = new Set([source.repo, ...(source.aliases ?? [])].map(repo => repo.toLowerCase()))
+    const matches = (plugin: PluginInfo) => [plugin.repo, ...(plugin.aliases ?? [])].some(repo => names.has(repo.toLowerCase()))
+    if (published.some(matches))
+      continue
+    const plugin = collected.find(matches)
+    if (!plugin?.releases.length)
+      throw new Error(`Missing reviewed plugin in shadow collection: ${source.repo}`)
+    published.push(plugin)
+  }
+  return applyCatalogMetadata(published, sources)
+}
+
 export function mergeSourceCatalog(current: PluginInfoBase[], upstream: UpstreamSource[], published: PublishedSource[]): PluginInfoBase[] {
   if (!upstream.length || !published.length)
     throw new Error('Empty upstream catalog or published data; refusing to rewrite local sources')

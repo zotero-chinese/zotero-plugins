@@ -13,12 +13,12 @@ The collector checks the latest stable release, so ordinary version releases gen
 
 ## Collector rollout
 
-The default `shadow` build runs our collector and compares its candidate data with the external scraper. Published `plugins.json` continues to use external data during validation, enriched with locally maintained Chinese names, summaries and search terms. Versions, compatibility and download URLs still come from the external data. Gitee file dates come from their latest file commits; a failed date lookup stops publication. Chart collection remains disabled; published charts are preserved.
+The default `shadow` build runs our collector and compares its candidate data with the external scraper. Published `plugins.json` continues to use external data during validation, enriched with locally maintained Chinese names, summaries and search terms. Existing upstream entries retain their versions, compatibility and download URLs. Reviewed local sources marked `publishInShadow: true` supplement plugins not yet listed upstream, using the collector’s XPI-derived data. A missing required local result stops publication; unrelated collector failures do not block shadow mode. Gitee file dates come from their latest file commits; a failed date lookup stops publication. Chart collection remains disabled; published charts are preserved.
 
 1. Merge the changes and inspect `comparison.json` and `collector/fetch-report.json` in the Actions artifact.
 2. Check repository coverage, historical releases, compatibility ranges and download URLs. Fetch failures, missing releases and version regressions block promotion.
 3. Run CI manually with `collector-mode: primary` to publish independently collected data. Set the repository variable `COLLECTOR_MODE=primary` after validation to retain this mode for scheduled builds. Revert it to `shadow` to publish external data again.
-4. The website still reads the external scraper directly. Switch both plugin data and update timestamps in website's `.github/scripts/fetch-data.mjs` after validating the independent output.
+4. The website reads this repository’s published plugin data and update timestamps through `.github/scripts/fetch-data.mjs`. Successful publication triggers a website rebuild.
 
 Unreleased sources absent from the external output are marked pending and do not block promotion. The collector does not create issues or comments. Incomplete candidates remain available for inspection and cannot replace the published catalog in primary mode.
 
@@ -28,7 +28,7 @@ On 2026-10-05 the local catalog was reconciled with upstream's `addons` director
 
 `src/plugins.ts` contains active plugins; `src/deprecated.ts` retains legacy plugins. Historical release selectors are combined with the newest stable release from the most recent release page. XPI manifests determine compatible Zotero versions (6–11). `assetName` selects an attachment, `customLink` supports external download sources, and `tags` / `recommended` preserve upstream metadata.
 
-Optional `nameZh`, `summaryZh` and `keywords` fields hold an established Chinese name, a short Chinese purpose statement and search terms. Maintain them in the source catalog; upstream sync preserves them, and both collector and shadow output include them. Omit `nameZh` when the plugin has no established Chinese name. Repository `aliases` remain separate and only identify previous repository names.
+Optional `nameZh`, `summaryZh` and `keywords` fields hold an established Chinese name, a short Chinese purpose statement and search terms. Maintain them in the source catalog; upstream sync preserves them, and both collector and shadow output include them. Omit `nameZh` when the plugin has no established Chinese name. Repository `aliases` remain separate and only identify previous repository names. Set `publishInShadow: true` after reviewing a local plugin’s release and compatibility to publish it before upstream lists it; upstream sync preserves this flag and shadow publication avoids duplicate repositories and aliases.
 
 ## Development
 
