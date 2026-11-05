@@ -1,10 +1,13 @@
 import type { FetchReport } from '../src/handler/plugins-data.js'
+import type { PluginInfo } from '../src/types.js'
 import { execFileSync } from 'node:child_process'
 import { env, execPath } from 'node:process'
 import fs from 'fs-extra'
 import { ofetch } from 'ofetch'
 import { deprecatedPlugins } from '../src/deprecated.js'
 import { canPromote, compareCatalog } from '../src/handler/comparison.js'
+import { refreshGiteeReleaseDates } from '../src/handler/custom-release-date.js'
+import { applyCatalogMetadata } from '../src/handler/source-catalog.js'
 import { filterStorePlugins } from '../src/handler/store-policy.js'
 import { plugins } from '../src/plugins.js'
 
@@ -53,8 +56,10 @@ if (env.GITHUB_STEP_SUMMARY) {
 }
 if (mode === 'primary' && !ready)
   throw new Error('Primary promotion blocked: inspect dist/comparison.json')
-// Shadow mode keeps existing output while making the collector candidate reviewable.
-const storePlugins = filterStorePlugins(mode === 'primary' ? collected : external, [...plugins, ...deprecatedPlugins, ...collected])
+// Shadow keeps external versions and URLs, correcting dates for mutable Gitee files.
+const storePlugins = filterStorePlugins<PluginInfo>(mode === 'primary' ? collected : applyCatalogMetadata(external, [...plugins, ...deprecatedPlugins]), [...plugins, ...deprecatedPlugins, ...collected])
+if (mode === 'shadow')
+  await refreshGiteeReleaseDates(storePlugins)
 fs.outputJSONSync('dist/plugins.json', storePlugins)
 fs.outputJSONSync('dist/shields.json', { lastUpdate: new Date().toISOString(), source: mode === 'primary' ? 'zotero-chinese/zotero-plugins' : 'syt2/zotero-addons-scraper', mode })
 const charts = await ofetch('https://raw.githubusercontent.com/zotero-chinese/zotero-plugins/gh-pages/charts.json', {

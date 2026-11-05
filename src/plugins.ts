@@ -2236,6 +2236,9 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'l0o0/jasminum',
+    nameZh: '茉莉花',
+    summaryZh: '识别中文 PDF/CAJ 的文献元数据，更新中文转换器并整理作者姓名。',
+    keywords: ['知网', 'CNKI', '中文文献', '元数据', '转换器', 'PDF', 'CAJ'],
     releases: [
       {
         targetZoteroVersion: '11',
@@ -2330,6 +2333,9 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'l0o0/tara',
+    nameZh: '蒲公英',
+    summaryZh: '备份与恢复 Zotero 的插件、配置、引用样式和转换器。',
+    keywords: ['备份', '恢复', '配置', '迁移', 'CSL', '转换器'],
     releases: [
       {
         targetZoteroVersion: '10',
@@ -2999,6 +3005,8 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'northword/zotero-format-metadata',
+    summaryZh: '规范条目元数据，补全 DOI、ISBN 对应信息并整理期刊缩写和标题大小写。',
+    keywords: ['Linter', '元数据', '格式化', '期刊缩写', 'DOI', 'ISBN', '重复条目'],
     releases: [
       {
         targetZoteroVersion: '10',
@@ -3582,6 +3590,8 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'retorquere/zotero-better-bibtex',
+    summaryZh: '管理和导出 BibTeX 参考文献数据，配合 LaTeX、Markdown 写作。',
+    keywords: ['BBT', 'LaTeX', 'BibTeX', 'BibLaTeX', 'Markdown', '参考文献', '导出', '写作'],
     releases: [
       {
         targetZoteroVersion: '11',
@@ -4574,46 +4584,6 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
-    repo: 'wdcpclover/ai4paper',
-    releases: [
-      {
-        targetZoteroVersion: '11',
-        tagName: 'plugin-v8.2.328',
-        assetName: 'ai4paper-v8.2.328.xpi',
-      },
-      {
-        targetZoteroVersion: '10',
-        tagName: 'plugin-v8.2.328',
-        assetName: 'ai4paper-v8.2.328.xpi',
-      },
-      {
-        targetZoteroVersion: '9',
-        tagName: 'plugin-v8.2.328',
-        assetName: 'ai4paper-v8.2.328.xpi',
-      },
-      {
-        targetZoteroVersion: '8',
-        tagName: 'plugin-v8.2.328',
-        assetName: 'ai4paper-v8.2.328.xpi',
-      },
-      {
-        targetZoteroVersion: '7',
-        tagName: 'plugin-v8.2.328',
-        assetName: 'ai4paper-v8.2.328.xpi',
-      },
-      {
-        targetZoteroVersion: '11',
-        tagName: 'plugin-v8.2.310',
-        assetName: 'ai4paper-v8.2.310.xpi',
-      },
-    ],
-    tags: [
-      'ai',
-      'reader',
-    ],
-    discoverReleases: true,
-  },
-  {
     repo: 'WildDataX/suppr-zotero-plugin',
     releases: [
       {
@@ -4754,6 +4724,8 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'windingwind/zotero-better-notes',
+    summaryZh: '将文献阅读与双链笔记结合，支持 Markdown 笔记和笔记导出。',
+    keywords: ['笔记', '双链', 'Markdown', '导出笔记', '知识管理'],
     releases: [
       {
         targetZoteroVersion: '10',
@@ -4779,6 +4751,8 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'windingwind/zotero-pdf-translate',
+    summaryZh: '在阅读器中划词翻译，翻译标题、摘要与批注，支持多种翻译引擎。',
+    keywords: ['翻译', 'PDF', '划词', '标题', '摘要', '批注', '词典'],
     releases: [
       {
         targetZoteroVersion: '10',
@@ -5499,59 +5473,4 @@ export const plugins: PluginInfoBase[] = [
 ]
 
 /** Small development sample. */
-export const pluginsDev: PluginInfoBase[] = [
-  {
-    repo: 'northword/zotero-format-metadata',
-    releases: [
-      {
-        targetZoteroVersion: '10',
-        tagName: 'v4.0.1',
-        assetName: 'linter-for-zotero.xpi',
-      },
-      {
-        targetZoteroVersion: '9',
-        tagName: 'v3.3.2',
-        assetName: 'linter-for-zotero.xpi',
-      },
-      {
-        targetZoteroVersion: '7',
-        tagName: 'v2.3.0',
-        assetName: 'linter-for-zotero.xpi',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: '0.4.4',
-        assetName: 'zotero-format-metadata-0.4.5.xpi',
-      },
-    ],
-    tags: [
-      'metadata',
-    ],
-    discoverReleases: true,
-  },
-  {
-    repo: 'windingwind/zotero-better-notes',
-    releases: [
-      {
-        targetZoteroVersion: '10',
-        tagName: 'v3.3.3',
-        assetName: 'better-notes-for-zotero.xpi',
-      },
-      {
-        targetZoteroVersion: '7',
-        tagName: 'v2.5.13',
-        assetName: 'better-notes-for-zotero.xpi',
-      },
-      {
-        targetZoteroVersion: '6',
-        tagName: '1.0.4',
-        assetName: 'zotero-better-notes.xpi',
-      },
-    ],
-    tags: [
-      'notes',
-    ],
-    recommended: true,
-    discoverReleases: true,
-  },
-]
+export const pluginsDev = plugins.filter(p => ['northword/zotero-format-metadata', 'windingwind/zotero-better-notes'].includes(p.repo))
