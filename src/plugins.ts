@@ -2079,6 +2079,16 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'JunyanKang/paper-loom',
+    nameZh: '文织',
+    summaryZh: '在 PDF 阅读器中听读论文、查看对照译文和引文信息，并探索作者关系与进行 AI 对话。',
+    keywords: ['Paper Loom', '文织', '听读', '朗读', '对照翻译', '引文', '作者关系', 'AI 对话'],
+    releases: [],
+    tags: ['reader', 'ai'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Juris-M/zotero-odf-scan-plugin',
     releases: [
       {
@@ -3895,6 +3905,16 @@ export const plugins: PluginInfoBase[] = [
       'interface',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'Rsuiyi/Zotero_PaperLoom',
+    nameZh: '文脉',
+    summaryZh: '支持阅读偏好记忆、跨论文知识图谱和原文引用定位的 AI 阅读助手。',
+    keywords: ['PaperLoom', '文脉', '阅读偏好', '记忆', '知识图谱', '多模态', '引用定位', 'AI 对话'],
+    releases: [],
+    tags: ['ai', 'reader'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'samreading/zotero-mindmap',
