@@ -5435,6 +5435,16 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'zhangyehao/zotero-fulltext-assistant',
+    nameZh: '全文助手',
+    summaryZh: '批量获取并核验全文 PDF，支持浏览器下载目录检查及用户主动发起的科研通求助。',
+    keywords: ['全文助手', 'Fulltext Assistant', '全文获取', 'PDF 下载', '科研通', '附件核验'],
+    releases: [],
+    tags: ['attachment', 'integration'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'zhi-11/zotero-ai-paragraph-notes',
     releases: [
       {
