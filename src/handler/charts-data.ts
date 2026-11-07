@@ -170,7 +170,10 @@ async function drawStarHistory() {
       ++datMap[timestamp]
     }
     const data = Object.entries(datMap)
-      .map(point => [Number.parseInt(point[0]), point[1]])
+      .map(point => [
+        Number.parseInt(point[0]),
+        point[1],
+      ])
       .sort((a, b) => a[0] - b[0])
     for (let i = 1; i < data.length; ++i) data[i][1] += data[i - 1][1]
     return {
@@ -380,7 +383,9 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
   }
   const pointColor = 'var(--highcharts-color-{point.colorIndex})'
   const exporting = {
-    menuItemDefinitions: { invertSelection: { text: 'Invert Selection' } },
+    menuItemDefinitions: {
+      invertSelection: { text: 'Invert Selection' },
+    },
     buttons: {
       contextButton: {
         menuItems: [
@@ -451,7 +456,11 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
                 },
               ],
             },
-            { cells: [{ id: 'star-history' }] },
+            {
+              cells: [
+                { id: 'star-history' },
+              ],
+            },
           ],
         },
       ],
@@ -509,7 +518,11 @@ export default async function getChartOptions(plugins: PluginInfo[]) {
                             </span>
                         </div>`,
           },
-          plotOptions: { series: { point: { events: {} } } },
+          plotOptions: {
+            series: {
+              point: { events: {} },
+            },
+          },
           series: [
             {
               type: 'wordcloud',

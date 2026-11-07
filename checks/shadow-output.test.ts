@@ -123,10 +123,22 @@ const scenarios = [
 
 for (const [scenario, title] of scenarios) {
   test(title, () => {
-    assert.doesNotThrow(() => execFileSync(process.execPath, ['--experimental-test-module-mocks', '--import', 'tsx', '--input-type=module'], {
+    assert.doesNotThrow(() => execFileSync(process.execPath, [
+      '--experimental-test-module-mocks',
+      '--import',
+      'tsx',
+      '--input-type=module',
+    ], {
       input: harness,
       cwd: new URL('../', import.meta.url),
-      env: { ...process.env, COLLECTOR_MODE: 'shadow', COLLECTOR_REPOS: '', NODE_ENV: 'test', GITHUB_STEP_SUMMARY: '', SHADOW_CASE: scenario },
+      env: {
+        ...process.env,
+        COLLECTOR_MODE: 'shadow',
+        COLLECTOR_REPOS: '',
+        NODE_ENV: 'test',
+        GITHUB_STEP_SUMMARY: '',
+        SHADOW_CASE: scenario,
+      },
       stdio: ['pipe', 'pipe', 'pipe'],
     }))
   })

@@ -22,7 +22,12 @@ export interface FetchReport {
 /** Failures are reported, never silently published as a reduced catalog. */
 export async function fetchPlugins(plugins: PluginInfoBase[]): Promise<PluginInfo[]> {
   plugins = filterStorePlugins(plugins)
-  const report: FetchReport = { requested: plugins.length, refreshed: [], pending: [], errors: [] }
+  const report: FetchReport = {
+    requested: plugins.length,
+    refreshed: [],
+    pending: [],
+    errors: [],
+  }
   const output: PluginInfo[] = []
   let index = 0
   async function worker() {
@@ -40,7 +45,9 @@ export async function fetchPlugins(plugins: PluginInfoBase[]): Promise<PluginInf
         }
       }
       catch (error) {
-        const message = error instanceof Error ? error.message : String(error)
+        const message = error instanceof Error
+          ? error.message
+          : String(error)
         report.errors.push({ repo: plugin.repo, error: message })
         consola.error(plugin.repo, message)
       }
@@ -80,7 +87,9 @@ async function fetchPlugin(base: PluginInfoBase): Promise<PluginInfo | undefined
       candidates.push(await parseRelease(owner, repo, selector, recent))
     }
     catch (error) {
-      failures.push(`${selector.tagName}: ${error instanceof Error ? error.message : error}`)
+      failures.push(`${selector.tagName}: ${error instanceof Error
+        ? error.message
+        : error}`)
     }
   }
   const releases: ReleaseInfo[] = []

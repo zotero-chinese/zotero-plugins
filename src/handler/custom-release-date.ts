@@ -9,7 +9,9 @@ type FindRelease = (owner: string, repo: string, tag: string) => Promise<{ asset
 export async function refreshGiteeReleaseDates(plugins: Pick<PluginInfo, 'releases'>[], getDate: (url: string) => Promise<string> = getCustomReleaseDate): Promise<void> {
   const releases = plugins.flatMap(plugin => plugin.releases)
     .filter(release => release.xpiDownloadUrl?.github?.startsWith('https://gitee.com/'))
-  const urls = [...new Set(releases.map(release => release.xpiDownloadUrl.github))]
+  const urls = [
+    ...new Set(releases.map(release => release.xpiDownloadUrl.github)),
+  ]
   const dates = new Map(await Promise.all(urls.map(async url => [url, await getDate(url)] as const)))
   for (const release of releases)
     release.releaseDate = dates.get(release.xpiDownloadUrl.github)!
@@ -37,7 +39,9 @@ export async function getCustomReleaseDate(
   }
   else if (url.hostname === 'github.com' && github) {
     const [, owner, repo, tag, file] = github
-    const release = await findRelease(decodeURIComponent(owner), decodeURIComponent(repo), tag ? decodeURIComponent(tag) : 'latest')
+    const release = await findRelease(decodeURIComponent(owner), decodeURIComponent(repo), tag
+      ? decodeURIComponent(tag)
+      : 'latest')
     date = release?.assets.find(asset => asset.name === decodeURIComponent(file))?.updated_at
   }
   else {

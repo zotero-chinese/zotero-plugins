@@ -7,13 +7,22 @@ interface RepositoryIdentity {
 }
 
 export function filterStorePlugins<T extends RepositoryIdentity>(plugins: T[], identities: RepositoryIdentity[] = plugins, blacklist: BlacklistEntry[] = pluginBlacklist): T[] {
-  const blocked = new Set(blacklist.flatMap(p => [p.repo, ...(p.aliases ?? [])]).map(repo => repo.trim().toLowerCase()))
+  const blocked = new Set(blacklist.flatMap(p => [
+    p.repo,
+    ...(p.aliases ?? []),
+  ]).map(repo => repo.trim().toLowerCase()))
   // Expand connected aliases, including chains of repository transfers.
   let changed = true
   while (changed) {
     changed = false
-    for (const plugin of [...identities, ...plugins]) {
-      const names = [plugin.repo, ...(plugin.aliases ?? [])].map(repo => repo.toLowerCase())
+    for (const plugin of [
+      ...identities,
+      ...plugins,
+    ]) {
+      const names = [
+        plugin.repo,
+        ...(plugin.aliases ?? []),
+      ].map(repo => repo.toLowerCase())
       if (names.some(repo => blocked.has(repo))) {
         for (const repo of names) {
           if (!blocked.has(repo)) {
@@ -24,5 +33,8 @@ export function filterStorePlugins<T extends RepositoryIdentity>(plugins: T[], i
       }
     }
   }
-  return plugins.filter(p => ![p.repo, ...(p.aliases ?? [])].some(repo => blocked.has(repo.toLowerCase())))
+  return plugins.filter(p => ![
+    p.repo,
+    ...(p.aliases ?? []),
+  ].some(repo => blocked.has(repo.toLowerCase())))
 }

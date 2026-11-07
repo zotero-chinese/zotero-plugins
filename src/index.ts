@@ -13,9 +13,22 @@ if (!env.GITHUB_TOKEN)
   throw new Error('GITHUB_TOKEN 未设置')
 
 function getPlugins() {
-  const catalog = filterStorePlugins(env.NODE_ENV === 'development' ? pluginsDev : [...plugins, ...deprecatedPlugins], [...plugins, ...deprecatedPlugins])
+  const catalog = filterStorePlugins(env.NODE_ENV === 'development'
+    ? pluginsDev
+    : [
+        ...plugins,
+        ...deprecatedPlugins,
+      ], [
+    ...plugins,
+    ...deprecatedPlugins,
+  ])
   const repos = env.COLLECTOR_REPOS?.split(',').map(r => r.trim().toLowerCase())
-  const selected = repos ? catalog.filter(p => [p.repo, ...(p.aliases ?? [])].some(repo => repos.includes(repo.toLowerCase()))) : catalog
+  const selected = repos
+    ? catalog.filter(p => [
+        p.repo,
+        ...(p.aliases ?? []),
+      ].some(repo => repos.includes(repo.toLowerCase())))
+    : catalog
   if (repos && !selected.length)
     throw new Error('No eligible plugins selected')
   if (new Set(selected.map(p => p.repo.toLowerCase())).size !== selected.length)
@@ -41,7 +54,11 @@ async function handlePluginsData() {
 async function handleChartsData() {
   const pluginsInfoDist = fs.readJSONSync(`${dist}/plugins.json`)
   const chartOptions = await getChartOptions(pluginsInfoDist)
-  fs.outputJSONSync(`${dist}/charts.json`, chartOptions, { spaces: env.NODE_ENV === 'development' ? 2 : 0 })
+  fs.outputJSONSync(`${dist}/charts.json`, chartOptions, {
+    spaces: env.NODE_ENV === 'development'
+      ? 2
+      : 0,
+  })
 }
 
 async function main() {

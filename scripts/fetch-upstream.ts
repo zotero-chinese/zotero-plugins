@@ -2,7 +2,9 @@ import { env } from 'node:process'
 import fs from 'fs-extra'
 import { ofetch } from 'ofetch'
 
-const headers = env.GITHUB_TOKEN ? { Authorization: `Bearer ${env.GITHUB_TOKEN}` } : undefined
+const headers = env.GITHUB_TOKEN
+  ? { Authorization: `Bearer ${env.GITHUB_TOKEN}` }
+  : undefined
 const release = await ofetch('https://api.github.com/repos/syt2/zotero-addons-scraper/releases/latest', {
   headers,
   responseType: 'json',
