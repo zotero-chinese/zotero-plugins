@@ -17,10 +17,19 @@ if (!Array.isArray(published) || published.some(p => !p.repo || !Array.isArray(p
   throw new Error('Invalid upstream published data')
 const upstream: UpstreamSource[] = fs.readdirSync(path.join(sourceDir, 'addons')).filter(n => n.includes('@')).map((name) => {
   const content = fs.readFileSync(path.join(sourceDir, 'addons', name), 'utf8').trim()
-  const metadata = content ? JSON.parse(content) : {}
-  return { repo: name.replace('@', '/'), tags: metadata.tags ?? [], recommended: metadata.recommended }
+  const metadata = content
+    ? JSON.parse(content)
+    : {}
+  return {
+    repo: name.replace('@', '/'),
+    tags: metadata.tags ?? [],
+    recommended: metadata.recommended,
+  }
 })
-const current = [...plugins, ...deprecatedPlugins]
+const current = [
+  ...plugins,
+  ...deprecatedPlugins,
+]
 const imported = mergeSourceCatalog(current, upstream, published)
 const eligible = filterStorePlugins(imported)
 const legacy = new Set(deprecatedPlugins.map(p => p.repo.toLowerCase()))
@@ -29,7 +38,10 @@ const retired = eligible.filter(p => legacy.has(p.repo.toLowerCase()))
 const header = 'import type { PluginInfoBase } from \'./types.js\'\n\n'
 fs.writeFileSync('src/plugins.ts', `${header}/** Local catalog; selectors retain historical versions and discover new releases. */\nexport const plugins: PluginInfoBase[] = ${JSON.stringify(active, null, 2)}\n\n/** Small development sample. */\nexport const pluginsDev = plugins.filter(p => ${JSON.stringify(pluginsDev.map(p => p.repo))}.includes(p.repo))\n`)
 fs.writeFileSync('src/deprecated.ts', `${header}/** Legacy plugins retained for compatibility. */\nexport const deprecatedPlugins: PluginInfoBase[] = ${JSON.stringify(retired, null, 2)}\n`)
-const known = new Set(current.flatMap(p => [p.repo, ...(p.aliases ?? [])].map(repo => repo.toLowerCase())))
+const known = new Set(current.flatMap(p => [
+  p.repo,
+  ...(p.aliases ?? []),
+].map(repo => repo.toLowerCase())))
 const sourceNames = new Set(upstream.map(p => p.repo.toLowerCase()))
 const report = {
   upstreamSourceCount: upstream.length,
@@ -38,7 +50,10 @@ const report = {
   localAfter: eligible.length,
   excludedByBlacklist: imported.filter(p => !eligible.includes(p)).map(p => p.repo),
   added: eligible.filter(p => !known.has(p.repo.toLowerCase())).map(p => p.repo),
-  localOnlyRetained: current.filter(p => ![p.repo, ...(p.aliases ?? [])].some(repo => sourceNames.has(repo.toLowerCase()))).map(p => p.repo),
+  localOnlyRetained: current.filter(p => ![
+    p.repo,
+    ...(p.aliases ?? []),
+  ].some(repo => sourceNames.has(repo.toLowerCase()))).map(p => p.repo),
   publishedSHA256: createHash('sha256').update(fs.readFileSync(publishedFile)).digest('hex'),
 }
 fs.outputJSONSync('.cache/upstream-sync/report.json', report, { spaces: 2 })

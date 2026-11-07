@@ -17,11 +17,22 @@ function sameSelector(a: ReleaseInfoBase, b: ReleaseInfoBase): boolean {
 
 /** Use the same local editorial metadata for collector and external shadow output. */
 export function applyCatalogMetadata(published: PluginInfo[], sources: PluginInfoBase[]): PluginInfo[] {
-  const catalog = new Map(sources.flatMap(p => [p.repo, ...(p.aliases ?? [])].map(repo => [repo.toLowerCase(), p] as const)))
+  const catalog = new Map(sources.flatMap(p => [
+    p.repo,
+    ...(p.aliases ?? []),
+  ].map(repo => [
+    repo.toLowerCase(),
+    p,
+  ] as const)))
   return published.map((plugin) => {
     const source = catalog.get(plugin.repo.toLowerCase())
     return source
-      ? { ...plugin, nameZh: source.nameZh, summaryZh: source.summaryZh, keywords: source.keywords }
+      ? {
+          ...plugin,
+          nameZh: source.nameZh,
+          summaryZh: source.summaryZh,
+          keywords: source.keywords,
+        }
       : plugin
   })
 }
@@ -30,8 +41,14 @@ export function applyCatalogMetadata(published: PluginInfo[], sources: PluginInf
 export function mergeShadowCatalog(external: PluginInfo[], collected: PluginInfo[], sources: PluginInfoBase[]): PluginInfo[] {
   const published = [...external]
   for (const source of sources.filter(p => p.publishInShadow)) {
-    const names = new Set([source.repo, ...(source.aliases ?? [])].map(repo => repo.toLowerCase()))
-    const matches = (plugin: PluginInfo) => [plugin.repo, ...(plugin.aliases ?? [])].some(repo => names.has(repo.toLowerCase()))
+    const names = new Set([
+      source.repo,
+      ...(source.aliases ?? []),
+    ].map(repo => repo.toLowerCase()))
+    const matches = (plugin: PluginInfo) => [
+      plugin.repo,
+      ...(plugin.aliases ?? []),
+    ].some(repo => names.has(repo.toLowerCase()))
     if (published.some(matches))
       continue
     const plugin = collected.find(matches)
@@ -51,8 +68,17 @@ export function mergeSourceCatalog(current: PluginInfoBase[], upstream: Upstream
       throw new Error(`Invalid or duplicate upstream source: ${entry.repo}`)
     names.add(entry.repo.toLowerCase())
   }
-  const outputs = new Map(published.map(p => [p.repo.toLowerCase(), p]))
-  const existing = new Map(current.flatMap(p => [p.repo, ...(p.aliases ?? [])].map(repo => [repo.toLowerCase(), p] as const)))
+  const outputs = new Map(published.map(p => [
+    p.repo.toLowerCase(),
+    p,
+  ]))
+  const existing = new Map(current.flatMap(p => [
+    p.repo,
+    ...(p.aliases ?? []),
+  ].map(repo => [
+    repo.toLowerCase(),
+    p,
+  ] as const)))
   const imported = upstream.map((source): PluginInfoBase => {
     const previous = existing.get(source.repo.toLowerCase())
     const releases: ReleaseInfoBase[] = (outputs.get(source.repo.toLowerCase())?.releases ?? []).map((release) => {
@@ -60,11 +86,23 @@ export function mergeSourceCatalog(current: PluginInfoBase[], upstream: Upstream
       const prefix = `https://github.com/${source.repo}/releases/`
       const github = url?.startsWith(`${prefix}download/`)
       const latest = url?.startsWith(`${prefix}latest/download/`)
-      const downloadTag = github ? decodeURIComponent(url!.split('/releases/download/')[1].split('/')[0]) : undefined
+      const downloadTag = github
+        ? decodeURIComponent(url!.split('/releases/download/')[1].split('/')[0])
+        : undefined
       return {
         targetZoteroVersion: release.targetZoteroVersion,
-        tagName: github ? downloadTag! : latest || !url ? release.tagName : 'custom',
-        ...(github || latest ? { assetName: url?.split('/').pop() } : url ? { customLink: url } : {}),
+        tagName: github
+          ? downloadTag!
+          : latest || !url
+            ? release.tagName
+            : 'custom',
+        ...(github || latest
+          ? {
+              assetName: url?.split('/').pop(),
+            }
+          : url
+            ? { customLink: url }
+            : {}),
       }
     })
     // Keep locally verified compatibility labels and historical selectors.
@@ -73,7 +111,10 @@ export function mergeSourceCatalog(current: PluginInfoBase[], upstream: Upstream
       matches.sort((a, b) => Math.abs(Number(a.targetZoteroVersion) - Number(release.targetZoteroVersion)) - Math.abs(Number(b.targetZoteroVersion) - Number(release.targetZoteroVersion)))
       return matches[0] ?? release
     })
-    const combined = [...incoming, ...(previous?.releases ?? [])]
+    const combined = [
+      ...incoming,
+      ...(previous?.releases ?? []),
+    ]
     return {
       ...previous,
       repo: previous?.repo ?? source.repo,

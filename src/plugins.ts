@@ -2082,7 +2082,16 @@ export const plugins: PluginInfoBase[] = [
     repo: 'JunyanKang/paper-loom',
     nameZh: '文织',
     summaryZh: '在 PDF 阅读器中听读论文、查看对照译文和引文信息，并探索作者关系与进行 AI 对话。',
-    keywords: ['Paper Loom', '文织', '听读', '朗读', '对照翻译', '引文', '作者关系', 'AI 对话'],
+    keywords: [
+      'Paper Loom',
+      '文织',
+      '听读',
+      '朗读',
+      '对照翻译',
+      '引文',
+      '作者关系',
+      'AI 对话',
+    ],
     releases: [],
     tags: ['reader', 'ai'],
     discoverReleases: true,
@@ -2309,7 +2318,15 @@ export const plugins: PluginInfoBase[] = [
     repo: 'l0o0/jasminum',
     nameZh: '茉莉花',
     summaryZh: '识别中文 PDF/CAJ 的文献元数据，更新中文转换器并整理作者姓名。',
-    keywords: ['知网', 'CNKI', '中文文献', '元数据', '转换器', 'PDF', 'CAJ'],
+    keywords: [
+      '知网',
+      'CNKI',
+      '中文文献',
+      '元数据',
+      '转换器',
+      'PDF',
+      'CAJ',
+    ],
     releases: [
       {
         targetZoteroVersion: '11',
@@ -3089,7 +3106,15 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'northword/zotero-format-metadata',
     summaryZh: '规范条目元数据，补全 DOI、ISBN 对应信息并整理期刊缩写和标题大小写。',
-    keywords: ['Linter', '元数据', '格式化', '期刊缩写', 'DOI', 'ISBN', '重复条目'],
+    keywords: [
+      'Linter',
+      '元数据',
+      '格式化',
+      '期刊缩写',
+      'DOI',
+      'ISBN',
+      '重复条目',
+    ],
     releases: [
       {
         targetZoteroVersion: '10',
@@ -3687,7 +3712,16 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'retorquere/zotero-better-bibtex',
     summaryZh: '管理和导出 BibTeX 参考文献数据，配合 LaTeX、Markdown 写作。',
-    keywords: ['BBT', 'LaTeX', 'BibTeX', 'BibLaTeX', 'Markdown', '参考文献', '导出', '写作'],
+    keywords: [
+      'BBT',
+      'LaTeX',
+      'BibTeX',
+      'BibLaTeX',
+      'Markdown',
+      '参考文献',
+      '导出',
+      '写作',
+    ],
     releases: [
       {
         targetZoteroVersion: '11',
@@ -3910,7 +3944,16 @@ export const plugins: PluginInfoBase[] = [
     repo: 'Rsuiyi/Zotero_PaperLoom',
     nameZh: '文脉',
     summaryZh: '支持阅读偏好记忆、跨论文知识图谱和原文引用定位的 AI 阅读助手。',
-    keywords: ['PaperLoom', '文脉', '阅读偏好', '记忆', '知识图谱', '多模态', '引用定位', 'AI 对话'],
+    keywords: [
+      'PaperLoom',
+      '文脉',
+      '阅读偏好',
+      '记忆',
+      '知识图谱',
+      '多模态',
+      '引用定位',
+      'AI 对话',
+    ],
     releases: [],
     tags: ['ai', 'reader'],
     discoverReleases: true,
@@ -4882,7 +4925,15 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'windingwind/zotero-pdf-translate',
     summaryZh: '在阅读器中划词翻译，翻译标题、摘要与批注，支持多种翻译引擎。',
-    keywords: ['翻译', 'PDF', '划词', '标题', '摘要', '批注', '词典'],
+    keywords: [
+      '翻译',
+      'PDF',
+      '划词',
+      '标题',
+      '摘要',
+      '批注',
+      '词典',
+    ],
     releases: [
       {
         targetZoteroVersion: '10',
@@ -5438,7 +5489,14 @@ export const plugins: PluginInfoBase[] = [
     repo: 'zhangyehao/zotero-fulltext-assistant',
     nameZh: '全文助手',
     summaryZh: '批量获取并核验全文 PDF，支持浏览器下载目录检查及用户主动发起的科研通求助。',
-    keywords: ['全文助手', 'Fulltext Assistant', '全文获取', 'PDF 下载', '科研通', '附件核验'],
+    keywords: [
+      '全文助手',
+      'Fulltext Assistant',
+      '全文获取',
+      'PDF 下载',
+      '科研通',
+      '附件核验',
+    ],
     releases: [],
     tags: ['attachment', 'integration'],
     discoverReleases: true,

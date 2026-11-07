@@ -9,7 +9,13 @@ export function compareVersions(a: string, b: string): number {
       continue
     const xn = /^\d+$/.test(x)
     const yn = /^\d+$/.test(y)
-    const result = xn && yn ? Number(x) - Number(y) : xn !== yn ? xn ? 1 : -1 : x.localeCompare(y)
+    const result = xn && yn
+      ? Number(x) - Number(y)
+      : xn !== yn
+        ? xn
+          ? 1
+          : -1
+        : x.localeCompare(y)
     if (result)
       return Math.sign(result)
   }
@@ -22,6 +28,10 @@ export function supportsVersion(major: string, min: string, max: string): boolea
   const upper = max.replaceAll('*', '999')
   const targetMin = `${major}.0`
   // Upstream excludes sentinel 6.999 and 7.999 compatibility floors.
-  const targetMax = `${major}.${major === '6' ? '2' : major === '7' ? '8' : '999'}`
+  const targetMax = `${major}.${major === '6'
+    ? '2'
+    : major === '7'
+      ? '8'
+      : '999'}`
   return compareVersions(lower, targetMax) < 0 && compareVersions(upper, targetMin) > 0
 }

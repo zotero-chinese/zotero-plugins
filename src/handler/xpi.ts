@@ -22,7 +22,14 @@ export function parseXPI(filePath: string): XpiInfo {
       const key = value?.match(/^__MSG_(.+)__$/)?.[1]
       if (!key)
         return value ?? ''
-      for (const locale of ['zh_CN', 'zh-CN', 'zh', data.default_locale, 'en_US', 'en']) {
+      for (const locale of [
+        'zh_CN',
+        'zh-CN',
+        'zh',
+        data.default_locale,
+        'en_US',
+        'en',
+      ]) {
         const entry = zip.getEntry(`_locales/${locale}/messages.json`)
         if (entry) {
           const message = jsonc.parse(entry.getData().toString('utf8'))[key]?.message
@@ -71,10 +78,16 @@ function parseRDF(zip: AdmZip): XpiInfo {
   if (!rdf)
     throw new Error('XPI has neither manifest.json nor install.rdf')
   // Ignore referenced application descriptions preceding the install-manifest node.
-  const installNode = [...rdf.matchAll(/<(?:\w+:)?Description\b[^>]*>/g)].find(match => match[0].includes('urn:mozilla:install-manifest'))
-  const install = installNode?.index === undefined ? rdf : rdf.slice(installNode.index)
+  const installNode = [
+    ...rdf.matchAll(/<(?:\w+:)?Description\b[^>]*>/g),
+  ].find(match => match[0].includes('urn:mozilla:install-manifest'))
+  const install = installNode?.index === undefined
+    ? rdf
+    : rdf.slice(installNode.index)
   const namespace = rdf.match(/xmlns:(\w+)=["']http:\/\/www\.mozilla\.org\/2004\/em-rdf#["']/)?.[1]
-  const em = namespace ? `${namespace}:` : 'em:'
+  const em = namespace
+    ? `${namespace}:`
+    : 'em:'
   const header = install.split(`<${em}targetApplication`)[0]
   function value(text: string, key: string): string {
     return text.match(new RegExp(`${em}${key}=["']([^"']+)["']`))?.[1]
@@ -91,7 +104,9 @@ function parseRDF(zip: AdmZip): XpiInfo {
     xpiVersion: value(header, 'version'),
     minZoteroVersion: value(target, 'minVersion'),
     // RDF addons use the legacy loader, unavailable in Zotero 7 and later.
-    maxZoteroVersion: compareVersions(value(target, 'maxVersion').replaceAll('*', '999'), '6.*') > 0 ? '6.*' : value(target, 'maxVersion'),
+    maxZoteroVersion: compareVersions(value(target, 'maxVersion').replaceAll('*', '999'), '6.*') > 0
+      ? '6.*'
+      : value(target, 'maxVersion'),
   }
   if (!result.id || !result.xpiVersion || !result.minZoteroVersion || !result.maxZoteroVersion)
     throw new Error('install.rdf lacks ID, version or Zotero compatibility range')

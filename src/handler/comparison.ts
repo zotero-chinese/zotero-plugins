@@ -8,15 +8,30 @@ interface PublishedPlugin {
 }
 
 export function compareCatalog(catalog: PluginInfoBase[], external: PublishedPlugin[], collected: PluginInfo[]) {
-  const identities = [...catalog, ...collected]
+  const identities = [
+    ...catalog,
+    ...collected,
+  ]
   const allowedExternal = filterStorePlugins(external, identities)
   const excludedByBlacklist = external.filter(p => !allowedExternal.includes(p)).map(p => p.repo)
   external = allowedExternal
   catalog = filterStorePlugins(catalog, identities)
   collected = filterStorePlugins(collected, identities)
-  const source = new Set(catalog.flatMap(p => [p.repo, ...(p.aliases ?? [])]).map(r => r.toLowerCase()))
-  const baseline = new Map(external.map(p => [p.repo.toLowerCase(), p]))
-  const candidate = new Map(collected.flatMap(p => [p.repo, ...(p.aliases ?? [])].map(repo => [repo.toLowerCase(), p] as const)))
+  const source = new Set(catalog.flatMap(p => [
+    p.repo,
+    ...(p.aliases ?? []),
+  ]).map(r => r.toLowerCase()))
+  const baseline = new Map(external.map(p => [
+    p.repo.toLowerCase(),
+    p,
+  ]))
+  const candidate = new Map(collected.flatMap(p => [
+    p.repo,
+    ...(p.aliases ?? []),
+  ].map(repo => [
+    repo.toLowerCase(),
+    p,
+  ] as const)))
   const missingReleases: { repo: string, targetZoteroVersion: string }[] = []
   const changedVersions: { repo: string, targetZoteroVersion: string, external: string, collected: string }[] = []
   const identityChanges: { repo: string, targetZoteroVersion: string, external: string, collected: string }[] = []
@@ -36,12 +51,30 @@ export function compareCatalog(catalog: PluginInfoBase[], external: PublishedPlu
         missingReleases.push({ repo: plugin.repo, targetZoteroVersion: release.targetZoteroVersion })
       }
       else {
-        if (matching.xpiVersion !== release.xpiVersion)
-          changedVersions.push({ repo: plugin.repo, targetZoteroVersion: release.targetZoteroVersion, external: release.xpiVersion, collected: matching.xpiVersion })
-        if (release.id && matching.id !== release.id)
-          identityChanges.push({ repo: plugin.repo, targetZoteroVersion: release.targetZoteroVersion, external: release.id, collected: matching.id })
-        if (release.minZoteroVersion !== matching.minZoteroVersion || release.maxZoteroVersion !== matching.maxZoteroVersion)
-          compatibilityChanges.push({ repo: plugin.repo, targetZoteroVersion: release.targetZoteroVersion, external: `${release.minZoteroVersion} - ${release.maxZoteroVersion}`, collected: `${matching.minZoteroVersion} - ${matching.maxZoteroVersion}` })
+        if (matching.xpiVersion !== release.xpiVersion) {
+          changedVersions.push({
+            repo: plugin.repo,
+            targetZoteroVersion: release.targetZoteroVersion,
+            external: release.xpiVersion,
+            collected: matching.xpiVersion,
+          })
+        }
+        if (release.id && matching.id !== release.id) {
+          identityChanges.push({
+            repo: plugin.repo,
+            targetZoteroVersion: release.targetZoteroVersion,
+            external: release.id,
+            collected: matching.id,
+          })
+        }
+        if (release.minZoteroVersion !== matching.minZoteroVersion || release.maxZoteroVersion !== matching.maxZoteroVersion) {
+          compatibilityChanges.push({
+            repo: plugin.repo,
+            targetZoteroVersion: release.targetZoteroVersion,
+            external: `${release.minZoteroVersion} - ${release.maxZoteroVersion}`,
+            collected: `${matching.minZoteroVersion} - ${matching.maxZoteroVersion}`,
+          })
+        }
       }
     }
   }
@@ -51,9 +84,15 @@ export function compareCatalog(catalog: PluginInfoBase[], external: PublishedPlu
     externalCount: baseline.size,
     collectedCount: collected.length,
     missingFromSource: external.filter(p => !source.has(p.repo.toLowerCase())).map(p => p.repo),
-    sourceOnly: catalog.filter(p => ![p.repo, ...(p.aliases ?? [])].some(repo => baseline.has(repo.toLowerCase()))).map(p => p.repo),
+    sourceOnly: catalog.filter(p => ![
+      p.repo,
+      ...(p.aliases ?? []),
+    ].some(repo => baseline.has(repo.toLowerCase()))).map(p => p.repo),
     missingFromCollector: catalog.filter(p => !candidate.has(p.repo.toLowerCase())).map(p => p.repo),
-    collectorOnly: collected.filter(p => ![p.repo, ...(p.aliases ?? [])].some(repo => baseline.has(repo.toLowerCase()))).map(p => p.repo),
+    collectorOnly: collected.filter(p => ![
+      p.repo,
+      ...(p.aliases ?? []),
+    ].some(repo => baseline.has(repo.toLowerCase()))).map(p => p.repo),
     repositoryAliases: collected.filter(p => p.aliases?.length).map(p => ({ repo: p.repo, aliases: p.aliases })),
     missingReleases,
     changedVersions,
