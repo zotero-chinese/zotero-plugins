@@ -693,6 +693,21 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'CommanderPho/zotero-desktop-annotation',
+    summaryZh: '增强 PDF 阅读器批注的工具快捷键、文字样式记忆、复制粘贴及便笺图标显示。',
+    keywords: [
+      'Desktop Annotation',
+      'PDF 批注',
+      '快捷键',
+      '样式记忆',
+      '复制粘贴',
+    ],
+    releases: [],
+    tags: ['reader'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'cookjohn/zotero-mcp',
     releases: [
       {
@@ -2286,6 +2301,22 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'kmaog15-damao/bilingual-metadata',
+    nameZh: '中文文献双语元数据',
+    summaryZh: '为中文文献创建关联的英文引用条目，并生成用于中英文双语参考文献的关联 CSL 样式。',
+    keywords: [
+      '双语元数据',
+      '双语参考文献',
+      '英文条目',
+      'CSL',
+      '中文期刊投稿',
+    ],
+    releases: [],
+    tags: ['metadata', 'writing'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'kongyan66/arxiv2zh',
     releases: [
       {
@@ -2501,6 +2532,22 @@ export const plugins: PluginInfoBase[] = [
       'interface',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'Liozhang/z-search',
+    summaryZh: '整合外部学术数据库检索、库内向量与全文搜索，并支持导入文献和匹配开放获取 PDF。',
+    keywords: [
+      'z-search',
+      '学术检索',
+      '搜索',
+      '向量检索',
+      '全文检索',
+      '开放获取',
+    ],
+    releases: [],
+    tags: ['productivity', 'metadata'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'lisontowind/zotero-copilot',
@@ -2895,6 +2942,22 @@ export const plugins: PluginInfoBase[] = [
       'attachment',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'MuiseDestiny/zotero-claudero',
+    summaryZh: '在 Zotero 内接入 Claude Code、Codex 等服务进行论文问答、证据检索与文献分析，需另行安装并认证对应服务程序。',
+    keywords: [
+      'Claudero',
+      'Claude Code',
+      'Codex',
+      'DeepSeek Harness',
+      '论文问答',
+      '证据检索',
+    ],
+    releases: [],
+    tags: ['ai', 'integration'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'MuiseDestiny/zotero-figure',
