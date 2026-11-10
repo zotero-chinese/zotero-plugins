@@ -161,6 +161,22 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'all11250/zotero-selection-translator',
+    nameZh: '划词翻译',
+    summaryZh: '在阅读器中划词翻译并将译文保存到批注；AI 上下文开启时还会发送论文标题和摘要，API Key 明文保存在本机配置中。',
+    keywords: [
+      '划词翻译',
+      'Selection Translator',
+      'DeepL',
+      'AI 翻译',
+      '批注评论',
+    ],
+    releases: [],
+    tags: ['reader', 'ai'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'AllanChain/zotero-arxiv-workflow',
     releases: [
       {
@@ -953,8 +969,21 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'DreamPerday/PaperLens-Zotero',
-    summaryZh: '在 PDF 阅读器侧栏进行论文问答、逐段注解和证据核对。',
-    keywords: ['论文问答', '精读', '证据核对'],
+    summaryZh: '提供论文概览、段落注解、选文与图片问答、翻译和证据核对，支持出版信息及等级写回；JCR 与中科院分区查询需配置 EasyScholar Key。',
+    keywords: [
+      '论文问答',
+      '精读',
+      '结构化概览',
+      '全文注解',
+      '图片问答',
+      '选文翻译',
+      '证据核对',
+      '期刊分区',
+      'JCR',
+      '中科院分区',
+      'CCF',
+      'CORE',
+    ],
     releases: [],
     tags: [
       'ai',
@@ -2735,6 +2764,23 @@ export const plugins: PluginInfoBase[] = [
       'reader',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'mapengsen/zotero-centers',
+    summaryZh: '整合全局搜索、行内编辑、文献计数、Index 和同标题合并；合并仅按标题匹配，不区分 DOI、作者或年份。',
+    keywords: [
+      'Centers',
+      'Title Merge',
+      '全局搜索',
+      '行内编辑',
+      '同标题合并',
+      '目录计数',
+      'Index',
+    ],
+    releases: [],
+    tags: ['metadata', 'utility'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'max3925vats/zotero-docling',
