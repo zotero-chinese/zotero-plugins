@@ -1986,6 +1986,21 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'Jellyjujube/jujube-zotero-joplin',
+    summaryZh: '将条目、子笔记和 PDF 注释导出到 Joplin，重复导出更新原笔记并保留托管区域外的手写内容；需开启 Joplin Web Clipper。',
+    keywords: [
+      'Zotero to Joplin',
+      'Joplin',
+      '笔记导出',
+      'PDF 注释',
+      'Web Clipper',
+    ],
+    releases: [],
+    tags: ['integration', 'notes'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'jetxa/zotero-ai-assistant',
     releases: [
       {
