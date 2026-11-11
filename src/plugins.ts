@@ -2578,6 +2578,22 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'LiKa-shing/git4zotero',
+    summaryZh: '为 Word 论文附件提供本地 Git 版本管理、差异审阅和历史恢复，需安装 Git；实验性 AI 审阅摘要默认关闭。',
+    keywords: [
+      'git4zotero',
+      'Git',
+      'Word',
+      '版本管理',
+      '差异审阅',
+      '历史恢复',
+    ],
+    releases: [],
+    tags: ['writing', 'integration'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Liozhang/z-search',
     summaryZh: '整合外部学术数据库检索、库内向量与全文搜索，并支持导入文献和匹配开放获取 PDF。',
     keywords: [
