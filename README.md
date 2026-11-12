@@ -6,6 +6,8 @@ This repository maintains a local Zotero plugin catalog and independently collec
 
 We are accepting new plugin submissions and updates to existing plugin information again. Contributions are welcome through an [issue](https://github.com/zotero-chinese/zotero-plugins/issues/new) or pull request.
 
+[Submission guide and listing badge instructions](https://github.com/zotero-chinese/zotero-plugins/issues/374)
+
 - For a new plugin, include the repository URL, a brief description, a release/download link and the supported Zotero versions. For a pull request, add an entry to `src/plugins.ts` in repository-name order, with `repo`, `tags`, `releases` and `discoverReleases: true`. An empty `releases` array enables discovery of the latest stable release.
 - Plugin updates: describe the correction, such as a repository transfer, category, download URL or historical compatibility range, and include supporting links.
 

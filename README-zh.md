@@ -6,6 +6,8 @@
 
 本仓库已恢复接收新插件投稿和已有插件的信息更新，欢迎通过 [Issue](https://github.com/zotero-chinese/zotero-plugins/issues/new) 或 Pull Request 提交。
 
+[插件投稿与收录徽章使用说明](https://github.com/zotero-chinese/zotero-plugins/issues/374)
+
 - 新增插件时，提供插件仓库地址、用途说明、发布／下载地址和支持的 Zotero 版本。通过 PR 投稿时，在 `src/plugins.ts` 中按仓库名排序添加条目，格式见下方「源数据」。
 - 更新插件：说明需要修正的信息，例如仓库迁移、分类、下载地址或历史版本兼容范围，并提供对应链接。
 
