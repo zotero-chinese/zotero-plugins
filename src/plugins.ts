@@ -5780,6 +5780,18 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'zrqworkmail-cloud/sentence-translate',
+    nameZh: '句译',
+    summaryZh: '点击 PDF 句子，在句下显示中文译文；高亮、译文背景和文字颜色均可自定义。',
+    keywords: ['翻译', '点句翻译', 'PDF', 'Translate for Zotero'],
+    releases: [],
+    tags: [
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'zxyl1003/Inthes',
     releases: [
       {
