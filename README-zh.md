@@ -6,10 +6,20 @@
 
 本仓库已恢复接收新插件投稿和已有插件的信息更新，欢迎通过 [Issue](https://github.com/zotero-chinese/zotero-plugins/issues/new) 或 Pull Request 提交。
 
-- 新增插件：提供插件仓库地址、用途说明及发布／下载地址；通过 PR 投稿时，在 `src/plugins.ts` 中按仓库名排序添加条目，格式见下方「源数据」。
+- 新增插件时，提供插件仓库地址、用途说明、发布／下载地址和支持的 Zotero 版本。通过 PR 投稿时，在 `src/plugins.ts` 中按仓库名排序添加条目，格式见下方「源数据」。
 - 更新插件：说明需要修正的信息，例如仓库迁移、分类、下载地址或历史版本兼容范围，并提供对应链接。
 
 采集器会检查插件的最新正式版，一般无需为每次版本发布手动更新清单；旧版 Zotero 所需的历史发行版仍需维护对应选择器。投稿经审核合并后纳入本地清单，商店展示以发布构建和网站数据源更新为准。
+
+## 收录徽章
+
+插件在中文社区商店上架后，可以将下面的徽章放在插件 README 标题下方。点击徽章会打开中文社区插件商店。
+
+[![Zotero 中文社区 · 已收录](https://zotero-chinese.com/badges/listed.svg)](https://zotero-chinese.com/plugins/)
+
+```md
+[![Zotero 中文社区 · 已收录](https://zotero-chinese.com/badges/listed.svg)](https://zotero-chinese.com/plugins/)
+```
 
 ## 逐步恢复采集
 
