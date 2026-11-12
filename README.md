@@ -6,10 +6,22 @@ This repository maintains a local Zotero plugin catalog and independently collec
 
 We are accepting new plugin submissions and updates to existing plugin information again. Contributions are welcome through an [issue](https://github.com/zotero-chinese/zotero-plugins/issues/new) or pull request.
 
-- New plugins: include the repository URL, a brief description and a release/download link. For a pull request, add an entry to `src/plugins.ts` in repository-name order, with `repo`, `tags`, `releases` and `discoverReleases: true`. An empty `releases` array enables discovery of the latest stable release.
+[Submission guide and listing badge instructions](https://github.com/zotero-chinese/zotero-plugins/issues/374)
+
+- For a new plugin, include the repository URL, a brief description, a release/download link and the supported Zotero versions. For a pull request, add an entry to `src/plugins.ts` in repository-name order, with `repo`, `tags`, `releases` and `discoverReleases: true`. An empty `releases` array enables discovery of the latest stable release.
 - Plugin updates: describe the correction, such as a repository transfer, category, download URL or historical compatibility range, and include supporting links.
 
 The collector checks the latest stable release, so ordinary version releases generally require no manual catalog edit. Historical release selectors still need maintenance for older Zotero versions. Reviewed submissions enter the local catalog after merging; store availability depends on publication builds and the website's configured data source.
+
+## Listed badge
+
+Once your plugin appears in the Zotero Chinese plugin store, you can add this badge near the top of its README. The badge links to the plugin store.
+
+[![Listed in Zotero Chinese](https://zotero-chinese.com/badges/listed.svg)](https://zotero-chinese.com/plugins/)
+
+```md
+[![Listed in Zotero Chinese](https://zotero-chinese.com/badges/listed.svg)](https://zotero-chinese.com/plugins/)
+```
 
 ## Collector rollout
 
