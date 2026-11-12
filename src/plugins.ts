@@ -3005,6 +3005,17 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'Muanyan-mjq/zotero-interlinear',
+    summaryZh: '在 Zotero 阅读模式中按段落生成行间对照译文，内置免费翻译服务链与多家大模型后端。',
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'MuiseDestiny/eaiser-citation',
     releases: [
       {
