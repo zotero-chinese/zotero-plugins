@@ -4329,6 +4329,16 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'shinmohuang/ZoteConf',
+    summaryZh: '添加 arXiv 预印本时自动查找正式发表的会议或期刊版本，并原地更新条目。',
+    keywords: ['arXiv', '预印本', '正式发表', '会议论文', 'DBLP', 'CCF'],
+    releases: [],
+    tags: [
+      'metadata',
+    ],
+    discoverReleases: true,
+  },
+  {
     repo: 'SolveSaint/RSSrch-for-Zotero',
     releases: [
       {
