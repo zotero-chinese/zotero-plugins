@@ -770,6 +770,20 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'Cydoimos/zotero-abbreviation-helper',
+    summaryZh: '阅读 PDF 时悬停显示缩写词在论文中定义的全称，并提供基因、蛋白等名称的可选数据库查询链接。',
+    keywords: [
+      'Abbreviation Helper',
+      '缩写',
+      '全称',
+      '悬停释义',
+    ],
+    releases: [],
+    tags: ['reader'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'daeh/zotero-citation-tally',
     releases: [
       {
@@ -3005,6 +3019,17 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'Muanyan-mjq/zotero-interlinear',
+    summaryZh: '在 Zotero 阅读模式中按段落生成行间对照译文，内置免费翻译服务链与多家大模型后端。',
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'MuiseDestiny/eaiser-citation',
     releases: [
       {
@@ -4017,6 +4042,22 @@ export const plugins: PluginInfoBase[] = [
       'metadata',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'Rimagination/journal-scout-zotero',
+    summaryZh: '显示期刊指标与 CCF 会议等级，支持数值筛选和批量补全，可将确认结果写入条目 Extra 与插件标签。',
+    keywords: [
+      'Journal Scout',
+      '期刊指标',
+      '影响因子',
+      '期刊分区',
+      'CCF',
+      '数值筛选',
+    ],
+    releases: [],
+    tags: ['metadata', 'interface'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'RoadToDream/ZotMeta',
