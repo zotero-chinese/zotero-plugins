@@ -2670,6 +2670,15 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'lisontowind/zotero-tray',
+    summaryZh: '在 Windows 上关闭 Zotero 主窗口时隐藏到系统托盘，单击托盘恢复窗口，右键正常退出。',
+    keywords: ['托盘', '关闭到托盘', '后台运行', 'Windows'],
+    releases: [],
+    tags: ['interface', 'utility'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Littview/zotero-openalex-pdf',
     releases: [
       {
