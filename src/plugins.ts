@@ -3556,6 +3556,17 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'PeberWang/zotero-sysdict-lookup',
+    nameZh: '系统词典查词',
+    summaryZh: '划词直接显示音标和简明英英释义，数据来自 macOS 自带词典，离线即时。',
+    keywords: ['划词', '词典', '音标', '英英'],
+    releases: [],
+    tags: [
+      'reader',
+    ],
+    discoverReleases: true,
+  },
+  {
     repo: 'peekabooXT/Zotero_Paper_Classification_XT',
     releases: [
       {
