@@ -3368,6 +3368,22 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'NysaMisty/Batch-Citations',
+    nameZh: '编号批量引用',
+    summaryZh: '将 Word 正文与表格中的手写编号批量转换为 Zotero 动态引用，需 Windows 桌面版 Word、Zotero Word 插件及同版 Word 加载项。',
+    keywords: [
+      'Batch Citations',
+      '编号批量引用',
+      'Word',
+      '手写编号',
+      '动态引用',
+    ],
+    releases: [],
+    tags: ['writing', 'integration'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'occasional16/researchopia',
     releases: [
       {
