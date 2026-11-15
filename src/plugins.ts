@@ -2670,6 +2670,15 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'lisontowind/zotero-tray',
+    summaryZh: '在 Windows 上关闭 Zotero 主窗口时隐藏到系统托盘，单击托盘恢复窗口，右键正常退出。',
+    keywords: ['托盘', '关闭到托盘', '后台运行', 'Windows'],
+    releases: [],
+    tags: ['interface', 'utility'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Littview/zotero-openalex-pdf',
     releases: [
       {
@@ -3556,6 +3565,18 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'PeberWang/zotero-sysdict-lookup',
+    nameZh: '系统词典查词',
+    summaryZh: '仅限 macOS，划词显示音标和简明英英释义，数据来自系统自带词典，支持离线查询。',
+    keywords: ['划词', '词典', '音标', '英英'],
+    releases: [],
+    tags: [
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'peekabooXT/Zotero_Paper_Classification_XT',
     releases: [
       {
@@ -4343,6 +4364,24 @@ export const plugins: PluginInfoBase[] = [
       'ai',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'shinmohuang/ZoteConf',
+    summaryZh: '添加 arXiv 预印本时自动查找正式发表的会议或期刊版本，并原地更新条目。',
+    keywords: [
+      'arXiv',
+      '预印本',
+      '正式发表',
+      '会议论文',
+      'DBLP',
+      'CCF',
+    ],
+    releases: [],
+    tags: [
+      'metadata',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'SolveSaint/RSSrch-for-Zotero',
