@@ -2839,6 +2839,18 @@ export const plugins: PluginInfoBase[] = [
     publishInShadow: true,
   },
   {
+    repo: 'Marco0431/askgpt-zotero',
+    nameZh: 'AskGPT – Zotero AI 阅读助手',
+    summaryZh: '结合选中文字与论文上下文向 AI 提问，支持图片提问并将回答保存为笔记，需自行配置模型 API。',
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'max3925vats/zotero-docling',
     releases: [
       {
