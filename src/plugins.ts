@@ -784,6 +784,14 @@ export const plugins: PluginInfoBase[] = [
     publishInShadow: true,
   },
   {
+    repo: 'Daaaaxianer/llm-paper-chat',
+    summaryZh: '论文问答、总结、收藏夹综述和划词翻译，需自行配置模型 API，整篇原位翻译另需本机 BabelDOC。',
+    releases: [],
+    tags: ['ai', 'reader'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'daeh/zotero-citation-tally',
     releases: [
       {
@@ -835,6 +843,15 @@ export const plugins: PluginInfoBase[] = [
       'integration',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'daewaf/zotero-term-ai',
+    nameZh: '论文术语 AI 解释',
+    summaryZh: '通过自行配置的模型 API 解释 PDF 中选中的术语，将中文解释追加到高亮评论。',
+    releases: [],
+    tags: ['ai', 'reader'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'david3684/zotero-tab-limiter',
@@ -4926,6 +4943,14 @@ export const plugins: PluginInfoBase[] = [
       'utility',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'Ueky2000/zotero-tab-manager',
+    summaryZh: '管理已打开文献的标签页分组、颜色、折叠和备注，提供搜索与建议关闭功能。',
+    releases: [],
+    tags: ['reader', 'interface'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'vastronghq/MarginMind',
