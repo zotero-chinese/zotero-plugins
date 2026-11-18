@@ -2710,6 +2710,23 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'liuguanlin80-cell/zotero-sync-translate',
+    summaryZh: '配合 Translate for Zotero 使用，划选译文时高亮 PDF 中对应的原文，按住 Ctrl 指向原文单词时标出对应译文；词级对齐会把所用句子发给 Translate for Zotero 当前配置的大模型，并使用其中保存的接口地址和密钥。',
+    keywords: [
+      '原文对照',
+      '译文对齐',
+      '双语对照',
+      'Translate for Zotero',
+    ],
+    releases: [],
+    tags: [
+      'reader',
+      'ai',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Logan12l/pinyin-for-zotero',
     summaryZh: '修正中文作者多音字姓氏的拼音排序及文档引文顺序。',
     keywords: ['拼音', '多音字', '作者排序'],
