@@ -5396,6 +5396,7 @@ export const plugins: PluginInfoBase[] = [
       'metadata',
     ],
     discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'xfl031129/zotero-pdf-outline-builder',
