@@ -2593,6 +2593,17 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'liangliu-nlp/reference-guard',
+    nameZh: '参考文献跳转高亮',
+    summaryZh: '按 PDF 内部链接精确跳转并临时高亮目标参考文献，需 PDF 提供内部链接和可用文字层。',
+    releases: [],
+    tags: [
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'lifan0127/ai-research-assistant',
     releases: [
       {
@@ -3644,6 +3655,19 @@ export const plugins: PluginInfoBase[] = [
       'attachment',
       'reader',
       'metadata',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
+    repo: 'phoenix8701-ctrl/readin-yidu',
+    nameZh: 'ReadIN 译读',
+    summaryZh: '在 ReadIN 中对照翻译、AI 阅读并将高亮和笔记回写 Zotero，需同机 Chrome 网页服务，AI 内测需资格，正式版含付费升级。',
+    releases: [],
+    tags: [
+      'reader',
+      'integration',
+      'ai',
     ],
     discoverReleases: true,
     publishInShadow: true,
@@ -5729,6 +5753,17 @@ export const plugins: PluginInfoBase[] = [
       'integration',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'yulong-ge/zotero-citation-preview',
+    summaryZh: '在原生 PDF 引文浮窗展示匹配核验的论文元数据与摘要，向元数据服务发送当前引用组的检索信息。',
+    releases: [],
+    tags: [
+      'reader',
+      'metadata',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'Yuriyagn/zotero-pdf2zh',
