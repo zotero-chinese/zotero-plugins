@@ -3344,6 +3344,8 @@ export const plugins: PluginInfoBase[] = [
       '期刊缩写',
       'DOI',
       'ISBN',
+      '批量匹配',
+      'AI',
       '重复条目',
     ],
     releases: [
@@ -5383,7 +5385,7 @@ export const plugins: PluginInfoBase[] = [
   {
     repo: 'wzs2004/zotero-duxiu-meta',
     nameZh: '读秀元数据',
-    summaryZh: '从读秀、文津、豆瓣、Google Books、Open Library 为 PDF 匹配图书元数据。',
+    summaryZh: '从读秀、文津、豆瓣、Google Books、Open Library 为 PDF 匹配图书元数据，支持分类内 AI 批量匹配与逐条确认。',
     keywords: [
       '读秀',
       '文津',
@@ -5392,6 +5394,8 @@ export const plugins: PluginInfoBase[] = [
       '图书',
       '元数据',
       'ISBN',
+      '批量匹配',
+      'AI',
     ],
     releases: [],
     tags: [
