@@ -1,4 +1,5 @@
 import type { PluginInfo } from '../types.js'
+import { env } from 'node:process'
 import { ofetch } from 'ofetch'
 import { getRelease } from '../utils/github.js'
 
@@ -20,7 +21,13 @@ export async function refreshGiteeReleaseDates(plugins: Pick<PluginInfo, 'releas
 /** Resolve the downloaded file's update time, never the collection time. */
 export async function getCustomReleaseDate(
   downloadUrl: string,
-  fetchCommits: FetchCommits = url => ofetch(url, { timeout: 60000, retry: 2 }),
+  fetchCommits: FetchCommits = url => ofetch(url, {
+    timeout: 60000,
+    retry: 2,
+    headers: new URL(url).hostname === 'api.github.com' && env.GITHUB_TOKEN
+      ? { Authorization: `Bearer ${env.GITHUB_TOKEN}` }
+      : undefined,
+  }),
   findRelease: FindRelease = getRelease,
 ): Promise<string> {
   const url = new URL(downloadUrl)
@@ -33,6 +40,17 @@ export async function getCustomReleaseDate(
     const endpoint = new URL(`https://gitee.com/api/v5/repos/${owner}/${repo}/commits`)
     endpoint.searchParams.set('sha', decodeURIComponent(ref))
     endpoint.searchParams.set('path', decodeURIComponent(file))
+    endpoint.searchParams.set('per_page', '1')
+    const commits = await fetchCommits(endpoint.href)
+    date = commits[0]?.commit?.committer?.date
+  }
+  else if (url.hostname === 'raw.githubusercontent.com') {
+    const [, owner, repo, ref, ...segments] = url.pathname.split('/')
+    if (!owner || !repo || !ref || !segments.length)
+      throw new Error(`Unsupported custom release date source: ${downloadUrl}`)
+    const endpoint = new URL(`https://api.github.com/repos/${owner}/${repo}/commits`)
+    endpoint.searchParams.set('sha', decodeURIComponent(ref))
+    endpoint.searchParams.set('path', decodeURIComponent(segments.join('/')))
     endpoint.searchParams.set('per_page', '1')
     const commits = await fetchCommits(endpoint.href)
     date = commits[0]?.commit?.committer?.date

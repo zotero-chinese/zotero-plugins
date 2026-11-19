@@ -29,6 +29,7 @@ export function applyCatalogMetadata(published: PluginInfo[], sources: PluginInf
     return source
       ? {
           ...plugin,
+          description: source.description ?? plugin.description,
           nameZh: source.nameZh,
           summaryZh: source.summaryZh,
           keywords: source.keywords,
