@@ -13,6 +13,8 @@ export interface PluginInfoBase {
   nameZh?: string
   /** Short Chinese description of the plugin's purpose. */
   summaryZh?: string
+  /** Editorial default description, used across storefront languages. */
+  description?: string
   /** Search terms and familiar names, separate from repository aliases. */
   keywords?: string[]
   /**

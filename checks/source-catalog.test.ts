@@ -244,3 +244,14 @@ test('sync retains distinct compatibility labels for one historical asset', () =
   assert.deepEqual(labels.sort(), ['11', '7'])
   assert.deepEqual(mergeSourceCatalog(merged, upstream, published), merged)
 })
+
+test('default description overrides apply to collector and shadow data and survive source sync', () => {
+  const source = { ...current[0], description: 'English store description' }
+  const [result] = applyCatalogMetadata([pluginInfo], [source])
+  assert.equal(result.description, source.description)
+  assert.equal(result.summaryZh, undefined)
+  const synced = mergeSourceCatalog([source], upstream, published)
+  assert.equal(synced.find(plugin => plugin.repo === source.repo)?.description, source.description)
+  const [shadow] = mergeShadowCatalog([pluginInfo], [], [source])
+  assert.equal(shadow.description, source.description)
+})

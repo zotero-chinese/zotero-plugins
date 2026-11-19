@@ -785,7 +785,7 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'Daaaaxianer/llm-paper-chat',
-    summaryZh: '论文问答、总结、收藏夹综述和划词翻译，需自行配置模型 API，整篇原位翻译另需本机 BabelDOC。',
+    description: 'AI sidebar for paper chat, study summaries, and literature reviews. Translate selected text or create layout-preserving full-PDF translations and bilingual PDFs with BabelDOC. Requires a model API.',
     releases: [],
     tags: ['ai', 'reader'],
     discoverReleases: true,
@@ -2721,6 +2721,23 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'liuguanlin80-cell/zotero-sync-translate',
+    summaryZh: '配合 Translate for Zotero 使用，划选译文时高亮 PDF 中对应的原文，按住 Ctrl 指向原文单词时标出对应译文，词级对齐会把所用句子发给 Translate for Zotero 当前配置的大模型，并使用其中保存的接口地址和密钥。',
+    keywords: [
+      '原文对照',
+      '译文对齐',
+      '双语对照',
+      'Translate for Zotero',
+    ],
+    releases: [],
+    tags: [
+      'reader',
+      'ai',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Logan12l/pinyin-for-zotero',
     summaryZh: '修正中文作者多音字姓氏的拼音排序及文档引文顺序。',
     keywords: ['拼音', '多音字', '作者排序'],
@@ -2875,6 +2892,14 @@ export const plugins: PluginInfoBase[] = [
       'ai',
       'reader',
     ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
+    repo: 'Masterchiefm/dsh-in-zotero',
+    summaryZh: '接入 dsh 提供论文会话、划词翻译、元数据重取和文库读写工具，需本机 dsh、npm 运行时或已运行实例及模型配置。',
+    releases: [],
+    tags: ['ai', 'reader', 'metadata'],
     discoverReleases: true,
     publishInShadow: true,
   },
@@ -3344,6 +3369,8 @@ export const plugins: PluginInfoBase[] = [
       '期刊缩写',
       'DOI',
       'ISBN',
+      '批量匹配',
+      'AI',
       '重复条目',
     ],
     releases: [
@@ -5381,6 +5408,28 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'wzs2004/zotero-duxiu-meta',
+    nameZh: '读秀元数据',
+    summaryZh: '从读秀、文津、豆瓣、Google Books、Open Library 匹配图书元数据，读秀需机构网络或 VPN，AI 批量匹配需配置模型 API。',
+    keywords: [
+      '读秀',
+      '文津',
+      '国家图书馆',
+      '豆瓣',
+      '图书',
+      '元数据',
+      'ISBN',
+      '批量匹配',
+      'AI',
+    ],
+    releases: [],
+    tags: [
+      'metadata',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'xfl031129/zotero-pdf-outline-builder',
     releases: [
       {
@@ -5997,6 +6046,20 @@ export const plugins: PluginInfoBase[] = [
       'reader',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'zyj101511/zotero-zotranslator',
+    summaryZh: 'PDF 划词查询 Cambridge 词典或通过 DeepLX 翻译，词典使用第三方接口，DeepLX 服务需自行部署。',
+    releases: [
+      {
+        targetZoteroVersion: '10',
+        tagName: 'custom',
+        customLink: 'https://raw.githubusercontent.com/zyj101511/zotero-zotranslator/v1.0.0/zotranslator-1.0.0.xpi',
+      },
+    ],
+    tags: ['reader'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'zzlb0224/zotero-annotation-manage',

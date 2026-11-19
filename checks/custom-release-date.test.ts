@@ -90,3 +90,23 @@ test('a failed Gitee lookup leaves every release unchanged after another date ha
   await rejected
   assert.deepEqual(releases, snapshot)
 })
+
+test('raw GitHub packages use the last file commit at the pinned ref', async () => {
+  const url = 'https://raw.githubusercontent.com/owner/plugin/v1.0/nested/plugin%20name.xpi'
+  const date = await getCustomReleaseDate(url, async (request) => {
+    const endpoint = new URL(request)
+    assert.equal(endpoint.origin + endpoint.pathname, 'https://api.github.com/repos/owner/plugin/commits')
+    assert.equal(endpoint.searchParams.get('sha'), 'v1.0')
+    assert.equal(endpoint.searchParams.get('path'), 'nested/plugin name.xpi')
+    assert.equal(endpoint.searchParams.get('per_page'), '1')
+    return [
+      {
+        commit: {
+          committer: { date: '2026-11-19T00:00:00Z' },
+        },
+      },
+    ]
+  })
+  assert.equal(date, '2026-11-19T00:00:00.000Z')
+  await assert.rejects(getCustomReleaseDate(url, async () => []), /update time unavailable/)
+})
