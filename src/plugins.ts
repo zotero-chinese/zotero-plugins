@@ -1292,6 +1292,17 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'ForsakenDelusion/zotero-canvas-chat',
+    summaryZh: '在 LLM-for-Zotero 中将论文问答组织成画布卡片，支持分支追问、原文跳转和笔记总结，需先安装并启用 LLM-for-Zotero。',
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'franzbischoff/zotero-pdf-metadata',
     releases: [
       {
@@ -3541,6 +3552,23 @@ export const plugins: PluginInfoBase[] = [
       'notes',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'onlyls/DocBoxTrans',
+    summaryZh: 'PDF 划词翻译、历史管理与跨页选区拼接，支持会话上下文增强及多种翻译服务，部分服务需自行配置密钥。',
+    releases: [
+      {
+        targetZoteroVersion: '10',
+        tagName: 'v0.3.8',
+        assetName: 'doc-box-trans-for-zotero.xpi',
+      },
+    ],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'origin652/zotero-assistant',
