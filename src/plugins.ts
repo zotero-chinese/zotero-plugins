@@ -726,6 +726,14 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'citestamp/zotero-plugin',
+    releases: [],
+    tags: [
+      'integration',
+    ],
+    discoverReleases: true,
+  },
+  {
     repo: 'CommanderPho/zotero-desktop-annotation',
     summaryZh: '增强 PDF 阅读器批注的工具快捷键、文字样式记忆、复制粘贴及便笺图标显示。',
     keywords: [
