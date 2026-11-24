@@ -5421,6 +5421,24 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'wwtwwwt/zotero-drawio-integration',
+    releases: [],
+    nameZh: 'drawio集成-使用流程图整理文献',
+    summaryZh: '在zotero中绘制流程图整理文献思路，使用drawio。支持文献、笔记导入，双击定位等功能',
+    keywords: [
+      'drawio',
+      '流程图',
+      '思路图',
+      '思维导图'
+    ],
+    tags: [
+      'integration',
+      'notes',
+      'productivity'
+    ],
+    discoverReleases: true,
+  },
+  {
     repo: 'wyhao2333/zotero-paperpilot',
     releases: [
       {
