@@ -5857,6 +5857,17 @@ export const plugins: PluginInfoBase[] = [
     ],
     discoverReleases: true,
   },
+    {
+    repo: 'yuweidong/zotero-texlink',
+    summaryZh: '将 PDF 公式截图离线识别为 LaTeX，并写入可追溯的 Zotero 笔记。',
+    keywords: ['公式识别', 'LaTeX', 'OCR', '离线', '笔记'],
+    releases: [],
+    tags: [
+      'notes',
+      'utility',
+    ],
+    discoverReleases: true,
+  },
   {
     repo: 'ZBigFish/zotero-ccf-rank',
     releases: [
