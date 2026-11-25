@@ -315,6 +315,14 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'artkuo/ZotGlance',
+    summaryZh: '在文献列表按空格显示标题、作者、摘要与附件等概览，支持按显示列和作者姓氏输入定位条目。',
+    releases: [],
+    tags: ['interface', 'productivity'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Asianfleet/mineru-for-zotero',
     releases: [
       {
@@ -1489,6 +1497,14 @@ export const plugins: PluginInfoBase[] = [
       'reader',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'HappyAny/zotero-turbo',
+    summaryZh: '通过 MuPDF 原生库加速 PDF 渲染与全文处理，提供标签休眠、检索缓存、引文和数据库调优等功能，原生库支持 Windows x64、Linux x64 及 macOS Intel/Apple Silicon。',
+    releases: [],
+    tags: ['reader', 'utility'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'haohaomin/zotero-codex',
@@ -5175,6 +5191,14 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'williamslay/Zotero-FigureGuard',
+    summaryZh: '在深色阅读模式下识别论文插图并恢复原始配色，支持手动调整保护范围，按附件缓存且不修改原 PDF。',
+    releases: [],
+    tags: ['reader', 'interface'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'WilliamsLiang/zotero-skr',
     releases: [
       {
@@ -5419,6 +5443,25 @@ export const plugins: PluginInfoBase[] = [
       'reader',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'wwtwwwt/zotero-drawio-integration',
+    releases: [],
+    nameZh: 'drawio集成-使用流程图整理文献',
+    summaryZh: '在zotero中绘制流程图整理文献思路，使用drawio。支持文献、笔记导入，双击定位等功能',
+    keywords: [
+      'drawio',
+      '流程图',
+      '思路图',
+      '思维导图',
+    ],
+    tags: [
+      'integration',
+      'notes',
+      'productivity',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'wyhao2333/zotero-paperpilot',
@@ -5856,6 +5899,18 @@ export const plugins: PluginInfoBase[] = [
       'attachment',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'yuweidong/zotero-texlink',
+    summaryZh: '将 PDF 公式截图离线识别为 LaTeX，并写入可追溯的 Zotero 笔记。',
+    keywords: ['公式识别', 'LaTeX', 'OCR', '离线', '笔记'],
+    releases: [],
+    tags: [
+      'notes',
+      'utility',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'ZBigFish/zotero-ccf-rank',
