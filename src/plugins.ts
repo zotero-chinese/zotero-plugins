@@ -3,6 +3,22 @@ import type { PluginInfoBase } from './types.js'
 /** Local catalog; selectors retain historical versions and discover new releases. */
 export const plugins: PluginInfoBase[] = [
   {
+    repo: '00sapo/zotero-sidebrowser',
+    summaryZh: '在侧栏使用网页聊天服务，可随消息发送选定的论文元数据、批注与附件，需对应网页账户并受其服务额度限制。',
+    releases: [],
+    tags: ['ai', 'interface'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
+    repo: '00sapo/zotero-skimming',
+    summaryZh: '为 PDF 句子评分并预览、保存重点高亮，基础评分可离线运行，摘要和语义比较需本地 Ollama 模型或自行配置远程 API。',
+    releases: [],
+    tags: ['ai', 'reader'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: '018/zotcard',
     releases: [
       {
@@ -732,6 +748,16 @@ export const plugins: PluginInfoBase[] = [
       'metadata',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'citestamp/zotero-plugin',
+    summaryZh: '核对引用对应的文献记录，查看 CiteStamp 引文图谱、反驳和复现记录，检索会向外部元数据与 CiteStamp 服务发送标识符或题名。',
+    releases: [],
+    tags: [
+      'integration',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'CommanderPho/zotero-desktop-annotation',
@@ -5844,6 +5870,14 @@ export const plugins: PluginInfoBase[] = [
       'notes',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'Yisen-Yang/hongdou-siyuan-bridge',
+    summaryZh: '将红豆客户端的文献通过本机配对发送至思源生成引用，需思源端配套插件，发布包声明兼容 Zotero 7–10，Zotero 内实际使用待验证。',
+    releases: [],
+    tags: ['integration'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'ysqander/listen2papers-zotero',
