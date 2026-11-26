@@ -1051,7 +1051,7 @@ export const plugins: PluginInfoBase[] = [
   },
   {
     repo: 'DreamPerday/PaperLens-Zotero',
-    summaryZh: '提供论文概览、段落注解、选文与图片问答、翻译和证据核对，支持出版信息及等级写回；JCR 与中科院分区查询需配置 EasyScholar Key。',
+    summaryZh: '在 Zotero PDF 侧栏提供结构化概览、全文逐段注解、结合原文的选文与图片问答、翻译及证据核对，并可在导入论文时自动补全出版信息与等级、按需选择 EasyScholar 等级数据集、将分区和等级写入条目标签以便在文献库筛选（查询 JCR 和中科院分区需配置 EasyScholar Key）。',
     keywords: [
       '论文问答',
       '精读',
@@ -1065,6 +1065,8 @@ export const plugins: PluginInfoBase[] = [
       '中科院分区',
       'CCF',
       'CORE',
+      '等级筛选',
+      'EasyScholar',
     ],
     releases: [],
     tags: [
