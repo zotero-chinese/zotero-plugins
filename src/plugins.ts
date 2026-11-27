@@ -1873,6 +1873,18 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'iftechio/zotero-cocotranslate',
+    nameZh: '椰子翻译',
+    summaryZh: 'AI 精译 PDF，保留版式，部分支持表格、图片中的翻译。',
+    keywords: ['椰子翻译', 'CocoTranslate', 'PDF 翻译', '全文翻译', '双语对照', '论文翻译'],
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+  },
+  {
     repo: 'ImagonTuTu/zotero-filelink-bridge',
     releases: [
       {
