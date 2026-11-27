@@ -302,6 +302,23 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'Aquascend/zotero-metafolio',
+    nameZh: '书目拾页',
+    summaryZh: '从期刊文章、学位论文和中国专利 PDF 离线提取元数据，核对原文并修改后创建 Zotero 条目。',
+    keywords: [
+      'MetaFolio',
+      'PDF 元数据',
+      '离线识别',
+      '期刊文章',
+      '学位论文',
+      '中国专利',
+    ],
+    releases: [],
+    tags: ['metadata'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'Ares960826/zotero-grouptag',
     releases: [
       {
