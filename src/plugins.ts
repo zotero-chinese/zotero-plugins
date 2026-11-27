@@ -1873,6 +1873,26 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'iftechio/zotero-cocotranslate',
+    nameZh: '椰子翻译',
+    summaryZh: '通过椰子翻译在线服务生成保留版式的双语或纯译文 PDF，部分支持表格、图片翻译。',
+    keywords: [
+      '椰子翻译',
+      'CocoTranslate',
+      'PDF 翻译',
+      '全文翻译',
+      '双语对照',
+      '论文翻译',
+    ],
+    releases: [],
+    tags: [
+      'ai',
+      'reader',
+    ],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'ImagonTuTu/zotero-filelink-bridge',
     releases: [
       {
@@ -2644,6 +2664,20 @@ export const plugins: PluginInfoBase[] = [
       'metadata',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'lianghx123/zoteroknowledgemcp',
+    summaryZh: '开发预览版，将 PDF 转为可检索、可编辑的知识库并提供本地 MCP 读写授权，解析、模型和语义检索依赖所配置的第三方服务。',
+    releases: [
+      {
+        targetZoteroVersion: '10',
+        tagName: 'v0.2.0-preview.1',
+        assetName: 'zotero-knowledge-mcp.xpi',
+      },
+    ],
+    tags: ['ai', 'reader', 'integration'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'liangliu-nlp/reference-guard',
@@ -5640,6 +5674,15 @@ export const plugins: PluginInfoBase[] = [
       'interface',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'xrl-tjrxgq/zotero-draggable-reader-popup',
+    nameZh: '阅读弹窗拖拽',
+    summaryZh: '拖动阅读器中的选区、批注与预览浮窗，在当前标签页记住位置，双击手柄恢复跟随选区。',
+    releases: [],
+    tags: ['reader', 'interface'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'xuhan-rgb/zotero-ai-sidebar',
