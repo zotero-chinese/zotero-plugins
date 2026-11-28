@@ -68,13 +68,33 @@ export const deprecatedPlugins: PluginInfoBase[] = [
     releases: [
       {
         targetZoteroVersion: '10',
-        tagName: 'v2.0.0',
-        assetName: 'zotero-scihub-2.0.0.xpi',
+        tagName: 'v2.0.1',
+        assetName: 'zotero-scihub-2.0.1.xpi',
+      },
+      {
+        targetZoteroVersion: '9',
+        tagName: 'v2.0.1',
+        assetName: 'zotero-scihub-2.0.1.xpi',
+      },
+      {
+        targetZoteroVersion: '8',
+        tagName: 'v2.0.1',
+        assetName: 'zotero-scihub-2.0.1.xpi',
+      },
+      {
+        targetZoteroVersion: '7',
+        tagName: 'v2.0.1',
+        assetName: 'zotero-scihub-2.0.1.xpi',
       },
       {
         targetZoteroVersion: '6',
         tagName: 'builds',
         assetName: 'zotero-scihub-1.4.4.69.xpi',
+      },
+      {
+        targetZoteroVersion: '10',
+        tagName: 'v2.0.0',
+        assetName: 'zotero-scihub-2.0.0.xpi',
       },
     ],
     tags: [
