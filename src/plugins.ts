@@ -391,6 +391,14 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'asmpro7/provenance',
+    summaryZh: '在本机将论文或草稿与文库 PDF 比较，显示文本重合、近似改写及附近引用情况，支持导出报告。',
+    releases: [],
+    tags: ['utility'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'astro-koko/deepseek-copilot-for-zotero',
     releases: [
       {
@@ -2276,6 +2284,14 @@ export const plugins: PluginInfoBase[] = [
     discoverReleases: true,
   },
   {
+    repo: 'JUDESTRAHM/reader-mouse-nav',
+    summaryZh: '使用鼠标侧键在 PDF、EPUB 和快照阅读器的浏览历史中前进或后退。',
+    releases: [],
+    tags: ['reader'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
     repo: 'JunyanKang/paper-loom',
     nameZh: '文织',
     summaryZh: '在 PDF 阅读器中听读论文、查看对照译文和引文信息，并探索作者关系与进行 AI 对话。',
@@ -3736,6 +3752,14 @@ export const plugins: PluginInfoBase[] = [
       'ai',
     ],
     discoverReleases: true,
+  },
+  {
+    repo: 'pasiooooo/zotero-quickSwitcher',
+    summaryZh: '通过键盘面板检索文献、切换阅读标签、跳转目录与大纲或运行命令，需 Zotero 10.0.7 或更新的 10.x。',
+    releases: [],
+    tags: ['interface', 'utility'],
+    discoverReleases: true,
+    publishInShadow: true,
   },
   {
     repo: 'paulMrG2/zotero-highlight-descriptions',
@@ -5698,6 +5722,14 @@ export const plugins: PluginInfoBase[] = [
     summaryZh: '拖动阅读器中的选区、批注与预览浮窗，在当前标签页记住位置，双击手柄恢复跟随选区。',
     releases: [],
     tags: ['reader', 'interface'],
+    discoverReleases: true,
+    publishInShadow: true,
+  },
+  {
+    repo: 'XueDing2DeMao/zotero_obsidian',
+    summaryZh: '将个人文库元数据与 PDF 批注单向同步到 Obsidian Markdown，保留个人笔记，无需 Obsidian 插件，可选公式识别需配置视觉模型。',
+    releases: [],
+    tags: ['integration', 'notes'],
     discoverReleases: true,
     publishInShadow: true,
   },
